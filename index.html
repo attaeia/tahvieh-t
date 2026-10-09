@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="fa">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#17657D">
+<meta name="description" content="محاسبه‌گر تهویه سالن مرغداری گوشتی">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="تهویه سالن">
+<title>محاسبه‌گر تهویه سالن</title>
+<style>
+/* بازسازی ریست پایه‌ی صفحه‌ی منتشرشده تا ظاهر دقیقاً یکی بماند */
+:root{color-scheme:light;padding-block:env(safe-area-inset-top,0px) env(safe-area-inset-bottom,0px)}
+body{margin:0;font:14px system-ui,sans-serif}
+img{max-width:100%}
+[hidden]{display:none!important}
+@font-face{font-family:'Vazirmatn';font-style:normal;font-display:swap;font-weight:400;src:url('fonts/vazirmatn-arabic-400-normal.woff2') format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'Vazirmatn';font-style:normal;font-display:swap;font-weight:400;src:url('fonts/vazirmatn-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Vazirmatn';font-style:normal;font-display:swap;font-weight:500;src:url('fonts/vazirmatn-arabic-500-normal.woff2') format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'Vazirmatn';font-style:normal;font-display:swap;font-weight:500;src:url('fonts/vazirmatn-latin-500-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Vazirmatn';font-style:normal;font-display:swap;font-weight:700;src:url('fonts/vazirmatn-arabic-700-normal.woff2') format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'Vazirmatn';font-style:normal;font-display:swap;font-weight:700;src:url('fonts/vazirmatn-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Lalezar';font-style:normal;font-display:swap;font-weight:400;src:url('fonts/lalezar-arabic-400-normal.woff2') format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'Lalezar';font-style:normal;font-display:swap;font-weight:400;src:url('fonts/lalezar-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+</style>
+<style>
+/* Layout: نوار خلاصه‌ی ثابت بالا؛ ورودی‌ها در ستون کناری، کادرهای نتیجه و مقایسه در ستون اصلی؛ روی موبایل زیر هم */
+:root{
+  --bg:#EDF1F0; --surface:#F8FAF9; --fg:#15262A; --muted:#55696D; --line:#CBD8D6;
+  --accent:#17657D; --on-accent:#FFFFFF; --accent-soft:#D6E8EE;
+  --good:#1D7A4A; --good-soft:#D9EFE3; --warn:#8F5600; --warn-soft:#F6E7C9; --bad:#B3261E; --bad-soft:#F7DAD7;
+  --f-body:'Vazirmatn',Tahoma,'Segoe UI',sans-serif;
+  --f-display:'Lalezar','Vazirmatn',Tahoma,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1A1D; --surface:#16262A; --fg:#E3EEEC; --muted:#93A9AD; --line:#2A3E43;
+    --accent:#5BB5D0; --on-accent:#0B1A1F; --accent-soft:#1B3A45;
+    --good:#5BC48C; --good-soft:#173627; --warn:#E0A44A; --warn-soft:#3A2D12; --bad:#F07C72; --bad-soft:#40201D;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1A1D; --surface:#16262A; --fg:#E3EEEC; --muted:#93A9AD; --line:#2A3E43;
+  --accent:#5BB5D0; --on-accent:#0B1A1F; --accent-soft:#1B3A45;
+  --good:#5BC48C; --good-soft:#173627; --warn:#E0A44A; --warn-soft:#3A2D12; --bad:#F07C72; --bad-soft:#40201D;
+  color-scheme:dark;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.7}
+#app{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:20px 40px}
+.top h1{font-family:var(--f-display);font-weight:400;font-size:34px;line-height:1.3;margin:0;text-wrap:balance}
+.top p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.sum{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:8px;margin-top:14px;padding:8px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.sum:empty{display:none}
+.sum div{flex:1;min-width:0;text-align:center;background:var(--bg);border-radius:8px;padding:4px 6px}
+.sum span{display:block;font-size:11.5px;color:var(--muted);line-height:1.5}
+.sum b{display:block;font-family:var(--f-display);font-weight:400;font-size:20px;line-height:1.4;color:var(--accent);font-variant-numeric:tabular-nums;white-space:nowrap}
+.layout{display:grid;gap:16px;margin-top:16px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){.layout{grid-template-columns:minmax(0,380px) minmax(0,1fr);align-items:start}}
+.col{display:grid;gap:16px;min-width:0;align-content:start}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;min-width:0}
+.card h2{font-size:15px;font-weight:700;margin:0 0 12px}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px}
+.field{display:grid;gap:4px;min-width:0;align-content:start}
+.field.wide{grid-column:1 / -1}
+.field label{font-size:12.5px;color:var(--muted);line-height:1.5}
+.hint{font-size:11.5px;color:var(--muted);line-height:1.6;margin:0}
+input[type=text],select{
+  width:100%;box-sizing:border-box;height:42px;padding:0 10px;border:1px solid var(--line);border-radius:6px;
+  background:var(--bg);color:var(--fg);font:inherit;font-variant-numeric:tabular-nums;text-align:center;direction:ltr
+}
+input::placeholder{color:var(--muted);opacity:.7}
+select{direction:rtl;text-align:start}
+input[type=text]:focus-visible,select:focus-visible,input[type=range]:focus-visible,.seg input:focus-visible + span,input[type=checkbox]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg label{display:block;cursor:pointer}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:block;padding:10px 12px;border:1px solid var(--line);border-radius:8px;text-align:center;font-weight:700;background:var(--bg)}
+.seg small{display:block;font-weight:400;font-size:12px;color:var(--muted)}
+.seg input:checked + span{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.seg input:checked + span small{color:var(--on-accent);opacity:.85}
+.age{margin-top:14px;display:grid;gap:4px}
+.age .head{display:flex;justify-content:space-between;align-items:baseline;font-size:12.5px;color:var(--muted)}
+.age .head b{color:var(--fg);font-size:16px}
+input[type=range]{width:100%;direction:ltr;accent-color:var(--accent)}
+.group{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+details.card summary{cursor:pointer;font-weight:700;font-size:15px}
+details.card .fields{margin-top:12px}
+.check{display:flex;gap:8px;align-items:center;font-size:12.5px;color:var(--muted);grid-column:1 / -1}
+.sec{font-size:13px;font-weight:700;color:var(--muted);margin:6px 0 -6px}
+.boxes{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:10px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0;display:grid;gap:2px;align-content:start}
+.box .lab{font-size:12.5px;color:var(--muted);line-height:1.5}
+.box b{font-family:var(--f-display);font-weight:400;font-size:26px;line-height:1.4;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.box b small{font-family:var(--f-body);font-size:12.5px;color:var(--muted);margin-inline-start:4px}
+.box.key b{color:var(--accent)}
+.box .fx{font-size:11.5px;color:var(--muted);text-align:right;line-height:1.6;overflow-wrap:anywhere}
+.box .pill{justify-self:start;margin-top:2px}
+.pill{display:inline-block;padding:2px 10px;border-radius:99px;font-size:12.5px;font-weight:500;line-height:1.7}
+.pill.good{background:var(--good-soft);color:var(--good)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.bad{background:var(--bad-soft);color:var(--bad)}
+.note{margin:0;padding:10px 12px;background:var(--accent-soft);border-radius:8px;font-size:13px;line-height:1.7}
+.stack{display:grid;gap:10px}
+.sug{display:grid;gap:8px}
+.sug p{margin:0;padding:10px 12px;border-radius:8px;font-size:13px;line-height:1.7}
+.sug p.good{background:var(--good-soft);color:var(--fg)}
+.sug p.warn{background:var(--warn-soft);color:var(--fg)}
+.sug p.bad{background:var(--bad-soft);color:var(--fg)}
+.sug p.info{background:var(--accent-soft);color:var(--fg)}
+.tblwrap{overflow-x:auto;margin-top:8px}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;min-width:430px}
+.tbl th,.tbl td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:center;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tbl th{font-weight:500;color:var(--muted);font-size:12px}
+.tbl td:first-child,.tbl th:first-child{text-align:start}
+.tbl tr.best td{background:var(--accent-soft);font-weight:700}
+.tbl tr:last-child td{border-bottom:0}
+svg.chart{display:block;width:100%;height:auto;direction:ltr}
+svg.chart text{fill:var(--muted);font-family:var(--f-body);font-size:10px}
+svg.chart .grid{stroke:var(--line);stroke-width:1}
+svg.chart .line{fill:none;stroke:var(--accent);stroke-width:2}
+svg.chart .dot{fill:var(--accent)}
+svg.chart .lbl{fill:var(--fg);font-weight:700;font-size:11px}
+.foot{font-size:12.5px;color:var(--muted);margin:0}
+.tabs{display:flex;gap:8px;margin-top:14px}
+.tabs button{flex:1;height:42px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg);font:inherit;font-weight:700;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body>
+<div id="app" dir="rtl" lang="fa">
+  <header class="top">
+    <h1>محاسبه‌گر تهویه سالن</h1>
+    <p>مرغداری گوشتی · فرمول‌ها از جزوه‌ی سه جلسه</p>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="بخش‌ها">
+    <button type="button" role="tab" id="tabV" aria-selected="true">تهویه</button>
+    <button type="button" role="tab" id="tabC" aria-selected="false">کابل</button>
+  </nav>
+
+  <div id="paneV">
+  <div class="sum" id="sum" aria-live="polite"></div>
+
+  <div class="layout">
+    <div class="col">
+      <section class="card">
+        <h2>ابعاد سالن</h2>
+        <div class="fields">
+          <div class="field"><label for="len">طول (m)</label><input type="text" id="len" inputmode="decimal" placeholder="مثلاً ۸۰"></div>
+          <div class="field"><label for="wid">عرض (m)</label><input type="text" id="wid" inputmode="decimal" placeholder="مثلاً ۱۸"></div>
+          <div class="field wide"><label for="hgt">ارتفاع متوسط (m)</label><input type="text" id="hgt" inputmode="decimal" placeholder="مثلاً ۲٫۸۵"><p class="hint">(ارتفاع دیوار + ارتفاع سقف) ÷ ۲. مثال جزوه: ۲٫۸۵ متر.</p></div>
+          <div class="field"><label for="dens">تراکم (پرنده در m²)</label><input type="text" id="dens" inputmode="decimal" placeholder="مثلاً ۱۵"><p class="hint">مثال جزوه: ۱۵ پرنده در هر متر مربع.</p></div>
+          <div class="field"><label for="wt">وزن نهایی (kg)</label><input type="text" id="wt" inputmode="decimal" placeholder="مثلاً ۳"><p class="hint">مثال جزوه: ۳ کیلو. تهویه را باید برای بدترین حالت، یعنی وزن نهایی، حساب کرد.</p></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>نوع تهویه و سن گله</h2>
+        <div class="seg" role="radiogroup" aria-label="نوع تهویه">
+          <label><input type="radio" name="mode" value="trans" checked><span>انتقالی<small>اینلت کناری</small></span></label>
+          <label><input type="radio" name="mode" value="tun"><span>تونلی<small>ورود هوا از سر سالن</small></span></label>
+        </div>
+        <p class="hint" id="modeHint" style="margin-top:8px"></p>
+
+        <div class="age">
+          <div class="head"><span>سن گله</span><b id="ageOut">روز ۱</b></div>
+          <input type="range" id="age" min="1" max="45" value="1" aria-label="سن گله به روز">
+        </div>
+
+        <div class="group">
+          <div class="field">
+            <label for="heater">هیتر سالن</label>
+            <select id="heater">
+              <option value="" selected>انتخاب نشده</option>
+              <option value="jet">هیتر جت (داخل سالن)</option>
+              <option value="cab">هیتر کابینتی / کامیونیتی (کوره بیرون)</option>
+            </select>
+            <p class="hint">برای هشدار سازگاری با تهویه‌ی انتقالی.</p>
+          </div>
+        </div>
+
+        <div class="group" id="g-trans">
+          <div class="fields">
+            <div class="field wide"><label for="rate">نرخ تهویه (m³/min برای هر kg وزن زنده)</label><input type="text" id="rate" inputmode="decimal" value="0.06"><p class="hint">۰٫۰۶ یعنی برای هر ۱ کیلوگرم وزن زنده، ۰٫۰۶ متر مکعب هوا در دقیقه لازم است. در سرمای شدید (حداقلی) تا یک‌چهارم این مقدار کم می‌شود.</p></div>
+            <div class="field wide"><label for="vin">سرعت هوا روی دریچه‌ی اینلت (m/s)</label><input type="text" id="vin" inputmode="decimal" placeholder="خودکار از عرض"><p class="hint">برای عرض ۱۲ متر حدود ۴ و برای عرض ۱۸ متر حدود ۵ متر بر ثانیه، تا هوا به وسط سالن برسد.</p></div>
+            <div class="field"><label for="iw">عرض اینلت (cm)</label><input type="text" id="iw" inputmode="decimal" value="30"></div>
+            <div class="field"><label for="ih">ارتفاع اینلت (cm)</label><input type="text" id="ih" inputmode="decimal" value="60"></div>
+            <p class="hint" style="grid-column:1 / -1;margin-top:-6px">مثال جزوه: اینلت ۳۰×۶۰ سانتی‌متر.</p>
+            <div class="field"><label for="m1">حاشیه‌ی کم (٪)</label><input type="text" id="m1" inputmode="decimal" value="15"></div>
+            <div class="field"><label for="m2">حاشیه‌ی زیاد (٪)</label><input type="text" id="m2" inputmode="decimal" value="30"></div>
+            <p class="hint" style="grid-column:1 / -1;margin-top:-6px">۱۵ تا ۳۰٪ اضافه می‌شود چون همه‌ی اینلت‌ها هم‌زمان کامل باز نیستند.</p>
+          </div>
+        </div>
+
+        <div class="group" id="g-tun" hidden>
+          <div class="fields">
+            <div class="field wide">
+              <label for="stage">سرعت هدف باد روی پرنده</label>
+              <select id="stage">
+                <option value="auto" selected>خودکار بر اساس سن</option>
+                <option value="0.25">۰٫۲۵ m/s (هفته‌ی اول)</option>
+                <option value="2.5">۲٫۵ m/s (بعد از پرگیری)</option>
+                <option value="3">۳ m/s (استاندارد جدید)</option>
+                <option value="custom">عدد دلخواه</option>
+              </select>
+              <p class="hint">هفته‌ی اول حداکثر ۰٫۲۵ m/s روی پرنده. بعد از پرگیری (حدود ۲۷ تا ۲۸ روزگی) تا ۲٫۵ و طبق استاندارد جدید تا ۳ m/s. سرعت بیشتر روی جوجه‌ی کوچک باعث سرما و تلفات می‌شود. خودکار: روز ۱ تا ۷ برابر ۰٫۲۵ و از روز ۲۸ برابر ۲٫۵.</p>
+            </div>
+            <div class="field wide" id="spWrap" hidden><label for="sp">سرعت دلخواه (m/s)</label><input type="text" id="sp" inputmode="decimal" placeholder="مثلاً ۱٫۵"></div>
+            <div class="field wide"><label for="fon">تعداد هواکش روشن (خالی = خودکار)</label><input type="text" id="fon" inputmode="numeric" placeholder="خودکار"><p class="hint">اگر عدد بزنی، سرعت واقعی با همان تعداد هواکش حساب می‌شود.</p></div>
+            <div class="field wide"><label for="wc">اثر باد روی دمای احساسی (°C)</label><input type="text" id="wc" inputmode="decimal" placeholder="۰"><p class="hint">باد دمای احساس‌شده‌ی پرنده را پایین می‌آورد. نمونه‌ی جزوه: دمای ۳۵، رطوبت ۶۵٪ و باد ۲٫۵ m/s مثل ۲۶ درجه حس می‌شود (افت ۹ درجه).</p></div>
+          </div>
+        </div>
+      </section>
+
+      <details class="card">
+        <summary>تنظیمات هواکش و دما (پیش‌فرض جزوه)</summary>
+        <div class="fields">
+          <div class="field"><label for="dia">قطر هواکش (cm)</label><input type="text" id="dia" inputmode="decimal" value="140"><p class="hint">شماره‌ی هواکش همان قطر پره به سانتی‌متر است: ۵۰، ۶۰، ۷۰، ۸۰، ۱۰۰، ۱۱۰، ۱۴۰.</p></div>
+          <div class="field"><label for="nom">ظرفیت نامی دقیق (m³/h)</label><input type="text" id="nom" inputmode="decimal" placeholder="خودکار"><p class="hint">خالی بماند، ظرفیت تقریبی از قطر حساب می‌شود: <b id="nomAuto">—</b> m³/h (مبنا: هواکش ۱۴۰ برابر ۴۲٬۰۰۰ و تناسب با مجذور قطر). اگر ظرفیت نامی خود دستگاه را از کاتالوگ یا پلاک پیدا کردی، اینجا بزن تا جای مقدار تقریبی بنشیند.</p></div>
+          <div class="field wide"><label for="der">کسر از ظرفیت نامی (٪)</label><input type="text" id="der" inputmode="decimal" value="15"><p class="hint">برای هر وسیله‌ی چرخان (موتور و فن) ۱۵٪ کم می‌شود.</p></div>
+          <label class="check"><input type="checkbox" id="rnd" checked> گرد کردن ظرفیت مؤثر به مضرب ۱۰۰۰ (مثل جزوه)</label>
+          <div class="field"><label for="t0">دمای هدف روز اول (°C)</label><input type="text" id="t0" inputmode="decimal" value="33"><p class="hint">روز اول حدود ۳۲ تا ۳۴٫۵ درجه.</p></div>
+          <div class="field"><label for="tdec">کاهش روزانه (°C)</label><input type="text" id="tdec" inputmode="decimal" value="0.25"><p class="hint">تجربه‌ی رایج در ایران: هر ۴ روز ۱ درجه.</p></div>
+          <div class="field wide"><label for="tmin">کف دمای هدف (°C)</label><input type="text" id="tmin" inputmode="decimal" value="22"><p class="hint">پرورش‌دهنده باید به ۲۱ تا ۲۳ درجه برسد.</p></div>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary>مقایسه‌ی اندازه‌ها و قیمت (اختیاری)</summary>
+        <p class="hint" style="margin-top:10px">قیمت هر هواکش را بنویس تا جدول مقایسه ارزان‌ترین گزینه را هم پیدا کند. واحد قیمت مهم نیست، فقط در همه‌ی خانه‌ها یکسان باشد.</p>
+        <div class="fields">
+          <div class="field"><label for="pf100">قیمت هواکش ۱۰۰</label><input type="text" id="pf100" inputmode="decimal" placeholder="—"></div>
+          <div class="field"><label for="pf110">قیمت هواکش ۱۱۰</label><input type="text" id="pf110" inputmode="decimal" placeholder="—"></div>
+          <div class="field"><label for="pf120">قیمت هواکش ۱۲۰</label><input type="text" id="pf120" inputmode="decimal" placeholder="—"></div>
+          <div class="field"><label for="pf140">قیمت هواکش ۱۴۰</label><input type="text" id="pf140" inputmode="decimal" placeholder="—"></div>
+        </div>
+        <p class="hint" style="margin-top:14px">اینلت‌های جایگزین (سانتی‌متر) و قیمت هر کدام. اینلت اصلی همان اندازه‌ی بالاست.</p>
+        <div class="fields">
+          <div class="field"><label for="pia">قیمت اینلت اصلی</label><input type="text" id="pia" inputmode="decimal" placeholder="—"></div>
+          <div class="field"></div>
+          <div class="field"><label for="ibw">اینلت ب: عرض</label><input type="text" id="ibw" inputmode="decimal" placeholder="cm"></div>
+          <div class="field"><label for="ibh">اینلت ب: ارتفاع</label><input type="text" id="ibh" inputmode="decimal" placeholder="cm"></div>
+          <div class="field wide"><label for="pib">قیمت اینلت ب</label><input type="text" id="pib" inputmode="decimal" placeholder="—"></div>
+          <div class="field"><label for="icw">اینلت ج: عرض</label><input type="text" id="icw" inputmode="decimal" placeholder="cm"></div>
+          <div class="field"><label for="ich">اینلت ج: ارتفاع</label><input type="text" id="ich" inputmode="decimal" placeholder="cm"></div>
+          <div class="field wide"><label for="pic">قیمت اینلت ج</label><input type="text" id="pic" inputmode="decimal" placeholder="—"></div>
+        </div>
+      </details>
+    </div>
+
+    <div class="col">
+      <div class="sec">اطلاعات سالن</div>
+      <div class="boxes" id="b-hall"></div>
+
+      <div class="sec" id="resTitle">نتیجه</div>
+      <div class="boxes" id="b-mode"></div>
+      <div class="stack" id="notes"></div>
+
+      <div class="sec">دمای هدف در سن انتخاب‌شده</div>
+      <div class="boxes" id="b-temp"></div>
+      <div class="card" id="chartCard" hidden><div id="chart"></div></div>
+
+      <div class="card" id="weekCard" hidden>
+        <h2>برنامه‌ی هفتگی هواکش (تونلی)</h2>
+        <p class="hint">تعداد هواکش روشن در پایان هر هفته تا روز ۴۵. هفته‌ی اول ۰٫۲۵ و از روز ۲۸ به بعد ۲٫۵ m/s طبق جزوه است. برای هفته‌ی ۲ و ۳ جزوه سرعتی نگفته؛ اگر خالی بگذاری تقریب خطی (۱ و ۱٫۷۵) گذاشته می‌شود که فرض من است و باید با مدرس تأیید شود.</p>
+        <div class="fields" id="weekIn">
+          <div class="field"><label for="w2">سرعت هفته‌ی ۲ (m/s)</label><input type="text" id="w2" inputmode="decimal" placeholder="خودکار ۱"></div>
+          <div class="field"><label for="w3">سرعت هفته‌ی ۳ (m/s)</label><input type="text" id="w3" inputmode="decimal" placeholder="خودکار ۱٫۷۵"></div>
+          <div class="field wide"><label for="wl">سرعت از روز ۲۸ به بعد (m/s)</label><input type="text" id="wl" inputmode="decimal" placeholder="خودکار ۲٫۵"></div>
+        </div>
+        <div id="weekTbl"></div>
+      </div>
+
+      <div class="card" id="cmpFan" hidden></div>
+      <div class="card" id="cmpInlet" hidden></div>
+
+      <div class="card" id="sugCard" hidden>
+        <h2>پیشنهادها</h2>
+        <div class="sug" id="sug"></div>
+      </div>
+
+      <p class="foot">نرخ ۰٫۰۶ و اعداد اثر باد از روی گفتار مدرس استخراج شده‌اند و باید با خود او تأیید شوند. ظرفیت هواکش‌های غیر از اندازه‌ی اصلی با نسبت مجذور قطر (روش جزوه) تخمین زده می‌شود.</p>
+    </div>
+  </div>
+  </div>
+
+  <div id="paneC" hidden>
+    <div class="sum" id="sumC" aria-live="polite"></div>
+
+    <div class="layout">
+      <div class="col">
+        <section class="card">
+          <h2>مشخصات سالن</h2>
+          <div class="fields">
+            <div class="field"><label for="cl">طول سالن (m)</label><input type="text" id="cl" inputmode="decimal" placeholder="مثلاً ۹۰"></div>
+            <div class="field"><label for="ch">تعداد سالن</label><input type="text" id="ch" inputmode="numeric" placeholder="خالی = ۱"></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>کابل ۲×۰٫۵ (NTC، موتور، متعلقات)</h2>
+          <div class="fields">
+            <div class="field"><label for="cn">تعداد NTC</label><input type="text" id="cn" inputmode="numeric" placeholder="مثلاً ۶"></div>
+            <div class="field"><label for="cm">تعداد موتور</label><input type="text" id="cm" inputmode="numeric" placeholder="مثلاً ۴"></div>
+            <div class="field wide"><p class="hint">متعلقات همیشه جمع می‌شود: نمایشگر ۲۰ + سنسور دمای بیرون ۵۰ + کنتور آب ۳۰ = ۱۰۰ متر.</p></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>کابل ۴×۰٫۵ (سنسورها و گشت)</h2>
+          <div class="fields">
+            <div class="field"><label for="cs">تعداد سنسور</label><input type="text" id="cs" inputmode="numeric" placeholder="مثلاً ۳"><p class="hint">آمونیاک ۱ + CO₂ ۱ + رطوبت ۱ = ۳.</p></div>
+            <div class="field"><label for="cg">تعداد گشت</label><input type="text" id="cg" inputmode="numeric" placeholder="مثلاً ۱"></div>
+            <div class="field wide"><p class="hint">اگر ۴×۰٫۵ لازم نیست، هر دو کادر را خالی بگذار. این کابل متعلقات ندارد.</p></div>
+          </div>
+        </section>
+      </div>
+
+      <div class="col">
+        <div class="sec">نتیجه برای هر سالن</div>
+        <div class="boxes" id="b-cable"></div>
+        <div class="sec">جمع همه‌ی سالن‌ها</div>
+        <div class="boxes" id="b-cableT"></div>
+        <p class="foot">هر سالن به بالا و به مضرب ۱۰۰ متر گرد می‌شود و بعد در تعداد سالن‌ها ضرب می‌شود. فرمول‌ها از روش خود کاربر است و نه از جزوه‌ی تهویه.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var nf = function(n, d){ return new Intl.NumberFormat('fa-IR', {maximumFractionDigits: d === undefined ? 2 : d}).format(n); };
+  var FA = '۰۱۲۳۴۵۶۷۸۹', AR = '٠١٢٣٤٥٦٧٨٩';
+
+  function val(id){
+    var el = $(id);
+    if (!el) return NaN;
+    var s = String(el.value).trim();
+    s = s.replace(/[۰-۹]/g, function(c){ return FA.indexOf(c); })
+         .replace(/[٠-٩]/g, function(c){ return AR.indexOf(c); })
+         .replace(/[٫\/،]/g, '.')
+         .replace(/[,٬\s]/g, '');
+    var v = parseFloat(s);
+    return isFinite(v) ? v : NaN;
+  }
+  function pos(x){ return x > 0 ? x : NaN; }
+  function ceil(n){ return Math.ceil(n - 1e-9); }
+  function evenUp(n){ n = ceil(n); return n % 2 ? n + 1 : n; }
+  function fin(x){ return typeof x === 'number' && isFinite(x); }
+  function pill(k, t){ return '<span class="pill ' + k + '">' + t + '</span>'; }
+
+  function B(label, v, d, unit, fx, key, extra){
+    return '<div class="box' + (key ? ' key' : '') + '"><span class="lab">' + label + '</span>' +
+      '<b>' + (fin(v) ? nf(v, d) : '—') + (unit ? '<small><bdi>' + unit + '</bdi></small>' : '') + '</b>' +
+      (fx ? '<bdi class="fx" dir="ltr">' + fx + '</bdi>' : '') + (extra || '') + '</div>';
+  }
+  function F(sym, parts){
+    return parts.every(function(p){ return typeof p === 'string' || fin(p); }) ? parts.map(function(p){ return typeof p === 'string' ? p : nf(p); }).join('') : sym;
+  }
+
+  function chart(t0, td, tm, age){
+    var w = 320, h = 140, pl = 34, pr = 10, pt = 14, pb = 24, maxD = 45;
+    var T = function(d){ return Math.max(tm, t0 - td * (d - 1)); };
+    var ymax = Math.max(t0, tm) + 1, ymin = Math.min(t0, tm) - 1;
+    var X = function(d){ return pl + (d - 1) / (maxD - 1) * (w - pl - pr); };
+    var Y = function(t){ return pt + (ymax - t) / (ymax - ymin) * (h - pt - pb); };
+    var step = (ymax - ymin) > 8 ? 2 : 1, g = '';
+    for (var t = Math.ceil(ymin); t <= ymax; t += step){
+      g += '<line class="grid" x1="' + pl + '" x2="' + (w - pr) + '" y1="' + Y(t) + '" y2="' + Y(t) + '"/>' +
+           '<text x="' + (pl - 6) + '" y="' + (Y(t) + 3.5) + '" text-anchor="end">' + nf(t, 0) + '</text>';
+    }
+    var xl = '';
+    [1, 14, 28, 42].forEach(function(d){
+      xl += '<text x="' + X(d) + '" y="' + (h - 6) + '" text-anchor="middle">' + nf(d, 0) + '</text>';
+    });
+    var pts = [];
+    for (var d = 1; d <= maxD; d++) pts.push(X(d).toFixed(1) + ',' + Y(T(d)).toFixed(1));
+    var cx = X(age), cy = Y(T(age));
+    return '<svg class="chart" viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="منحنی دمای هدف بر حسب سن گله">' +
+      g + xl + '<polyline class="line" points="' + pts.join(' ') + '"/>' +
+      '<circle class="dot" cx="' + cx + '" cy="' + cy + '" r="4.5"/>' +
+      '<text class="lbl" x="' + cx + '" y="' + (cy - 9) + '" text-anchor="middle">' + nf(T(age), 1) + '°</text>' +
+      '</svg>';
+  }
+
+  // مقایسه‌ی اندازه‌ی هواکش‌ها برای دبی لازم (m³/min)
+  function fanCompare(reqM, nom, der, rnd, Dm){
+    if (!(reqM > 0) || !fin(nom) || !fin(Dm) || !(der >= 0 && der < 100)) return null;
+    var set = {100: 1, 110: 1, 120: 1, 140: 1}; set[Dm] = 1;
+    var sizes = Object.keys(set).map(Number).sort(function(a, b){ return a - b; });
+    var rows = sizes.map(function(D){
+      var nd = nom * (D / Dm) * (D / Dm);
+      var e = nd * (1 - der / 100);
+      if (rnd) e = Math.max(1000, Math.round(e / 1000) * 1000);
+      var em = e / 60, n = ceil(reqM / em), inst = n * em;
+      var pr = $('pf' + D) ? pos(val('pf' + D)) : NaN;
+      return {D: D, eh: e, em: em, n: n, inst: inst, over: (inst - reqM) / reqM * 100, cost: fin(pr) ? n * pr : NaN, main: D === Dm};
+    });
+    var withCost = rows.filter(function(r){ return fin(r.cost); });
+    var best;
+    if (withCost.length >= 2){
+      best = withCost.slice().sort(function(a, b){ return a.cost - b.cost || a.over - b.over; })[0];
+      best.why = 'cost';
+    } else {
+      best = rows.slice().sort(function(a, b){ return a.over - b.over || a.n - b.n; })[0];
+      best.why = 'fit';
+    }
+    return {rows: rows, best: best, hasCost: withCost.length >= 2, Dm: Dm};
+  }
+
+  function fanCompareHtml(c, reqM){
+    var h = '<h2>مقایسه‌ی اندازه‌ی هواکش</h2><p class="hint">برای دبی لازم ' + nf(reqM, 0) + ' m³/min. ظرفیت هر اندازه با نسبت مجذور قطر از هواکش ' + nf(c.Dm, 0) + ' تخمین زده شده است.</p>';
+    h += '<div class="tblwrap"><table class="tbl"><thead><tr><th>هواکش</th><th>ظرفیت مؤثر (m³/h)</th><th>تعداد</th><th>ظرفیت نصب‌شده (m³/min)</th><th>اضافه‌ظرفیت</th>' + (c.hasCost ? '<th>هزینه‌ی کل</th>' : '') + '</tr></thead><tbody>';
+    c.rows.forEach(function(r){
+      h += '<tr' + (r === c.best ? ' class="best"' : '') + '><td>' + nf(r.D, 0) + (r.main ? ' (اصلی)' : '') + '</td><td>' + nf(r.eh, 0) + '</td><td>' + nf(r.n, 0) + '</td><td>' + nf(r.inst, 0) + '</td><td>' + nf(r.over, 1) + '٪</td>' + (c.hasCost ? '<td>' + (fin(r.cost) ? nf(r.cost, 0) : '—') + '</td>' : '') + '</tr>';
+    });
+    h += '</tbody></table></div>';
+    h += '<p class="note" style="margin-top:10px">' + (c.best.why === 'cost'
+      ? 'ارزان‌ترین گزینه: هواکش ' + nf(c.best.D, 0) + ' با ' + nf(c.best.n, 0) + ' عدد و هزینه‌ی کل ' + nf(c.best.cost, 0) + '.'
+      : 'نزدیک‌ترین به نیاز: هواکش ' + nf(c.best.D, 0) + ' با ' + nf(c.best.n, 0) + ' عدد و ' + nf(c.best.over, 1) + '٪ اضافه‌ظرفیت. برای مقایسه‌ی هزینه، قیمت‌ها را در تنظیمات بنویس.') + '</p>';
+    return h;
+  }
+
+  var vinTouched = false;
+
+  function render(){
+    var mode = document.querySelector('input[name=mode]:checked').value;
+    $('g-trans').hidden = mode !== 'trans';
+    $('g-tun').hidden = mode !== 'tun';
+    $('spWrap').hidden = $('stage').value !== 'custom';
+    $('resTitle').textContent = mode === 'trans' ? 'نتیجه‌ی تهویه‌ی انتقالی' : 'نتیجه‌ی تهویه‌ی تونلی';
+    $('modeHint').textContent = mode === 'trans'
+      ? 'انتقالی: هوا از اینلت‌های کناری وارد می‌شود، بالای سالن گرم می‌شود و پایین می‌آید. فشار منفی لازم است و سوخت کمتری می‌سوزد.'
+      : 'تونلی: هوا از سر سالن وارد می‌شود و در طول سالن حرکت می‌کند. سرعت باد روی پرنده مهم است.';
+
+    var L = pos(val('len')), W = pos(val('wid')), H = pos(val('hgt')), dens = pos(val('dens')), wt = pos(val('wt'));
+    var nomUser = pos(val('nom')), der = val('der'), Dm = pos(val('dia'));
+    var nomAutoV = fin(Dm) ? 42000 * (Dm / 140) * (Dm / 140) : NaN;
+    var nom = fin(nomUser) ? nomUser : nomAutoV;
+    $('nomAuto').textContent = fin(nomAutoV) ? nf(Math.round(nomAutoV), 0) : '—';
+    var rnd = $('rnd').checked;
+    var heater = $('heater').value;
+    var age = +$('age').value;
+    $('ageOut').textContent = 'روز ' + nf(age, 0);
+
+    var area = L * W, cap = Math.round(area * dens), live = cap * wt;
+    var cross = W * H, lon = L * H, load = dens * wt;
+    var effH = nom * (1 - der / 100);
+    if (!(der >= 0 && der < 100)) effH = NaN;
+    if (fin(effH) && rnd) effH = Math.max(1000, Math.round(effH / 1000) * 1000);
+    var effM = effH / 60;
+
+    var loadPill = !fin(load) ? '' : (load > 37 ? pill('warn', 'بالاتر از ۳۶ تا ۳۷ که جزوه تحمل‌پذیر می‌داند') : pill('good', 'در محدوده'));
+    $('b-hall').innerHTML =
+      B('مساحت', area, 1, 'm²', F('طول × عرض', [L, ' × ', W]), false) +
+      B('تعداد جوجه', cap, 0, 'قطعه', F('مساحت × تراکم', [area, ' × ', dens]), true) +
+      B('وزن زنده', live, 0, 'kg', F('تعداد × وزن نهایی', [cap, ' × ', wt]), false) +
+      B('بار سالن', load, 1, 'kg/m²', F('تراکم × وزن نهایی', [dens, ' × ', wt]), false, loadPill) +
+      B('سطح مقطع عرضی', cross, 2, 'm²', F('عرض × ارتفاع متوسط', [W, ' × ', H]), true) +
+      B('سطح مقطع طولی', lon, 1, 'm²', F('طول × ارتفاع متوسط', [L, ' × ', H]) + ' (در محاسبات جزوه استفاده نمی‌شود)', false) +
+      B('ظرفیت مؤثر یک هواکش', effH, 0, 'm³/h', F('ظرفیت نامی منهای کسر' + (fin(nomUser) ? '' : ' (ظرفیت نامی تقریبی از قطر)'), [nom, ' − ', der, '٪']), false) +
+      B('ظرفیت مؤثر یک هواکش', effM, 0, 'm³/min', F('m³/h ÷ ۶۰', [effH, ' ÷ ۶۰']), false);
+
+    var modeBoxes = '', notes = '', sumItems = [], sug = [];
+    var reqM = NaN, fans = NaN, fansT = NaN, base = NaN, lo = NaN, hi = NaN, aIn = NaN, vin = NaN, capFlag = false;
+
+    if (fin(load) && load > 37) sug.push(['warn', 'بار سالن ' + nf(load, 1) + ' kg/m² است و جزوه حداکثر ۳۶ تا ۳۷ را تحمل‌پذیر می‌داند. اگر گله به وزن نهایی برسد باید خلوت شود.']);
+
+    if (mode === 'trans'){
+      var rate = pos(val('rate')), iw = pos(val('iw')), ih = pos(val('ih'));
+      var m1 = val('m1'), m2 = val('m2'); if (!fin(m1)) m1 = 0; if (!fin(m2)) m2 = 0;
+      if (!vinTouched){
+        var autoV = fin(W) ? (W <= 12 ? 4 : (W >= 18 ? 5 : Math.round((4 + (W - 12) / 6) * 2) / 2)) : '';
+        $('vin').value = autoV === '' ? '' : String(autoV);
+      }
+      vin = pos(val('vin'));
+      var flow = live * rate; reqM = flow;
+      fans = ceil(flow / effM);
+      var tot = fans * effM, totS = tot / 60;
+      aIn = totS / vin;
+      var unit = (iw / 100) * (ih / 100), exact = aIn / unit;
+      base = evenUp(exact); lo = evenUp(base * (1 + m1 / 100)); hi = evenUp(base * (1 + m2 / 100));
+      modeBoxes =
+        B('دبی لازم', flow, 0, 'm³/min', F('وزن زنده × نرخ', [live, ' × ', rate]), false) +
+        B('تعداد هواکش', fans, 0, 'عدد', F('دبی لازم ÷ ظرفیت مؤثر، گرد به بالا', [flow, ' ÷ ', effM, ' = ', flow / effM]), true) +
+        B('دبی کل واقعی', totS, 1, 'm³/s', F('هواکش × ظرفیت مؤثر ÷ ۶۰', [fans, ' × ', effM, ' ÷ ۶۰']), false) +
+        B('سرعت هوا روی اینلت', vin, 1, 'm/s', 'از عرض سالن (۱۲ متر: حدود ۴، ۱۸ متر: حدود ۵)', false) +
+        B('سطح کل اینلت', aIn, 2, 'm²', F('دبی کل ÷ سرعت', [totS, ' ÷ ', vin]), false) +
+        B('مساحت یک اینلت', unit, 3, 'm²', F('عرض × ارتفاع اینلت', [iw, '×', ih, ' cm']), false) +
+        B('تعداد اینلت (زوج)', base, 0, 'عدد', F('سطح کل ÷ مساحت یک اینلت', [aIn, ' ÷ ', unit, ' = ', exact]), true) +
+        B('تعداد اینلت با حاشیه', lo, 0, 'تا ' + (fin(hi) ? nf(hi, 0) : '—'), 'حاشیه ' + nf(m1, 0) + ' تا ' + nf(m2, 0) + '٪، زوج', true) +
+        B('تهویه‌ی حداقلی', flow / 4, 0, 'm³/min', 'حداکثر یک‌چهارم دبی لازم', false);
+      notes =
+        '<p class="note">تعداد هواکش انتقالی از وزن زنده‌ی نهایی حساب می‌شود و با روز عوض نمی‌شود. جزوه وزن گله در هر سن را نداده است.</p>' +
+        '<p class="note">سرعت باد روی پرنده در جزوه فقط برای تهویه‌ی تونلی تعریف شده است. در انتقالی، سرعت هوا روی دریچه‌ی اینلت کنترل می‌شود.</p>';
+      sumItems.push(['هواکش', fin(fans) ? nf(fans, 0) : '—'], ['اینلت', fin(lo) ? nf(lo, 0) + '–' + nf(hi, 0) : '—']);
+
+      if (heater === 'cab') sug.push(['bad', 'هیتر کابینتی/کامیونیتی خودش باد می‌زند و فشار مثبت می‌سازد، پس با تهویه‌ی انتقالی و اینلت جور نیست. فقط ۵۰ تا ۶۰٪ (نهایتاً ۷۰٪) گرمایش هم وارد سالن می‌شود. اگر مشتری این هیتر را دارد، یا تهویه‌ی تونلی را در نظر بگیر یا هیتر جت پیشنهاد بده.']);
+      if (heater === 'jet') sug.push(['good', 'هیتر جت داخل سالن است و تقریباً همه‌ی گرمایش در سالن می‌ماند. با تهویه‌ی انتقالی سازگار است.']);
+      sug.push(['info', 'بعد از نصب، آب‌بندی را با تست فشار منفی بسنج: همه‌ی اینلت‌ها بسته و یک هواکش ۱۴۰ روشن. فشار باید حداقل ۲۵ Pa باشد (۳۵ خوب، ۵۰ تا ۵۵ خیلی خوب، ۶۵ عالی). زیر ۲۵ یعنی سالن نشتی دارد و هوای سرد مستقیم روی جوجه می‌ریزد.']);
+      if (age <= 14) sug.push(['info', 'در جوجه‌ریزی فقط چند دهنه‌ی وسط اینلت را باز کن و با بزرگ شدن گله به‌تدریج اضافه کن. باز کردن همه‌ی اینلت‌ها از ابتدا فشار را به زیر ۲۵ Pa می‌رساند.']);
+    } else {
+      var st = $('stage').value;
+      var mid = function(a){
+        var q2 = pos(val('w2')), q3 = pos(val('w3')), ql = pos(val('wl'));
+        var P = [[7, 0.25], [14, fin(q2) ? q2 : 1], [21, fin(q3) ? q3 : 1.75], [28, fin(ql) ? ql : 2.5]];
+        for (var k = 0; k < 3; k++){ if (a <= P[k + 1][0]) return P[k][1] + (P[k + 1][1] - P[k][1]) * (a - P[k][0]) / (P[k + 1][0] - P[k][0]); }
+        return P[3][1];
+      };
+      var midAge = st === 'auto' && age > 7 && age < 28;
+      var sp = st === 'auto' ? (age <= 7 ? 0.25 : (age >= 28 ? 2.5 : mid(age))) : (st === 'custom' ? pos(val('sp')) : +st);
+      var wc = val('wc'); if (!fin(wc)) wc = 0;
+      var isCap = (st === 'auto' && age <= 7) || st === '0.25'; capFlag = isCap;
+      var needS = sp * cross; reqM = needS * 60;
+      fansT = isCap ? Math.max(1, Math.floor(needS * 60 / effM + 1e-9)) : ceil(needS * 60 / effM);
+      var fon = val('fon'), typed = fon > 0;
+      var nUsed = typed ? Math.round(fon) : fansT;
+      var real = nUsed * effM / 60 / cross;
+      var one = effM / 60 / cross;
+      var lim = age <= 7 ? 0.25 : (age >= 28 ? 3 : NaN);
+      var maxAge = Math.floor(lim * cross * 60 / effM + 1e-9);
+
+      var status = '';
+      if (fin(real)){
+        if (age <= 7) status = real > 0.25 + 1e-9 ? pill('bad', 'بیشتر از حداکثر هفته‌ی اول (۰٫۲۵ m/s)') : pill('good', 'در محدوده‌ی هفته‌ی اول');
+        else if (age < 28) status = midAge ? pill('warn', 'سرعت تقریبی؛ جزوه برای روز ۸ تا ۲۷ عدد نداده') : (real > 0.25 + 1e-9 ? pill('warn', 'جزوه برای روز ۸ تا ۲۷ حدی نگفته؛ سرعت را تدریجی بالا ببر') : pill('good', 'در محدوده'));
+        else status = real > 3 + 1e-9 ? pill('bad', 'بالاتر از ۳ m/s') : (real > 2.5 + 1e-9 ? pill('warn', 'بین ۲٫۵ و ۳ فقط طبق استاندارد جدید') : pill('good', 'در محدوده‌ی مجاز'));
+      }
+      modeBoxes =
+        B('سرعت هدف', sp, 2, 'm/s', st === 'auto' ? (midAge ? 'تقریب خطی بین روز ۷ و ۲۸ (فرض)' : 'خودکار از سن گله') : 'انتخاب شما', false) +
+        B('دبی لازم', needS, 1, 'm³/s', F('سرعت × سطح مقطع عرضی', [sp, ' × ', cross]), false) +
+        B(isCap ? 'تعداد هواکش (سقف سرعت)' : 'تعداد هواکش لازم', fansT, 0, 'عدد', F(isCap ? 'دبی ÷ ظرفیت مؤثر، گرد به پایین (حداقل ۱)' : 'دبی ÷ ظرفیت مؤثر، گرد به بالا', [needS * 60, ' ÷ ', effM, ' = ', needS * 60 / effM]), true) +
+        B('هواکش روشن' + (typed ? '' : ' (خودکار)'), nUsed, 0, 'عدد', typed ? 'عدد واردشده' : 'برابر تعداد لازم', false) +
+        B('سرعت واقعی روی پرنده', real, 3, 'm/s', F('هواکش × ظرفیت ÷ ۶۰ ÷ سطح مقطع', [nUsed, ' × ', effM, ' ÷ ۶۰ ÷ ', cross]), true, status) +
+        B('سرعت با یک هواکش', one, 3, 'm/s', F('ظرفیت ÷ ۶۰ ÷ سطح مقطع', [effM, ' ÷ ۶۰ ÷ ', cross]), false) +
+        B('حداکثر هواکش مجاز در این سن', maxAge, 0, 'عدد', fin(lim) ? 'حد سرعت ' + nf(lim, 2) + ' m/s' : 'برای روز ۸ تا ۲۷ جزوه عدد نداده', false);
+      if (age > 7 && age < 28 && st === 'auto'){
+        notes += '<p class="note">برای روز ۸ تا ۲۷ جزوه سرعت هدف مشخصی نگفته است. سرعت از روند خطی بین ۰٫۲۵ (روز ۷) و ۲٫۵ (روز ۲۸) گذاشته شده، یا از سرعت‌های هفته‌ی ۲ و ۳ که در «برنامه‌ی هفتگی» وارد کرده‌ای. این یک فرض است و باید با مدرس تأیید شود. اگر عدد دیگری می‌خواهی از لیست «عدد دلخواه» را انتخاب کن.</p>';
+      }
+      notes += '<p class="note">طبق جزوه، باد تونلی از سطح مقطع عرضی عبور می‌کند و سطح مقطع طولی لازم نیست. اگر ظرفیت نامی را بدون کسر ۱۵٪ بگیری (کسر را در تنظیمات صفر کن)، عددهای مثال مدرس یعنی حدود ۱۱ و ۱۳ هواکش و سرعت ۰٫۲۲۷ m/s با یک هواکش به دست می‌آید.</p>';
+      sumItems.push(['هواکش', fin(nUsed) ? nf(nUsed, 0) : '—'], ['سرعت m/s', fin(real) ? nf(real, 2) : '—']);
+
+      if (age <= 7) sug.push(['info', 'هفته‌ی اول فقط ' + (fin(maxAge) ? nf(maxAge, 0) : '—') + ' هواکش مجاز است. بیشتر از ۰٫۲۵ m/s روی جوجه سرما و تلفات می‌آورد، مثل فوت کردن روی صورت جوجه‌ی چندروزه.']);
+      if (age >= 28) sug.push(['info', 'بعد از پرگیری (حدود ۲۷ تا ۲۸ روزگی)، به شرط تأمین بودن کنسانتره و مواد مغذی، می‌شود تا ۲٫۵ m/s رفت و طبق استاندارد جدید تا ۳ m/s.']);
+      if (heater === 'cab') sug.push(['info', 'هیتر کابینتی در تهویه‌ی تونلی مشکل فشار ندارد، ولی فقط ۵۰ تا ۶۰٪ گرمایش وارد سالن می‌شود. هیتر جت راندمان انتقال گرمای بهتری دارد.']);
+    }
+
+    var t0 = val('t0'), td = val('tdec'), tm = val('tmin');
+    var tempOk = [t0, td, tm].every(fin);
+    var Tt = tempOk ? Math.max(tm, t0 - td * (age - 1)) : NaN;
+    var tempBoxes = B('دمای هدف روز ' + nf(age, 0), Tt, 2, '°C', F('دمای روز اول − کاهش روزانه × (روز − ۱)', [t0, ' − ', td, ' × ', age - 1, '، کف ', tm]), true);
+    if (mode === 'tun'){
+      var wc2 = val('wc'); if (!fin(wc2)) wc2 = 0;
+      tempBoxes += B('دمای تنظیمی سالن', Tt + wc2, 2, '°C', F('دمای هدف + اثر باد', [Tt, ' + ', wc2]), false);
+      sumItems.push(['دمای تنظیمی °C', fin(Tt) ? nf(Tt + wc2, 1) : '—']);
+      tempBoxes += B('تعداد هواکش', fansT, 0, 'عدد', 'برای سرعت هدف این سن', false);
+    } else {
+      sumItems.push(['دمای هدف °C', fin(Tt) ? nf(Tt, 1) : '—']);
+      tempBoxes += B('تعداد هواکش', fans, 0, 'عدد', 'انتقالی: از وزن زنده‌ی نهایی', false);
+    }
+
+    $('b-mode').innerHTML = modeBoxes;
+    $('notes').innerHTML = notes;
+    $('b-temp').innerHTML = tempBoxes;
+    $('chartCard').hidden = !tempOk;
+    $('chart').innerHTML = tempOk ? chart(t0, td, tm, age) : '';
+    $('sum').innerHTML = sumItems.map(function(s){ return '<div><span>' + s[0] + '</span><b>' + s[1] + '</b></div>'; }).join('');
+
+    // برنامه‌ی هفتگی
+    (function(){
+      var days = [7, 14, 21, 28, 35, 42, 45], names = ['هفته‌ی ۱', 'هفته‌ی ۲', 'هفته‌ی ۳', 'هفته‌ی ۴', 'هفته‌ی ۵', 'هفته‌ی ۶', 'پایان دوره'];
+      var tmp = function(dd){ return tempOk ? Math.max(tm, t0 - td * (dd - 1)) : NaN; };
+      var card = $('weekCard');
+      if (!(fin(effM) && effM > 0)){ card.hidden = true; return; }
+      card.hidden = false;
+      $('weekIn').hidden = mode !== 'tun';
+      var h = '';
+      if (mode === 'tun' && fin(cross)){
+        var s2 = pos(val('w2')), s3 = pos(val('w3')), sl = pos(val('wl'));
+        var rows = days.map(function(dd, i){
+          var spd, cap = false, assumed = false;
+          if (dd <= 7){ spd = 0.25; cap = true; }
+          else if (dd === 14){ spd = fin(s2) ? s2 : 1; assumed = !fin(s2); }
+          else if (dd === 21){ spd = fin(s3) ? s3 : 1.75; assumed = !fin(s3); }
+          else { spd = fin(sl) ? sl : 2.5; }
+          var need = spd * cross * 60 / effM;
+          var n = cap ? Math.max(1, Math.floor(need + 1e-9)) : ceil(need);
+          var real = n * effM / 60 / cross;
+          var st = dd <= 7 ? (real > 0.25 + 1e-9 ? pill('bad', 'بالاتر از ۰٫۲۵') : '') : (dd >= 28 ? (real > 3 + 1e-9 ? pill('bad', 'بالاتر از ۳') : (real > 2.5 + 1e-9 ? pill('warn', 'فقط استاندارد جدید') : '')) : (assumed ? pill('warn', 'تقریب') : ''));
+          return '<tr><td>' + names[i] + ' (روز ' + nf(dd, 0) + ')</td><td>' + (fin(tmp(dd)) ? nf(tmp(dd), 1) : '—') + '</td><td>' + nf(spd, 2) + '</td><td><b>' + nf(n, 0) + '</b></td><td>' + nf(real, 2) + ' ' + st + '</td></tr>';
+        });
+        h = '<div class="tblwrap"><table class="tbl"><thead><tr><th>پایان</th><th>دمای هدف °C</th><th>سرعت هدف m/s</th><th>هواکش روشن</th><th>سرعت واقعی m/s</th></tr></thead><tbody>' + rows.join('') + '</tbody></table></div>';
+      } else {
+        $('weekCard').querySelector('h2').textContent = 'برنامه‌ی هفتگی دما و هواکش';
+        h = '<p class="note">در تهویه‌ی انتقالی تعداد هواکش از وزن زنده حساب می‌شود و جزوه وزن هر هفته را نداده. با وزن نهایی گله ' + (fin(fans) ? nf(fans, 0) : '—') + ' هواکش لازم است. جدول هفتگی هواکش را در حالت تونلی ببین.</p>';
+      }
+      if (mode === 'tun') $('weekCard').querySelector('h2').textContent = 'برنامه‌ی هفتگی هواکش (تونلی)';
+      $('weekTbl').innerHTML = h;
+    })();
+
+    // مقایسه‌ی هواکش
+    var cmp = capFlag ? null : fanCompare(reqM, nom, der, rnd, Dm);
+    if (cmp){
+      $('cmpFan').hidden = false;
+      $('cmpFan').innerHTML = fanCompareHtml(cmp, reqM);
+      var mainRow = cmp.rows.filter(function(r){ return r.main; })[0];
+      if (mainRow && mainRow.over > 25) sug.push(['warn', 'با هواکش ' + nf(mainRow.D, 0) + ' ظرفیت نصب‌شده ' + nf(mainRow.over, 0) + '٪ بیشتر از نیاز است. در جدول مقایسه ببین آیا اندازه‌ی دیگری به نیاز نزدیک‌تر است.']);
+      if (cmp.best.D !== cmp.Dm) sug.push(['good', (cmp.best.why === 'cost' ? 'از نظر هزینه' : 'از نظر تناسب با نیاز') + ' هواکش ' + nf(cmp.best.D, 0) + ' با ' + nf(cmp.best.n, 0) + ' عدد از هواکش ' + nf(cmp.Dm, 0) + ' بهتر درمی‌آید. جزئیات در جدول مقایسه است.']);
+    } else {
+      $('cmpFan').hidden = true;
+      $('cmpFan').innerHTML = '';
+    }
+
+    // مقایسه‌ی اینلت (فقط انتقالی)
+    var cmpI = '';
+    if (mode === 'trans' && fin(aIn)){
+      var opts = [
+        {name: 'اصلی', w: pos(val('iw')), h: pos(val('ih')), pr: pos(val('pia'))},
+        {name: 'ب', w: pos(val('ibw')), h: pos(val('ibh')), pr: pos(val('pib'))},
+        {name: 'ج', w: pos(val('icw')), h: pos(val('ich')), pr: pos(val('pic'))}
+      ].filter(function(o){ return fin(o.w) && fin(o.h); });
+      var m1v = val('m1'); if (!fin(m1v)) m1v = 0;
+      var m2v = val('m2'); if (!fin(m2v)) m2v = 0;
+      var rowsI = opts.map(function(o){
+        var u = (o.w / 100) * (o.h / 100), n = evenUp(aIn / u);
+        return {name: o.name, label: nf(o.w, 0) + '×' + nf(o.h, 0), u: u, n: n, lo: evenUp(n * (1 + m1v / 100)), hi: evenUp(n * (1 + m2v / 100)), cost: fin(o.pr) ? n * o.pr : NaN};
+      });
+      if (rowsI.length >= 2){
+        var costI = rowsI.filter(function(r){ return fin(r.cost); });
+        var bestI = costI.length >= 2 ? costI.slice().sort(function(a, b){ return a.cost - b.cost; })[0] : rowsI.slice().sort(function(a, b){ return a.n - b.n; })[0];
+        var hasCI = costI.length >= 2;
+        cmpI = '<h2>مقایسه‌ی اندازه‌ی اینلت</h2><p class="hint">سطح کل لازم ' + nf(aIn, 2) + ' m² با سرعت ' + nf(vin, 1) + ' m/s. اینلت‌های ب و ج را در تنظیمات مقایسه وارد کن.</p>' +
+          '<div class="tblwrap"><table class="tbl"><thead><tr><th>اینلت</th><th>اندازه (cm)</th><th>مساحت یک اینلت (m²)</th><th>تعداد (زوج)</th><th>با حاشیه</th>' + (hasCI ? '<th>هزینه‌ی کل</th>' : '') + '</tr></thead><tbody>' +
+          rowsI.map(function(r){
+            return '<tr' + (r === bestI ? ' class="best"' : '') + '><td>' + r.name + '</td><td>' + r.label + '</td><td>' + nf(r.u, 3) + '</td><td>' + nf(r.n, 0) + '</td><td>' + nf(r.lo, 0) + ' تا ' + nf(r.hi, 0) + '</td>' + (hasCI ? '<td>' + (fin(r.cost) ? nf(r.cost, 0) : '—') + '</td>' : '') + '</tr>';
+          }).join('') + '</tbody></table></div>' +
+          '<p class="note" style="margin-top:10px">' + (hasCI ? 'ارزان‌ترین گزینه: اینلت ' + bestI.name + ' (' + bestI.label + ') با ' + nf(bestI.n, 0) + ' عدد.' : 'کمترین تعداد: اینلت ' + bestI.name + ' (' + bestI.label + ') با ' + nf(bestI.n, 0) + ' عدد. برای مقایسه‌ی هزینه قیمت‌ها را وارد کن.') + '</p>';
+        if (bestI.name !== 'اصلی') sug.push(['good', (hasCI ? 'از نظر هزینه' : 'از نظر کمترین تعداد') + ' اینلت ' + bestI.label + ' سانتی‌متر با ' + nf(bestI.n, 0) + ' عدد بهتر از اینلت اصلی درمی‌آید.']);
+      }
+    }
+    $('cmpInlet').hidden = !cmpI;
+    $('cmpInlet').innerHTML = cmpI;
+
+    $('sug').innerHTML = sug.map(function(s){ return '<p class="' + s[0] + '">' + s[1] + '</p>'; }).join('');
+    $('sugCard').hidden = sug.length === 0;
+  }
+
+  var controls = document.querySelectorAll('#app input, #app select');
+  Array.prototype.forEach.call(controls, function(el){
+    el.addEventListener('input', function(){
+      if (el.id === 'vin') vinTouched = true;
+      render();
+    });
+    el.addEventListener('change', render);
+  });
+  render();
+})();
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var nf = function(n, d){ return new Intl.NumberFormat('fa-IR', {maximumFractionDigits: d === undefined ? 2 : d}).format(n); };
+  var FA = '۰۱۲۳۴۵۶۷۸۹', AR = '٠١٢٣٤٥٦٧٨٩';
+  function val(id){
+    var el = $(id); if (!el) return NaN;
+    var s = String(el.value).trim()
+      .replace(/[۰-۹]/g, function(c){ return FA.indexOf(c); })
+      .replace(/[٠-٩]/g, function(c){ return AR.indexOf(c); })
+      .replace(/[٫\/،]/g, '.').replace(/[,٬\s]/g, '');
+    var v = parseFloat(s); return isFinite(v) && v >= 0 ? v : NaN;
+  }
+  function fin(x){ return typeof x === 'number' && isFinite(x); }
+  function up100(x){ return Math.ceil(x / 100 - 1e-9) * 100; }
+  function B(label, v, fx, key){
+    return '<div class="box' + (key ? ' key' : '') + '"><span class="lab">' + label + '</span>' +
+      '<b>' + (fin(v) ? nf(v, 2) : '—') + (fin(v) ? '<small><bdi>m</bdi></small>' : '') + '</b>' +
+      (fx ? '<bdi class="fx" dir="ltr">' + fx + '</bdi>' : '') + '</div>';
+  }
+  function renderC(){
+    var L = val('cl'); if (!(L > 0)) L = NaN;
+    var halls = val('ch'); if (!(halls > 0)) halls = 1; halls = Math.round(halls);
+    var ntc = val('cn'), mot = val('cm'), sen = val('cs'), gsh = val('cg');
+    var has2 = fin(L) && fin(ntc) && fin(mot);
+    var raw2 = has2 ? L * 0.7 * ntc + mot * 50 + 100 : NaN;
+    var per2 = fin(raw2) ? up100(raw2) : NaN;
+    var any4 = fin(sen) || fin(gsh);
+    var s4 = fin(sen) ? sen : 0, g4 = fin(gsh) ? gsh : 0;
+    var has4 = fin(L) && any4;
+    var raw4 = has4 ? L * 0.8 * s4 + L * g4 : NaN;
+    var per4 = fin(raw4) ? up100(raw4) : NaN;
+    var t2 = fin(per2) ? per2 * halls : NaN, t4 = fin(per4) ? per4 * halls : NaN;
+    var tot = (fin(t2) ? t2 : 0) + (fin(t4) ? t4 : 0);
+    var anyT = fin(t2) || fin(t4);
+    $('b-cable').innerHTML =
+      B('۲×۰٫۵ خام', raw2, has2 ? nf(L) + ' × ۰٫۷ × ' + nf(ntc) + ' + ' + nf(mot) + ' × ۵۰ + ۱۰۰' : 'طول × ۰٫۷ × NTC + موتور × ۵۰ + ۱۰۰', false) +
+      B('۲×۰٫۵ هر سالن', per2, 'گرد به بالا، مضرب ۱۰۰', true) +
+      B('۴×۰٫۵ خام', raw4, has4 ? nf(L) + ' × ۰٫۸ × ' + nf(s4) + ' + ' + nf(L) + ' × ' + nf(g4) : 'طول × ۰٫۸ × سنسور + طول × گشت', false) +
+      B('۴×۰٫۵ هر سالن', per4, 'گرد به بالا، مضرب ۱۰۰', true);
+    $('b-cableT').innerHTML =
+      B('جمع ۲×۰٫۵', t2, fin(per2) ? nf(per2) + ' × ' + nf(halls) + ' سالن' : '', true) +
+      B('جمع ۴×۰٫۵', t4, fin(per4) ? nf(per4) + ' × ' + nf(halls) + ' سالن' : '', true) +
+      B('جمع کل', anyT ? tot : NaN, '۲×۰٫۵ + ۴×۰٫۵', false);
+    var items = [['۲×۰٫۵ کل', fin(t2) ? nf(t2, 0) : '—'], ['۴×۰٫۵ کل', fin(t4) ? nf(t4, 0) : '—'], ['جمع کل', anyT ? nf(tot, 0) : '—']];
+    $('sumC').innerHTML = items.map(function(s){ return '<div><span>' + s[0] + '</span><b>' + s[1] + '</b></div>'; }).join('');
+  }
+  ['cl', 'ch', 'cn', 'cm', 'cs', 'cg'].forEach(function(id){
+    $(id).addEventListener('input', renderC);
+    $(id).addEventListener('change', renderC);
+  });
+  function show(which){
+    var c = which === 'c';
+    $('paneV').hidden = c; $('paneC').hidden = !c;
+    $('tabV').setAttribute('aria-selected', c ? 'false' : 'true');
+    $('tabC').setAttribute('aria-selected', c ? 'true' : 'false');
+    try { window.scrollTo(0, 0); } catch (e) {}
+  }
+  $('tabV').addEventListener('click', function(){ show('v'); });
+  $('tabC').addEventListener('click', function(){ show('c'); });
+  renderC();
+})();
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function(){
+    try { navigator.serviceWorker.register('sw.js'); } catch (e) {}
+  });
+}
+</script>
+</body>
+</html>
