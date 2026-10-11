@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="light dark"><meta name="theme-color" content="#0f6b55"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"></head><body>
-<title>ابزار فروش پایش ۴٫۱٫۱</title>
+<title>ابزار فروش پایش ۴٫۱٫۲</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap">
 <style>
 #app{
@@ -43,6 +43,9 @@ body{margin:0;background:#EDF1F0}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) body{background:#0F1A1D}}
 #paneI{padding-inline:0;padding-block:0 110px;background:transparent;margin-top:16px}
 #paneI .wrap{padding:0}
+#app .vbtn{height:42px;padding:0 18px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:var(--on-accent);font:inherit;font-weight:700;cursor:pointer}
+#app .vbtn:disabled{opacity:.6;cursor:default}
+#app input[readonly]{opacity:.85}
 .pv,.pv *,.html2pdf__container,.html2pdf__container *{box-sizing:border-box}
 #toast,#printHost{font-family:var(--font,'Vazirmatn',Tahoma,sans-serif)}
 #toast{--ink:#18242b;--bg:#f3f5f2}
@@ -53,7 +56,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
 <div id="app" dir="rtl" lang="fa">
   <header class="top">
     <h1>ابزار فروش پایش الکترونیک</h1>
-    <p>ورژن ۴٫۱٫۱ · تهویه، کابل و پیش‌فاکتور</p>
+    <p>ورژن ۴٫۱٫۲ · تهویه، کابل و پیش‌فاکتور</p>
   </header>
 
   <nav class="tabs" role="tablist" aria-label="بخش‌ها">
@@ -64,6 +67,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
 
   <div id="paneV">
   <div class="sum" id="vsum" aria-live="polite"></div>
+  <div style="margin-top:10px"><button type="button" id="vPdf" class="vbtn">دریافت PDF نتیجه‌ی تهویه</button></div>
 
   <div class="layout">
     <div class="col">
@@ -72,7 +76,9 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
         <div class="fields">
           <div class="field"><label for="len">طول (m)</label><input type="text" id="len" inputmode="decimal" placeholder="مثلاً ۸۰"></div>
           <div class="field"><label for="wid">عرض (m)</label><input type="text" id="wid" inputmode="decimal" placeholder="مثلاً ۱۸"></div>
-          <div class="field wide"><label for="hgt">ارتفاع متوسط (m)</label><input type="text" id="hgt" inputmode="decimal" placeholder="مثلاً ۲٫۸۵"><p class="hint">(ارتفاع دیوار + ارتفاع سقف) ÷ ۲. مثال: ۲٫۸۵ متر.</p></div>
+          <div class="field"><label for="hw">ارتفاع دیوار (m)</label><input type="text" id="hw" inputmode="decimal" placeholder="مثلاً ۲٫۵"></div>
+          <div class="field"><label for="hr">ارتفاع آکس (m)</label><input type="text" id="hr" inputmode="decimal" placeholder="مثلاً ۳٫۲"></div>
+          <div class="field wide"><label for="hgt">ارتفاع متوسط (خودکار)</label><input type="text" id="hgt" inputmode="decimal" readonly placeholder="بعد از وارد کردن دیوار و آکس حساب می‌شود"><p class="hint">(ارتفاع دیوار + ارتفاع آکس) ÷ ۲. مثال: دیوار ۲٫۵ و آکس ۳٫۲ ← ۲٫۸۵ متر.</p></div>
           <div class="field"><label for="dens">تراکم (پرنده در m²)</label><input type="text" id="dens" inputmode="decimal" placeholder="مثلاً ۱۵"><p class="hint">در سالن هوشمند بین ۱۵ تا ۱۷ قطعه جوجه در هر متر مربع و در سالن دستی بین ۱۰ تا ۱۲ قطعه.</p></div>
           <div class="field"><label for="wt">وزن نهایی (kg)</label><input type="text" id="wt" inputmode="decimal" placeholder="مثلاً ۳"><p class="hint">مثال: ۳ کیلو. تهویه را باید برای بدترین حالت، یعنی وزن نهایی، حساب کرد.</p></div>
         </div>
@@ -361,6 +367,8 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
 </div>
 
   </div>
+
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v4.1.2</footer>
 </div>
 
 
@@ -760,6 +768,7 @@ $('lShare').addEventListener('click',async function(){var b=this;nowBusy(b,true)
 
 /* ---------- init ---------- */
 renderSettings();sync();renderRows();renderPicker();
+window.__pp={saveFile:saveFile,fontsReady:fontsReady,faTree:faTree,esc:esc,LOGO:LOGO,toast:toast,nowBusy:nowBusy};
 window.__proforma={S:function(){return S},calc:calc,reset:function(){S=fresh();renderSettings();renderRows();renderPicker()}};
 })();
 </script>
@@ -870,6 +879,7 @@ window.__proforma={S:function(){return S},calc:calc,reset:function(){S=fresh();r
       ? 'انتقالی: هوا از اینلت‌های کناری وارد می‌شود، بالای سالن گرم می‌شود و پایین می‌آید. فشار منفی لازم است و سوخت کمتری می‌سوزد.'
       : 'تونلی: هوا از سر سالن وارد می‌شود و در طول سالن حرکت می‌کند. سرعت باد روی پرنده مهم است.';
 
+    (function(){ var a = pos(val('hw')), b = pos(val('hr')); $('hgt').value = (fin(a) && fin(b)) ? String(Math.round((a + b) / 2 * 1000) / 1000) : ''; })();
     var L = pos(val('len')), W = pos(val('wid')), H = pos(val('hgt')), dens = pos(val('dens')), wt = pos(val('wt'));
     var nomUser = pos(val('nom')), der = val('der'), Dm = pos(val('dia'));
     var nomAutoV = fin(Dm) ? 42000 * (Dm / 140) * (Dm / 140) : NaN;
@@ -1215,5 +1225,102 @@ window.__proforma={S:function(){return S},calc:calc,reset:function(){S=fresh();r
   });
 })();
 </script>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var NAVY='#1f3864', GRAY='#d9d9d9';
+  function txt(el){return (el&&el.textContent||'').replace(/\s+/g,' ').trim()}
+  function boxes(id){
+    var out=[],seen={};
+    Array.prototype.forEach.call(document.querySelectorAll('#'+id+' .box'),function(b){
+      var lab=txt(b.querySelector('.lab')),bn=b.querySelector('b');if(!bn)return;
+      var un=txt(bn.querySelector('small')),c=bn.cloneNode(true),sm=c.querySelector('small');if(sm)sm.remove();
+      var v=txt(c);if(!v||v==='—')return;
+      if(/سطح مقطع طولی/.test(lab))return;
+      var k=lab+'|'+v+'|'+un;if(seen[k])return;seen[k]=1;
+      out.push({lab:lab,v:v,u:un});
+    });
+    return out;
+  }
+  function find(list,re){for(var i=0;i<list.length;i++)if(re.test(list[i].lab))return list[i];return null}
+  function val(id){var e=$(id);return e?String(e.value||'').trim():''}
+  function sel(id){var e=$(id);return e&&e.selectedOptions&&e.selectedOptions[0]?txt(e.selectedOptions[0]):''}
+  function section(title,list){
+    if(!list.length)return '';
+    var h='<div class="vs"><div class="vst">'+title+'</div><div class="vg">';
+    list.forEach(function(x){h+='<div class="vr"><span class="vl">'+x.lab+'</span><span class="vv"><bdi>'+x.v+'</bdi>'+(x.u?' <small>'+x.u+'</small>':'')+'</span></div>'});
+    return h+'</div></div>';
+  }
+  function build(){
+    var P=window.__pp,esc=P.esc;
+    var hall=boxes('b-hall'),mode=boxes('b-mode'),temp=boxes('b-temp'),pad=boxes('b-pad');
+    var tun=document.querySelector('input[name=mode]:checked').value==='tun';
+    var age=txt($('ageOut'));
+    var keys=[];
+    var add=function(l,re,lab,fb){var x=find(l,re);if(x)keys.push({lab:lab||x.lab,v:x.v,u:x.u})};
+    add(hall,/تعداد جوجه/,'تعداد جوجه');
+    add(tun?temp:mode,/^تعداد هواکش/,'تعداد هواکش');
+    if(tun)add(mode,/سرعت واقعی/,'سرعت واقعی باد روی پرنده');else add(mode,/تعداد اینلت \(زوج\)/,'تعداد اینلت');
+    add(pad,/طول پد هر طرف|پد هر طرف/,'طول کولینگ پد هر طرف');
+    add(pad,/تعداد هیتر|هیتر/,'تعداد هیتر جت فن');
+    var date='';try{date=new Intl.DateTimeFormat('fa-IR-u-ca-persian',{year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date())}catch(e){}
+    var inp=[
+      ['طول × عرض سالن',val('len')+' × '+val('wid')+' متر'],
+      ['ارتفاع دیوار، آکس، متوسط','دیوار '+val('hw')+'، آکس '+val('hr')+'، متوسط '+val('hgt')+' متر'],
+      ['تراکم و وزن نهایی','تراکم '+val('dens')+' قطعه در مترمربع، وزن '+val('wt')+' کیلوگرم'],
+      ['نوع تهویه',tun?'تونلی':'انتقالی'],
+      ['سن گله',age],
+      ['قطر هواکش',val('dia')+' سانتی‌متر']
+    ];
+    var h='<div class="vp"><div class="vf">';
+    h+='<div class="vh"><div class="vlg"><img src="'+P.LOGO+'" alt=""></div><div class="vt"><div class="v1">گزارش محاسبه‌ی تهویه‌ی سالن مرغداری گوشتی</div><div class="v2">پایش الکترونیک · اتوماسیون مرغداری و گلخانه</div></div><div class="vd">تاریخ: '+esc(date)+'</div></div>';
+    h+='<div class="vk">'+keys.map(function(k){return '<div class="kb"><div class="kl">'+esc(k.lab)+'</div><div class="kv"><bdi>'+esc(k.v)+'</bdi></div><div class="ku">'+esc(k.u)+'</div></div>'}).join('')+'</div>';
+    h+='<div class="vs"><div class="vst">مشخصات واردشده</div><div class="vg">'+inp.map(function(x){return '<div class="vr"><span class="vl">'+x[0]+'</span><span class="vv"><bdi>'+esc(x[1])+'</bdi></span></div>'}).join('')+'</div></div>';
+    h+=section('اطلاعات سالن',hall);
+    h+=section(tun?'نتیجه‌ی تهویه‌ی تونلی':'نتیجه‌ی تهویه‌ی انتقالی',mode);
+    h+=section('دمای هدف ('+esc(age)+')',temp);
+    h+=section('کولینگ پد و هیتر',pad);
+    var wt=document.querySelector('#weekTbl table');
+    if(tun&&wt&&!$('weekCard').hidden){
+      var c=wt.cloneNode(true);Array.prototype.forEach.call(c.querySelectorAll('.pill'),function(x){x.remove()});
+      h+='<div class="vs"><div class="vst">برنامه‌ی هفتگی هواکش (تونلی)</div>'+c.outerHTML+'</div>';
+    }
+    h+='<div class="vn">اعداد بر پایه‌ی ورودی‌های بالا محاسبه شده‌اند و تقریبی‌اند؛ تأیید نهایی با کارشناس فنی پایش الکترونیک است.</div>';
+    h+='<div class="vfoot"><span>طراحی و محاسبه: تیام عطایی</span><span>پایش الکترونیک</span></div>';
+    return h+'</div></div>';
+  }
+  var css='.vp{width:794px;box-sizing:border-box;background:#fff;color:#000;font-family:"B Nazanin","BNazanin","Nazanin","Noto Naskh Arabic",serif;direction:rtl;padding:14px;font-size:14px;line-height:1.5}'+
+  '.vp *{box-sizing:border-box}.vp .vf{border:3px solid #000}'+
+  '.vp .vh{display:flex;align-items:center;gap:12px;background:'+NAVY+';color:#fff;padding:8px 14px;border-bottom:3px solid #000}'+
+  '.vp .vlg{flex:none;width:52px;height:52px;background:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center}.vp .vlg img{width:42px;height:auto}'+
+  '.vp .vt{flex:1}.vp .v1{font-size:19px;font-weight:700}.vp .v2{font-size:13px;opacity:.9}.vp .vd{font-size:13px;white-space:nowrap}'+
+  '.vp .vk{display:flex;gap:0;border-bottom:1.5px solid #000}.vp .kb{flex:1;text-align:center;padding:8px 4px;border-left:1.5px solid #000;background:#eef2f9}.vp .kb:last-child{border-left:0}'+
+  '.vp .kl{font-size:12.5px;font-weight:700}.vp .kv{font-size:26px;font-weight:700;color:'+NAVY+';line-height:1.3;direction:ltr}.vp .ku{font-size:12px}'+
+  '.vp .vs{border-bottom:1.5px solid #000}.vp .vst{background:'+GRAY+';font-weight:700;padding:3px 12px;border-bottom:1.5px solid #000;font-size:14px}'+
+  '.vp .vg{display:flex;flex-wrap:wrap}.vp .vr{flex:0 0 50%;display:flex;justify-content:space-between;gap:8px;padding:2px 12px;border-bottom:1px solid #999;font-size:13px}'+
+  '.vp .vr:nth-child(odd){border-left:1px solid #999}.vp .vl{font-weight:700}.vp .vv{direction:rtl;white-space:nowrap}.vp .vv small{font-size:11px}'+
+  '.vp table{width:100%;border-collapse:collapse;font-size:12.5px}.vp th,.vp td{border:1px solid #000;padding:2px 5px;text-align:center}.vp th{background:'+GRAY+'}'+
+  '.vp .vn{padding:5px 12px;font-size:12px;border-bottom:1.5px solid #000;background:linear-gradient(to bottom,#fff,#f4b183)}'+
+  '.vp .vfoot{display:flex;justify-content:space-between;padding:5px 14px;font-weight:700;font-size:13px;background:'+NAVY+';color:#fff}';
+  var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
+  var btn=$('vPdf');
+  btn.addEventListener('click',async function(){
+    var P=window.__pp;P.nowBusy(btn,true);
+    try{
+      await P.fontsReady();
+      var host=$('printHost'),sy=window.scrollY;window.scrollTo(0,0);host.innerHTML=build();
+      var el=host.firstChild;P.faTree(el);
+      try{await Promise.all(Array.prototype.map.call(el.querySelectorAll('img'),function(i){return i.decode?i.decode():0}))}catch(e){}
+      var OPT={margin:[3,0,3,0],image:{type:'jpeg',quality:.96},html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff',windowWidth:794,scrollX:0,scrollY:0,x:0,y:0,onclone:function(d){var a=d.getElementById('app');if(a)a.style.display='none';d.documentElement.style.overflow='hidden';d.body.style.margin='0';d.body.style.padding='0'}},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},pagebreak:{mode:['css','legacy'],avoid:['.vs','.vk']}};
+      var blob=await html2pdf().set(OPT).from(el).outputPdf('blob');
+      host.innerHTML='';window.scrollTo(0,sy);
+      var nm='تهویه سالن '+($('len').value||'')+' × '+($('wid').value||'')+' پایش الکترونیک.pdf';
+      var r=await P.saveFile(blob,nm.replace(/[\\\/:*?"<>|]+/g,' '));if(r==='saved')P.toast('PDF تهویه آماده شد');
+    }catch(e){P.toast('ساخت PDF انجام نشد. دوباره امتحان کنید.')}
+    P.nowBusy(btn,false);
+  });
+})();
+</script>
+
 <script>if("serviceWorker" in navigator&&location.protocol.indexOf("http")===0){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})})}</script>
 </body></html>
