@@ -1,11 +1,10 @@
-<!doctype html>
-<html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="light dark"><meta name="theme-color" content="#354c9b"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"></head><body>
-<title>ابزار فروش پایش ۴٫۱٫۲</title>
-<link rel="stylesheet" href="fonts/fonts.css">
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>ابزار فروش پایش ۶</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap">
 <style>
 #app{
-  --bg:#F6F8FC; --surface:#FFFFFF; --fg:#1A2133; --muted:#596172; --line:#D5DAE3;
-  --accent:#354C9B; --on-accent:#FFFFFF; --accent-soft:#E8EDFA;
+  --bg:#FAFBFE; --surface:#FFFFFF; --fg:#1A2133; --muted:#596172; --line:#E1E5EC;
+  --accent:#354C9B; --on-accent:#FFFFFF; --accent-soft:#EEF2FC;
   --good:#1D7A4A; --good-soft:#D9EFE3; --warn:#8F5600; --warn-soft:#F6E7C9; --bad:#B3261E; --bad-soft:#F7DAD7;
   --f-body:'Vazirmatn',Tahoma,'Segoe UI',sans-serif;
   --f-display:'Lalezar','Vazirmatn',Tahoma,sans-serif;
@@ -26,9 +25,9 @@
 }#app input::placeholder{color:var(--muted);opacity:.7}#app select{direction:rtl;text-align:start}#app input[type=text]:focus-visible,#app select:focus-visible,#app input[type=range]:focus-visible,#app .seg input:focus-visible + span,#app input[type=checkbox]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}#app .seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}#app .seg label{display:block;cursor:pointer}#app .seg input{position:absolute;opacity:0;pointer-events:none}#app .seg span{display:block;padding:10px 12px;border:1px solid var(--line);border-radius:8px;text-align:center;font-weight:700;background:var(--bg)}#app .seg small{display:block;font-weight:400;font-size:12px;color:var(--muted)}#app .seg input:checked + span{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}#app .seg input:checked + span small{color:var(--on-accent);opacity:.85}#app .age{margin-top:14px;display:grid;gap:4px}#app .age .head{display:flex;justify-content:space-between;align-items:baseline;font-size:12.5px;color:var(--muted)}#app .age .head b{color:var(--fg);font-size:16px}#app input[type=range]{width:100%;direction:ltr;accent-color:var(--accent)}#app .group{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}#app details.card summary{cursor:pointer;font-weight:700;font-size:15px}#app details.card .fields{margin-top:12px}#app .check{display:flex;gap:8px;align-items:center;font-size:12.5px;color:var(--muted);grid-column:1 / -1}#app .sec{font-size:13px;font-weight:700;color:var(--muted);margin:6px 0 -6px}#app .boxes{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:10px}#app .box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0;display:grid;gap:2px;align-content:start}#app .box .lab{font-size:12.5px;color:var(--muted);line-height:1.5}#app .box b{font-family:var(--f-display);font-weight:400;font-size:26px;line-height:1.4;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}#app .box b small{font-family:var(--f-body);font-size:12.5px;color:var(--muted);margin-inline-start:4px}#app .box.key b{color:var(--accent)}#app .box .fx{font-size:11.5px;color:var(--muted);text-align:right;line-height:1.6;overflow-wrap:anywhere}#app .box .pill{justify-self:start;margin-top:2px}#app .pill{display:inline-block;padding:2px 10px;border-radius:99px;font-size:12.5px;font-weight:500;line-height:1.7}#app .pill.good{background:var(--good-soft);color:var(--good)}#app .pill.warn{background:var(--warn-soft);color:var(--warn)}#app .pill.bad{background:var(--bad-soft);color:var(--bad)}#app .note{margin:0;padding:10px 12px;background:var(--accent-soft);border-radius:8px;font-size:13px;line-height:1.7}#app .stack{display:grid;gap:10px}#app .sug{display:grid;gap:8px}#app .sug p{margin:0;padding:10px 12px;border-radius:8px;font-size:13px;line-height:1.7}#app .sug p.good{background:var(--good-soft);color:var(--fg)}#app .sug p.warn{background:var(--warn-soft);color:var(--fg)}#app .sug p.bad{background:var(--bad-soft);color:var(--fg)}#app .sug p.info{background:var(--accent-soft);color:var(--fg)}#app .tblwrap{overflow-x:auto;margin-top:8px}#app .tbl{width:100%;border-collapse:collapse;font-size:13px;min-width:430px}#app .tbl th,#app .tbl td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:center;font-variant-numeric:tabular-nums;white-space:nowrap}#app .tbl th{font-weight:500;color:var(--muted);font-size:12px}#app .tbl td:first-child,#app .tbl th:first-child{text-align:start}#app .tbl tr.best td{background:var(--accent-soft);font-weight:700}#app .tbl tr:last-child td{border-bottom:0}#app svg.chart{display:block;width:100%;height:auto;direction:ltr}#app svg.chart text{fill:var(--muted);font-family:var(--f-body);font-size:10px}#app svg.chart .grid{stroke:var(--line);stroke-width:1}#app svg.chart .line{fill:none;stroke:var(--accent);stroke-width:2}#app svg.chart .dot{fill:var(--accent)}#app svg.chart .lbl{fill:var(--fg);font-weight:700;font-size:11px}#app .foot{font-size:12.5px;color:var(--muted);margin:0}#app .tabs{display:flex;gap:8px;margin-top:14px}#app .tabs button{flex:1;height:42px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg);font:inherit;font-weight:700;cursor:pointer}#app .tabs button[aria-selected=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}#app .tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
 #paneI{
-  --bg:#f6f8fc; --surface:#ffffff; --ink:#1a2133; --muted:#5b6373; --line:#dbdfe7; --field:#fafbfd;
-  --accent:#354c9b; --accent-ink:#ffffff; --accent-soft:#e8edfa; --warn:#a85a00; --warn-soft:#fdeed8; --bad:#b3261e;
-  --group:#edf0f6;
+  --bg:#fafbfe; --surface:#ffffff; --ink:#1a2133; --muted:#5b6373; --line:#e4e8ee; --field:#fdfdfe;
+  --accent:#354c9b; --accent-ink:#ffffff; --accent-soft:#eef2fc; --warn:#a85a00; --warn-soft:#fdeed8; --bad:#b3261e;
+  --group:#f3f5fa;
   --font:'Vazirmatn',Tahoma,'Segoe UI',sans-serif;
 }@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) #paneI{
   --bg:#11141c; --surface:#1a1f2a; --ink:#e5e8f0; --muted:#9aa2b1; --line:#323a49; --field:#151922;
@@ -39,7 +38,7 @@
   padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;z-index:5}#paneI .final .amt{font-size:18px;font-weight:700;font-variant-numeric:tabular-nums;direction:ltr}#paneI .final .lbl{font-size:12px;color:var(--muted)}#toast{position:fixed;inset-inline:16px;bottom:calc(86px + env(safe-area-inset-bottom,0px));max-width:420px;margin-inline:auto;background:var(--ink);color:var(--bg);padding:9px 14px;border-radius:8px;font-size:13px;z-index:9}#toast[hidden]{display:none}#paneI .warnline{color:var(--warn);font-size:13px}#printHost{position:fixed;left:0;top:0;width:794px;opacity:0;pointer-events:none;z-index:-1;direction:ltr}.pv{width:794px;background:#fff;color:#000;font-family:'B Nazanin','BNazanin','Nazanin','Noto Naskh Arabic',serif;direction:rtl;padding:22px 26px;font-size:14px;line-height:1.65}.pv .hd{display:flex;direction:ltr;justify-content:space-between;align-items:flex-start;gap:16px;border-bottom:2px solid #000;padding-bottom:8px;margin-bottom:8px}.pv .hd>div{direction:rtl}.pv .hd .ttl{flex:1;min-width:0;text-align:right}.pv .hd h1{font-size:18.5px;line-height:1.6;margin:0;color:#000}.pv .hd .lg{flex:none;width:60px}.pv .hd .lg img{display:block;width:60px;height:auto}.pv .hd .meta{flex:none;text-align:left;direction:rtl;line-height:1.8;white-space:nowrap}.pv .buyer{border:1.5px solid #000;padding:6px 10px;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:2px 22px}.pv table{min-width:0;width:100%;border-collapse:collapse;table-layout:fixed}.pv td{overflow-wrap:anywhere;word-break:break-word}.pv th{background:#d9d9d9;color:#000;font-size:13.5px;font-weight:700;padding:4px 5px;border:1.5px solid #000;text-align:center}.pv td{border:1.5px solid #000;padding:3px 5px;font-size:13.5px;color:#000;background:#fff}.pv tr.g td{background:#d9d9d9;font-weight:700;color:#000}.pv table:not(.tot) tbody td:first-child{background:#d9d9d9}.pv td.n{text-align:left;direction:ltr;font-size:12.5px}.pv td.c{text-align:center}.pv tr.ge td{border-bottom:3px solid #000}.pv .under{display:flex;align-items:stretch;margin-top:-1.5px;page-break-inside:avoid}.pv .tot{width:46%;flex:none;margin:0;margin-inline-start:-1.5px;height:auto}.pv .tot td{padding:4px 8px}.pv .tot td{background:#d9d9d9;color:#000;font-weight:700}.pv .tot td.n{background:#fff}.pv .tot tr.fin td{font-size:15px}.pv .notes{flex:1;min-width:0;margin:0;white-space:pre-line;font-size:12px;line-height:1.6;color:#000;border:1.5px solid #000;padding:0;display:flex;flex-direction:column}.pv .nt1{background:#d9d9d9;padding:6px 10px;border-bottom:1.5px solid #000;font-weight:700}.pv .nt2{flex:1;background:linear-gradient(to bottom,#fff,#f4b183);padding:6px 10px}.pv .sign{display:flex;justify-content:space-between;margin-top:14px;font-size:13px}.pv tr{page-break-inside:avoid}.pv.inv{padding:12px}.inv .frame{border:3px solid #000;background:#fff}.inv .hdr{display:flex;height:62px;border-bottom:3px solid #000}.inv .lgo{flex:1;position:relative}.inv .lgo img{position:absolute;right:14px;top:3px;width:42px;height:auto}.inv .nb{flex:0 0 37.8%;border-right:1.5px solid #000;display:flex;flex-direction:column;font-weight:700;font-size:14px}.inv .n1{flex:0 0 24%;border-bottom:1.5px solid #000;padding:0 8px;display:flex;align-items:center}.inv .n2{flex:1;padding:0 8px;display:flex;align-items:center}.inv .ttl2{text-align:center;font-weight:700;font-size:16px;padding:5px 8px;border-bottom:1.5px solid #000;font-family:'B Titr','B Nazanin','BNazanin','Noto Naskh Arabic',serif}.inv .br{display:flex;border-bottom:1.5px solid #000;font-weight:700;font-size:13.5px;line-height:1.4;padding:1px 8px}.inv .br .b1{flex:0 0 45%}.inv .br .b2{flex:0 0 25%}.inv .br .b3{flex:1}.inv table.it{margin:0}.inv table.it th{font-size:12.5px;padding:3px 2px;border-top:0}.inv table.it th:first-child{font-size:10.5px;padding:3px 0}.inv table.it td{font-size:13px;padding:1px 3px;height:20px;font-weight:700}.inv table.it td.c{text-align:center}.inv table.it td.nm{font-weight:700;text-align:right}.inv table.it tbody tr:last-child td{border-bottom:1.5px solid #000}.inv .tb{display:flex;margin-top:-1.5px}.inv .rb{flex:0 0 49.2%;display:flex;flex-direction:column}.inv .r1{display:flex;min-height:21px}.inv .pay{flex:0 0 75%;background:#d9d9d9;border:1.5px solid #000;border-top:0;font-weight:700;font-size:13px;padding:2px 8px;white-space:pre;display:flex;align-items:center}.inv .gp{flex:1;background:#d9d9d9;border:1.5px solid #000;border-top:0;border-right:0}.inv .bx{flex:1;background:#d9d9d9;border:1.5px solid #000;border-top:0;margin-top:-1.5px}.inv .lb{flex:1}.inv .rw{display:flex;height:21px;margin-bottom:-1.5px}.inv .tl{flex:0 0 43%;background:#d9d9d9;border:1.5px solid #000;font-weight:700;font-size:11px;padding:0 5px;display:flex;align-items:center;white-space:nowrap;overflow:hidden}.inv .tv{flex:1;border:1.5px solid #000;border-right:0;font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;direction:ltr}.inv .nt{background:linear-gradient(to bottom,#fff,#f4b183);border-top:1.5px solid #000;margin-top:1.5px;padding:4px 12px;font-weight:700;font-size:11.5px;line-height:1.6;white-space:pre-line;text-align:right}.inv .nt .rd{color:#f00}.inv .sl{border-top:1.5px solid #000;padding:3px 12px;font-weight:700;font-size:13.5px;text-align:right}
 
 
-body{margin:0;background:#F6F8FC}
+body{margin:0;background:#FAFBFE}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) body{background:#0F1A1D}}
 #paneI{padding-inline:0;padding-block:0 110px;background:transparent;margin-top:16px}
 #paneI .wrap{padding:0}
@@ -61,7 +60,7 @@ body{margin:0;background:#F6F8FC}
 #app #sumC{position:static}#app #sumC div{flex:1 1 150px}#app #sumC .regBtn{margin-top:6px;font:inherit;font-size:12.5px;padding:5px 10px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:var(--on-accent);cursor:pointer}#app #sumC .regBtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}#app #sumC .regMsg{display:block;margin-top:4px;font-size:11.5px;color:var(--muted);line-height:1.5}
 </style>
 <style>
-#app{--orange:#D9650F;--orange-soft:#FCE9D9;--orange-ink:#6B2F00}
+#app{--orange:#D9650F;--orange-soft:#FEF1E6;--orange-ink:#6B2F00}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) #app{--orange:#FFA04D;--orange-soft:#3A2814;--orange-ink:#FFD9B3}}
 :root[data-theme="dark"] #app{--orange:#FFA04D;--orange-soft:#3A2814;--orange-ink:#FFD9B3}
 /* narenji: khat-e joda-konande, adad-haye pul, tab-haye jadid */
@@ -153,7 +152,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
 
   <div id="paneD">
     <header class="top">
-      <div class="ttl"><h1>ابزار فروش پایش الکترونیک</h1><p>ورژن ۴٫۱٫۲ · داشبورد، تهویه، کابل و پیش‌فاکتور</p></div>
+      <div class="ttl"><h1>ابزار فروش پایش الکترونیک</h1><p>ورژن ۶ · داشبورد، تهویه، کابل و پیش‌فاکتور</p></div>
       <img id="hdrLogo" alt="لوگوی پایش الکترونیک" height="68">
     </header>
     <section class="card tools">
@@ -164,6 +163,16 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
         <button type="button" class="toolcard goto" data-go="c"><b>محاسبه کابل و لودسل</b><span>متراژ کابل‌ها، تعداد و ظرفیت لودسل، ثبت در فاکتور</span></button>
       </div>
     </section>
+    <details class="card" id="syncCard">
+      <summary>همگام‌سازی با گیت‌هاب (موبایل و کامپیوتر)</summary>
+      <p class="hint" style="margin-top:10px">همه‌ی اطلاعات این اپ (پیش‌فاکتور، پوشه‌ی مشتری‌ها، پرسونا، سود و زیان و تنظیمات) در یک فایل داخل یک مخزن <b>خصوصی</b> ذخیره می‌شود. نام مخزن را به شکل <bdi dir="ltr">نام‌کاربری/نام‌مخزن</bdi> بنویس. توکن: گیت‌هاب ← Settings ← Developer settings ← Fine-grained tokens ← فقط همان مخزن، دسترسی Contents: Read and write. توکن فقط روی همین دستگاه می‌ماند، پس روی هر دستگاه یک بار وارد کن و هرگز آن را برای کسی نفرست.</p>
+      <div class="fields">
+        <div class="field wide"><label for="sy_repo">مخزن خصوصی</label><input type="text" id="sy_repo" placeholder="مثلاً tiam/payesh-data" autocomplete="off"></div>
+        <div class="field wide"><label for="sy_tok">توکن دسترسی</label><input type="password" id="sy_tok" autocomplete="off" style="width:100%;box-sizing:border-box;height:42px;padding:0 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);font:inherit;direction:ltr;text-align:center"></div>
+        <label class="check"><input type="checkbox" id="sy_auto" checked> همگام‌سازی خودکار (۱۵ ثانیه بعد از هر تغییر، و موقع باز کردن اپ)</label>
+      </div>
+      <div class="regrow"><button type="button" class="vbtn" id="sy_go">همگام‌سازی حالا</button><button type="button" class="vbtn" id="sy_clr" style="background:transparent;color:var(--accent)">پاک کردن توکن از این دستگاه</button><span class="regMsg" id="sy_msg"></span></div>
+    </details>
     <section class="card">
       <h2>مشتری و سود و زیان</h2>
       <div class="bigtabs">
@@ -303,7 +312,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
         <div class="group" id="g-trans">
           <div class="fields">
             <div class="field wide"><p class="hint"><b>نرخ تهویه ثابت: ۰٫۰۶ m³/min برای هر kg وزن زنده.</b> یعنی برای هر ۱ کیلوگرم وزن زنده، ۰٫۰۶ متر مکعب هوا در دقیقه لازم است.</p></div>
-            <div class="field wide"><label for="vin">سرعت هوا روی دریچه‌ی اینلت (m/s)</label><input type="text" id="vin" inputmode="decimal" placeholder="خودکار از عرض"><p class="hint">برای عرض ۱۲ متر حدود ۴ و برای عرض ۱۸ متر حدود ۵ متر بر ثانیه، تا هوا به وسط سالن برسد.</p></div>
+            <div class="field wide"><label for="vin">سرعت هوا روی دریچه‌ی اینلت (m/s)</label><input type="text" id="vin" inputmode="decimal" placeholder="خودکار از عرض"><p class="hint">هر چه سالن عریض‌تر باشد، هوا باید سریع‌تر وارد شود تا به وسط سالن برسد. قاعده‌ی فعلی: عرض ۱۲ متر ← ۴٫۵ و به ازای هر متر عرض بیشتر ۰٫۱۲۵ m/s اضافه (عرض ۱۶ ← ۵). برای عرض‌های دور از ۱۲ تا ۲۰ متر باید با مدرس تأیید شود. اگر عدد را خودت بنویسی، همان استفاده می‌شود.</p></div>
             <div class="field"><label for="iw">عرض اینلت (cm)</label><input type="text" id="iw" inputmode="decimal" value="30"></div>
             <div class="field"><label for="ih">ارتفاع اینلت (cm)</label><input type="text" id="ih" inputmode="decimal" value="60"></div>
             <p class="hint" style="grid-column:1 / -1;margin-top:-6px">مثال: اینلت ۳۰×۶۰ سانتی‌متر.</p>
@@ -394,6 +403,17 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
 
       <div class="card" id="cmpFan" hidden></div>
       <div class="card" id="cmpInlet" hidden></div>
+      <div class="card" id="layCard" hidden>
+        <h2>چیدمان اینلت‌ها روی دیوار</h2>
+        <div class="fields">
+          <div class="field"><label for="lyRes">طول بدون اینلت در انتهای هواکش (m)</label><input type="text" id="lyRes" inputmode="decimal" value="10"></div>
+          <div class="field"><label for="lyEl">ارتفاع لبه‌ی پایین اینلت از کف (m)</label><input type="text" id="lyEl" inputmode="decimal" placeholder="اختیاری"></div>
+          <div class="field"><label for="lyRA">دبی هر اینلت اصلی در ۲۰ Pa (m³/h)</label><input type="text" id="lyRA" inputmode="numeric" placeholder="از کاتالوگ سازنده"></div>
+          <div class="field"><label for="lyRB">دبی هر اینلت ب در ۲۰ Pa (m³/h)</label><input type="text" id="lyRB" inputmode="numeric" placeholder="از کاتالوگ سازنده"></div>
+        </div>
+        <p class="hint">تعداد هر گزینه با حاشیه‌ی کم حساب می‌شود (یک بار) و به‌طور قرینه روی دو دیوار پخش می‌شود. اگر دبی کاتالوگی اینلت را بنویسی، تعداد از روی همان دبی هم حساب می‌شود و برای چیدمان استفاده می‌شود. گزینه‌ها جدا از هم هستند و با هم جمع نمی‌شوند.</p>
+        <div id="layOut"></div>
+      </div>
 
       <div class="card" id="sugCard" hidden>
         <h2>پیشنهادها</h2>
@@ -402,8 +422,9 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
 
       <section class="card" id="padCard">
         <h2>کولینگ پد و هیتر</h2>
-        <p class="hint">کولینگ پد از تعداد هواکش تهویه‌ی تونلی با حداکثر سرعت ۲٫۵ m/s حساب می‌شود و به نوع تهویه‌ای که بالا انتخاب کرده‌ای بستگی ندارد. مقدارهای پیش‌فرض را می‌توانی عوض کنی.</p>
+        <p class="hint">کولینگ پد از دبی لازم تونل کامل حساب می‌شود (سرعت طراحی × سطح مقطع عرضی)، نه از تعداد هواکش نصب‌شده، و به نوع تهویه‌ای که بالا انتخاب کرده‌ای بستگی ندارد. مقدارهای پیش‌فرض را می‌توانی عوض کنی.</p>
         <div class="fields" style="margin-top:12px">
+          <div class="field wide"><label for="padvt">سرعت طراحی تونل کامل روی پرنده (m/s)</label><input type="text" id="padvt" inputmode="decimal" value="2.5"><p class="hint">۲٫۵ یا ۳ یا هر عدد دلخواه. مثلاً برای وزن ۳ کیلو و استاندارد جدید ۳ را بزن. اگر خالی بماند ۲٫۵ حساب می‌شود.</p></div>
           <div class="field"><label for="padv">سرعت هوا روی پد (m/s)</label><input type="text" id="padv" inputmode="decimal" value="2.5"></div>
           <div class="field"><label for="padh">ارتفاع پد (m)</label><input type="text" id="padh" inputmode="decimal" value="1.5"></div>
           <div class="field"><label for="padw">عرض یک تکه پد (cm)</label><input type="text" id="padw" inputmode="decimal" value="60"></div>
@@ -511,9 +532,10 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
       <div class="f"><label for="i_phone">تلفن تماس</label><input id="i_phone" class="num"></div>
       <div class="f"><label for="i_prov">استان</label><input id="i_prov"></div>
       <div class="f"><label for="i_city">شهر</label><input id="i_city"></div>
+      <div class="f"><label for="i_country">کشور (فقط اگر ایران نیست)</label><input id="i_country" placeholder="خالی = ایران"></div>
       <div class="f"><label for="i_farm">نوع فارم</label><input id="i_farm" placeholder="تخم‌گذار / گوشتی / گلخانه"></div>
       <div class="f"><label for="i_halls">تعداد سالن</label><input id="i_halls" class="num"></div>
-      <div class="f"><label for="i_dim">ابعاد سالن</label><input id="i_dim" class="num" placeholder="73 - 28"></div>
+      <div class="f"><label for="i_dim">ابعاد سالن</label><input id="i_dim" class="num" placeholder="73 - 28"><div class="hint" id="cabHint"></div></div>
       <div class="f"><label for="i_pay">شرایط پرداخت</label><input id="i_pay" placeholder="مثلاً ۶۰٪ پیش‌پرداخت"></div>
       <div class="f"><label for="i_valid">اعتبار پیش‌فاکتور</label><input id="i_valid" placeholder="۲۴ ساعت"></div>
       <div class="f"><label for="i_sales">واحد فروش</label><input id="i_sales" class="num"></div>
@@ -562,15 +584,15 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v4.1.2</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v6</footer>
 </div>
 
 
 <div id="toast" role="status" aria-live="polite" hidden></div>
 <div id="printHost" aria-hidden="true"></div>
 
-<script src="lib/exceljs.min.js"></script>
-<script src="lib/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
 (function(){
 'use strict';
@@ -615,13 +637,13 @@ I('flap','side','فلپ کنترولر',225,0);
 I('pres','side','سنسور فشار',61,1,{motor:true});
 // توزین
 I('wfeed','weigh','سیستم توزین دان',275,1);
+I('wio','weigh','کارت IO جهت توزین دان',90,1,{from:['wfeed']});
+I('wload','weigh','لودسل خمشی',null,0);
+I('wjb','weigh','جعبه تقسیم',null,0,{from:['wfeed']});
 I('wbird','weigh','سیستم توزین پرنده',275,1);
 I('wpan','weigh','کفه توزین بدون لودسل',25,0);
-I('wload','weigh','لودسل خمشی',null,0);
-I('wio','weigh','کارت IO جهت توزین دان',90,1,{from:['wfeed']});
-I('wacc','acc','متعلقات جهت توزین',null,0,{from:['wfeed']});
+I('wacc','acc','متعلقات جهت توزین',null,0,{from:['wload']});
 I('wbox','acc','باکس ۳۰×۴۰ جهت توزین',20,0,{from:['wfeed']});
-I('wjb','acc','جعبه تقسیم چندکاناله',null,0);
 // اتصالات و متعلقات
 I('winacc','acc','متعلقات نصب وینچ',5,0,{from:['inlet']});
 I('presfit','acc','اتصالات سنسور فشار',8,0,{from:['pres']});
@@ -643,7 +665,7 @@ I('win','cab','نرم‌افزار ویندوز',70,0,{hide:1});
 I('panel','cab','تابلو برق',null,0);
 var BY={};CAT.forEach(function(c){BY[c.id]=c});
 // فقط این کالاها در مبنای هزینه نصب و راه‌اندازی حساب نمی‌شوند: باکس‌ها (از جمله باکس توزین)، کابل‌ها (از جمله کابل تخت)، هاستینگ‌ها، آلارم باکس‌ها، آژیر، پایه سرور، اتصالات سنسور فشار، متعلقات نصب وینچ و روشنایی
-var NOINS=['wbox','box4060','box4050','box4050t','box5070','flat','c12','c2','c06','c4','host','hostc','alsms','al','siren','base','presfit','winacc','lacc'];
+var NOINS=['wjb','wbox','box4060','box4050','box4050t','box5070','flat','c12','c2','c06','c4','host','hostc','alsms','al','siren','base','presfit','winacc','lacc'];
 
 var CUST=[
  {id:'none',name:'مشتری عادی',pct:0,mpct:0,ins:15,all:false,hint:'درصد تخفیف را دستی وارد کنید؛ فقط روی کالاهای تخفیف‌دار اعمال می‌شود.'},
@@ -666,8 +688,9 @@ function updateNo(){if(S.noAuto===false)return;S.inv.no=autoNo();var e=$('i_no')
 function newNo(){var d=new Date(),z=function(n){return String(n).padStart(2,'0')};return 'A-'+String(d.getFullYear()).slice(2)+z(d.getMonth()+1)+z(d.getDate())+'-'+z(d.getHours())+z(d.getMinutes())}
 var DEFNOTES='*تمامی مبالغ درج شده در پیش‌فاکتور به ريال می‌باشند.\n*تمامی محصولات با برند پایش الکترونیک و ساخت ایران می‌باشند.\n*تمامی قطعات دارای یک سال ضمانت و پنج سال خدمات پس از فروش می‌باشند.\n*هزینه ایاب و ذهاب، اقامت و خروج از کشور تکنسین‌های نصب به عهده کارفرمای محترم می‌باشد.\n*هزینه حمل کالا، جرثقیل و بتن‌ریزی و سیم‌کشی در فضای آزاد و نیز تغییرات تابلو برق به عهده کارفرمای محترم می‌باشد.\n*مقادیر کابل محاسبه‌شده تقریبی است و بنا به شرایط نصب توسط کارشناسان فنی تغییر خواهد کرد.';
 function insFor(v){v=String(v);return (v==='8'||v==='15')?{insSel:v,insX:''}:{insSel:'x',insX:v}}
-function fresh(){var c=CBY.tay;return {cust:'tay',rate:2700000,pct:c.pct,mpct:c.mpct,insSel:insFor(c.ins).insSel,insX:insFor(c.ins).insX,vat:10,rows:{},
-  noAuto:true,inv:{no:newNo(),date:jalaliToday(),buyer:'',proj:'',attn:'',phone:'',prov:'',city:'',farm:'',halls:'',dim:'',pay:'',valid:'۲۴ ساعت',sales:'09936095952-09936095953',notes:DEFNOTES}}}
+function defRows(){var o={};['p1','opa','ntc','ahs','outs','patrol','disp','junc','inlet','pres','siren'].forEach(function(k){o[k]={qty:1}});return o}
+function fresh(){var c=CBY.tay;return {cust:'tay',rate:2700000,pct:c.pct,mpct:c.mpct,insSel:insFor(c.ins).insSel,insX:insFor(c.ins).insX,vat:10,rows:defRows(),
+  noAuto:true,inv:{no:newNo(),date:jalaliToday(),buyer:'',proj:'',attn:'',phone:'',prov:'',city:'',country:'',farm:'',halls:'',dim:'',pay:'',valid:'۲۴ ساعت',sales:'09936095952-09936095953',notes:DEFNOTES}}}
 var S=fresh();
 try{var raw=localStorage.getItem(KEY);if(raw){var j=JSON.parse(raw);if(j&&j.rows&&j.inv){S=Object.assign(fresh(),j);var f0=fresh().inv;S.inv=Object.assign(f0,j.inv);Object.keys(S.inv).forEach(function(k){if(!(k in fresh().inv))delete S.inv[k]})}}}catch(e){}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
@@ -685,17 +708,32 @@ function fmtField(el){var d=toEn(el.value).replace(/[^\d.]/g,'');if(d===''){el.v
 /* ---------- model ---------- */
 function parentsQty(it){var s=0;it.from.forEach(function(p){var r=S.rows[p];if(r)s+=num(r.qty)});return s}
 function qtyOf(id){var it=BY[id],r=S.rows[id];if(!r)return 0;if(it.from&&!r.qtyManual)return parentsQty(it);return num(r.qty)}
+function up50(x){x=Math.round(x*1e6)/1e6;return Math.ceil(x/50)*50}
+function cabCalc(){
+  var halls=Math.round(num(S.inv.halls)),m=toLat(S.inv.dim||'').match(/\d+(?:\.\d+)?/),L=m?parseFloat(m[0]):NaN;
+  if(!(halls>0)||!(L>0))return null;
+  var q=function(id){return S.rows[id]?num(qtyOf(id)):0};
+  var raw2=L*0.7*q('ntc')/halls+q('inlet')*50/halls+(q('siren')*20+q('disp')*20+q('outs')*50)/halls;
+  var sens=(q('ahs')+q('nh3')+q('co2'))/halls,sg=q('patrol')/halls,wn=(q('wfeed')+q('wbird'))/halls;
+  var raw4=(sens+sg>0?L*0.8*sens+L*1.12*sg:0)+wn*50;
+  return {c2:raw2>0?up50(raw2)*halls:0,c4:raw4>0?up50(raw4)*halls:0}}
+function cabInputs(){['c2','c4'].forEach(function(id){var r=S.rows[id],inp=document.querySelector('#tbl [data-q="'+id+'"]');if(r&&r.cabAuto&&!r.qtyManual&&inp&&document.activeElement!==inp)inp.value=r.qty})}
+function cabAutoRows(){var changed=false,cc=cabCalc(),h=$('cabHint');if(h)h.textContent=cc?'':'برای محاسبه‌ی خودکار کابل، تعداد سالن و ابعاد (اول طول سالن) را بنویس.';
+  ['c2','c4'].forEach(function(id){var r=S.rows[id],v=cc?cc[id]:0;
+    if(r&&r.cabAuto){if(r.qtyManual)return;if(v>0){if(num(r.qty)!==v)r.qty=v}else{delete S.rows[id];changed=true}}
+    else if(!r&&v>0&&!(S.cabOff&&S.cabOff[id])){S.rows[id]={qty:v,auto:true,cabAuto:true};changed=true}});return changed}
 function sync(){var changed=false;CAT.forEach(function(it){if(!it.from)return;var s=parentsQty(it),r=S.rows[it.id];
   if(s>0&&!r){S.rows[it.id]={auto:true,qty:s};changed=true}
-  else if(r){if(!r.qtyManual)r.qty=s;if(s===0&&r.auto&&!r.qtyManual){delete S.rows[it.id];changed=true}}});return changed}
+  else if(r){if(!r.qtyManual)r.qty=s;if(s===0&&r.auto&&!r.qtyManual){delete S.rows[it.id];changed=true}}});if(cabAutoRows())changed=true;return changed}
 function cust(){return CBY[S.cust]||CBY.none}
 function insPct(){return S.insSel==='x'?Math.max(0,num(S.insX)):num(S.insSel)}
 function discOn(id,it){var r=S.rows[id];if(r&&typeof r.disc==='boolean')return r.disc;return cust().all?true:it.disc}
+function lcName(it,r){if(it.id==='wjb'&&r)return it.name+(String(r.model||'').trim()?' '+String(r.model).trim():'');if(it.id!=='wload'||!r)return it.name;var c=String(r.cap==null?'':r.cap).trim();return it.name+(c?' '+c+' تن':'')}
 function calc(){
   var lines=[],base=0,rate=num(S.rate);
   GROUPS.forEach(function(g){
     if(g.id==='acc'&&insPct()>0){lines.push({id:'__install',g:g.id,name:'درصد نصب و راه‌اندازی',unit:'عدد',qty:1,install:true,fi:String(Math.round(insPct()*100)/10000)})}
-    CAT.forEach(function(it){if(it.g!==g.id||!S.rows[it.id])return;lines.push({id:it.id,g:g.id,it:it,name:it.name,unit:it.unit,qty:qtyOf(it.id)})});
+    CAT.forEach(function(it){if(it.g!==g.id||!S.rows[it.id])return;lines.push({id:it.id,g:g.id,it:it,name:lcName(it,S.rows[it.id]),unit:it.unit,qty:qtyOf(it.id)})});
   });
   lines.forEach(function(l){
     if(l.install)return;
@@ -725,7 +763,7 @@ function renderSettings(){
   $('cust').value=S.cust;$('rate').value=fmt(num(S.rate));$('pct').value=S.pct;$('mpct').value=S.mpct;$('vat').value=S.vat;
   if(S.insSel==='18'){S.insSel='15';S.insX=''}if(['8','15','x'].indexOf(S.insSel)<0){var z=insFor(cust().ins);S.insSel=z.insSel;S.insX=z.insX}$('ins').value=S.insSel;$('insx').hidden=S.insSel!=='x';$('insx').value=S.insX||'';
   $('custHint').textContent=cust().hint;$('custHint').style.color='';
-  var inv=S.inv;['no','date','buyer','proj','attn','phone','prov','city','farm','halls','dim','pay','valid','sales','notes'].forEach(function(k){$('i_'+k).value=inv[k]||''});
+  var inv=S.inv;['no','date','buyer','proj','attn','phone','prov','city','country','farm','halls','dim','pay','valid','sales','notes'].forEach(function(k){$('i_'+k).value=inv[k]||''});
 }
 function renderPicker(){
   var q=$('q').value.trim(),h='';
@@ -754,7 +792,7 @@ function renderRows(){
        '<td class="n" data-c="disc"></td><td class="n" data-c="net"></td><td></td></tr>';return}
     var r=S.rows[l.id];
     h+='<tr data-id="'+l.id+'" class="'+(l.it.usd==null&&l.price===0?'need':'')+'"><td>'+n+'</td>'+
-     '<td>'+esc(l.name)+(l.it.from&&!r.qtyManual?'<span class="badge">خودکار</span>':'')+(l.it.note&&l.hasOv&&l.it.usd==null?'<span class="badge" style="background:var(--warn-soft);color:var(--warn)">'+esc(l.it.note)+'</span>':'')+'</td>'+
+     '<td>'+esc(l.it.name)+(l.id==='wjb'?'<div style="margin-top:4px"><input type="text" style="max-width:200px'+(String(r.model||'').trim()?'':';border-color:var(--warn)')+'" data-model="wjb" placeholder="برند / نام جعبه تقسیم" aria-label="برند جعبه تقسیم" value="'+esc(r.model||'')+'"></div>':'')+(l.id==='wload'?'<div style="margin-top:4px;display:flex;gap:6px;flex-wrap:wrap"><input class="num" style="max-width:170px'+(String(r.cap||'').trim()?'':';border-color:var(--warn)')+'" data-cap="wload" inputmode="decimal" placeholder="ظرفیت هر لودسل (تن)" aria-label="ظرفیت لودسل به تن" value="'+esc(r.cap||'')+'"></div>':'')+((l.it.from||r.cabAuto)&&!r.qtyManual?'<span class="badge">خودکار</span>':'')+(l.it.note&&l.hasOv&&l.it.usd==null?'<span class="badge" style="background:var(--warn-soft);color:var(--warn)">'+esc(l.it.note)+'</span>':'')+'</td>'+
      '<td><input class="num q" inputmode="decimal" data-k="q'+l.id+'" data-q="'+l.id+'" value="'+(l.qty||'')+'"></td>'+
      '<td>'+esc(l.unit)+'</td>'+
      '<td><input class="num pr" inputmode="numeric" data-k="p'+l.id+'" data-p="'+l.id+'" placeholder="'+(l.it.usd==null?'قیمت را وارد کنید':'')+'" value="'+(l.price?fmt(l.price):'')+'"></td>'+
@@ -803,22 +841,25 @@ $('ins').addEventListener('change',function(){S.insSel=this.value;$('insx').hidd
 $('insx').addEventListener('input',function(){S.insX=this.value;renderRows()});
 Object.keys(S.inv).forEach(function(k){if(!$('i_'+k))return;$('i_'+k).addEventListener('input',function(){S.inv[k]=this.value;if(k==='no')S.noAuto=false;if(k==='date'||k==='buyer')updateNo();
   if(k==='buyer'){var m=CUST.filter(function(c){return c.id!=='none'&&c.name===this.value.trim()},this)[0];if(m&&m.id!==S.cust){var keep=S.inv.buyer;setCustomer(m.id);S.inv.buyer=keep;$('i_buyer').value=keep}}
+  if(k==='halls'||k==='dim'){var chh=sync();if(chh){renderRows();renderPicker()}else{paint();cabInputs()}}
   save()})});
 $('nextInv').addEventListener('click',function(){var s=serials();s[serKey()]=curSerial();try{localStorage.setItem(SKEY,JSON.stringify(s))}catch(e){}S.noAuto=true;updateNo();save();toast('شماره‌ی فاکتور بعدی: '+S.inv.no)});
 $('autoInv').addEventListener('click',function(){S.noAuto=true;updateNo();save()});
 $('q').addEventListener('input',renderPicker);
 $('picker').addEventListener('click',function(e){var b=e.target.closest('[data-add]');if(!b)return;var id=b.dataset.add;
-  if(S.rows[id]){delete S.rows[id]}else{var it=BY[id];S.rows[id]={qty:it.from?parentsQty(it)||1:1};if(it.price0)S.rows[id].priceOv=it.price0;if(it.from)S.rows[id].qtyManual=!parentsQty(it)}
-  sync();renderRows();renderPicker()});
+  if(S.rows[id]){delete S.rows[id];S.cabOff=S.cabOff||{};S.cabOff[id]=1}else{if(S.cabOff)delete S.cabOff[id];var it=BY[id];S.rows[id]={qty:it.from?parentsQty(it)||1:1};if(it.price0)S.rows[id].priceOv=it.price0;if(it.from)S.rows[id].qtyManual=!parentsQty(it)}
+  sync();renderRows();renderPicker();if(id==='wload'&&S.rows[id]){var ci=$('tbl').querySelector('[data-cap="wload"]');if(ci)ci.focus()}});
 $('clear').addEventListener('click',function(){if(!Object.keys(S.rows).length)return;if(this.dataset.arm){S.rows={};delete this.dataset.arm;this.textContent='پاک کردن همه';renderRows();renderPicker();return}
   this.dataset.arm='1';this.textContent='مطمئنید؟ دوباره بزنید';var b=this;setTimeout(function(){delete b.dataset.arm;b.textContent='پاک کردن همه'},3000)});
 $('tbl').addEventListener('input',function(e){var t=e.target;
-  if(t.dataset.q){var id=t.dataset.q,r=S.rows[id];r.qty=toEn(t.value);if(BY[id].from)r.qtyManual=true;
-    var ch=sync();if(ch)renderRows();else paint()}
+  if(t.dataset.q){var id=t.dataset.q,r=S.rows[id];r.qty=toEn(t.value);if(BY[id].from||r.cabAuto)r.qtyManual=true;
+    var ch=sync();if(ch)renderRows();else{paint();cabInputs()}}
+  else if(t.dataset.model){S.rows[t.dataset.model].model=t.value;t.style.borderColor=String(t.value).trim()?'':'var(--warn)';paint()}
+  else if(t.dataset.cap){S.rows[t.dataset.cap].cap=toEn(t.value);t.style.borderColor=String(t.value).trim()?'':'var(--warn)';paint()}
   else if(t.dataset.p){var r2=S.rows[t.dataset.p];fmtField(t);r2.priceOv=toEn(t.value)===''?null:toEn(t.value);paint()}});
 $('tbl').addEventListener('change',function(e){var t=e.target;if(t.dataset.disc){var id=t.dataset.disc;S.rows[id]=S.rows[id]||{};S.rows[id].disc=t.checked;paint();var tr=rowEls[id];if(tr){var s=tr.querySelector('[data-c="rate"]');}}
   if(t.dataset.p){paint()}});
-$('tbl').addEventListener('click',function(e){var b=e.target.closest('[data-del]');if(!b)return;delete S.rows[b.dataset.del];sync();renderRows();renderPicker()});
+$('tbl').addEventListener('click',function(e){var b=e.target.closest('[data-del]');if(!b)return;delete S.rows[b.dataset.del];S.cabOff=S.cabOff||{};S.cabOff[b.dataset.del]=1;sync();renderRows();renderPicker()});
 
 /* ---------- output ---------- */
 var tt;function toast(m){var t=$('toast');if(/^ساخت/.test(m)&&(typeof html2pdf==='undefined'||typeof ExcelJS==='undefined'))m+=' کتابخانه‌ی ساخت فایل بارگذاری نشده؛ اینترنت یا فیلتر را بررسی و صفحه را دوباره باز کنید.';t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(function(){t.hidden=true},3800)}
@@ -828,7 +869,7 @@ function nowBusy(btn,on){btn.disabled=on;if(on)btn.dataset.t=btn.textContent,btn
 var LOGO='data:image/png;base64,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';
 function costOf(c){var a=0,m=0,o=0;c.lines.forEach(function(l){var v=l.gross||0;if(l.g==='auto'||l.g==='weigh')a+=v;else if(l.g==='side')m+=v;else o+=v});return [a,m,o]}
 function buyerRows(inv){
-  var b1=['خریدار: '+(inv.buyer||'')+(inv.proj?' '+inv.proj:'')+(inv.attn?' - '+inv.attn:'')+(inv.phone?'  تلفن: '+inv.phone:''),'استان : '+(inv.prov||''),'شهر : '+(inv.city||'')];
+  var b1=['خریدار: '+(inv.buyer||'')+(inv.proj?' '+inv.proj:'')+(inv.attn?' - '+inv.attn:'')+(inv.phone?'  تلفن: '+inv.phone:''),'استان : '+(inv.prov||''),'شهر : '+(inv.city||'')+(String(inv.country||'').trim()?' - کشور : '+String(inv.country).trim():'')];
   var b2=['نوع فارم : '+(inv.farm||''),'تعداد سالن : '+(inv.halls||''),'ابعاد سالن : '+(inv.dim||'')];
   return [b1,b2];
 }
@@ -1130,6 +1171,8 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
     var nomUser = pos(val('nom')), der = val('der'), Dm = pos(val('dia'));
     var nomAutoV = fin(Dm) ? 42000 * (Dm / 140) * (Dm / 140) : NaN;
     var nom = fin(nomUser) ? nomUser : nomAutoV;
+    var fanU = fin(Dm) ? 'عدد · هواکش ' + nf(Dm, 0) : 'عدد';
+    var fanS = function(n){ return fin(n) ? nf(n, 0) + (fin(Dm) ? ' × ' + nf(Dm, 0) : '') : '—'; };
     $('nomAuto').textContent = fin(nomAutoV) ? nf(Math.round(nomAutoV), 0) : '—';
     var rnd = $('rnd').checked;
     var heater = $('heater').value;
@@ -1163,7 +1206,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
       var rate = 0.06, iw = pos(val('iw')), ih = pos(val('ih'));
       var m1 = val('m1'), m2 = val('m2'); if (!fin(m1)) m1 = 0; if (!fin(m2)) m2 = 0;
       if (!vinTouched){
-        var autoV = fin(W) ? (W <= 12 ? 4 : (W >= 18 ? 5 : Math.round((4 + (W - 12) / 6) * 2) / 2)) : '';
+        var autoV = fin(W) ? Math.round(Math.min(6, Math.max(3.5, 4.5 + (W - 12) * 0.125)) * 100) / 100 : '';
         $('vin').value = autoV === '' ? '' : String(autoV);
       }
       vin = pos(val('vin'));
@@ -1175,17 +1218,24 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
       base = evenUp(exact); lo = evenUp(base * (1 + m1 / 100)); hi = evenUp(base * (1 + m2 / 100));
       modeBoxes =
         B('تهویه‌ی حداقلی (دبی لازم)', flow, 0, 'm³/min', F('تعداد پرنده × وزن نهایی × ۰٫۰۶', [live, ' × ', rate]), false) +
-        B('تعداد هواکش', fans, 0, 'عدد', F('دبی لازم ÷ ظرفیت مؤثر، گرد به بالا', [flow, ' ÷ ', effM, ' = ', flow / effM]), true) +
+        B('تعداد هواکش', fans, 0, fanU, F('دبی لازم ÷ ظرفیت مؤثر، گرد به بالا', [flow, ' ÷ ', effM, ' = ', flow / effM]), true) +
         B('دبی کل واقعی', totS, 1, 'm³/s', F('هواکش × ظرفیت مؤثر ÷ ۶۰', [fans, ' × ', effM, ' ÷ ۶۰']), false) +
-        B('سرعت هوا روی اینلت', vin, 1, 'm/s', 'از عرض سالن (۱۲ متر: حدود ۴، ۱۸ متر: حدود ۵)', false) +
+        B('سرعت هوا روی اینلت', vin, 1, 'm/s', 'از عرض سالن (۱۲ متر ← ۴٫۵، هر متر بیشتر ۰٫۱۲۵ اضافه)', false) +
         B('سطح کل اینلت', aIn, 2, 'm²', F('دبی کل ÷ سرعت', [totS, ' ÷ ', vin]), false) +
         B('مساحت یک اینلت', unit, 3, 'm²', F('عرض × ارتفاع اینلت', [iw, '×', ih, ' cm']), false) +
         B('تعداد اینلت (زوج)', base, 0, 'عدد', F('سطح کل ÷ مساحت یک اینلت', [aIn, ' ÷ ', unit, ' = ', exact]), true) +
         B('تعداد اینلت با حاشیه', lo, 0, 'تا ' + (fin(hi) ? nf(hi, 0) : '—'), 'حاشیه ' + nf(m1, 0) + ' تا ' + nf(m2, 0) + '٪، زوج', true);
+      var vol = L * W * H, qA = flow * 60, qB = vol / 2 * 60, dQ = qA - qB;
+      modeBoxes +=
+        B('روش اول: دبی از وزن زنده', qA, 0, 'm³/h', F('دبی لازم × ۶۰', [flow, ' × ۶۰']), false) +
+        B('حجم هوای سالن', vol, 1, 'm³', F('طول × عرض × ارتفاع متوسط', [L, ' × ', W, ' × ', H]), false) +
+        B('روش دوم: تعویض کامل هوا در ۲ دقیقه', qB, 0, 'm³/h', F('حجم ÷ ۲ × ۶۰', [vol, ' ÷ ۲ × ۶۰']), false) +
+        B('اختلاف دو روش', dQ, 0, 'm³/h', fin(qA) && qA > 0 ? ('روش دوم ' + nf(qB / qA * 100, 0) + '٪ روش اول است') : '', false);
       notes =
+        '<p class="note">روش اول (وزن زنده × ۰٫۰۶) معیار اصلی است. روش دوم فقط کنترل است و با روش اول هم‌ارز نیست؛ سالن‌های پرتراکم یا کم‌حجم نتیجه‌ی متفاوتی می‌دهند. اگر روش دوم از روش اول بیشتر شد، دبی را دوباره بررسی کن.</p>' +
         '<p class="note">تعداد هواکش انتقالی از وزن زنده‌ی نهایی حساب می‌شود و با روز عوض نمی‌شود. وزن گله در هر سن در محاسبه نیست.</p>' +
         '<p class="note">سرعت باد روی پرنده فقط برای تهویه‌ی تونلی تعریف شده است. در انتقالی، سرعت هوا روی دریچه‌ی اینلت کنترل می‌شود.</p>';
-      sumItems.push(['هواکش', fin(fans) ? nf(fans, 0) : '—'], ['اینلت', fin(lo) ? nf(lo, 0) + '–' + nf(hi, 0) : '—']);
+      sumItems.push(['هواکش', fanS(fans)], ['اینلت', fin(lo) ? nf(lo, 0) + '–' + nf(hi, 0) : '—']);
 
       if (heater === 'cab') sug.push(['bad', 'هیتر کابینتی/کامیونیتی خودش باد می‌زند و فشار مثبت می‌سازد، پس با تهویه‌ی انتقالی و اینلت جور نیست. فقط ۵۰ تا ۶۰٪ (نهایتاً ۷۰٪) گرمایش هم وارد سالن می‌شود. اگر مشتری این هیتر را دارد، یا تهویه‌ی تونلی را در نظر بگیر یا هیتر جت پیشنهاد بده.']);
       if (heater === 'jet') sug.push(['good', 'هیتر جت داخل سالن است و تقریباً همه‌ی گرمایش در سالن می‌ماند. با تهویه‌ی انتقالی سازگار است.']);
@@ -1221,8 +1271,8 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
       modeBoxes =
         B('سرعت هدف', sp, 2, 'm/s', st === 'auto' ? (midAge ? 'تقریب خطی بین روز ۷ و ۲۸ (فرض)' : 'خودکار از سن گله') : 'انتخاب شما', false) +
         B('دبی لازم', needS, 1, 'm³/s', F('سرعت × سطح مقطع عرضی', [sp, ' × ', cross]), false) +
-        B(isCap ? 'تعداد هواکش (سقف سرعت)' : 'تعداد هواکش لازم', fansT, 0, 'عدد', F(isCap ? 'دبی ÷ ظرفیت مؤثر، گرد به پایین (حداقل ۱)' : 'دبی ÷ ظرفیت مؤثر، گرد به بالا', [needS * 60, ' ÷ ', effM, ' = ', needS * 60 / effM]), true) +
-        B('هواکش روشن' + (typed ? '' : ' (خودکار)'), nUsed, 0, 'عدد', typed ? 'عدد واردشده' : 'برابر تعداد لازم', false) +
+        B(isCap ? 'تعداد هواکش (سقف سرعت)' : 'تعداد هواکش لازم', fansT, 0, fanU, F(isCap ? 'دبی ÷ ظرفیت مؤثر، گرد به پایین (حداقل ۱)' : 'دبی ÷ ظرفیت مؤثر، گرد به بالا', [needS * 60, ' ÷ ', effM, ' = ', needS * 60 / effM]), true) +
+        B('هواکش روشن' + (typed ? '' : ' (خودکار)'), nUsed, 0, fanU, typed ? 'عدد واردشده' : 'برابر تعداد لازم', false) +
         B('سرعت واقعی روی پرنده', real, 3, 'm/s', F('هواکش × ظرفیت ÷ ۶۰ ÷ سطح مقطع', [nUsed, ' × ', effM, ' ÷ ۶۰ ÷ ', cross]), true, status) +
         B('سرعت با یک هواکش', one, 3, 'm/s', F('ظرفیت ÷ ۶۰ ÷ سطح مقطع', [effM, ' ÷ ۶۰ ÷ ', cross]), false) +
         B('حداکثر هواکش مجاز در این سن', maxAge, 0, 'عدد', fin(lim) ? 'حد سرعت ' + nf(lim, 2) + ' m/s' : 'برای روز ۸ تا ۲۷ عدد مشخص نشده', false);
@@ -1230,7 +1280,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
         notes += '<p class="note">برای روز ۸ تا ۲۷ سرعت هدف مشخصی تعریف نشده است. سرعت از روند خطی بین ۰٫۲۵ (روز ۷) و ۲٫۵ (روز ۲۸) گذاشته شده، یا از سرعت‌های هفته‌ی ۲ و ۳ که در «برنامه‌ی هفتگی» وارد کرده‌ای. این یک فرض است و باید با مدرس تأیید شود. اگر عدد دیگری می‌خواهی از لیست «عدد دلخواه» را انتخاب کن.</p>';
       }
       notes += '<p class="note">باد تونلی از سطح مقطع عرضی عبور می‌کند و سطح مقطع طولی لازم نیست. اگر ظرفیت نامی را بدون کسر ۱۵٪ بگیری (کسر را در تنظیمات صفر کن)، عددهای مثال مدرس یعنی حدود ۱۱ و ۱۳ هواکش و سرعت ۰٫۲۲۷ m/s با یک هواکش به دست می‌آید.</p>';
-      sumItems.push(['هواکش', fin(nUsed) ? nf(nUsed, 0) : '—'], ['سرعت m/s', fin(real) ? nf(real, 2) : '—']);
+      sumItems.push(['هواکش', fanS(nUsed)], ['سرعت m/s', fin(real) ? nf(real, 2) : '—']);
 
       if (age <= 7) sug.push(['info', 'هفته‌ی اول فقط ' + (fin(maxAge) ? nf(maxAge, 0) : '—') + ' هواکش مجاز است. بیشتر از ۰٫۲۵ m/s روی جوجه سرما و تلفات می‌آورد، مثل فوت کردن روی صورت جوجه‌ی چندروزه.']);
       if (age >= 28) sug.push(['info', 'بعد از پرگیری (حدود ۲۷ تا ۲۸ روزگی)، به شرط تأمین بودن کنسانتره و مواد مغذی، می‌شود تا ۲٫۵ m/s رفت و طبق استاندارد جدید تا ۳ m/s.']);
@@ -1245,10 +1295,10 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
       var wc2 = val('wc'); if (!fin(wc2)) wc2 = 0;
       tempBoxes += B('دمای تنظیمی سالن', Tt + wc2, 2, '°C', F('دمای هدف + اثر باد', [Tt, ' + ', wc2]), false);
       sumItems.push(['دمای تنظیمی °C', fin(Tt) ? nf(Tt + wc2, 1) : '—']);
-      tempBoxes += B('تعداد هواکش', fansT, 0, 'عدد', 'برای سرعت هدف این سن', false);
+      tempBoxes += B('تعداد هواکش', fansT, 0, fanU, 'برای سرعت هدف این سن', false);
     } else {
       sumItems.push(['دمای هدف °C', fin(Tt) ? nf(Tt, 1) : '—']);
-      tempBoxes += B('تعداد هواکش', fans, 0, 'عدد', 'انتقالی: از وزن زنده‌ی نهایی', false);
+      tempBoxes += B('تعداد هواکش', fans, 0, fanU, 'انتقالی: از وزن زنده‌ی نهایی', false);
     }
 
     $('b-mode').innerHTML = modeBoxes;
@@ -1315,8 +1365,9 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
       var m2v = val('m2'); if (!fin(m2v)) m2v = 0;
       var rowsI = opts.map(function(o){
         var u = (o.w / 100) * (o.h / 100), n = evenUp(aIn / u);
-        return {name: o.name, label: nf(o.w, 0) + '×' + nf(o.h, 0), u: u, n: n, lo: evenUp(n * (1 + m1v / 100)), hi: evenUp(n * (1 + m2v / 100)), cost: fin(o.pr) ? n * o.pr : NaN};
+        return {name: o.name, w: o.w, h: o.h, label: nf(o.w, 0) + '×' + nf(o.h, 0), u: u, n: n, lo: evenUp(n * (1 + m1v / 100)), hi: evenUp(n * (1 + m2v / 100)), cost: fin(o.pr) ? n * o.pr : NaN};
       });
+      window.__ventInlets = {L: L, W: W, hw: pos(val('hw')), qAh: flow * 60, vin: vin, rows: rowsI, m1: m1v, m2: m2v};
       if (rowsI.length >= 2){
         var costI = rowsI.filter(function(r){ return fin(r.cost); });
         var bestI = costI.length >= 2 ? costI.slice().sort(function(a, b){ return a.cost - b.cost; })[0] : rowsI.slice().sort(function(a, b){ return a.n - b.n; })[0];
@@ -1330,6 +1381,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
         if (bestI.name !== 'اصلی') sug.push(['good', (hasCI ? 'از نظر هزینه' : 'از نظر کمترین تعداد') + ' اینلت ' + bestI.label + ' سانتی‌متر با ' + nf(bestI.n, 0) + ' عدد بهتر از اینلت اصلی درمی‌آید.']);
       }
     }
+    if (!(mode === 'trans' && fin(aIn))) window.__ventInlets = null;
     $('cmpInlet').hidden = !cmpI;
     $('cmpInlet').innerHTML = cmpI;
 
@@ -1339,14 +1391,16 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
     // کولینگ پد و هیتر
     (function(){
       var vP = pos(val('padv')), hP = pos(val('padh')), wP = pos(val('padw')), sd = pos(val('pads')), hv = pos(val('htv')), hc = pos(val('htc'));
-      var VMAX = 2.5;
-      var nMax = ceil(VMAX * cross * 60 / effM);
-      var q = nMax * effM / 60;
+      var VMAX = pos(val('padvt')); if (!fin(VMAX)) VMAX = 2.5;
+      var q = VMAX * cross;
+      var nMax = ceil(q * 60 / effM);
+      var qInst = nMax * effM / 60;
       var aP = q / vP, tot = aP / hP, per = ceil(tot / sd), perReal = tot / sd;
       var pieces = ceil(per / (wP / 100));
       var vol = L * W * H, nh = ceil(vol / hv);
-      var b = B('هواکش حداکثری', nMax, 0, 'عدد', F('۲٫۵ × سطح مقطع ÷ ظرفیت مؤثر، گرد به بالا', [VMAX, ' × ', cross, ' ÷ ', effM / 60]), false) +
-        B('دبی کل', q, 1, 'm³/s', F('هواکش × ظرفیت مؤثر ÷ ۶۰', [nMax, ' × ', effM, ' ÷ ۶۰']), false) +
+      var b = B('دبی لازم تونل کامل', q, 1, 'm³/s', F('سرعت طراحی × سطح مقطع عرضی', [VMAX, ' × ', cross]), false) +
+        B('هواکش لازم برای این دبی', nMax, 0, fanU, F('دبی ÷ ظرفیت مؤثر، گرد به بالا', [q * 60, ' ÷ ', effM, ' = ', q * 60 / effM]), false) +
+        B('ظرفیت نصب‌شده این هواکش‌ها', qInst, 1, 'm³/s', F('فقط برای مقایسه؛ پد از دبی لازم حساب می‌شود، نه از ظرفیت نصب‌شده', [nMax, ' × ', effM, ' ÷ ۶۰']), false) +
         B('مساحت لازم پد', aP, 1, 'm²', F('دبی ÷ سرعت روی پد', [q, ' ÷ ', vP]), false) +
         B('طول کل پد', tot, 2, 'm', F('مساحت ÷ ارتفاع پد', [aP, ' ÷ ', hP]), false) +
         B('طول پد هر طرف', per, 0, 'm', F('طول کل ÷ طرف‌ها، گرد به بالا', [tot, ' ÷ ', sd, ' = ', perReal]), true) +
@@ -1512,7 +1566,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
     }
     if (kind === 'lc') {
       if (!(LC.total > 0)) return null;
-      return { id: 'wload', qty: LC.total, unit: 'عدد', name: 'لودسل خمشی', extra: fin(LC.cap) ? ' (' + nf(LC.cap, 2) + ' تن، ' + LC.model + ')' : '' };
+      return { id: 'wload', qty: LC.total, unit: 'عدد', name: 'لودسل خمشی', cap: fin(LC.cap) ? LC.cap : null, model: LC.model, extra: fin(LC.cap) ? ' (' + nf(LC.cap, 2) + ' تن، ' + LC.model + ')' : '' };
     }
     return null;
   }
@@ -1522,7 +1576,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
     var kind = btn.dataset.reg, it = regItem(kind, P.S());
     if (!it) { REGMSG[kind] = 'اول حساب کن'; drawSum(); return; }
     P.apply(function(S){
-      var r = S.rows[it.id] || {}; r.qty = it.qty; r.qtyManual = true;
+      var r = S.rows[it.id] || {}; r.qty = it.qty; r.qtyManual = true; if (it.id === 'wload') { if (it.cap != null) r.cap = String(it.cap); }
       if (fin(it.price) && it.price > 0) r.priceOv = Math.round(it.price);
       S.rows[it.id] = r;
     });
@@ -1754,6 +1808,52 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
   var FA='۰۱۲۳۴۵۶۷۸۹',AR='٠١٢٣٤٥٦٧٨٩';
   function parse(t){var s=String(t||'').replace(/[۰-۹]/g,function(c){return FA.indexOf(c)}).replace(/[٠-٩]/g,function(c){return AR.indexOf(c)}).replace(/[٬,\s]/g,'').replace(/[٫\/]/g,'.');var v=parseFloat(s);return isFinite(v)?v:NaN}
   function nf(n,d){return isFinite(n)?Number(n).toLocaleString('fa-IR',{maximumFractionDigits:d==null?0:d}):'—'}
+  function evenUp(x){var n=Math.ceil(x-1e-9);return n%2?n+1:n}
+  function draw(o,N,L,W,res,uw){
+    var per=N/2,use=L-res,sp=use/per,vw=640,sc=vw/L,vh=Math.max(60,W*sc),pad=18,tw=Math.max(3,uw/100*sc);
+    var s='<svg viewBox="0 0 '+(vw+2*pad)+' '+(vh+2*pad+16)+'" style="width:100%;height:auto;direction:ltr" role="img" aria-label="چیدمان اینلت‌ها"><rect x="'+pad+'" y="'+pad+'" width="'+vw+'" height="'+vh+'" fill="none" stroke="var(--fg)" stroke-width="1.5"/>'+
+      '<rect x="'+(pad+use*sc)+'" y="'+pad+'" width="'+(res*sc)+'" height="'+vh+'" fill="var(--orange-soft)" stroke="var(--orange)" stroke-dasharray="4 3"/>'+
+      '<text x="'+(pad+(use+res/2)*sc)+'" y="'+(pad+vh/2)+'" text-anchor="middle" font-size="11" fill="var(--orange-ink)">هواکش</text>';
+    for(var i=0;i<per;i++){var x=pad+(sp*(i+.5))*sc-tw/2;
+      s+='<rect x="'+x+'" y="'+(pad-5)+'" width="'+tw+'" height="8" fill="var(--accent)"/><rect x="'+x+'" y="'+(pad+vh-3)+'" width="'+tw+'" height="8" fill="var(--accent)"/>'}
+    s+='<text x="'+pad+'" y="'+(vh+2*pad+10)+'" font-size="10" fill="var(--muted)">0</text><text x="'+(pad+vw)+'" y="'+(vh+2*pad+10)+'" text-anchor="end" font-size="10" fill="var(--muted)">'+L+' m</text></svg>';
+    return s;
+  }
+  function render(){
+    var D=window.__ventInlets,card=$('layCard'),out=$('layOut');
+    if(!D||!(D.L>0)||!(D.W>0)||!D.rows||!D.rows.length){card.hidden=true;return}
+    card.hidden=false;
+    var res=parse($('lyRes').value);if(!isFinite(res)||res<0)res=0;if(res>=D.L)res=0;
+    var el=parse($('lyEl').value),ra={'اصلی':parse($('lyRA').value),'ب':parse($('lyRB').value)},h='';
+    D.rows.forEach(function(r){
+      if(r.name==='ج')return;
+      var N=r.lo,basis='سطح باز اینلت و سرعت هوا',rated=ra[r.name];
+      var tag='';
+      if(isFinite(rated)&&rated>0){var Nr=evenUp(D.qAh/rated*(1+D.m1/100));tag='<p class="hint">با دبی کاتالوگی '+nf(rated,0)+' m³/h: '+nf(D.qAh,0)+' ÷ '+nf(rated,0)+' × (۱ + '+nf(D.m1,0)+'٪) = '+nf(D.qAh/rated*(1+D.m1/100),2)+' ← '+nf(Nr,0)+' عدد (زوج). این عدد برای چیدمان استفاده شد.</p>';N=Nr;basis='دبی کاتالوگی'}
+      var per=N/2,use=D.L-res,sp=use/per,u=r.label;
+      h+='<div class="stack" style="margin-top:14px"><b>گزینه‌ی '+r.name+' ('+u+' سانتی‌متر): '+nf(N,0)+' عدد، '+nf(per,0)+' عدد روی هر دیوار</b><span class="hint">مبنا: '+basis+'</span>'+tag+
+        '<div class="sum" style="margin-top:4px"><div><span>فاصله‌ی مرکز تا مرکز</span><b>'+nf(sp,3)+' m</b></div><div><span>طول چیدمان</span><b>'+nf(use,1)+' m</b></div><div><span>فاصله تا ابتدای سالن</span><b>'+nf(sp/2,2)+' m</b></div><div><span>فاصله تا انتهای هواکش</span><b>'+nf(sp/2+res,2)+' m</b></div></div>'+
+        draw(r,N,D.L,D.W,res,r.w);
+      var xs=[];for(var i=0;i<per;i++)xs.push(nf(sp*(i+.5),2));
+      h+='<details><summary style="cursor:pointer">مختصات طولی مرکز اینلت‌ها (m، از ابتدای سالن، هر دیوار)</summary><p class="hint" style="direction:rtl">'+xs.join('، ')+'</p></details>';
+      if(isFinite(el)){var top=el+(r.h>0?r.h/100:0);
+        h+='<p class="note">لبه‌ی بالای اینلت در ارتفاع '+nf(top,2)+' m است'+(D.hw>0?(top<=D.hw+1e-9?' و زیر ارتفاع دیوار ('+nf(D.hw,2)+' m) جا می‌شود.':' و از ارتفاع دیوار ('+nf(D.hw,2)+' m) بالاتر می‌زند؛ ارتفاع نصب را پایین بیاور.'):'.')+'</p>'}
+      h+='</div>';
+    });
+    h+='<p class="note">برد پرتاب هوا تا وسط سالن '+nf(D.W/2,1)+' متر است (نصف عرض) و سرعت هوا روی اینلت '+nf(D.vin,2)+' m/s فرض شده. فشار استاتیک، باز شدن جزئی دریچه و پرتاب واقعی هوا (jet throw) را فقط با منحنی کاتالوگ سازنده می‌شود تأیید کرد و در این محاسبه تأیید نشده است. ارتفاع نصب را با فاصله‌ی بال‌های پد و سقف هم‌خوان کن.</p>';
+    out.innerHTML=h;
+  }
+  var pane=$('paneV');
+  pane.addEventListener('input',function(){setTimeout(render,0)});pane.addEventListener('change',function(){setTimeout(render,0)});
+  setTimeout(render,0);
+})();
+</script>
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  var FA='۰۱۲۳۴۵۶۷۸۹',AR='٠١٢٣٤٥٦٧٨٩';
+  function parse(t){var s=String(t||'').replace(/[۰-۹]/g,function(c){return FA.indexOf(c)}).replace(/[٠-٩]/g,function(c){return AR.indexOf(c)}).replace(/[٬,\s]/g,'').replace(/[٫\/]/g,'.');var v=parseFloat(s);return isFinite(v)?v:NaN}
+  function nf(n,d){return isFinite(n)?Number(n).toLocaleString('fa-IR',{maximumFractionDigits:d==null?0:d}):'—'}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function ls(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k)||'null');localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
   function dstr(t){try{return new Date(t).toLocaleDateString('fa-IR')}catch(e){return ''}}
@@ -1829,45 +1929,52 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
   }
   var TIPS={'فنی و عددی':'عدد و مشخصات فنی بده: محاسبه تهویه، تعداد لودسل، FCR. جمله‌های بلند و احساسی را کنار بگذار.','ساده و کوتاه':'سه جمله: مشکلت چیست، راه‌حل چیست، قدم بعدی چیست. از اصطلاح فنی پرهیز کن.','محترمانه و رسمی':'خطاب رسمی، پیش‌فاکتور مرتب، پیگیری مکتوب. شوخی و صمیمیت زودهنگام نکن.','دوستانه':'گرم و صمیمی صحبت کن ولی قیمت و شرایط را شفاف و کتبی بگو تا رابطه دوستانه جای تعهد را نگیرد.'};
   var STEPS=[
-   {t:'مشتری کیست؟'},
-   {t:'ساختار فارم و سالن‌ها'},
-   {t:'آخرین بار که دنبال سیستم یا تجهیزات رفت، چه مشکلی پیش آمد؟',h:'چند مورد می‌شود انتخاب کرد.',k:'problems',m:1,o:['خطای کارگر','خرابی تجهیزات','تلفات بالا','نوسان دما','قطع برق و نبود آلارم','خدمات پس از فروش ضعیف','قیمت بالا','تا حالا دنبال سیستم نرفته']},
-   {t:'خرید انجام شد یا نه؟',k:'bought',o:['خرید انجام شد','خرید انجام نشد','در جریان است'],k2:'reasons',l2:'دلیلش چه بود؟ (اگر خرید نشد یا راضی نبود)',m2:1,o2:['قیمت','بی‌اعتمادی','بودجه کم','شریک مخالف بود','تجربه بد قبلی','نگرانی از خدمات']},
-   {t:'اگر سیستم درست کار کند، سه ماه بعد چه چیزی فرق کرده؟',h:'چند مورد می‌شود انتخاب کرد.',k:'after',m:1,o:['تلفات کمتر','ضریب تبدیل (FCR) بهتر','آرامش خاطر','کنترل از راه دور','صرفه‌جویی دان یا انرژی','وابستگی کمتر به کارگر']},
-   {t:'چه کسی تصمیم می‌گیرد؟',h:'ممکن است چند نفر باشند.',k:'decider',m:1,o:['خود مشتری','شریک','پسر / خانواده','مدیر فارم','مهندس / دامپزشک','حسابدار / خرید']},
-   {t:'از کجا خبر می‌گیرد؟',k:'source',m:1,o:['همکاران مرغدار','اینستاگرام','واتساپ / تلگرام','نمایشگاه','گوگل','نماینده / فروشنده','دامپزشک']},
-   {t:'چطور باید با او حرف زد؟',k:'tone',o:['فنی و عددی','ساده و کوتاه','محترمانه و رسمی','دوستانه']},
-   {t:'جمع‌بندی'}
+   {id:'who',t:'مشتری کیست؟'},
+   {id:'prob',t:'آخرین بار که دنبال سیستم یا تجهیزات رفت، چه مشکلی پیش آمد؟',h:'چند مورد می‌شود انتخاب کرد.',k:'problems',m:1,o:['خطای کارگر','خرابی تجهیزات','تلفات بالا','نوسان دما','قطع برق و نبود آلارم','خدمات پس از فروش ضعیف','قیمت بالا','تا حالا دنبال سیستم نرفته']},
+   {id:'buy',t:'خرید انجام شد یا نه؟',k:'bought',o:['خرید انجام شد','خرید انجام نشد','در جریان است'],k2:'reasons',l2:'دلیلش چه بود؟ (اگر خرید نشد یا راضی نبود)',m2:1,o2:['قیمت','بی‌اعتمادی','بودجه کم','شریک مخالف بود','تجربه بد قبلی','نگرانی از خدمات']},
+   {id:'after',t:'اگر سیستم درست کار کند، سه ماه بعد چه چیزی فرق کرده؟',h:'چند مورد می‌شود انتخاب کرد.',k:'after',m:1,o:['تلفات کمتر','ضریب تبدیل (FCR) بهتر','آرامش خاطر','کنترل از راه دور','صرفه‌جویی دان یا انرژی','وابستگی کمتر به کارگر']},
+   {id:'struct',t:'ساختار فارم و سالن‌ها'},
+   {id:'dec',t:'چه کسی تصمیم می‌گیرد؟',h:'ممکن است چند نفر باشند.',k:'decider',m:1,o:['خود مشتری','شریک','پسر / خانواده','مدیر فارم','مهندس / دامپزشک','حسابدار / خرید']},
+   {id:'src',t:'از کجا خبر می‌گیرد؟',k:'source',m:1,o:['همکاران مرغدار','اینستاگرام','واتساپ / تلگرام','نمایشگاه','گوگل','نماینده / فروشنده','دامپزشک']},
+   {id:'tone',t:'چطور باید با او حرف زد؟',k:'tone',o:['فنی و عددی','ساده و کوتاه','محترمانه و رسمی','دوستانه']},
+   {id:'wrap',t:'جمع‌بندی'}
   ];
+  function titleOf(id){var t='';STEPS.forEach(function(s){if(s.id===id)t=s.t});return t}
+  function normNotes(p){p.notes=p.notes||{};var old=['who','struct','prob','buy','after','dec','src','tone','wrap'];Object.keys(p.notes).forEach(function(k){if(/^\d+$/.test(k)){p.notes[old[+k]]=p.notes[k];delete p.notes[k]}});return p}
+
   var view='list',cur=null,step=0,editId=null,openId=null;
-  function blankH(ft){return {name:'',l:'',w:'',cap:'',capMan:false,dens:ft==='مرغ گوشتی'?'12':'',auto:'',heater:[],crop:'',cult:'',eq:{},open:true}}
+  function blankH(ft){return {name:'',qty:'1',l:'',w:'',cap:'',capMan:false,dens:ft==='مرغ گوشتی'?'12':'',auto:'',heater:[],crop:'',cult:'',eq:{},open:true}}
   function chipsH(field,opts,sel,multi,extra){return '<div class="chips" '+extra+'>'+opts.map(function(o){var on=multi?sel.indexOf(o)>=0:sel===o;return '<button type="button" class="chip'+(on?' on':'')+'" aria-pressed="'+on+'" data-v="'+esc(o)+'">'+o+'</button>'}).join('')+'</div>'}
   function hallHtml(h,i,c){
-    var s='<details class="hall" data-h="'+i+'"'+(h.open?' open':'')+'><summary>'+esc(h.name||('سالن '+nf(i+1)))+'</summary>';
-    s+='<div class="row3" style="margin-top:8px"><div><label class="lbl" style="margin-top:0">نام / شماره سالن</label><input type="text" data-f="name" value="'+esc(h.name)+'" placeholder="سالن '+nf(i+1)+'"></div>'+
+    var hasMore=(h.heater&&h.heater.length)||Object.keys(h.eq||{}).some(function(k){var v=h.eq[k];return v&&(String(v.n).trim()||String(v.d).trim())});
+    var s='<details class="hall" data-h="'+i+'"'+(h.open?' open':'')+'><summary>'+esc(h.name||('سالن '+nf(i+1)))+(parse(h.qty)>1?' <small>× '+nf(parse(h.qty))+'</small>':'')+'</summary>';
+    s+='<div class="row3" style="margin-top:8px"><div><label class="lbl" style="margin-top:0">نام سالن</label><input type="text" data-f="name" value="'+esc(h.name)+'" placeholder="سالن '+nf(i+1)+'"></div>'+
+       '<div><label class="lbl" style="margin-top:0">تعداد سالن مشابه</label><input type="text" inputmode="numeric" data-f="qty" value="'+esc(h.qty)+'"></div>'+
        '<div><label class="lbl" style="margin-top:0">طول (متر)</label><input type="text" inputmode="decimal" data-f="l" value="'+esc(h.l)+'"></div>'+
        '<div><label class="lbl" style="margin-top:0">عرض (متر)</label><input type="text" inputmode="decimal" data-f="w" value="'+esc(h.w)+'"></div>';
-    if(!c.gh)s+='<div><label class="lbl" style="margin-top:0">تراکم (قطعه در متر مربع)</label><input type="text" inputmode="decimal" data-f="dens" value="'+esc(h.dens)+'"></div><div><label class="lbl" style="margin-top:0">ظرفیت (قطعه)</label><input type="text" inputmode="numeric" data-f="cap" id="hc'+i+'" value="'+esc(h.cap)+'"></div>';
+    if(!c.gh)s+='<div><label class="lbl" style="margin-top:0">تراکم (قطعه در متر مربع)</label><input type="text" inputmode="decimal" data-f="dens" value="'+esc(h.dens)+'"></div><div><label class="lbl" style="margin-top:0">ظرفیت یک سالن (قطعه)</label><input type="text" inputmode="numeric" data-f="cap" id="hc'+i+'" value="'+esc(h.cap)+'"></div>';
     s+='</div><div class="area" id="ha'+i+'"></div>';
-    if(!c.gh)s+='<p class="nt">اگر طول و عرض و تراکم را بنویسی، ظرفیت خودکار حساب می‌شود. تراکم را مشتری یا شرایط فارم تعیین می‌کند؛ عدد پیش‌فرض ۱۲ فقط برای مرغ گوشتی است و قابل تغییر.</p>';
+    if(!c.gh)s+='<p class="nt">ظرفیت از طول × عرض × تراکم خودکار حساب می‌شود؛ اگر خودت بنویسی همان می‌ماند. تراکم ۱۲ فقط پیش‌فرض مرغ گوشتی است.</p>';
     if(c.gh)s+='<label class="lbl">نوع کشت</label>'+chipsH('crop',CROPS,h.crop,false,'data-hf="crop"')+'<label class="lbl">روش کشت</label>'+chipsH('cult',CULT,h.cult,false,'data-hf="cult"');
     s+='<label class="lbl">سطح اتوماسیون</label>'+chipsH('auto',AUTO,h.auto,false,'data-hf="auto"');
+    s+='<details class="more" style="margin-top:10px"'+(hasMore?' open':'')+'><summary style="cursor:pointer;font-size:13.5px;color:var(--accent)">هیتر و تجهیزات (اختیاری)</summary>';
     s+='<label class="lbl">نوع هیتر / گرمایش</label>'+chipsH('heater',c.heaters,h.heater,true,'data-hf="heater" data-m="1"');
     s+='<label class="lbl">تجهیزات (تعداد و ابعاد)</label>';
     c.eq.forEach(function(e,j){var v=h.eq[e[0]]||{n:'',d:''};
       s+='<div class="eq"><span>'+e[0]+'</span><input type="text" inputmode="numeric" data-e="'+j+'" data-p="n" value="'+esc(v.n)+'" placeholder="تعداد" aria-label="تعداد '+e[0]+'">'+(e[1]?'<input type="text" data-e="'+j+'" data-p="d" value="'+esc(v.d)+'" placeholder="'+esc(e[2]||'ابعاد')+'" aria-label="ابعاد '+e[0]+'">':'<span></span>')+'</div>'});
-    s+='<div class="btns"><button type="button" data-a="hcopy" data-h="'+i+'">کپی این سالن (برای سالن مشابه)</button><button type="button" data-a="hdel" data-h="'+i+'">حذف سالن</button></div></details>';
+    s+='</details><div class="btns"><button type="button" data-a="hcopy" data-h="'+i+'">کپی این سالن</button><button type="button" data-a="hdel" data-h="'+i+'">حذف</button></div></details>';
     return s;
   }
   function areaTxt(h,c){var a=parse(h.l)*parse(h.w);if(!(a>0))return 'طول و عرض را بنویس تا مساحت حساب شود.';return 'مساحت: '+nf(a,1)+' متر مربع'+(c.gh?'':(h.cap?' · ظرفیت: '+nf(parse(h.cap))+' قطعه':''))}
   function refreshArea(i){var c=cfg(cur.farmType),h=cur.halls[i],e=$('ha'+i);if(e)e.textContent=areaTxt(h,c);if(!c.gh){var cp=$('hc'+i);if(cp&&!h.capMan){var a=parse(h.l)*parse(h.w),d=parse(h.dens);h.cap=(a>0&&d>0)?String(Math.round(a*d)):'';cp.value=h.cap;if(e)e.textContent=areaTxt(h,c)}}}
   function stepHtml(){
     var S=STEPS[step],h='',c=cfg(cur.farmType);
-    if(step===0){
+    if(STEPS[step].id==='who'){
       h+='<label class="lbl">نام مشتری / مجموعه</label><input type="text" data-k="name" value="'+esc(cur.name)+'">';
       h+='<label class="lbl">نقش او در مجموعه</label>'+chipsH('role',['مالک','مدیر فارم','مهندس / دامپزشک','خریدار / نماینده','سایر'],cur.role,false,'data-k="role"');
       h+='<label class="lbl">نوع پرورش</label>'+chipsH('farmType',TYPES,cur.farmType,false,'data-k="farmType"');
-    }else if(step===1){
+    }else if(STEPS[step].id==='struct'){
+      if(!cur.halls.length)cur.halls.push(blankH(cur.farmType));
       h+='<label class="lbl">تعداد فارم</label><input type="text" inputmode="numeric" data-k="farms" value="'+esc(cur.farms)+'" style="max-width:160px">';
       if(!cur.farmType)h+='<p class="hint">نوع پرورش را در مرحله اول انتخاب نکرده‌ای؛ گزینه‌ها عمومی هستند.</p>';
       h+='<div id="pHalls">'+cur.halls.map(function(x,i){return hallHtml(x,i,c)}).join('')+'</div>';
@@ -1880,39 +1987,48 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
       h+=chipsH(S.k,S.o,cur[S.k],!!S.m,'data-k="'+S.k+'"'+(S.m?' data-m="1"':''));
       if(S.k2)h+='<label class="lbl">'+S.l2+'</label>'+chipsH(S.k2,S.o2,cur[S.k2],true,'data-k="'+S.k2+'" data-m="1"');
     }
-    h+='<label class="lbl">توضیحات اختیاری</label><textarea data-note="1" placeholder="هر چیزی که مهم است و در گزینه‌ها نبود">'+esc(cur.notes[step]||'')+'</textarea>';
+    h+='<label class="lbl">توضیحات اختیاری</label><textarea data-note="1" placeholder="هر چیزی که مهم است و در گزینه‌ها نبود">'+esc(cur.notes[STEPS[step].id]||'')+'</textarea>';
     return '<h3 class="st">'+S.t+'</h3>'+(S.h?'<p class="hint">'+S.h+'</p>':'')+h;
   }
   function drawWizard(){
     var last=step===STEPS.length-1;
     $('pMain').innerHTML='<section class="card"><div class="tools" style="margin-bottom:8px"><button type="button" data-a="back" style="font:inherit;font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer">← بازگشت به پوشه‌ها</button></div><div class="pbar"><i style="width:'+Math.round((step+1)/STEPS.length*100)+'%"></i></div><div class="cnt">سؤال '+nf(step+1)+' از '+nf(STEPS.length)+(editId?' · ویرایش':'')+'</div>'+stepHtml()+'<div class="perr" id="pErr" aria-live="polite"></div><div class="nav"><button type="button" data-a="prev"'+(step?'':' disabled')+'>قبلی</button><button type="button" class="pri" data-a="next">'+(last?'ذخیره در پوشه مشتری':'بعدی')+'</button></div></section>';
-    if(step===1)cur.halls.forEach(function(h,i){refreshArea(i)});
+    if(STEPS[step].id==='struct')cur.halls.forEach(function(h,i){refreshArea(i)});
   }
   function startWizard(fid){
     var f=fid?fById(fid):null;editId=fid||null;cur=f&&f.persona?clone(f.persona):blankP();if(f&&!f.persona)cur.name=f.name;
-    if(!cur.notes)cur.notes={};step=0;view='wizard';render();
+    normNotes(cur);step=0;view='wizard';render();
   }
   function lines(p){
-    var L=[],hs=p.halls||[],tot=0;
+    var L=[],hs=p.halls||[],tot=0,totH=0;normNotes(p);
     L.push(['مشتری',p.name+(p.role?' — '+p.role:'')]);
     if(p.farmType)L.push(['نوع پرورش',p.farmType]);
-    if(p.farms)L.push(['تعداد فارم',p.farms]);
-    hs.forEach(function(h,i){var c=cfg(p.farmType),a=parse(h.l)*parse(h.w),eq=[];
-      c.eq.forEach(function(e){var v=h.eq&&h.eq[e[0]];if(v&&(String(v.n).trim()||String(v.d).trim()))eq.push(e[0]+(v.n?' '+v.n:'')+(v.d?' ('+v.d+')':''))});
-      var cap=parse(h.cap);if(cap>0)tot+=cap;
-      L.push([h.name||('سالن '+(i+1)),[(h.l&&h.w)?h.l+'×'+h.w+' متر':'',a>0?'مساحت '+nf(a,1)+' م²':'',(!c.gh&&cap>0)?'ظرفیت '+nf(cap)+' قطعه':'',h.crop,h.cult,h.auto,h.heater&&h.heater.length?'هیتر: '+h.heater.join('، '):'',eq.length?'تجهیزات: '+eq.join('، '):''].filter(Boolean).join(' · ')]);});
-    if(tot>0)L.push(['جمع ظرفیت',nf(tot)+' قطعه']);
     if(p.problems.length)L.push(['مشکل قبلی',p.problems.join('، ')]);
     if(p.bought)L.push(['خرید قبلی',p.bought+(p.reasons.length?' — '+p.reasons.join('، '):'')]);
     if(p.after.length)L.push(['انتظار بعد از ۳ ماه',p.after.join('، ')]);
+    if(p.farms)L.push(['تعداد فارم',p.farms]);
+    var c=cfg(p.farmType);
+    hs.forEach(function(h,i){var a=parse(h.l)*parse(h.w),eq=[],qn=parse(h.qty);if(!(qn>0))qn=1;
+      c.eq.forEach(function(e){var v=h.eq&&h.eq[e[0]];if(v&&(String(v.n).trim()||String(v.d).trim()))eq.push(e[0]+(v.n?' '+v.n:'')+(v.d?' ('+v.d+')':''))});
+      var cap=parse(h.cap);if(cap>0)tot+=cap*qn;totH+=qn;
+      L.push([(h.name||('سالن '+(i+1)))+(qn>1?' (× '+nf(qn)+' سالن مشابه)':''),[(h.l&&h.w)?h.l+'×'+h.w+' متر':'',a>0?'مساحت '+nf(a,1)+' م²':'',(!c.gh&&cap>0)?'ظرفیت '+nf(cap)+' قطعه':'',h.crop,h.cult,h.auto,h.heater&&h.heater.length?'هیتر: '+h.heater.join('، '):'',eq.length?'تجهیزات: '+eq.join('، '):''].filter(Boolean).join(' · ')]);});
+    if(totH>0)L.push(['تعداد کل سالن',nf(totH)]);
+    if(tot>0)L.push(['جمع ظرفیت',nf(tot)+' قطعه']);
     if(p.decider.length)L.push(['تصمیم‌گیر',p.decider.join('، ')]);
     if(p.source.length)L.push(['منبع خبر',p.source.join('، ')]);
     if(p.tone)L.push(['لحن مناسب',p.tone]);
     if(p.quote)L.push(['حرف مشتری','«'+p.quote+'»']);
     if(p.objection)L.push(['اعتراض اصلی',p.objection]);
     if(p.next)L.push(['قدم بعدی',p.next]);
-    Object.keys(p.notes||{}).forEach(function(k){var t=p.notes[k];if(t&&String(t).trim())L.push(['یادداشت — '+STEPS[k].t,t])});
+    STEPS.forEach(function(s){var t=p.notes[s.id];if(t&&String(t).trim())L.push(['یادداشت — '+s.t,t])});
     return L;
+  }
+  function crmText(f){
+    var p=f.persona;if(!p)return '';var o=['پرسونای مشتری: '+f.name,'تاریخ: '+dstr(Date.now()),''];
+    lines(p).forEach(function(r){if(r[0]!=='مشتری')o.push('- '+r[0]+': '+r[1])});
+    if(TIPS[p.tone])o.push('- رویکرد پیشنهادی: '+TIPS[p.tone]);
+    if(f.invs&&f.invs.length){o.push('');o.push('پیش‌فاکتورها:');f.invs.forEach(function(v){o.push('- '+v.title+' ('+dstr(v.ts)+')')})}
+    return o.join('\n');
   }
   function personaHtml(p){
     var tags=[p.farmType,p.role,p.tone].filter(Boolean).map(function(t){return '<span class="tag">'+esc(t)+'</span>'}).join('');
@@ -1929,7 +2045,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
     if(view==='folder'){
       var f=fById(openId);if(!f){view='list';return render()}
       var h='<section class="card"><div class="tools" style="margin-bottom:8px"><button type="button" data-a="back" style="font:inherit;font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer">← همه پوشه‌ها</button></div><h2>پوشه: '+esc(f.name)+'</h2>';
-      h+='<div class="sub">پرسونا</div>'+(f.persona?personaHtml(f.persona)+'<div class="btns"><button type="button" data-a="pedit">ویرایش پرسونا</button><button type="button" data-a="pcopy">کپی متن</button></div>':'<p class="hint">پرسونایی برای این مشتری ثبت نشده.</p><div class="btns"><button type="button" class="og" data-a="pedit">ثبت پرسونا</button></div>');
+      h+='<div class="sub">پرسونا</div>'+(f.persona?personaHtml(f.persona)+'<div class="btns"><button type="button" data-a="pedit">ویرایش پرسونا</button><button type="button" class="pri" data-a="pcopy">کپی برای CRM</button></div><label class="lbl">متن آماده‌ی CRM</label><textarea readonly rows="10" id="crmTxt" style="direction:rtl">'+esc(crmText(f))+'</textarea>':'<p class="hint">پرسونایی برای این مشتری ثبت نشده.</p><div class="btns"><button type="button" class="og" data-a="pedit">ثبت پرسونا</button></div>');
       h+='<div class="sub">پیش‌فاکتورها</div>'+(f.invs.length?f.invs.map(function(v){return '<div class="li"><span><b>'+esc(v.title)+'</b> <small style="color:var(--muted)">'+dstr(v.ts)+'</small></span><span class="btns" style="margin:0"><button type="button" data-a="iopen" data-id="'+v.id+'">باز کردن</button><button type="button" data-a="idel" data-id="'+v.id+'">حذف</button></span></div>'}).join(''):'<p class="hint">هنوز پیش‌فاکتوری ذخیره نشده.</p>')+'<div class="btns"><button type="button" class="pri" data-a="isave">ذخیره پیش‌فاکتور فعلی در این پوشه</button></div><p class="hint">ذخیره دوباره با همان شماره فاکتور، نسخه قبلی را جایگزین می‌کند. از داخل صفحه پیش‌فاکتور هم دکمه «ذخیره در پوشه مشتری» هست.</p>';
       h+='<div class="sub">سود و زیان</div>'+(f.pl?'<div class="li"><span>ذخیره‌شده در '+dstr(f.pl.ts)+'</span><span class="btns" style="margin:0"><button type="button" data-a="plload">بارگذاری</button><button type="button" data-a="pldel">حذف</button></span></div>':'<p class="hint">محاسبه‌ای ذخیره نشده.</p>')+'<div class="btns"><button type="button" data-a="plsave">ذخیره محاسبه فعلی سود و زیان در این پوشه</button></div>';
       h+='<div class="msg hint" id="pMsg" aria-live="polite"></div></section>';
@@ -1953,14 +2069,14 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
   /* delegated events */
   $('pMain').addEventListener('input',function(e){
     var t=e.target;if(!cur||view!=='wizard')return;
-    if(t.hasAttribute('data-note')){cur.notes[step]=t.value;return}
+    if(t.hasAttribute('data-note')){cur.notes[STEPS[step].id]=t.value;return}
     if(t.hasAttribute('data-k')&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA')){cur[t.getAttribute('data-k')]=t.value;return}
     var hd=t.closest('.hall');if(!hd)return;var i=+hd.getAttribute('data-h'),h=cur.halls[i];
     if(t.hasAttribute('data-e')){var c=cfg(cur.farmType),key=c.eq[+t.getAttribute('data-e')][0];h.eq[key]=h.eq[key]||{n:'',d:''};h.eq[key][t.getAttribute('data-p')]=t.value;return}
     var f=t.getAttribute('data-f');if(!f)return;h[f]=t.value;
     if(f==='cap')h.capMan=!!t.value.trim();
     if(f==='l'||f==='w'||f==='dens')refreshArea(i);
-    if(f==='name'){var s=hd.querySelector('summary');if(s)s.textContent=t.value||('سالن '+nf(i+1))}
+    if(f==='name'||f==='qty'){var s=hd.querySelector('summary'),q=parse(h.qty);if(s)s.innerHTML=esc(h.name||('سالن '+nf(i+1)))+(q>1?' <small>× '+nf(q)+'</small>':'')}
   });
   $('pMain').addEventListener('toggle',function(e){var hd=e.target;if(hd.classList&&hd.classList.contains('hall'))cur.halls[+hd.getAttribute('data-h')].open=hd.open},true);
   $('pMain').addEventListener('click',function(e){
@@ -1982,7 +2098,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
     if(view==='wizard'){
       if(a==='prev'&&step>0){step--;drawWizard();return}
       if(a==='next'){
-        if(step===0&&!String(cur.name).trim()){$('pErr').textContent='نام مشتری را وارد کن.';return}
+        if(STEPS[step].id==='who'&&!String(cur.name).trim()){$('pErr').textContent='نام مشتری را وارد کن.';return}
         if(step<STEPS.length-1){step++;drawWizard();return}
         var f=editId?fById(editId):null;cur.name=String(cur.name).trim();
         if(f){f.persona=clone(cur);f.name=cur.name}else{f={id:uid(),name:cur.name,ts:Date.now(),persona:clone(cur),invs:[],pl:null};F.unshift(f)}
@@ -1994,7 +2110,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
     if(view==='folder'){
       var f2=fById(openId);if(!f2)return;
       if(a==='pedit'){startWizard(openId);return}
-      if(a==='pcopy'){copyTxt(lines(f2.persona).map(function(r){return r[0]+': '+r[1]}).join('\n'),b);return}
+      if(a==='pcopy'){copyTxt(crmText(f2),b);return}
       if(a==='isave'){msg(saveInvTo(f2)?'پیش‌فاکتور فعلی در پوشه ذخیره شد.':'ذخیره نشد.');render();msg('پیش‌فاکتور فعلی در پوشه ذخیره شد.');return}
       if(a==='iopen'||a==='idel'){var id=b.getAttribute('data-id'),rec=null;f2.invs.forEach(function(v){if(v.id===id)rec=v});if(!rec)return;
         if(a==='iopen'){try{window.__proforma.load(rec.snap);$('tabI').click()}catch(x){msg('باز کردن پیش‌فاکتور انجام نشد.')}}
@@ -2021,4 +2137,126 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
   render();
 })();
 </script>
+
+<script>
+(function(){
+  var CK='payesh-sync-cfg', MK='payesh-sync-meta', BK='payesh-sync-backup', FILE='payesh-sync.json';
+  var SKIP=/^payesh-(sync-|tab$)/;
+  var $=function(id){return document.getElementById(id)};
+  function jget(k){try{return JSON.parse(localStorage.getItem(k))||{}}catch(e){return {}}}
+  function jset(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+  var cfg=jget(CK), meta=jget(MK), busy=false, timer=null;
+  if(cfg.auto===undefined)cfg.auto=true;
+
+  function snapData(){var o={};Object.keys(localStorage).sort().forEach(function(k){if(/^payesh-/.test(k)&&!SKIP.test(k))o[k]=localStorage.getItem(k)});return o}
+  function hash(o){var s=JSON.stringify(o),h=5381;for(var i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return s.length+':'+h}
+  function b64e(s){return btoa(unescape(encodeURIComponent(s)))}
+  function b64d(s){return decodeURIComponent(escape(atob(String(s).replace(/\s/g,''))))}
+  function say(t,kind){var e=$('sy_msg');if(e){e.textContent=t;e.style.color=kind==='bad'?'var(--bad)':(kind==='ok'?'var(--good)':'')}}
+
+  function api(path,opt){
+    opt=opt||{};
+    opt.headers=Object.assign({'Authorization':'Bearer '+cfg.token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'},opt.headers||{});
+    return fetch('https://api.github.com/repos/'+cfg.repo+'/contents/'+path,opt);
+  }
+  async function remoteGet(){
+    var r=await api(FILE);
+    if(r.status===404)return null;
+    if(r.status===401||r.status===403)throw new Error('توکن یا دسترسی درست نیست.');
+    if(!r.ok)throw new Error('پاسخ گیت‌هاب: '+r.status);
+    var j=await r.json(),text;
+    if(j.content&&j.encoding==='base64')text=b64d(j.content);
+    else{var r2=await api(FILE,{headers:{'Accept':'application/vnd.github.raw+json'}});if(!r2.ok)throw new Error('خواندن فایل ممکن نشد.');text=await r2.text()}
+    return {sha:j.sha,snap:JSON.parse(text)};
+  }
+  async function push(data,sha){
+    var body={message:'sync '+new Date().toISOString(),content:b64e(JSON.stringify({app:'payesh-sync',v:1,updated:new Date().toISOString(),data:data}))};
+    if(sha)body.sha=sha;
+    var r=await api(FILE,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    if(r.status===409||r.status===422)throw new Error('هم‌زمان نسخه‌ی دیگری ذخیره شد؛ دوباره همگام‌سازی کن.');
+    if(r.status===401||r.status===403||r.status===404)throw new Error('نوشتن ممکن نشد؛ دسترسی توکن (Contents: Read and write) و نام مخزن را بررسی کن.');
+    if(!r.ok)throw new Error('پاسخ گیت‌هاب: '+r.status);
+    var j=await r.json();
+    return j.content.sha;
+  }
+  function markSynced(sha,data){meta.sha=sha;meta.hash=hash(data);meta.t=Date.now();jset(MK,meta)}
+  function applyRemote(rem){
+    var cur=snapData();
+    jset(BK,{ts:new Date().toISOString(),data:cur});
+    var d=(rem.snap&&rem.snap.data)||{};
+    Object.keys(cur).forEach(function(k){if(!(k in d))localStorage.removeItem(k)});
+    Object.keys(d).forEach(function(k){if(/^payesh-/.test(k)&&!SKIP.test(k))localStorage.setItem(k,d[k])});
+    markSynced(rem.sha,snapData());
+    say('نسخه‌ی گیت‌هاب آمد؛ صفحه دوباره باز می‌شود. نسخه‌ی قبلی این دستگاه در حافظه‌ی پشتیبان ماند.','ok');
+    setTimeout(function(){location.reload()},900);
+  }
+  var ask=function(){return new Promise(function(res){
+    var o=document.createElement('div');
+    o.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;z-index:100;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;padding:16px';
+    var c=document.createElement('div');c.dir='rtl';
+    c.style.cssText='background:#fff;color:#1a2133;border-radius:12px;padding:16px;max-width:420px;line-height:1.8;font-family:inherit';
+    c.innerHTML='<p style="margin:0 0 12px"><b>دو نسخه‌ی متفاوت وجود دارد.</b><br>هم روی گیت‌هاب تغییر کرده و هم روی این دستگاه. کدام بماند؟</p>';
+    [['local','نسخه‌ی این دستگاه بماند (جایگزین گیت‌هاب)'],['remote','نسخه‌ی گیت‌هاب بیاید (جایگزین این دستگاه)'],['cancel','فعلاً هیچ‌کدام']].forEach(function(p){
+      var b=document.createElement('button');b.type='button';b.textContent=p[1];
+      b.style.cssText='display:block;width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid #354c9b;background:'+(p[0]==='cancel'?'#fff':'#354c9b')+';color:'+(p[0]==='cancel'?'#354c9b':'#fff')+';font:inherit;cursor:pointer';
+      b.onclick=function(){document.body.removeChild(o);res(p[0])};c.appendChild(b)});
+    o.appendChild(c);document.body.appendChild(o);
+  })};
+
+  async function sync(manual){
+    if(busy)return;
+    if(!cfg.repo||!cfg.token){if(manual)say('اول نام مخزن و توکن را وارد کن.','bad');return}
+    busy=true;say('در حال همگام‌سازی…');
+    try{
+      var rem=await remoteGet(),data=snapData(),h=hash(data);
+      var dirty=Object.keys(data).length>0&&h!==meta.hash;
+      if(!rem){
+        markSynced(await push(data,null),data);say('اولین نسخه در گیت‌هاب ذخیره شد.','ok');
+      }else if(rem.sha===meta.sha){
+        if(dirty){markSynced(await push(data,rem.sha),data);say('ذخیره شد در گیت‌هاب.','ok')}
+        else say('همه‌چیز هماهنگ است.','ok');
+      }else if(hash((rem.snap&&rem.snap.data)||{})===h){
+        meta.sha=rem.sha;meta.hash=h;meta.t=Date.now();jset(MK,meta);say('همه‌چیز هماهنگ است.','ok');
+      }else if(!dirty){
+        applyRemote(rem);
+      }else{
+        var pick=await ask();
+        if(pick==='local'){markSynced(await push(data,rem.sha),data);say('نسخه‌ی این دستگاه جایگزین شد.','ok')}
+        else if(pick==='remote')applyRemote(rem);
+        else say('لغو شد؛ چیزی تغییر نکرد.');
+      }
+    }catch(e){say('خطا: '+(e&&e.message||e),'bad')}
+    finally{busy=false}
+  }
+
+  function schedule(){clearTimeout(timer);timer=setTimeout(function(){sync(false)},15000)}
+  try{
+    var oSet=Storage.prototype.setItem;
+    Storage.prototype.setItem=function(k){
+      var r=oSet.apply(this,arguments);
+      try{if(this===localStorage&&cfg.auto&&cfg.repo&&cfg.token&&/^payesh-/.test(k)&&!SKIP.test(k))schedule()}catch(e){}
+      return r;
+    };
+  }catch(e){}
+
+  function bind(){
+    if(!$('sy_go'))return;
+    $('sy_repo').value=cfg.repo||'';$('sy_tok').value=cfg.token||'';$('sy_auto').checked=cfg.auto!==false;
+    var saveCfg=function(){cfg.repo=$('sy_repo').value.trim().replace(/^https?:\/\/github\.com\//,'').replace(/\/+$/,'');cfg.token=$('sy_tok').value.trim();cfg.auto=$('sy_auto').checked;jset(CK,cfg)};
+    ['sy_repo','sy_tok'].forEach(function(id){$(id).addEventListener('change',saveCfg)});
+    $('sy_auto').addEventListener('change',saveCfg);
+    $('sy_go').addEventListener('click',function(){saveCfg();sync(true)});
+    $('sy_clr').addEventListener('click',function(){cfg.token='';$('sy_tok').value='';jset(CK,cfg);say('توکن از این دستگاه پاک شد.')});
+    var t=meta.t?new Date(meta.t).toLocaleString('fa-IR'):'';
+    if(t)say('آخرین همگام‌سازی این دستگاه: '+t);
+  }
+  window.__paySync={sync:sync,snapData:snapData,setAsk:function(f){ask=f}};
+  bind();
+  if(cfg.repo&&cfg.token){
+    setTimeout(function(){sync(false)},1500);
+    document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')sync(false)});
+  }
+})();
+</script>
+
 </body></html>
