@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#354c9b"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ابزار پایش"><title>ابزار فروش پایش ۶</title><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>ابزار فروش پایش ۶</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap">
 <style>
@@ -162,6 +162,16 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
         <button type="button" class="toolcard goto" data-go="v"><b>محاسبه تهویه</b><span>سالن مرغداری: هواکش، اینلت، پد و بخاری</span></button>
         <button type="button" class="toolcard goto" data-go="c"><b>محاسبه کابل و لودسل</b><span>متراژ کابل‌ها، تعداد و ظرفیت لودسل، ثبت در فاکتور</span></button>
       </div>
+    </section>
+    <section class="card" id="dayCard">
+      <h2>گزارش کار روزانه <small id="dayLbl" style="font-weight:400;color:var(--muted)"></small></h2>
+      <div class="regrow" style="margin-top:0">
+        <button type="button" class="vbtn" id="dayPrev" style="background:transparent;color:var(--accent)">روز قبل</button>
+        <button type="button" class="vbtn" id="dayToday" style="background:transparent;color:var(--accent)">امروز</button>
+        <button type="button" class="vbtn" id="dayNext" style="background:transparent;color:var(--accent)">روز بعد</button>
+        <button type="button" class="vbtn" id="dayCopy">کپی گزارش</button>
+      </div>
+      <div id="dayBody" style="margin-top:10px"></div>
     </section>
     <details class="card" id="syncCard">
       <summary>همگام‌سازی با گیت‌هاب (موبایل و کامپیوتر)</summary>
@@ -505,6 +515,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
 
   <div id="paneI" hidden>
   <div class="backbar"><button type="button" class="goto" data-go="d">→ داشبورد</button><b>پیش‌فاکتور</b><button type="button" id="fsOpen" style="margin-inline-start:auto;background:var(--orange-soft);border-color:var(--orange);color:var(--orange-ink)">ذخیره در پوشه مشتری</button></div>
+  <div class="card" id="lkBar" hidden style="margin-bottom:12px;border-inline-start:4px solid var(--accent)"><div id="lkTxt" style="font-size:13.5px;line-height:1.9"></div><div class="bar" id="lkBtns" style="margin-top:8px"></div></div>
   <div class="card" id="fsPanel" hidden style="margin-bottom:12px"><div class="grid"><div class="f"><label for="fsSel">پوشه مشتری</label><select id="fsSel"></select></div><div class="f" id="fsNewW"><label for="fsName">نام پوشه جدید</label><input id="fsName" type="text" placeholder="نام مشتری"></div></div><div class="bar" style="margin-top:10px"><button type="button" class="pri" id="fsGo">ذخیره</button><button type="button" id="fsX">بستن</button><span class="hint" id="fsMsg" aria-live="polite"></span></div></div>
 <div class="wrap">
   <div class="top"><h1>پیش‌فاکتور پایش الکترونیک</h1><small id="sub"></small></div>
@@ -1913,7 +1924,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
   function saveF(){ls(FK,F)}
   function fById(id){var r=null;F.forEach(function(f){if(f.id===id)r=f});return r}
   function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,5)}
-  function blankP(){return {name:'',role:'',farmType:'',farms:'',halls:[],problems:[],bought:'',reasons:[],after:[],decider:[],source:[],tone:'',quote:'',objection:'',next:'',notes:{}}}
+  function blankP(){return {name:'',phone:'',role:'',farmType:'',farms:'',halls:[],problems:[],bought:'',reasons:[],after:[],decider:[],source:[],tone:'',quote:'',objection:'',next:'',notes:{}}}
   var TYPES=['مرغ گوشتی','مرغ مادر','تخم‌گذار','گلخانه','دامداری','سایر'];
   var PH=['بخاری گازی','هیتر گازوئیلی','کوره / هوای گرم','شوفاژ / آب گرم','جت هیتر','ندارد'];
   var PEQ=[['اینلت',1,'ابعاد (مثلاً ۶۰×۴۰)'],['پد سلولزی',1,'ابعاد'],['هواکش',1,'قطر / مدل'],['فن گردش هوا',0],['سنسور دما و رطوبت',0],['سنسور فشار',0],['سیلو دان',0],['سیستم توزین',0]];
@@ -1971,6 +1982,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
     var S=STEPS[step],h='',c=cfg(cur.farmType);
     if(STEPS[step].id==='who'){
       h+='<label class="lbl">نام مشتری / مجموعه</label><input type="text" data-k="name" value="'+esc(cur.name)+'">';
+      h+='<label class="lbl">شماره تماس (برای لینک شدن خودکار با پیش‌فاکتور)</label><input type="text" inputmode="tel" data-k="phone" value="'+esc(cur.phone||'')+'" placeholder="مثلاً ۰۹۱۲۱۲۳۴۵۶۷" style="direction:ltr;text-align:right">';
       h+='<label class="lbl">نقش او در مجموعه</label>'+chipsH('role',['مالک','مدیر فارم','مهندس / دامپزشک','خریدار / نماینده','سایر'],cur.role,false,'data-k="role"');
       h+='<label class="lbl">نوع پرورش</label>'+chipsH('farmType',TYPES,cur.farmType,false,'data-k="farmType"');
     }else if(STEPS[step].id==='struct'){
@@ -1996,7 +2008,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
     if(STEPS[step].id==='struct')cur.halls.forEach(function(h,i){refreshArea(i)});
   }
   function startWizard(fid){
-    var f=fid?fById(fid):null;editId=fid||null;cur=f&&f.persona?clone(f.persona):blankP();if(f&&!f.persona)cur.name=f.name;
+    var f=fid?fById(fid):null;editId=fid||null;cur=f&&f.persona?clone(f.persona):blankP();if(f&&!f.persona)cur.name=f.name;if(f&&!cur.phone&&f.phone)cur.phone=f.phone;
     normNotes(cur);step=0;view='wizard';render();
   }
   function lines(p){
@@ -2064,7 +2076,10 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
     var snap=clone(P.snap()),S=snap.S,no=S.inv.no||'',title=(no+' '+(S.inv.buyer||S.inv.proj||'')).trim()||'پیش‌فاکتور',i=-1;
     f.invs.forEach(function(v,j){if(no&&v.no===no)i=j});
     var rec={id:i>=0?f.invs[i].id:uid(),ts:Date.now(),no:no,title:title,snap:snap};
-    if(i>=0)f.invs[i]=rec;else f.invs.unshift(rec);touch(f);return true;
+    if(i>=0)f.invs[i]=rec;else f.invs.unshift(rec);
+    logAdd({k:'inv',fid:f.id,rid:rec.id,no:no,title:title});
+    if(S.inv.phone&&!fPhones(f).length)f.phone=S.inv.phone;
+    touch(f);return true;
   }
   /* delegated events */
   $('pMain').addEventListener('input',function(e){
@@ -2102,7 +2117,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
         if(step<STEPS.length-1){step++;drawWizard();return}
         var f=editId?fById(editId):null;cur.name=String(cur.name).trim();
         if(f){f.persona=clone(cur);f.name=cur.name}else{f={id:uid(),name:cur.name,ts:Date.now(),persona:clone(cur),invs:[],pl:null};F.unshift(f)}
-        touch(f);openId=f.id;view='folder';editId=null;render();return}
+        touch(f);logAdd({k:'per',fid:f.id,name:f.name});openId=f.id;view='folder';editId=null;render();return}
       if(a==='hadd'){cur.halls.push(blankH(cur.farmType));drawWizard();return}
       if(a==='hcopy'){var src=cur.halls[+b.getAttribute('data-h')];if(!src)return;var n=clone(src);n.name=src.name?src.name+' (کپی)':'';n.open=true;cur.halls.push(n);drawWizard();return}
       if(a==='hdel'){cur.halls.splice(+b.getAttribute('data-h'),1);drawWizard();return}
@@ -2132,9 +2147,120 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
   $('fsGo').addEventListener('click',function(){
     var v=$('fsSel').value,f;
     if(v==='__new'){var nm=$('fsName').value.trim();if(!nm){$('fsMsg').textContent='نام پوشه را بنویس.';return}f={id:uid(),name:nm,ts:Date.now(),persona:null,invs:[],pl:null};F.unshift(f)}else f=fById(v);
-    if(f&&saveInvTo(f)){$('fsMsg').textContent='ذخیره شد در پوشه «'+f.name+'»';fsFill();$('fsSel').value=f.id;$('fsNewW').hidden=true}else $('fsMsg').textContent='ذخیره نشد.';
+    if(f&&saveInvTo(f)){$('fsMsg').textContent='ذخیره شد در پوشه «'+f.name+'»';fsFill();$('fsSel').value=f.id;$('fsNewW').hidden=true;lkEval()}else $('fsMsg').textContent='ذخیره نشد.';
   });
-  render();
+  /* ===== لینک مشتری با پیش‌فاکتور از روی شماره تماس ===== */
+  function phNums(s){
+    s=String(s||'').replace(/[۰-۹]/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)}).replace(/[٠-٩]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.indexOf(d)});
+    return s.split(/[\/،,;\n]|\s+-\s+|\s+و\s+/).map(function(x){return x.replace(/\D/g,'')}).filter(function(x){return x.length>=10}).map(function(x){return x.slice(-10)});
+  }
+  function fPhones(f){return phNums((f.persona&&f.persona.phone)||'').concat(phNums(f.phone||''))}
+  var lkSkip='';
+  function lkEval(){
+    var bar=$('lkBar');if(!bar)return;
+    var P=window.__proforma;if(!P||!P.S){bar.hidden=true;return}
+    var inv=P.S().inv,mine=phNums(inv.phone),no=inv.no||'',key=mine.join(',')+'|'+no;
+    if(!mine.length||lkSkip===key){bar.hidden=true;return}
+    var hits=F.filter(function(f){return fPhones(f).some(function(p){return mine.indexOf(p)>=0})});
+    var linked=hits.filter(function(f){return no&&f.invs.some(function(v){return v.no===no})});
+    var t=$('lkTxt'),b=$('lkBtns'),btn=function(a,id,l,pri){return '<button type="button"'+(pri?' class="pri"':'')+' data-lk="'+a+'"'+(id?' data-id="'+esc(id)+'"':'')+'>'+esc(l)+'</button>'};
+    bar.hidden=false;
+    if(linked.length){
+      t.innerHTML='این پیش‌فاکتور به مشتری «'+esc(linked[0].name)+'» لینک است (از روی شماره تماس).';
+      b.innerHTML=btn('upd',linked[0].id,'به‌روزرسانی نسخه‌ی ذخیره‌شده',false)+btn('skip','','بستن',false);
+    }else if(hits.length){
+      t.innerHTML='مشتری‌ای با این شماره تماس ثبت شده است. پیش‌فاکتور به کدام مشتری لینک شود؟';
+      b.innerHTML=hits.slice(0,3).map(function(f){return btn('link',f.id,'لینک و ذخیره در «'+f.name+'»',true)}).join('')+btn('skip','','نه، لینک نشود',false);
+    }else{
+      t.innerHTML='مشتری‌ای با این شماره ثبت نشده است. می‌خواهی یک مشتری جدید با این پیش‌فاکتور بسازی؟';
+      b.innerHTML=btn('new','','ساخت مشتری و ذخیره‌ی پیش‌فاکتور',true)+btn('skip','','نه',false);
+    }
+    bar._key=key;
+  }
+  $('lkBtns').addEventListener('click',function(e){
+    var el=e.target.closest('button');if(!el)return;
+    var a=el.getAttribute('data-lk'),P=window.__proforma;if(!P)return;
+    if(a==='skip'){lkSkip=$('lkBar')._key||'';$('lkBar').hidden=true;return}
+    var inv=P.S().inv,f;
+    if(a==='new'){
+      var nm=String(inv.buyer||inv.proj||'').trim()||(phNums(inv.phone)[0]||'مشتری جدید');
+      f={id:uid(),name:nm,ts:Date.now(),persona:null,phone:inv.phone||'',invs:[],pl:null};F.unshift(f);
+    }else f=fById(el.getAttribute('data-id'));
+    if(f&&saveInvTo(f)){toast2('پیش‌فاکتور در مشتری «'+f.name+'» ذخیره شد.');render()}else toast2('ذخیره نشد.');
+    lkEval();
+  });
+  (function(){
+    var tm=null,go=function(){clearTimeout(tm);tm=setTimeout(lkEval,500)};
+    var ph=$('i_phone');if(ph){ph.addEventListener('input',go);ph.addEventListener('change',go)}
+    document.addEventListener('click',go);
+    setTimeout(lkEval,1200);
+  })();
+  /* ===== گزارش کار روزانه ===== */
+  var DK='payesh-daily', DL=ls(DK), dayOff=0;
+  if(!Array.isArray(DL))DL=[];
+  function dlSave(){
+    if(DL.length>400)DL=DL.slice(-400);
+    DL.forEach(function(x,i){if(i<DL.length-40)delete x.snap});
+    ls(DK,DL);
+  }
+  function dayKey(ts){var d=new Date(ts);return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()}
+  function logAdd(e){
+    e.id=uid();e.ts=Date.now();
+    var dk=dayKey(e.ts);
+    DL=DL.filter(function(x){return !(x.k===e.k&&dayKey(x.ts)===dk&&((e.k==='inv'&&e.no&&x.no===e.no)||(e.k==='per'&&x.fid===e.fid)))});
+    DL.push(e);dlSave();dayRender();
+  }
+  function dayData(){
+    var base=new Date();base.setHours(0,0,0,0);base.setDate(base.getDate()+dayOff);
+    var t0=base.getTime(),t1=new Date(base.getFullYear(),base.getMonth(),base.getDate()+1).getTime();
+    var es=DL.filter(function(x){return x.ts>=t0&&x.ts<t1});
+    F.forEach(function(f){f.invs.forEach(function(v){
+      if(v.ts>=t0&&v.ts<t1&&!es.some(function(x){return x.rid===v.id}))es.push({k:'inv',fid:f.id,rid:v.id,no:v.no,title:v.title,ts:v.ts});
+    })});
+    es.sort(function(a,b){return a.ts-b.ts});
+    return {base:base,invs:es.filter(function(x){return x.k==='inv'}),pers:es.filter(function(x){return x.k==='per'})};
+  }
+  function tm(ts){return new Intl.DateTimeFormat('fa-IR',{hour:'2-digit',minute:'2-digit'}).format(ts)}
+  function dayLabel(d){return new Intl.DateTimeFormat('fa-IR-u-ca-persian',{weekday:'long',year:'numeric',month:'long',day:'numeric'}).format(d.base)}
+  function dayRender(){
+    var body=$('dayBody');if(!body)return;
+    var d=dayData(),row=function(main,sub,attrs){return '<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px dashed var(--line);padding:6px 0"><span><b>'+esc(main)+'</b> <small style="color:var(--muted)">'+sub+'</small></span><button type="button" '+attrs+' style="font:inherit;font-size:13px;padding:5px 12px;border-radius:8px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer">باز کردن</button></div>'};
+    $('dayLbl').textContent=dayLabel(d);
+    var h='<p style="margin:0 0 6px;font-size:13.5px"><b>'+nf(d.invs.length)+'</b> پیش‌فاکتور · <b>'+nf(d.pers.length)+'</b> پرسونا</p>';
+    h+='<div style="font-size:13px;font-weight:700;color:var(--muted);margin-top:8px">پیش‌فاکتورها</div>';
+    h+=d.invs.length?d.invs.map(function(x){var f=x.fid?fById(x.fid):null;return row(x.title||x.no||'پیش‌فاکتور',tm(x.ts)+(f?' · مشتری: '+esc(f.name):''),'data-day="oi" data-id="'+esc(x.id||'')+'" data-fid="'+esc(x.fid||'')+'" data-rid="'+esc(x.rid||'')+'"')}).join(''):'<p class="hint" style="margin:4px 0">پیش‌فاکتوری ثبت نشده.</p>';
+    h+='<div style="font-size:13px;font-weight:700;color:var(--muted);margin-top:10px">پرسونا</div>';
+    h+=d.pers.length?d.pers.map(function(x){var f=fById(x.fid);return row(x.name||(f&&f.name)||'مشتری',tm(x.ts),'data-day="op" data-fid="'+esc(x.fid||'')+'"'+(f?'':' disabled'))}).join(''):'<p class="hint" style="margin:4px 0">پرسونایی ثبت نشده.</p>';
+    body.innerHTML=h;
+  }
+  $('dayBody').addEventListener('click',function(e){
+    var b=e.target.closest('button[data-day]');if(!b)return;
+    var a=b.getAttribute('data-day'),fid=b.getAttribute('data-fid'),P=window.__proforma;
+    if(a==='op'){$('tabP').click();openId=fid;view='folder';render();return}
+    var f=fid?fById(fid):null,rec=null,snap=null;
+    if(f){f.invs.forEach(function(v){if(v.id===b.getAttribute('data-rid'))rec=v});snap=rec&&rec.snap}
+    else DL.forEach(function(x){if(x.id===b.getAttribute('data-id'))snap=x.snap});
+    if(!snap||!P){toast2(f?'این پیش‌فاکتور از پوشه حذف شده.':'نسخه‌ی این پیش‌فاکتور دیگر ذخیره نیست؛ از پوشه‌ی مشتری باز کن.');return}
+    try{P.load(snap);$('tabI').click()}catch(x){toast2('باز کردن پیش‌فاکتور انجام نشد.')}
+  });
+  $('dayPrev').addEventListener('click',function(){dayOff--;dayRender()});
+  $('dayNext').addEventListener('click',function(){if(dayOff<0){dayOff++;dayRender()}});
+  $('dayToday').addEventListener('click',function(){dayOff=0;dayRender()});
+  $('dayCopy').addEventListener('click',function(){
+    var d=dayData(),L=['گزارش کار '+dayLabel(d),'','پیش‌فاکتورها ('+nf(d.invs.length)+'):'];
+    d.invs.forEach(function(x){var f=x.fid?fById(x.fid):null;L.push('- '+(x.title||x.no)+' ('+tm(x.ts)+')'+(f?' - مشتری: '+f.name:''))});
+    L.push('','پرسونا ('+nf(d.pers.length)+'):');
+    d.pers.forEach(function(x){L.push('- '+(x.name||'')+' ('+tm(x.ts)+')')});
+    copyTxt(L.join('\n'),$('dayCopy'));
+  });
+  ['bPdf','bXls','bShare'].forEach(function(id){var el=$(id);if(el)el.addEventListener('click',function(){
+    var P=window.__proforma;if(!P)return;
+    var inv=P.S().inv,no=inv.no||'',dk=dayKey(Date.now());
+    if(DL.some(function(x){return x.k==='inv'&&x.no===no&&dayKey(x.ts)===dk&&x.fid}))return;
+    logAdd({k:'inv',no:no,title:((no+' '+(inv.buyer||inv.proj||'')).trim()||'پیش‌فاکتور'),snap:clone(P.snap())});
+  })});
+  document.addEventListener('click',function(){setTimeout(dayRender,400)});
+  render();dayRender();
 })();
 </script>
 
@@ -2259,4 +2385,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
 })();
 </script>
 
+<script>
+if('serviceWorker' in navigator&&location.protocol==='https:'){window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js').then(function(r){try{r.update()}catch(e){}}).catch(function(){})})}
+</script>
 </body></html>

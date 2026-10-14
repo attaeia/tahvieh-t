@@ -1,6 +1,29 @@
-const V='payesh-v4-1-2t';
-const CORE=['./','index.html','manifest.webmanifest','icon-192.png','icon-512.png','apple-touch-icon.png','favicon.png','lib/exceljs.min.js','lib/html2pdf.bundle.min.js','fonts/fonts.css','fonts/Vazirmatn.woff2','fonts/NotoNaskh-400.woff2','fonts/NotoNaskh-700.woff2','fonts/Lalezar.woff2'];
-self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()))});
-self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==V).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
-self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;
- e.respondWith(fetch(e.request).then(r=>{if(r&&r.ok){const c=r.clone();caches.open(V).then(x=>x.put(e.request,c))}return r}).catch(()=>caches.match(e.request).then(m=>m||caches.match('index.html'))))});
+/* سرویس‌ورکر ابزار پایش: برای آپدیت، عدد نسخه را بالا ببر */
+const V = 'payesh-v6-1';
+const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
+const CDN = ['cdnjs.cloudflare.com', 'fonts.googleapis.com', 'fonts.gstatic.com'];
+
+self.addEventListener('install', e => {
+  e.waitUntil(caches.open(V).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
+});
+self.addEventListener('activate', e => {
+  e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== V).map(k => caches.delete(k)))).then(() => self.clients.claim()));
+});
+self.addEventListener('fetch', e => {
+  const r = e.request, u = new URL(r.url);
+  if (r.method !== 'GET') return;
+  if (u.hostname === 'api.github.com') return;          // همگام‌سازی گیت‌هاب هرگز کش نشود
+  const sameOrigin = u.origin === location.origin;
+  if (!sameOrigin && !CDN.includes(u.hostname)) return;
+  if (sameOrigin) {                                      // اول شبکه، اگر نبود کش (آپدیت‌ها زود برسند)
+    e.respondWith(fetch(r).then(res => {
+      if (res && res.ok) { const cp = res.clone(); caches.open(V).then(c => c.put(r, cp)); }
+      return res;
+    }).catch(() => caches.match(r).then(h => h || caches.match('./index.html'))));
+  } else {                                               // کتابخانه‌ها و فونت‌ها: اول کش
+    e.respondWith(caches.match(r).then(h => h || fetch(r).then(res => {
+      if (res && (res.ok || res.type === 'opaque')) { const cp = res.clone(); caches.open(V).then(c => c.put(r, cp)); }
+      return res;
+    })));
+  }
+});
