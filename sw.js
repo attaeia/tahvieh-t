@@ -1,5 +1,5 @@
 /* سرویس‌ورکر ابزار پایش: برای آپدیت، عدد نسخه را بالا ببر */
-const V = 'payesh-v6-1';
+const V = 'payesh-v11-3-3';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 const CDN = ['cdnjs.cloudflare.com', 'fonts.googleapis.com', 'fonts.gstatic.com'];
 
@@ -27,3 +27,5 @@ self.addEventListener('fetch', e => {
     })));
   }
 });
+
+self.addEventListener('notificationclick',function(e){e.notification.close();e.waitUntil(self.clients.matchAll({type:'window',includeUncontrolled:true}).then(function(l){if(l.length)return l[0].focus();return self.clients.openWindow('./')}))});
