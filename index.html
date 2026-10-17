@@ -1,4 +1,15 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#354c9b"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ابزار پایش"><title>دستیار پایش الکترونیک</title><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<script>
+(function(){try{var m=/[#&]setup=([A-Za-z0-9_\-]+)/.exec(location.hash);if(!m)return;
+var b=m[1].replace(/-/g,'+').replace(/_/g,'/');while(b.length%4)b+='=';
+var o=JSON.parse(decodeURIComponent(escape(atob(b))));
+if(o&&typeof o.r==='string'&&typeof o.t==='string'&&/^[\w.\-]+\/[\w.\-]+$/.test(o.r)&&o.t.length>10){
+ localStorage.setItem('pay-setup-cfg',JSON.stringify({repo:o.r,token:o.t}));window.__paySetupApplied=1;
+ try{history.replaceState(history.state,'',location.pathname+location.search)}catch(e){}
+ document.addEventListener('DOMContentLoaded',function(){var d=document.createElement('div');d.textContent='✓ همگام‌سازی روی این دستگاه فعال شد. وارد حساب خودت شو.';d.style.cssText='position:fixed;z-index:99999;top:12px;left:12px;right:12px;max-width:480px;margin:0 auto;padding:12px 14px;border-radius:14px;background:#1D7A4A;color:#fff;text-align:center;font:14px sans-serif';document.body.appendChild(d);setTimeout(function(){d.remove()},7000)});
+}}catch(e){}})();
+</script>
+
 <title>ابزار فروش پایش ۶</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap">
 <style>
@@ -1014,7 +1025,7 @@ html[data-role=member] .hpair{grid-template-columns:1fr!important}
     if (user && String(user).indexOf('r:') !== 0){ try { var nm = (uById(user) || {}).name || ''; var cur = oGet.call(localStorage, prefix() + 'acct'); var nv = JSON.stringify({n: nm}); if (cur !== nv) oSet.call(localStorage, prefix() + 'acct', nv); } catch (e) {} }
   }
   /* ---------- نقش‌ها: فایل payesh-roles.json در مخزن ---------- */
-  function ghCfg(){ var id = window.__payAdminFrom || user; return id ? jr(PFX + id + '::sync-cfg') : {}; }
+  function ghCfg(){ var id = window.__payAdminFrom || user, c = id ? jr(PFX + id + '::sync-cfg') : {}; if (id && (!c.repo || !c.token || window.__paySetupApplied)){ var d = jr('pay-setup-cfg'); if (d.repo && d.token) return {repo: d.repo, token: d.token, auto: true}; } return c; }
   function ghApi(path, opt){ var cfg = ghCfg(); opt = opt || {}; opt.headers = Object.assign({'Authorization': 'Bearer ' + cfg.token, 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28'}, opt.headers || {}); return fetch('https://api.github.com/repos/' + cfg.repo + '/contents/' + path, opt); }
   function u8e(t){ return btoa(unescape(encodeURIComponent(t))); }
   function u8d(b){ return decodeURIComponent(escape(atob(String(b).replace(/\s/g, '')))); }
@@ -1355,6 +1366,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
         <label class="check"><input type="checkbox" id="sy_auto" checked> همگام‌سازی خودکار (۱۵ ثانیه بعد از هر تغییر، و موقع باز کردن اپ)</label>
       </div>
       <div class="regrow"><button type="button" class="vbtn" id="sy_go">همگام‌سازی حالا</button><button type="button" class="vbtn" id="sy_clr" style="background:transparent;color:var(--accent)">پاک کردن توکن از این دستگاه</button><span class="regMsg" id="sy_msg"></span></div>
+      <div class="regrow" id="sy_lkw" style="display:none"><button type="button" class="vbtn" id="sy_lk">ساخت لینک راه‌اندازی برای همکار</button><button type="button" class="vbtn" id="sy_lkc" hidden style="background:transparent;color:var(--accent)">کپی لینک</button></div><input type="text" id="sy_lkv" readonly hidden dir="ltr" aria-label="لینک راه‌اندازی" style="margin-top:6px"><p class="hint" id="sy_lkh" hidden>این لینک شامل توکن است؛ فقط برای همکار مورد اعتماد بفرست (تلگرام/واتس‌اپ خصوصی). همکار با یک ضربه روی لینک، همگام‌سازی را روی دستگاه خودش فعال می‌کند.</p>
     </details>
 
   </div>
@@ -1784,7 +1796,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.3.3</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.4.1</footer>
 </div>
 
 
@@ -3586,6 +3598,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
   function jset(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
   var cfg=jget(CK), meta=jget(MK), busy=false, timer=null;
   if(cfg.auto===undefined)cfg.auto=true;
+  if(!cfg.repo||!cfg.token||window.__paySetupApplied){var dv=jget('pay-setup-cfg');if(dv.repo&&dv.token){cfg.repo=dv.repo;cfg.token=dv.token;jset(CK,cfg)}}
 
   function snapData(){var o={},ks=window.__payUserKeys?window.__payUserKeys():Object.keys(localStorage);ks.sort().forEach(function(k){if(/^payesh-/.test(k)&&!SKIP.test(k))o[k]=localStorage.getItem(k)});return o}
   function hash(o){var s=JSON.stringify(o),h=5381;for(var i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return s.length+':'+h}
@@ -3688,6 +3701,12 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
     $('sy_auto').addEventListener('change',saveCfg);
     $('sy_go').addEventListener('click',function(){saveCfg();sync(true)});
     $('sy_clr').addEventListener('click',function(){cfg.token='';$('sy_tok').value='';jset(CK,cfg);say('توکن از این دستگاه پاک شد.')});
+    (function(){var w=$('sy_lkw');if(!w)return;var r=window.__payRole&&window.__payRole(),ok=!window.__payAdminFrom&&(r==='admin'||r==='mgr');w.style.display=ok?'':'none';if(!ok)return;
+      $('sy_lk').addEventListener('click',function(){saveCfg();if(!cfg.repo||!cfg.token){say('اول مخزن و توکن را وارد کن.','bad');return}
+        var u=location.href.split('#')[0]+'#setup='+btoa(unescape(encodeURIComponent(JSON.stringify({r:cfg.repo,t:cfg.token})))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+        var v=$('sy_lkv');v.value=u;v.hidden=false;$('sy_lkh').hidden=false;$('sy_lkc').hidden=false;say('لینک ساخته شد؛ کپی یا ارسال کن.','ok');
+        try{if(navigator.share)navigator.share({title:'راه‌اندازی دستیار پایش',url:u}).catch(function(){})}catch(e){}});
+      $('sy_lkc').addEventListener('click',function(){var v=$('sy_lkv');try{navigator.clipboard.writeText(v.value).then(function(){say('کپی شد ✓','ok')},function(){v.select();document.execCommand('copy');say('کپی شد ✓','ok')})}catch(e){v.select();try{document.execCommand('copy');say('کپی شد ✓','ok')}catch(x){}}})})();
     var t=meta.t?new Date(meta.t).toLocaleString('fa-IR'):'';
     if(t)say('آخرین همگام‌سازی این دستگاه: '+t);
   }
