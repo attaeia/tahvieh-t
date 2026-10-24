@@ -1844,7 +1844,8 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
       <div class="f"><label for="i_date">تاریخ</label><input id="i_date"></div>
       <div class="f"><label for="i_buyer">خریدار</label><input id="i_buyer" list="custlist" autocomplete="off" placeholder="نام مشتری را انتخاب کنید"><datalist id="custlist"></datalist></div>
       <div class="f"><label for="i_proj">پروژه</label><input id="i_proj" placeholder="مثلاً پروژه رهپویان"></div>
-      <div class="f"><label for="i_attn">مخاطب</label><input id="i_attn" placeholder="جناب آقای مهندس ..."></div>
+      <div class="f"><label for="i_hon">عنوان (فقط روی پیش‌فاکتور)</label><select id="i_hon"><option value="جناب آقای">جناب آقای</option><option value="سرکار خانم">سرکار خانم</option><option value="">بدون عنوان</option></select></div>
+      <div class="f"><label for="i_attn">نام مخاطب</label><input id="i_attn" placeholder="نام و نام‌خانوادگی، مثلاً مهندس رضایی"></div>
       <div class="f"><label for="i_phone">تلفن تماس</label><input id="i_phone" class="num"></div>
       <div class="f"><label for="i_prov">استان</label><input id="i_prov"></div>
       <div class="f"><label for="i_city">شهر</label><input id="i_city"></div>
@@ -1906,7 +1907,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.29.0</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.30.0</footer>
 </div>
 
 
@@ -2282,6 +2283,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
   function ago(ts){if(!ts)return '';var m=Math.round((Date.now()-ts)/6e4);if(m<2)return 'همین حالا';if(m<60)return fa(m)+' دقیقه پیش';var h=Math.round(m/60);if(h<24)return fa(h)+' ساعت پیش';var d=Math.round(h/24);if(d<30)return fa(d)+' روز پیش';return fa(Math.round(d/30))+' ماه پیش'}
   function short(ts){if(!ts)return '';var d=Math.floor((Date.now()-ts)/DAY);if(d<=0)return 'امروز';if(d===1)return 'دیروز';if(d<30)return fa(d)+' روز';return fa(Math.round(d/30))+' ماه'}
   function money(n){n=+n||0;if(n>=1e9)return fa((Math.round(n/1e8)/10).toString().replace('.','٫'))+' میلیارد';if(n>=1e6)return fa(Math.round(n/1e6))+' میلیون';return n?fa(n.toLocaleString('en-US')):''}
+  function plain(n){return String(n||'').replace(/^\s*(جناب\s+آقای|جناب\s+خانم|سرکار\s+خانم|جناب|سرکار|آقای|خانم)\s+/,'').trim()}
   function ini(n){n=String(n||'?').trim();return n.charAt(0)||'?'}
   var COLS=['#0E3A66','#0B7A72','#7A3FA0','#B45309','#2F6B3A','#A3243A','#35507F','#6B4E16'];
   function colr(n){var h=0;String(n).split('').forEach(function(c){h=(h*31+c.charCodeAt(0))>>>0});return COLS[h%COLS.length]}
@@ -2297,7 +2299,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
       var last=0;calls.forEach(function(c){if(c.ts>last)last=c.ts});invs.forEach(function(v){last=Math.max(last,v.sentTs||0,v.ts||0)});if(lead)last=Math.max(last,lead.stTs||0,lead.created||0);if(f)last=Math.max(last,f.ts||0);
       var open=lead&&(lead.stage==='sent'||lead.stage==='talk'),urg=0;
       if(open){urg=1;if(lead.next&&lead.next<t)urg=3;else if(lead.next&&lead.next===t)urg=2}
-      return {id:id,f:f,lead:lead,name:(f&&f.name)||lead.name||'بی‌نام',ph:ph,phone:(f&&(f.phone||(f.persona&&f.persona.phone)))||(lead&&lead.phone)||'',calls:calls,objs:objs,invs:invs,last:last,urg:urg,stage:lead?lead.stage:''};
+      return {id:id,f:f,lead:lead,name:plain((f&&f.name)||lead.name)||'بی‌نام',info:(f&&f.info)||{},ph:ph,phone:(f&&(f.phone||(f.persona&&f.persona.phone)))||(lead&&lead.phone)||'',calls:calls,objs:objs,invs:invs,last:last,urg:urg,stage:lead?lead.stage:''};
     }
     F.forEach(function(f){var ph=phs((f.persona&&f.persona.phone)||'').concat(phs(f.phone||'')),lead=null;
       L.forEach(function(l){if(l.cid===f.id||(ph.length&&p10(l.phone)&&ph.indexOf(p10(l.phone))>=0)){if(!lead||(l.created||0)>(lead.created||0))lead=l}});
@@ -2308,10 +2310,12 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
   }
 
   var flt='all',q='',cur=null,ROWS=[];
-  var FL=[['all','همه'],['act','نیازمند اقدام'],['talk','در مذاکره'],['sent','پیش‌فاکتور رفته'],['won','برنده']];
+  var FL=[['all','همه'],['new','سرنخ‌های تازه'],['act','نیازمند اقدام'],['talk','در مذاکره'],['sent','پیش‌فاکتور رفته'],['won','برنده']];
+  function isNew(r){return !!(r.info&&r.info.src&&!r.lead&&!r.calls.some(function(c){return c.outcome!==MSG}))}
   function stChip(r){
     if(r.urg===3)return '<span class="cu-ch cu-r">عقب‌افتاده</span>';
     if(r.urg===2)return '<span class="cu-ch cu-a">امروز</span>';
+    if(isNew(r))return '<span class="cu-ch cu-a">سرنخ'+(r.info.src?' · '+esc(r.info.src):'')+'</span>';
     if(r.stage)return '<span class="cu-ch cu-'+(r.stage==='won'?'g':r.stage==='lost'?'z':'n')+'">'+STG[r.stage]+'</span>';
     return '';
   }
@@ -2324,10 +2328,11 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
   }
   function matches(r){
     if(flt==='act'&&r.urg<2)return false;
+    if(flt==='new'&&!isNew(r))return false;
     if(flt==='talk'&&r.stage!=='talk')return false;
     if(flt==='sent'&&r.stage!=='sent')return false;
     if(flt==='won'&&r.stage!=='won')return false;
-    if(q){var s=en(q).toLowerCase(),dq=s.replace(/\D/g,'');if(r.name.toLowerCase().indexOf(s)<0&&!(dq.length>=3&&r.ph.some(function(p){return p.indexOf(dq)>=0||p.slice(-dq.length)===dq})))return false}
+    if(q){var s=en(q).toLowerCase(),dq=s.replace(/\D/g,'');if(r.name.toLowerCase().indexOf(s)<0&&String((r.info.co||'')+' '+(r.info.src||'')+' '+(r.info.city||'')).toLowerCase().indexOf(s)<0&&!(dq.length>=3&&r.ph.some(function(p){return p.indexOf(dq)>=0||p.slice(-dq.length)===dq})))return false}
     return true;
   }
   function row(r){
@@ -2338,13 +2343,106 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
   function renderList(){
     var el=$('cuBody');if(!el)return;
     ROWS=build();
-    var h='<div class="cu-sr"><input id="cuQ" type="search" autocomplete="off" placeholder="جستجو: نام یا ۴ رقم آخر شماره" aria-label="جستجوی مشتری" value="'+esc(q)+'"></div>'
+    var h='<div class="cu-imb"><button type="button" class="cu-b" data-cu-imp>⬆ ورود از اکسل</button></div><div class="cu-sr"><input id="cuQ" type="search" autocomplete="off" placeholder="جستجو: نام یا ۴ رقم آخر شماره" aria-label="جستجوی مشتری" value="'+esc(q)+'"></div>'
       +'<div class="cu-fl" role="group" aria-label="فیلتر">'+FL.map(function(f){return '<button type="button" data-cf="'+f[0]+'" aria-pressed="'+(flt===f[0])+'">'+f[1]+'</button>'}).join('')+'</div>';
     var list=ROWS.filter(matches);
     h+=list.length?'<div class="cu-list">'+list.map(row).join('')+'</div>':'<p class="hint cu-empty">'+(ROWS.length?'مشتری با این فیلتر پیدا نشد.':'هنوز مشتری یا پوشه‌ای نداری. با دکمه‌ی «+» پایین یک مشتری یا سرنخ تازه بساز.')+'</p>';
     el.innerHTML=h;
   }
 
+
+  /* ---- ۱۱.۳۰: ورود مشتریان از اکسل و ویرایش مشتری ---- */
+  var mode='',IMP=null;
+  var COLSX=[['name','نام و نام‌خانوادگی'],['co','شرکت / مزرعه'],['phone','موبایل (اجباری)'],['phone2','تلفن دوم'],['prov','استان'],['city','شهر'],['act','نوع فعالیت'],['halls','تعداد سالن'],['src','منبع (مثلاً نمایشگاه ۴۰۵)'],['next','تاریخ پیگیری'],['note','یادداشت']];
+  function nrm(s){return String(s==null?'':s).replace(/ي/g,'ی').replace(/ك/g,'ک').replace(/[ \t\r\n]+/g,' ').trim()}
+  function normPhone(v){var d=en(v).replace(/\D/g,'');if(d.indexOf('0098')===0)d='0'+d.slice(4);else if(d.indexOf('98')===0&&d.length===12)d='0'+d.slice(2);else if(d.length===10&&d.charAt(0)==='9')d='0'+d;return(d.length===11&&d.charAt(0)==='0')?d:''}
+  var HR=[['phone2',/دوم|ثابت/],['phone',/موبایل|همراه|تلفن|شماره/],['prov',/استان/],['city',/شهر/],['act',/فعالیت|نوع/],['halls',/سالن/],['src',/منبع|نمایشگاه/],['next',/پیگیری|تاریخ/],['note',/یادداشت|توضیح/],['co',/شرکت|مزرعه|واحد/],['name',/نام|مشتری/]];
+  function mapHead(row){var m={};row.forEach(function(h,i){h=nrm(h).replace(/\u200c/g,' ');if(!h)return;for(var k=0;k<HR.length;k++){if(HR[k][1].test(h)&&m[HR[k][0]]==null){m[HR[k][0]]=i;break}}});return m}
+  async function inflate(u8){var ds=new DecompressionStream('deflate-raw'),w=ds.writable.getWriter();w.write(u8);w.close();return new Uint8Array(await new Response(ds.readable).arrayBuffer())}
+  async function readXlsx(buf){
+    var u=new Uint8Array(buf),dv=new DataView(buf),i=u.length-22;while(i>=0&&dv.getUint32(i,true)!==0x06054b50)i--;if(i<0)throw new Error('zip');
+    var n=dv.getUint16(i+10,true),off=dv.getUint32(i+16,true),files={},TD=new TextDecoder();
+    for(var k=0;k<n;k++){var nl=dv.getUint16(off+28,true),el=dv.getUint16(off+30,true),cl=dv.getUint16(off+32,true);files[TD.decode(u.subarray(off+46,off+46+nl))]={m:dv.getUint16(off+10,true),c:dv.getUint32(off+20,true),o:dv.getUint32(off+42,true)};off+=46+nl+el+cl}
+    async function rd(nm){var f=files[nm];if(!f)return null;var ln=dv.getUint16(f.o+26,true),le=dv.getUint16(f.o+28,true),st=f.o+30+ln+le,d=u.subarray(st,st+f.c);return TD.decode(f.m===0?d:await inflate(d))}
+    var sheetName=Object.keys(files).filter(function(x){return /^xl\/worksheets\/sheet\d+\.xml$/.test(x)}).sort()[0];if(!sheetName)throw new Error('sheet');
+    var P=new DOMParser(),ss=[],sx=await rd('xl/sharedStrings.xml');
+    if(sx){var sd=P.parseFromString(sx,'application/xml');Array.prototype.forEach.call(sd.getElementsByTagName('si'),function(si){var t='';Array.prototype.forEach.call(si.getElementsByTagName('t'),function(x){t+=x.textContent});ss.push(t)})}
+    var d=P.parseFromString(await rd(sheetName),'application/xml'),rows=[];
+    Array.prototype.forEach.call(d.getElementsByTagName('row'),function(r){var arr=[];Array.prototype.forEach.call(r.getElementsByTagName('c'),function(c){
+      var ref=c.getAttribute('r')||'',m=ref.match(/^([A-Z]+)/),ci=0;if(m)for(var j=0;j<m[1].length;j++)ci=ci*26+m[1].charCodeAt(j)-64;ci=ci?ci-1:arr.length;
+      var t=c.getAttribute('t'),v=c.getElementsByTagName('v')[0],val='';
+      if(t==='s')val=v?ss[+v.textContent]||'':'';else if(t==='inlineStr'){val=c.textContent}else val=v?v.textContent:'';
+      arr[ci]=val});rows.push(arr)});
+    return rows}
+  function readCsv(txt){txt=txt.replace(/^﻿/,'');var rows=[],row=[],cur='',q=false,sep=(txt.split('\n')[0].split(';').length>txt.split('\n')[0].split(',').length)?';':',';
+    for(var i=0;i<txt.length;i++){var ch=txt[i];if(q){if(ch==='"'){if(txt[i+1]==='"'){cur+='"';i++}else q=false}else cur+=ch}else if(ch==='"')q=true;else if(ch===sep){row.push(cur);cur=''}else if(ch==='\n'||ch==='\r'){if(ch==='\r'&&txt[i+1]==='\n')i++;row.push(cur);rows.push(row);row=[];cur=''}else cur+=ch}
+    if(cur!==''||row.length){row.push(cur);rows.push(row)}return rows}
+  function nextISO(v){v=String(v==null?'':v).trim();if(!v)return '';if(/^\d{5}(\.\d+)?$/.test(v)){var d=new Date(Math.round((+v-25569)*864e5));return d.getUTCFullYear()+'-'+('0'+(d.getUTCMonth()+1)).slice(-2)+'-'+('0'+d.getUTCDate()).slice(-2)}var j=J();return j?(j.parseJ(v)||''):''}
+  function existingKeys(){var k={};ls('payesh-folders').forEach(function(f){phs((f.persona&&f.persona.phone)||'').concat(phs(f.phone||'')).forEach(function(x){k[x]=1})});ls('payesh-leads').forEach(function(l){phs(l.phone||'').forEach(function(x){k[x]=1})});return k}
+  function analyse(rows,defSrc){
+    var hi=-1,m=null;for(var i=0;i<Math.min(rows.length,10);i++){var mm=mapHead(rows[i]||[]);if(mm.phone!=null){hi=i;m=mm;break}}
+    if(hi<0)return {err:'ستون «موبایل» پیدا نشد. از نمونه‌ی خود برنامه استفاده کن و ردیف اول را (عنوان ستون‌ها) تغییر نده.'};
+    var seen=existingKeys(),ok=[],dup=[],bad=[];
+    rows.slice(hi+1).forEach(function(r,ix){
+      if(!r||!r.some(function(x){return nrm(x)}))return;
+      function g(k){return m[k]==null?'':nrm(r[m[k]])}
+      var ph=normPhone(g('phone')),name=plain(g('name'))||g('co'),o={line:hi+ix+2,name:name,phone:ph,info:{co:g('co'),phone2:normPhone(g('phone2'))||g('phone2'),prov:g('prov'),city:g('city'),act:g('act'),halls:g('halls'),src:g('src')||defSrc,note:g('note')},next:nextISO(m.next==null?'':r[m.next])};
+      if(!ph){o.why=g('phone')?'شماره معتبر نیست':'شماره ندارد';bad.push(o);return}
+      if(!name){o.why='نام ندارد';bad.push(o);return}
+      var k=ph.slice(-10);if(seen[k]){o.why='تکراری';dup.push(o);return}
+      seen[k]=1;ok.push(o)});
+    return {ok:ok,dup:dup,bad:bad}}
+  function renderImp(){
+    var el=$('cuBody');if(!el)return;
+    var h='<div class="cu-top"><button type="button" class="cu-back" data-cu-cancel aria-label="بازگشت">›</button><span class="cu-hdr">ورود مشتریان از اکسل</span></div>'
+      +'<section class="cu-card"><div class="cu-ct"><b>۱. نمونه را بگیر</b></div><p class="hint">فقط ستون «موبایل» اجباری است. بقیه را هر چقدر داری پر کن. ردیف اول را تغییر نده.</p><button type="button" class="cu-b" data-cu-tpl style="width:100%">دانلود نمونه‌ی اکسل</button></section>'
+      +'<section class="cu-card"><div class="cu-ct"><b>۲. فایل پرشده را بده</b></div><label class="hint" for="impSrc">منبع کلی (برای ردیف‌هایی که ستون منبعشان خالی است)</label><input id="impSrc" class="cu-in" placeholder="مثلاً نمایشگاه ۴۰۵" value="'+esc(IMP&&IMP.src||'')+'"><input id="impFile" type="file" accept=".xlsx,.csv" class="cu-in" style="margin-top:8px"></section>';
+    if(IMP&&IMP.err)h+='<section class="cu-card cu-bad">'+esc(IMP.err)+'</section>';
+    if(IMP&&IMP.res){var R=IMP.res;
+      h+='<section class="cu-card"><div class="cu-ct"><b>۳. پیش‌نمایش</b></div><div class="cu-kp"><div><b>'+fa(R.ok.length)+'</b><small>تازه</small></div><div><b>'+fa(R.dup.length)+'</b><small>تکراری</small></div><div><b>'+fa(R.bad.length)+'</b><small>نامعتبر</small></div></div>'
+        +(R.ok.length?'<dl class="cu-dl">'+R.ok.slice(0,5).map(function(o){return '<dt>'+esc(o.name)+'</dt><dd>'+esc(fa(o.phone))+(o.info.src?' · '+esc(o.info.src):'')+'</dd>'}).join('')+'</dl>'+(R.ok.length>5?'<p class="hint">و '+fa(R.ok.length-5)+' مورد دیگر</p>':''):'')
+        +(R.bad.length?'<p class="hint">نامعتبرها وارد نمی‌شوند: '+R.bad.slice(0,6).map(function(o){return 'ردیف '+fa(o.line)+' ('+o.why+')'}).join('، ')+'</p>':'')
+        +(R.dup.length?'<p class="hint">تکراری‌ها (شماره‌شان قبلاً در مشتریان یا پیگیری هست) وارد نمی‌شوند.</p>':'')
+        +(R.ok.length?'<button type="button" class="cu-b pri" data-cu-do style="width:100%">وارد کردن '+fa(R.ok.length)+' مشتری</button>':'')+'</section>'}
+    el.innerHTML=h}
+  document.addEventListener('change',function(e){
+    if(!e.target||e.target.id!=='impFile')return;var f=e.target.files&&e.target.files[0];if(!f)return;
+    var src=($('impSrc')&&$('impSrc').value.trim())||f.name.replace(/\.[^.]+$/,'');
+    (async function(){try{var rows=/\.csv$/i.test(f.name)?readCsv(await f.text()):await readXlsx(await f.arrayBuffer());IMP={src:src,res:analyse(rows,src)};if(IMP.res.err){IMP.err=IMP.res.err;IMP.res=null}}catch(x){IMP={src:src,err:'خواندن فایل ممکن نشد. فایل باید .xlsx یا .csv باشد.'}}renderImp();if($('impSrc'))$('impSrc').value=src})()});
+  function saveLeadsArr(a){try{localStorage.setItem('payesh-leads',JSON.stringify(a))}catch(e){}}
+  function doImport(){
+    if(!IMP||!IMP.res||!IMP.res.ok.length||!window.__cust)return;var ok=IMP.res.ok,ids=window.__cust.addMany(ok.map(function(o){return {name:o.name,phone:o.phone,info:o.info}}));
+    var withNext=[];ok.forEach(function(o,i){if(o.next)withNext.push({o:o,id:ids[i]})});
+    if(withNext.length){var L=ls('payesh-leads'),now=Date.now();withNext.forEach(function(x){L.push({id:'i'+now.toString(36)+Math.random().toString(36).slice(2,6),name:x.o.name,phone:x.o.phone,amount:0,stage:'talk',reason:'',next:x.o.next,time:'',note:(x.o.info.src?'['+x.o.info.src+'] ':'')+(x.o.info.note||'سرنخ'),cid:x.id,created:now,stTs:now,fdone:false})});saveLeadsArr(L)}
+    var n=ok.length,nn=ok.filter(function(o){return !o.next}).length;IMP=null;mode='';flt=nn?'new':'all';cur=null;render();try{if(window.__crmRefresh)window.__crmRefresh()}catch(e){}
+    var t=$('toast');if(t){t.textContent=fa(n)+' مشتری وارد شد.'+(nn?' '+fa(nn)+' مورد در «سرنخ‌های تازه» است؛ بعد از اولین تماس و ثبت پیگیری به بخش پیگیری می‌رود.':'')+(n-nn?' '+fa(n-nn)+' مورد با تاریخ پیگیری در تقویم/پیگیری ثبت شد.':'');t.hidden=false;setTimeout(function(){t.hidden=true},5000)}}
+  async function tplDown(){
+    var sample=[['علی رضایی','مرغداری سبز دشت','09121234567','','البرز','کرج','مرغ گوشتی','4','نمایشگاه ۴۰۵','','سؤال درباره‌ی تهویه داشت']];
+    try{
+      if(!window.ExcelJS)throw 0;
+      var wb=new ExcelJS.Workbook(),ws=wb.addWorksheet('مشتریان',{views:[{rightToLeft:true}]});
+      ws.addRow(COLSX.map(function(c){return c[1]}));sample.forEach(function(r){ws.addRow(r)});
+      ws.getRow(1).font={bold:true};ws.columns.forEach(function(c){c.width=20});
+      var buf=await wb.xlsx.writeBuffer(),b=new Blob([buf],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});dl(b,'نمونه-ورود-مشتریان.xlsx')
+    }catch(e){
+      var csv='﻿'+[COLSX.map(function(c){return c[1]})].concat(sample).map(function(r){return r.map(function(v){return '"'+String(v).replace(/"/g,'""')+'"'}).join(',')}).join('\r\n');
+      dl(new Blob([csv],{type:'text/csv;charset=utf-8'}),'نمونه-ورود-مشتریان.csv')}}
+  function dl(b,n){var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=n;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},1500)}
+  var EF=[['name','نام و نام‌خانوادگی'],['co','شرکت / مزرعه'],['phone','موبایل'],['phone2','تلفن دوم'],['prov','استان'],['city','شهر'],['act','نوع فعالیت'],['halls','تعداد سالن'],['src','منبع'],['note','یادداشت']];
+  function renderEdit(r){
+    var el=$('cuBody');if(!el)return;var I=r.info||{},v={name:r.name,phone:r.phone,co:I.co,phone2:I.phone2,prov:I.prov,city:I.city,act:I.act,halls:I.halls,src:I.src,note:I.note};
+    el.innerHTML='<div class="cu-top"><button type="button" class="cu-back" data-cu-cancel aria-label="انصراف">›</button><span class="cu-hdr">ویرایش مشتری</span></div><section class="cu-card">'
+      +EF.map(function(f){return '<label class="hint" for="ce_'+f[0]+'">'+f[1]+'</label><input class="cu-in" id="ce_'+f[0]+'" value="'+esc(v[f[0]]||'')+'"'+(f[0]==='phone'||f[0]==='phone2'||f[0]==='halls'?' inputmode="tel"':'')+'>'}).join('')
+      +'<p class="hint">«جناب آقای» فقط روی پیش‌فاکتور اضافه می‌شود؛ اینجا نام و نام‌خانوادگی ساده بنویس.</p><div style="display:flex;gap:8px"><button type="button" class="cu-b pri" data-cu-save style="flex:1">ذخیره</button><button type="button" class="cu-b" data-cu-cancel style="flex:1">انصراف</button></div></section>';
+    el.dataset.rid=r.id}
+  function saveEdit(){
+    var el=$('cuBody'),r=ROWS.filter(function(x){return x.id===(el&&el.dataset.rid)})[0];if(!r)return;
+    function g(k){var e=$('ce_'+k);return e?nrm(e.value):''}
+    var name=plain(g('name')),ph=normPhone(g('phone'))||g('phone');if(!name){alert('نام را بنویس.');return}
+    var info={co:g('co'),phone2:g('phone2'),prov:g('prov'),city:g('city'),act:g('act'),halls:g('halls'),src:g('src'),note:g('note')};
+    if(r.f&&window.__cust)window.__cust.update(r.f.id,{name:name,phone:ph,info:info});
+    var L=ls('payesh-leads'),ch=false;L.forEach(function(l){if((r.lead&&l.id===r.lead.id)||(r.f&&l.cid===r.f.id)){l.name=name;if(ph)l.phone=ph;if(!r.f&&info.note)l.note=info.note;ch=true}});if(ch)saveLeadsArr(L);
+    mode='';cur=r.id;render();try{if(window.__crmRefresh)window.__crmRefresh()}catch(e){}}
   var QS={farmType:'الان چه نوع پرورشی دارید و ظرفیت هر سالن چقدر است؟',halls:'چند سالن فعال دارید؟',decider:'تصمیم خرید با چه کسی است؟',problems:'بزرگ‌ترین مشکل سالن در این فصل چیست؟',when:'برای چه زمانی به این تجهیزات نیاز دارید؟'};
   var QL={farmType:'نوع پرورش',halls:'تعداد سالن',decider:'تصمیم‌گیر',problems:'مسئله‌ی اصلی',when:'زمان نیاز'};
   function empty(v){return v==null||v===''||(Array.isArray(v)&&!v.length)}
@@ -2361,6 +2459,8 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
   function secSum(r,p,lc,miss){
     var nCalls=r.calls.filter(function(c){return c.outcome!==MSG}).length,nSent=r.invs.filter(function(v){return v.sentTs}).length;
     var h='<div class="cu-kp"><div><b>'+fa(nCalls)+'</b><small>تماس</small></div><div><b>'+fa(r.invs.length)+'</b><small>پیش‌فاکتور</small></div><div><b>'+fa(nSent)+'</b><small>ارسال‌شده</small></div><div><b>'+fa(r.objs.length)+'</b><small>اعتراض</small></div></div>';
+    var I=r.info||{},ir=[['شرکت / مزرعه',I.co],['تلفن دوم',I.phone2],['استان',I.prov],['شهر',I.city],['نوع فعالیت',I.act],['تعداد سالن',I.halls],['منبع',I.src],['یادداشت',I.note]].filter(function(x){return x[1]});
+    if(ir.length)h+='<section class="cu-card"><div class="cu-ct"><b>اطلاعات مشتری</b><button type="button" class="cu-b" data-cu-edit style="min-height:34px;padding:0 12px">ویرایش</button></div><dl class="cu-dl">'+ir.map(function(x){return '<dt>'+x[0]+'</dt><dd>'+esc(x[1])+'</dd>'}).join('')+'</dl></section>';
     h+='<section class="cu-card"><div class="cu-ct"><b>قبل از تماس</b><small>فقط از اطلاعات ثبت‌شده</small></div><dl class="cu-dl">'
       +'<dt>آخرین مکالمه</dt><dd>'+(lc?esc(lc.outcome||'')+' · '+ago(lc.ts)+(lc.note?'<br><small>'+esc(String(lc.note).slice(0,90))+'</small>':''):'تماسی ثبت نشده')+'</dd>'
       +'<dt>مسئله‌ی اصلی</dt><dd>'+(p&&!empty(p.problems)?esc(p.problems.join('، ')):'<span class="cu-un">نامشخص</span>')+'</dd>'
@@ -2414,14 +2514,14 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
     var bar=tabsBar(r);if(ftab==='calc'&&!r.calcs.length)ftab='sum';
     var h='<div class="cu-top"><button type="button" class="cu-back" data-cu-back aria-label="بازگشت به فهرست مشتریان">›</button><span class="cu-hdr">پرونده</span></div>'
       +'<div class="cu-head"><span class="cu-av cu-big'+(r.urg?' cu-ring'+r.urg:'')+'" style="background:'+colr(r.name)+'">'+esc(ini(r.name))+'</span><div class="cu-hn"><b>'+esc(r.name)+'</b><small>'+esc([p&&p.farmType,phone?fa(phone):''].filter(Boolean).join(' · ')||'اطلاعات پایه ثبت نشده')+'</small></div>'+stChip(r)+'</div>'
-      +'<div class="cu-act">'+(phone?'<a class="cu-b pri" href="tel:'+phone+'" data-call="'+phone+'" data-name="'+esc(r.name)+'" data-cid="'+esc(r.f?r.f.id:'')+'">تماس</a><a class="cu-b" href="https://wa.me/'+wa+'" target="_blank" rel="noopener">واتس‌اپ</a>':'')+'</div>'
+      +'<div class="cu-act">'+(phone?'<a class="cu-b pri" href="tel:'+phone+'" data-call="'+phone+'" data-name="'+esc(r.name)+'" data-cid="'+esc(r.f?r.f.id:'')+'">تماس</a><a class="cu-b" href="https://wa.me/'+wa+'" target="_blank" rel="noopener">واتس‌اپ</a>':'')+'<button type="button" class="cu-b" data-cu-edit>ویرایش</button></div>'
       +bar;
     h+='<div class="cu-sec" role="tabpanel">'+(ftab==='inv'?secInv(r):ftab==='calc'?secCalc(r):ftab==='per'?secPer(r,p):ftab==='his'?secHis(r):secSum(r,p,lc,miss))+'</div>';
     el.innerHTML=h;
   }
-  function render(){var r=null;if(cur){ROWS=build();ROWS.forEach(function(x){if(x.id===cur)r=x})}
+  function render(){if(mode)return;var r=null;if(cur){ROWS=build();ROWS.forEach(function(x){if(x.id===cur)r=x})}
     if(r)renderFile(r);else{cur=null;renderList()}}
-  function openCust(id){cur=id;ftab='sum';var tb=$('tabQ');if(tb&&$('paneQ').hidden)tb.click();render();try{window.scrollTo(0,0)}catch(e){}}
+  function openCust(id){mode='';cur=id;ftab='sum';var tb=$('tabQ');if(tb&&$('paneQ').hidden)tb.click();render();try{window.scrollTo(0,0)}catch(e){}}
 
   /* ---- استوری‌های صفحه‌ی اصلی ---- */
   function stories(){
@@ -2441,7 +2541,13 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
     var t=e.target;if(!t.closest)return;
     var b;
     if((b=t.closest('[data-cu]'))){e.preventDefault();openCust(b.getAttribute('data-cu'));return}
-    if(t.closest('[data-cu-back]')){cur=null;render();return}
+    if(t.closest('[data-cu-back]')){mode='';cur=null;render();return}
+    if(t.closest('[data-cu-imp]')){mode='imp';IMP=null;renderImp();return}
+    if(t.closest('[data-cu-tpl]')){tplDown();return}
+    if(t.closest('[data-cu-do]')){doImport();return}
+    if(t.closest('[data-cu-edit]')){var re=ROWS.filter(function(x){return x.id===cur})[0];if(re){mode='edit';renderEdit(re)}return}
+    if(t.closest('[data-cu-save]')){saveEdit();return}
+    if(t.closest('[data-cu-cancel]')){mode='';render();return}
     if(t.closest('[data-cu-all]')){cur=null;flt='act';go('Q');render();return}
     if((b=t.closest('[data-cf]'))){flt=b.getAttribute('data-cf');renderList();return}
     if((b=t.closest('[data-ct]'))){ftab=b.getAttribute('data-ct');render();return}
@@ -2574,7 +2680,7 @@ var DEFNOTES='*تمامی مبالغ درج شده در پیش‌فاکتور ب
 function insFor(v){v=String(v);return (v==='8'||v==='15')?{insSel:v,insX:''}:{insSel:'x',insX:v}}
 function defRows(){var o={};['host','p1','opa','ntc','ahs','outs','patrol','disp','junc','siren'].forEach(function(k){o[k]={qty:1}});return o}
 function fresh(){var c=CBY.tay;return {cust:'tay',rate:2700000,pct:c.pct,mpct:c.mpct,insSel:insFor(c.ins).insSel,insX:insFor(c.ins).insX,vat:10,rows:defRows(),
-  noAuto:true,inv:{no:newNo(),date:jalaliToday(),buyer:'',proj:'',attn:'',phone:'',prov:'',city:'',addr:'',country:'',farm:'',halls:'',dim:'',hg:null,gap:'',wallh:'',axh:'',pay:'',valid:'۲۴ ساعت',validTxt:'',sales:'09936095952-09936095953',notes:DEFNOTES}}}
+  noAuto:true,inv:{no:newNo(),date:jalaliToday(),buyer:'',proj:'',attn:'',hon:'جناب آقای',phone:'',prov:'',city:'',addr:'',country:'',farm:'',halls:'',dim:'',hg:null,gap:'',wallh:'',axh:'',pay:'',valid:'۲۴ ساعت',validTxt:'',sales:'09936095952-09936095953',notes:DEFNOTES}}}
 var S=fresh();
 try{var raw=localStorage.getItem(KEY);if(raw){var j=JSON.parse(raw);if(j&&j.rows&&j.inv){S=Object.assign(fresh(),j);var f0=fresh().inv;S.inv=Object.assign(f0,j.inv);Object.keys(S.inv).forEach(function(k){if(!(k in fresh().inv))delete S.inv[k]})}}}catch(e){}
 /* تاریخ: تا وقتی دستی عوض نشده، همیشه امروز (شمسی) است */
@@ -2634,7 +2740,7 @@ function cabAutoRows(){var changed=false,cc=cabCalc(),h=$('cabHint');if(h)h.text
     if(r&&r.cabAuto){if(r.qtyManual)return;if(v>0){if(num(r.qty)!==v)r.qty=v}else{delete S.rows[id];changed=true}}
     else if(!r&&v>0&&!(S.cabOff&&S.cabOff[id])){S.rows[id]={qty:v,auto:true,cabAuto:true};changed=true}});return changed}
 function sync(){var changed=false;CAT.forEach(function(it){if(!it.from)return;var s=parentsQty(it),r=S.rows[it.id];
-  if(s>0&&!r){S.rows[it.id]={auto:true,qty:s};changed=true}
+  if(s>0&&!r){if(S.cabOff&&S.cabOff[it.id])return;S.rows[it.id]={auto:true,qty:s};changed=true}
   else if(r){if(!r.qtyManual||LOCKED[it.id])r.qty=s;if(s===0&&r.auto&&!r.qtyManual){delete S.rows[it.id];changed=true}}});if(cabAutoRows())changed=true;return changed}
 function cust(){return CBY[S.cust]||CBY.none}
 function insPct(){return S.insSel==='x'?Math.max(0,num(S.insX)):num(S.insSel)}
@@ -2676,7 +2782,7 @@ function renderSettings(){
   $('cust').value=S.cust;$('rate').value=fmt(num(S.rate));$('pct').value=S.pct;$('mpct').value=S.mpct;$('vat').value=S.vat;
   if(S.insSel==='18'){S.insSel='15';S.insX=''}if(['8','15','x'].indexOf(S.insSel)<0){var z=insFor(cust().ins);S.insSel=z.insSel;S.insX=z.insX}$('ins').value=S.insSel;$('insx').hidden=S.insSel!=='x';$('insx').value=S.insX||'';
   $('custHint').textContent=cust().hint;$('custHint').style.color='';
-  var inv=S.inv;['no','date','buyer','proj','attn','phone','prov','city','addr','country','farm','halls','dim','gap','wallh','axh','pay','valid','validTxt','sales','notes'].forEach(function(k){$('i_'+k).value=inv[k]||''});hgRender();gapHint();
+  var inv=S.inv;['no','date','buyer','proj','attn','hon','phone','prov','city','addr','country','farm','halls','dim','gap','wallh','axh','pay','valid','validTxt','sales','notes'].forEach(function(k){$('i_'+k).value=inv[k]||''});hgRender();gapHint();
 }
 function renderPicker(){
   var q=$('q').value.trim(),h='';
@@ -2774,7 +2880,7 @@ $('nextInv').addEventListener('click',function(){pfCommit();S.noAuto=true;update
 $('autoInv').addEventListener('click',function(){S.noAuto=true;updateNo();save()});
 $('q').addEventListener('input',renderPicker);
 $('picker').addEventListener('click',function(e){var b=e.target.closest('[data-add]');if(!b)return;var id=b.dataset.add;
-  if(S.rows[id]){delete S.rows[id];S.cabOff=S.cabOff||{};S.cabOff[id]=1}else{if(S.cabOff)delete S.cabOff[id];var it=BY[id];S.rows[id]={qty:it.from?parentsQty(it)||1:1};if(it.usd==null){try{var dm0=JSON.parse(localStorage.getItem('payesh-mkdef')||'{}');if(dm0[id]!=null&&dm0[id]!=='')S.rows[id].mk=dm0[id]}catch(e){}}if(it.price0)S.rows[id].priceOv=it.price0;if(it.from&&!LOCKED[id])S.rows[id].qtyManual=!parentsQty(it)}
+  if(S.rows[id]){delete S.rows[id];S.cabOff=S.cabOff||{};S.cabOff[id]=1}else{if(S.cabOff){delete S.cabOff[id];CAT.forEach(function(c){if(c.from&&c.from.indexOf(id)>=0)delete S.cabOff[c.id]})}var it=BY[id];S.rows[id]={qty:it.from?parentsQty(it)||1:1};if(it.usd==null){try{var dm0=JSON.parse(localStorage.getItem('payesh-mkdef')||'{}');if(dm0[id]!=null&&dm0[id]!=='')S.rows[id].mk=dm0[id]}catch(e){}}if(it.price0)S.rows[id].priceOv=it.price0;if(it.from&&!LOCKED[id])S.rows[id].qtyManual=!parentsQty(it)}
   sync();renderRows();renderPicker();if(id==='wload'&&S.rows[id]){var ci=$('tbl').querySelector('[data-cap="wload"]');if(ci)ci.focus()}});
 $('clear').addEventListener('click',function(){if(!Object.keys(S.rows).length)return;if(this.dataset.arm){S.rows={};delete this.dataset.arm;this.textContent='پاک کردن همه';renderRows();renderPicker();return}
   this.dataset.arm='1';this.textContent='مطمئنید؟ دوباره بزنید';var b=this;setTimeout(function(){delete b.dataset.arm;b.textContent='پاک کردن همه'},3000)});
@@ -2796,9 +2902,10 @@ function fname(ext,kind){var cl=function(s){return String(s||'').replace(/[\\\/:
 function nowBusy(btn,on){btn.disabled=on;if(on)btn.dataset.t=btn.textContent,btn.textContent='در حال ساخت…';else btn.textContent=btn.dataset.t||btn.textContent}
 
 var LOGO='data:image/png;base64,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';
+function honAttn(inv){var a=String(inv.attn||'').trim();if(!a)return '';if(/^(جناب|سرکار|آقای|خانم)/.test(a))return a;return (inv.hon?inv.hon+' ':'')+a}
 function costOf(c){var a=0,m=0,o=0;c.lines.forEach(function(l){var v=l.gross||0;if(l.g==='auto'||l.g==='weigh')a+=v;else if(l.g==='side')m+=v;else o+=v});return [a,m,o]}
 function buyerRows(inv){
-  var b1=['خریدار: '+(inv.buyer||'')+(inv.proj?' '+inv.proj:'')+(inv.attn?' - '+inv.attn:'')+(inv.phone?'  تلفن: '+inv.phone:''),'استان : '+(inv.prov||''),'شهر : '+(inv.city||'')+(String(inv.country||'').trim()?' - کشور : '+String(inv.country).trim():'')];
+  var b1=['خریدار: '+(inv.buyer||'')+(inv.proj?' '+inv.proj:'')+(inv.attn?' - '+honAttn(inv):'')+(inv.phone?'  تلفن: '+inv.phone:''),'استان : '+(inv.prov||''),'شهر : '+(inv.city||'')+(String(inv.country||'').trim()?' - کشور : '+String(inv.country).trim():'')];
   var b2=['نوع فارم : '+(inv.farm||''),'تعداد سالن : '+(inv.halls||''),'ابعاد سالن : '+(inv.dim||'')];
   return [b1,b2];
 }
@@ -2939,7 +3046,7 @@ $('bPrev').addEventListener('click',function(){pvOpen()});
 
 /* ---------- equipment list (no prices) ---------- */
 function listLines(){return calc().lines.filter(function(l){return !l.install&&l.qty>0})}
-function listHead(){var inv=S.inv;return {buyer:'خریدار: '+(inv.buyer||'')+(inv.proj?' '+inv.proj:''),attn:inv.attn||'',halls:[inv.halls?inv.halls+' سالن':'',inv.dim?'('+inv.dim+')':''].filter(Boolean).join(' '),date:inv.date}}
+function listHead(){var inv=S.inv;return {buyer:'خریدار: '+(inv.buyer||'')+(inv.proj?' '+inv.proj:''),attn:honAttn(inv),halls:[inv.halls?inv.halls+' سالن':'',inv.dim?'('+inv.dim+')':''].filter(Boolean).join(' '),date:inv.date}}
 function buildList(){
   var H=listHead(),L=listLines(),h='<div class="pv"><div class="hd"><div><h1>لیست تجهیزات</h1><div>پایش الکترونیک</div></div><div class="meta"><div>'+esc(H.buyer)+'</div>'+(H.attn?'<div>'+esc(H.attn)+'</div>':'')+'<div>'+esc(H.halls)+'</div><div>تاریخ: '+esc(H.date)+'</div></div></div>';
   h+='<table><thead><tr><th style="width:9%">ردیف</th><th>شرح کالا</th><th style="width:16%">تعداد</th><th style="width:14%">واحد</th></tr></thead><tbody>';
@@ -4075,7 +4182,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
       h+='<label class="lbl">کشور (فقط اگر ایران نیست)</label><input type="text" data-k="country" value="'+esc(cur.country||'')+'" placeholder="خالی = ایران">';
       h+='<label class="lbl">آدرس</label><input type="text" data-k="addr" value="'+esc(cur.addr||'')+'">';
       h+='<label class="lbl">پروژه (برای پیش‌فاکتور)</label><input type="text" data-k="proj" value="'+esc(cur.proj||'')+'" placeholder="مثلاً پروژه رهپویان">';
-      h+='<label class="lbl">مخاطب (برای پیش‌فاکتور)</label><input type="text" data-k="attn" value="'+esc(cur.attn||'')+'" placeholder="جناب آقای مهندس ...">';
+      h+='<label class="lbl">مخاطب (برای پیش‌فاکتور)</label><input type="text" data-k="attn" value="'+esc(cur.attn||'')+'" placeholder="نام و نام‌خانوادگی (عنوان خودکار روی پیش‌فاکتور)">';
       h+='<label class="lbl">نقش او در مجموعه</label>'+chipsH('role',['مالک','مدیر فارم','مهندس / دامپزشک','خریدار / نماینده','سایر'],cur.role,false,'data-k="role"');
       h+='<label class="lbl">نوع پرورش</label>'+chipsH('farmType',TYPES,cur.farmType,false,'data-k="farmType"');
     }else if(STEPS[step].id==='struct'){
@@ -4481,7 +4588,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
     ph.addEventListener('input',function(){var mine=phNums(this.value);if(!mine.length){last='';return}var key=mine.join(',');if(key===last)return;
       var hits=F.filter(function(f){return fPhones(f).some(function(p){return mine.indexOf(p)>=0})});if(!hits.length)return;last=key;
       var f=hits[0],p=f.persona||{},set=function(id,v){var e=$(id);if(!e)return;e.value=v;e.dispatchEvent(new Event('input',{bubbles:true}))};
-      set('i_buyer',f.name||p.name||'');set('i_prov',p.prov||'');set('i_city',p.city||'');set('i_addr',p.addr||'');set('i_country',p.country||'');set('i_proj',p.proj||'');set('i_attn',p.attn||'');if(p.farmType)set('i_farm',p.farmType)});
+      set('i_buyer',f.name||p.name||'');set('i_prov',p.prov||'');set('i_city',p.city||'');set('i_addr',p.addr||'');set('i_country',p.country||'');set('i_proj',p.proj||'');set('i_attn',String(p.attn||'').replace(/^(جناب\s+آقای|جناب|سرکار\s+خانم|آقای|خانم)\s+/,''));if(p.farmType)set('i_farm',p.farmType)});
   })();
   /* ===== برنامه‌ی امروز: اولویت تماس‌ها از روی پرسونا، قیف و تماس‌ها (قاعده‌های جزوه) ===== */
   var GK='payesh-goal';
@@ -4589,6 +4696,8 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
     all:function(){return F.map(function(f){return {id:f.id,name:f.name,phones:fPhones(f),phone:f.phone||'',farm:(f.persona&&f.persona.farmType)||'',invs:(f.invs||[]).map(function(v){return {title:v.title,ts:v.ts,id:v.id}})}})},
     open:function(id){if(!fById(id))return false;$('tabP').click();openId=id;view='folder';render();return true},
     add:function(name,phone){var f={id:uid(),name:name||phone||'مشتری جدید',ts:Date.now(),persona:null,phone:phone||'',invs:[],pl:null};F.unshift(f);saveF();if(view==='list')render();return f.id},
+    addMany:function(a){var ids=[],n=0;a.forEach(function(x){var f={id:uid()+(n++).toString(36),name:x.name,ts:Date.now(),persona:null,phone:x.phone||'',invs:[],pl:null,info:x.info||{}};F.unshift(f);ids.push(f.id)});saveF();if(view==='list')render();return ids},
+    update:function(id,patch){var f=fById(id);if(!f)return false;Object.keys(patch).forEach(function(k){if(k==='info')f.info=Object.assign({},f.info||{},patch.info);else f[k]=patch[k]});saveF();if(view==='list')render();return true},
     loadInvById:function(fid,iid,vi){var f=fById(fid);if(!f||!window.__proforma)return false;var rec=null;f.invs.forEach(function(v){if(v.id===iid)rec=v});if(!rec)return false;var sn=(vi>=0&&rec.old&&rec.old[vi])?rec.old[vi].snap:rec.snap;if(!sn)return false;try{window.__proforma.load(sn);$('tabI').click();return true}catch(e){return false}},
     loadInv:function(fid){var f=fById(fid);if(!f||!f.invs.length||!window.__proforma)return false;try{window.__proforma.load(f.invs[0].snap);$('tabI').click();return true}catch(e){return false}},
     day:function(){return DL}
@@ -5583,6 +5692,15 @@ html.zbarOn body{padding-top:36px}
 #paneI .picker .chip{display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:space-between!important;gap:4px;width:100%!important;min-height:62px!important;height:auto;box-sizing:border-box;padding:9px 12px!important;margin:0!important;border-radius:16px!important;text-align:start!important;font-size:13px!important;line-height:1.5;white-space:normal!important;word-break:break-word}
 #paneI .picker .chip small{display:block;font-size:11.5px;opacity:.75;direction:ltr;align-self:flex-end;font-variant-numeric:tabular-nums}
 #paneI .picker .chip[aria-pressed=true]{background:rgba(53,76,155,.14)!important;border-color:#354c9b!important;color:#2a3d85!important;font-weight:700}
+/* ۱۱.۳۰: خوانایی چیپ‌های انتخاب کالا (نسبت کنتراست ≥ ۴٫۵) */
+#paneI .picker .chip{color:#1b2440!important}
+#paneI .picker .chip small{opacity:1!important;color:#4a5470!important;font-weight:600}
+#paneI .picker .chip[aria-pressed=true]{background:#2a3d85!important;border-color:#2a3d85!important;color:#fff!important}
+#paneI .picker .chip[aria-pressed=true] small{color:#dfe5ff!important}
+:root[data-theme="dark"] #paneI .picker .chip{color:#eef1ff!important}
+:root[data-theme="dark"] #paneI .picker .chip small{color:#b9c1dd!important}
+:root[data-theme="dark"] #paneI .picker .chip[aria-pressed=true]{background:#4a60c8!important;border-color:#8ea0ff!important;color:#fff!important}
+:root[data-theme="dark"] #paneI .picker .chip[aria-pressed=true] small{color:#eef1ff!important}
 #paneI .picker .pgroup h3{margin:6px 0 8px}
 
 /* ۱۱.۲۱: فرم پیام مرحله‌ای */
@@ -5662,6 +5780,12 @@ body.dr-lock{overflow:hidden}
 :root[data-theme="dark"] .tm-g{background:#123a2b;color:#8fe0bb;border-color:#1c5a42}:root[data-theme="dark"] .tm-a{background:#3d3010;color:#f2cf75;border-color:#5a4718}:root[data-theme="dark"] .tm-r{background:#40161d;color:#f6a1ae;border-color:#6a2430}:root[data-theme="dark"] .tm-z{background:#1c2238;color:#a9b8ee;border-color:#2c3558}:root[data-theme="dark"] .tm-sum{background:#161b2e}
 
 /* ۱۱.۲۶: مشتریان، استوری، برگه‌ی افزودن و سبک مدرن */
+.cu-imb{padding:4px 0 0;display:flex}.cu-imb .cu-b{width:100%}
+.cu-in{width:100%;box-sizing:border-box;height:44px;border-radius:12px;border:1px solid var(--line,#d6dcea);background:var(--surface,#fff);color:var(--fg,#1b2440);font:inherit;font-size:14.5px;padding:0 12px;margin:2px 0 8px;display:block}
+input[type=file].cu-in{height:auto;padding:8px 10px}
+.cu-bad{color:#9b1c12;background:#fdecea;border-color:#f3b8b2}
+:root[data-theme="dark"] .cu-bad{color:#ffb4ab;background:#3a1714;border-color:#6a2c27}
+
 .cu-sr input{width:100%;box-sizing:border-box;height:46px;border-radius:14px;border:1px solid var(--line,#d6dcea);background:var(--surface,#fff);color:var(--fg,#1b2440);font:inherit;font-size:14.5px;padding:0 14px}
 .cu-fl{display:flex;gap:6px;overflow-x:auto;padding:10px 0 6px;scrollbar-width:none}.cu-fl::-webkit-scrollbar{display:none}
 .cu-fl button{flex:none;border:1px solid var(--line,#d6dcea);background:var(--surface,#fff);color:var(--fg,#1b2440);font:inherit;font-size:13px;border-radius:99px;padding:0 14px;min-height:38px;cursor:pointer}
