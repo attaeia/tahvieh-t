@@ -1781,7 +1781,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
           <div class="calc" id="n12" aria-live="polite"></div>
         </section>
         <section class="card" id="lcCard">
-          <h2>لودسل خمشی سیلو</h2>
+          <h2>لودسل سیلو</h2>
           <div class="fields">
             <div class="field"><label for="lw">وزن سیلو (تن)</label><input type="text" id="lw" inputmode="decimal" placeholder="مثلاً ۱۰"></div>
             <div class="field"><label for="ll">تعداد پایه سیلو</label><input type="text" id="ll" inputmode="numeric" placeholder="مثلاً ۶"></div>
@@ -1907,7 +1907,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.30.0</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.30.1</footer>
 </div>
 
 
@@ -2622,7 +2622,7 @@ I('pres','side','سنسور فشار',61,1,{motor:true});
 // توزین
 I('wfeed','weigh','سیستم توزین دان',275,1);
 I('wio','weigh','کارت IO جهت توزین دان',90,1,{from:['wfeed']});
-I('wload','weigh','لودسل خمشی',null,0);
+I('wload','weigh','لودسل',null,0);
 I('wjb','weigh','جعبه تقسیم',null,0,{from:['wfeed']});
 I('wbird','weigh','سیستم توزین پرنده',275,1);
 I('wpan','weigh','کفه توزین بدون لودسل',25,0);
@@ -3538,7 +3538,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
       (fx ? '<bdi class="fx" dir="ltr">' + fx + '</bdi>' : '') + '</div>';
   }
   var FLEX = {};
-  var SUMC = [], LCSUM = ['لودسل خمشی', '—', 'lc'], LCSUM2 = ['متعلقات توزین', '—', 'wacc'], LCSUM3 = ['لوله فلکسی ۱۳٫۵', '—', 'flex'], LCSUM4 = ['بست لوله فلکسی', '—', 'flexclamp'], REGMSG = {};
+  var SUMC = [], LCSUM = ['لودسل', '—', 'lc'], LCSUM2 = ['متعلقات توزین', '—', 'wacc'], LCSUM3 = ['لوله فلکسی ۱۳٫۵', '—', 'flex'], LCSUM4 = ['بست لوله فلکسی', '—', 'flexclamp'], REGMSG = {};
   function drawSum(){
     var it = SUMC.slice(), host = $('sumC'); it.push(LCSUM); it.push(LCSUM2); it.push(LCSUM3); it.push(LCSUM4);
     /* build the boxes once and update them in place, so a button is never replaced between mousedown and mouseup (blur of a field re-renders) */
@@ -3685,7 +3685,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
   function renderL0(){
     var w = val('lw'), legs = val('ll'), silos = val('ls'), f = val('lf'), ov = val('lo');
     if (!(silos > 0)) silos = 1; if (!(f > 0)) f = 1;
-    var el = $('nL'); LC = {}; LCSUM = ['لودسل خمشی', '—', 'lc']; LCSUM2 = ['متعلقات توزین', '—', 'wacc'];
+    var el = $('nL'); LC = {}; LCSUM = ['لودسل', '—', 'lc']; LCSUM2 = ['متعلقات توزین', '—', 'wacc'];
     if (!(w > 0) || !(legs > 0)) { el.textContent = 'وزن سیلو و تعداد پایه را وارد کن.'; drawSum(); return; }
     legs = Math.round(legs); silos = Math.round(silos);
     var need = w * f / legs, cap = NaN;
@@ -3698,7 +3698,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
       'ظرفیت پیشنهادی هر لودسل: <b>' + (fin(cap) ? '<bdi>' + nf(cap, 2) + '</bdi> تن (' + nf(legs) + ' × ' + nf(cap, 2) + ' = ' + nf(tot, 2) + ' تن)' : '—') + '</b><br>' +
       'تعداد لودسل: <b><bdi>' + nf(silos) + ' سیلو × ' + nf(legs) + ' پایه = ' + nf(total, 0) + '</bdi> عدد</b> · مدل ' + $('lm').value + '<br>تعداد متعلقات سیستم توزین = تعداد لودسل = <b><bdi>' + nf(total, 0) + '</bdi> عدد</b>' +
       (warn ? '<br><span style="color:var(--bad)">' + warn + '</span>' : '');
-    LCSUM = ['لودسل خمشی', '<bdi>' + nf(total, 0) + ' × ' + (fin(cap) ? nf(cap, 2) + ' تن' : '—') + '</bdi>', 'lc'];
+    LCSUM = ['لودسل', '<bdi>' + nf(total, 0) + ' × ' + (fin(cap) ? nf(cap, 2) + ' تن' : '—') + '</bdi>', 'lc'];
     LCSUM2 = ['متعلقات توزین', '<bdi>' + nf(total, 0) + ' عدد</bdi>', 'wacc'];
     drawSum();
   }
@@ -3757,7 +3757,7 @@ window.__proforma={snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync
     }
     if (kind === 'lc') {
       if (!(LC.total > 0)) return null;
-      return { id: 'wload', qty: LC.total, unit: 'عدد', name: 'لودسل خمشی', cap: fin(LC.cap) ? LC.cap : null, model: LC.model, extra: fin(LC.cap) ? ' (' + nf(LC.cap, 2) + ' تن، ' + LC.model + ')' : '' };
+      return { id: 'wload', qty: LC.total, unit: 'عدد', name: 'لودسل', cap: fin(LC.cap) ? LC.cap : null, model: LC.model, extra: fin(LC.cap) ? ' (' + nf(LC.cap, 2) + ' تن، ' + LC.model + ')' : '' };
     }
     return null;
   }
