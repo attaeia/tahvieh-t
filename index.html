@@ -1153,7 +1153,7 @@ html[data-role=member] .hpair{grid-template-columns:1fr!important}
 window.addEventListener('error',function(e){try{var d=document.getElementById('errbox');if(!d){d=document.createElement('div');d.id='errbox';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:99;background:#b3261e;color:#fff;padding:6px 12px;font:12px/1.6 monospace;direction:ltr;text-align:left';document.body.appendChild(d)}var s=(e.error&&e.error.stack||'').split('\n').slice(0,3).join(' | ');d.textContent='ERR: '+e.message+' @'+(e.lineno||'?')+':'+(e.colno||'?')+' '+s}catch(x){}});
 </script>
 <div id="app" dir="rtl" lang="fa">
-<button type="button" id="qkH" aria-label="دسترسی سریع" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 28 64" aria-hidden="true"><path class="qkBody" d="M28 0A28 32 0 0 0 28 64z"/><rect class="qkTube" x="10" y="15" width="3" height="34" rx="1.5"/><rect class="qkTube" x="17" y="15" width="3" height="34" rx="1.5"/></svg></button>
+<button type="button" id="qkH" aria-label="دسترسی سریع" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 28 64" aria-hidden="true"><rect class="qkTube" x="10" y="15" width="3" height="34" rx="1.5"/><rect class="qkTube" x="17" y="15" width="3" height="34" rx="1.5"/></svg></button>
 <div id="qkP" role="group" aria-label="دسترسی سریع" dir="rtl" hidden></div>
 <div id="qsOv" hidden></div>
 <div id="qsSheet" dir="rtl" lang="fa" role="dialog" aria-modal="true" aria-label="افزودن" hidden>
@@ -1828,7 +1828,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
       <div class="f"><label for="rate">قیمت دلار روز (ريال)</label><input id="rate" class="num" inputmode="numeric" autocomplete="off"></div>
       <div class="f"><label for="pct" id="pctL">درصد تخفیف اقلام</label><input id="pct" class="num" inputmode="decimal" autocomplete="off"></div>
       <div class="f"><label for="mpct">درصد تخفیف موتور اینلت و سنسور فشار</label><input id="mpct" class="num" inputmode="decimal" autocomplete="off"></div>
-      <div class="f"><label for="ins">درصد نصب و راه‌اندازی (٪)</label><select id="ins" aria-label="درصد هزینه نصب و راه‌اندازی"><option value="8">۸٪</option><option value="15">۱۵٪</option><option value="x">دلخواه…</option></select><input id="insx" class="num" inputmode="decimal" autocomplete="off" placeholder="عدد درصد، مثلاً ۱۲" aria-label="درصد دلخواه هزینه نصب" hidden></div>
+      <div class="f"><label for="ins">درصد نصب و راه‌اندازی (٪)</label><select id="ins" aria-label="درصد هزینه نصب و راه‌اندازی"><option value="8">۸٪</option><option value="15">۱۵٪</option><option value="co">الگوی شرکت: ۵٪ نصب + ۵٪ راه‌اندازی</option><option value="co2">الگوی شرکت: ۳٪ نصب + ۶٪ راه‌اندازی (روی جمع بعد از تخفیف)</option><option value="x">دلخواه…</option></select><input id="insx" class="num" inputmode="decimal" autocomplete="off" placeholder="عدد درصد، مثلاً ۱۲" aria-label="درصد دلخواه هزینه نصب" hidden></div>
       <div class="f"><label for="vat">ارزش افزوده (٪)</label><input id="vat" class="num" inputmode="decimal" autocomplete="off"></div>
       <div class="f"><label for="up">درصد افزایشی روی قیمت همه اقلام (٪)</label><input id="up" class="num" inputmode="decimal" autocomplete="off" placeholder="مثلاً ۱۰ (خالی = بدون افزایش)"></div>
     </div>
@@ -1912,14 +1912,14 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.37.0</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.39.0</footer>
 </div>
 
 
 <nav id="bnav" aria-label="منوی اصلی">
   <button type="button" data-n="D" aria-label="خانه"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v9.5h13V10"/></svg><span>خانه</span></button>
   <button type="button" data-n="Q" aria-label="مشتریان"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12a3.5 3.5 0 100-7 3.5 3.5 0 000 7zM2.5 20c0-3.5 3-5.5 6.5-5.5s6.5 2 6.5 5.5M16 4.5a3.5 3.5 0 010 7M18.5 14.8c2 .7 3 2.2 3 4.2"/></svg><span>مشتریان</span></button>
-  <button type="button" id="qsPlus" class="bn-plus" aria-label="افزودن: تماس، مشتری، کار"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+  <button type="button" id="qsPlus" class="bn-plus" aria-label="افزودن: تماس، مشتری، کار"><svg viewBox="0 0 24 24" aria-hidden="true"><rect class="plT" x="10.5" y="4" width="3" height="16" rx="1.5"/><rect class="plT" x="4" y="10.5" width="16" height="3" rx="1.5"/></svg></button>
   <button type="button" data-n="K" aria-label="تقویم"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.5h16v13H4zM4 10.5h16M8 4v4M16 4v4"/></svg><span>تقویم</span></button>
   <button type="button" data-n="X" aria-label="منو" id="bnMenu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span>منو</span></button>
 </nav>
@@ -2571,6 +2571,9 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
         +'<button type="button" class="cu-b" data-cu="'+esc(f0.id)+'">پرونده</button></div>'}
     else h+='<div class="hs-s">کار فوری نداری. یک مشتری یا سرنخ تازه ثبت کن یا از اکسل وارد کن.</div><div class="hs-a"><button type="button" class="cu-b pri" data-cu-hs="imp">ورود از اکسل</button><button type="button" class="cu-b" data-cu-hs="lead">ثبت سرنخ</button></div>';
     h+='</div>';
+    // کارت آمار (فقط وب)
+    try{var sd=statsData(30),mx0=Math.max(1,sd.created,sd.contacted,sd.sent,sd.won);
+      h+='<div class="hs-c hs-stat"><div class="hs-k">قیف ۳۰ روز اخیر</div>'+[['سرنخ',sd.created],['تماس',sd.contacted],['پیش‌فاکتور',sd.sent],['فروش',sd.won]].map(function(x){return '<div class="fn"><div><span>'+x[0]+'</span><b>'+fa(x[1])+'</b></div><i style="width:'+Math.max(2,Math.round(x[1]*100/mx0))+'%"></i></div>'}).join('')+'<button type="button" class="cu-b" data-cu-hs="st">آمار کامل</button></div>'}catch(e){}
     // کارت ۲
     h+='<div class="hs-c"><div class="hs-k">عقب‌افتاده‌ها <em>'+fa(late.length)+'</em></div>';
     h+=late.length?late.slice(0,3).map(function(r){return '<button type="button" class="hs-r" data-cu="'+esc(r.id)+'"><b>'+nm(r)+'</b><small>'+fa(daysBetween(r.lead.next,t))+' روز عقب</small></button>'}).join('')+(late.length>3?'<div class="hs-s">و '+fa(late.length-3)+' مورد دیگر</div>':''):'<div class="hs-s">هیچ پیگیری عقب‌افتاده‌ای نداری.</div>';
@@ -2850,8 +2853,9 @@ I('c2','cab','کابل ۲×۰.۵',null,0,{unit:'متر'});
 I('c06','cab','کابل ۰۶',null,0,{unit:'متر',hide:1});
 I('c4','cab','کابل ۴×۰.۵',null,0,{unit:'متر'});
 var BY={};CAT.forEach(function(c){BY[c.id]=c});
-// فقط این کالاها در مبنای هزینه نصب و راه‌اندازی حساب نمی‌شوند: باکس‌ها (از جمله باکس توزین)، کابل‌ها (از جمله کابل تخت)، هاستینگ‌ها، آلارم باکس‌ها، آژیر، پایه سرور، اتصالات سنسور فشار، متعلقات نصب وینچ و روشنایی
-var NOINS=['wjb','wbox','box4060','box4050','box4050t','box5070','flat','c12','c2','c06','c4','host','hostc','alsms','al','siren','base','presfit','winacc','lacc'];
+// فقط این کالاها در مبنای هزینه نصب و راه‌اندازی حساب نمی‌شوند: باکس‌ها (از جمله باکس توزین)، کابل‌ها (از جمله کابل تخت)، هاستینگ‌ها، آژیر، پایه سرور، اتصالات سنسور فشار، متعلقات نصب وینچ و روشنایی
+var INSINC=['al','alsms'];
+var NOINS=['wjb','wbox','box4060','box4050','box4050t','box5070','flat','c12','c2','c06','c4','host','hostc','siren','base','presfit','winacc','lacc'];
 
 var CUST=[
  {id:'none',name:'مشتری عادی',pct:0,mpct:0,ins:15,all:false,hint:'درصد تخفیف را دستی وارد کنید؛ فقط روی کالاهای تخفیف‌دار اعمال می‌شود.'},
@@ -2943,14 +2947,20 @@ function sync(){var changed=false;['flex','flexclamp'].forEach(function(k){if(S.
   if(s>0&&!r){if(S.cabOff&&S.cabOff[it.id])return;S.rows[it.id]={auto:true,qty:s};changed=true}
   else if(r){if(!r.qtyManual||LOCKED[it.id])r.qty=s;if(s===0&&r.auto&&!r.qtyManual){delete S.rows[it.id];changed=true}}});if(cabAutoRows())changed=true;return changed}
 function cust(){return CBY[S.cust]||CBY.none}
-function insPct(){return S.insSel==='x'?Math.max(0,num(S.insX)):num(S.insSel)}
+function insMode(){return S.insSel==='co'||S.insSel==='co2'?S.insSel:null}
+var COPARTS={co:[['هزینه نصب',5],['هزینه راه اندازی',5]],co2:[['هزینه نصب',3],['هزینه راه اندازی',6]]};
+var COEXCL=['wbox'];
+function inEquip(l){return l.g==='auto'||l.g==='side'||l.g==='weigh'||INSINC.indexOf(l.id)>=0}
+function insPct(){var m=insMode();if(m)return COPARTS[m][0][1]+COPARTS[m][1][1];return S.insSel==='x'?Math.max(0,num(S.insX)):num(S.insSel)}
 function discOn(id,it){var r=S.rows[id];if(r&&typeof r.disc==='boolean')return r.disc;return cust().all?true:it.disc}
 function lcName(it,r){if(it.id==='wjb'&&r)return it.name+(String(r.model||'').trim()?' '+String(r.model).trim():'');if(it.id!=='wload'||!r)return it.name;var c=String(r.cap==null?'':r.cap).trim();return it.name+(c?' '+c+(r.capU==='kg'?' کیلوگرم':' تن'):'')}
 function drOf(l,id){var r=S.rows[id],v=r?r.dr:null;if(v===undefined||v===null||String(v).trim()==='')return l.defRate;return Math.max(0,Math.min(100,num(v)))}
 function calc(){
   var lines=[],base=0,rate=num(S.rate);
   GROUPS.forEach(function(g){
-    if(g.id==='acc'&&insPct()>0){lines.push({id:'__install',g:g.id,name:'درصد نصب و راه‌اندازی',unit:'عدد',qty:1,install:true,fi:String(Math.round(insPct()*100)/10000)})}
+    if(g.id==='acc'&&insPct()>0){var im=insMode();
+      if(im)COPARTS[im].forEach(function(pt,ix){lines.push({id:ix?'__install2':'__install',g:g.id,name:pt[0],unit:'عدد',qty:1,install:true,pct:pt[1],fi:String(pt[1]/100)})});
+      else lines.push({id:'__install',g:g.id,name:'درصد نصب و راه‌اندازی',unit:'عدد',qty:1,install:true,pct:insPct(),fi:String(Math.round(insPct()*100)/10000)})}
     CAT.forEach(function(it){if(it.g!==g.id||!S.rows[it.id]||it.id==='flex'||it.id==='flexclamp')return;lines.push({id:it.id,g:g.id,it:it,name:lcName(it,S.rows[it.id]),unit:it.unit,qty:qtyOf(it.id)})});
   });
   lines.forEach(function(l){
@@ -2963,15 +2973,17 @@ function calc(){
     l.p0=l.price;var fxo=S.fx||{};l.fxAdd=l.id==='wacc'?Math.round(6*(+fxo.pm||0)+4*(+fxo.pb||0)):0;if(l.fxAdd)l.price+=l.fxAdd;
     var upp=Math.max(0,num(S.up));l.upP=upp;if(upp>0)l.price=Math.round(l.price*(1+upp/100));
     l.gross=Math.round(l.price*l.qty);
-    if(NOINS.indexOf(l.id)<0&&l.g!=='acc')base+=l.gross;
+    l.inBase=insMode()?(inEquip(l)&&COEXCL.indexOf(l.id)<0):(NOINS.indexOf(l.id)<0&&(l.g!=='acc'||INSINC.indexOf(l.id)>=0));
+    if(l.inBase)base+=l.gross;
   });
-  lines=lines.filter(function(l){return !(l.install&&Math.round(base*insPct()/100)<=0)});
   var tot=0,dsc=0;
-  lines.forEach(function(l){
-    if(l.install){l.price=Math.round(base*insPct()/100);l.gross=l.price;l.on=(S.rows.__install&&typeof S.rows.__install.disc==='boolean'?S.rows.__install.disc:false);l.defRate=num(S.pct);l.rate=l.on?drOf(l,'__install'):0}
+  lines.slice().sort(function(x,y){return (x.install?1:0)-(y.install?1:0)}).forEach(function(l){
+    if(l.install){var bs=base;if(insMode()==='co2'){bs=0;lines.forEach(function(q){if(!q.install&&q.inBase)bs+=q.net})}
+      l.price=Math.round(bs*l.pct/100);l.gross=l.price;var rr0=S.rows[l.id];l.on=(rr0&&typeof rr0.disc==='boolean'?rr0.disc:false);l.defRate=num(S.pct);l.rate=l.on?drOf(l,l.id):0}
     else{l.on=discOn(l.id,l.it);l.defRate=l.it.motor?num(S.mpct):num(S.pct);l.rate=l.on?drOf(l,l.id):0}
     l.disc=Math.round(l.gross*l.rate/100);l.net=l.gross-l.disc;tot+=l.gross;dsc+=l.disc;
   });
+  lines=lines.filter(function(l){return !(l.install&&l.price<=0)});
   var after=tot-dsc,vat=Math.round(after*num(S.vat)/100);
   return {lines:lines,total:tot,disc:dsc,after:after,vat:vat,final:after+vat,base:base,need:lines.filter(function(l){return !l.install&&l.it.usd==null&&l.p0===0}).length};
 }
@@ -2982,7 +2994,7 @@ function renderSettings(){
   $('custlist').innerHTML=CUST.filter(function(c){return c.id!=='none'}).map(function(c){return '<option value="'+esc(c.name)+'">'}).join('');
   $('cust').innerHTML=CUST.map(function(c){return '<option value="'+c.id+'">'+esc(c.name)+'</option>'}).join('');
   $('cust').value=S.cust;$('rate').value=fmt(num(S.rate));$('pct').value=S.pct;$('mpct').value=S.mpct;$('vat').value=S.vat;$('up').value=S.up||'';
-  if(S.insSel==='18'){S.insSel='15';S.insX=''}if(['8','15','x'].indexOf(S.insSel)<0){var z=insFor(cust().ins);S.insSel=z.insSel;S.insX=z.insX}$('ins').value=S.insSel;$('insx').hidden=S.insSel!=='x';$('insx').value=S.insX||'';
+  if(S.insSel==='18'){S.insSel='15';S.insX=''}if(['8','15','x','co','co2'].indexOf(S.insSel)<0){var z=insFor(cust().ins);S.insSel=z.insSel;S.insX=z.insX}$('ins').value=S.insSel;$('insx').hidden=S.insSel!=='x';$('insx').value=S.insX||'';
   $('custHint').textContent=cust().hint;$('custHint').style.color='';
   var inv=S.inv;['no','date','buyer','proj','attn','hon','phone','prov','city','addr','country','farm','halls','dim','gap','wallh','axh','pay','valid','validTxt','sales','notes'].forEach(function(k){$('i_'+k).value=inv[k]||''});hgRender();gapHint();
 }
@@ -3008,12 +3020,12 @@ function renderRows(){
     if(l.g!==lastG){lastG=l.g;h+='<tr class="g"><td colspan="10">'+esc(GROUPS.filter(function(g){return g.id===l.g})[0].name)+'</td></tr>'}
     n++;
     if(l.install){
-      h+='<tr data-id="__install"><td>'+n+'</td><td>'+esc(l.name)+'</td><td class="n">1</td><td>عدد</td><td class="n" data-c="price"></td><td class="n" data-c="gross"></td>'+
-       '<td><label class="disc"><input type="checkbox" data-k="d__install" data-disc="__install"'+(l.on?' checked':'')+'><span data-c="rate"></span></label><span class="drw" style="display:none"><input class="num dr" inputmode="decimal" data-dr="__install" aria-label="درصد تخفیف این قلم"><b>٪</b></span></td>'+
+      h+='<tr data-id="'+l.id+'"><td>'+n+'</td><td>'+esc(l.name)+'</td><td class="n">1</td><td>عدد</td><td class="n" data-c="price"></td><td class="n" data-c="gross"></td>'+
+       '<td><label class="disc"><input type="checkbox" data-k="d'+l.id+'" data-disc="'+l.id+'"'+(l.on?' checked':'')+'><span data-c="rate"></span></label><span class="drw" style="display:none"><input class="num dr" inputmode="decimal" data-dr="'+l.id+'" aria-label="درصد تخفیف این قلم"><b>٪</b></span></td>'+
        '<td class="n" data-c="disc"></td><td class="n" data-c="net"></td><td></td></tr>';return}
     var r=S.rows[l.id];
     h+='<tr data-id="'+l.id+'" class="'+(l.it.usd==null&&l.price===0?'need':'')+'"><td>'+n+'</td>'+
-     '<td>'+esc(l.it.name)+(l.id==='wjb'?'<div style="margin-top:4px"><input type="text" style="max-width:200px'+(String(r.model||'').trim()?'':';border-color:var(--warn)')+'" data-model="wjb" placeholder="برند / نام جعبه تقسیم" aria-label="برند جعبه تقسیم" value="'+esc(r.model||'')+'"></div>':'')+(l.id==='wload'?'<div style="margin-top:4px;display:flex;gap:6px;flex-wrap:wrap"><input class="num" style="max-width:170px'+(String(r.cap||'').trim()?'':';border-color:var(--warn)')+'" data-cap="wload" inputmode="decimal" placeholder="ظرفیت هر لودسل" aria-label="ظرفیت هر لودسل" value="'+esc(r.cap||'')+'"><select data-capu="wload" aria-label="واحد ظرفیت لودسل" style="max-width:110px"><option value="t"'+(r.capU==='kg'?'':' selected')+'>تن</option><option value="kg"'+(r.capU==='kg'?' selected':'')+'>کیلوگرم</option></select></div>':'')+((l.it.from||r.cabAuto)&&!r.qtyManual?'<span class="badge">خودکار</span>':'')+(l.it.note&&l.hasOv&&l.it.usd==null?'<span class="badge" style="background:var(--warn-soft);color:var(--warn)">'+esc(l.it.note)+'</span>':'')+'</td>'+
+     '<td>'+esc(l.it.name)+(l.id==='wjb'?'<div style="margin-top:4px"><input type="text" style="max-width:200px'+(String(r.model||'').trim()?'':';border-color:var(--warn)')+'" data-model="wjb" placeholder="برند / نام جعبه تقسیم" aria-label="برند جعبه تقسیم" value="'+esc(r.model||'')+'"></div>':'')+(l.id==='wacc'?fxPanel():'')+(l.id==='wload'?'<div style="margin-top:4px;display:flex;gap:6px;flex-wrap:wrap"><input class="num" style="max-width:170px'+(String(r.cap||'').trim()?'':';border-color:var(--warn)')+'" data-cap="wload" inputmode="decimal" placeholder="ظرفیت هر لودسل" aria-label="ظرفیت هر لودسل" value="'+esc(r.cap||'')+'"><select data-capu="wload" aria-label="واحد ظرفیت لودسل" style="max-width:110px"><option value="t"'+(r.capU==='kg'?'':' selected')+'>تن</option><option value="kg"'+(r.capU==='kg'?' selected':'')+'>کیلوگرم</option></select></div>':'')+((l.it.from||r.cabAuto)&&!r.qtyManual?'<span class="badge">خودکار</span>':'')+(l.it.note&&l.hasOv&&l.it.usd==null?'<span class="badge" style="background:var(--warn-soft);color:var(--warn)">'+esc(l.it.note)+'</span>':'')+'</td>'+
      '<td><input class="num q" inputmode="decimal" data-k="q'+l.id+'" data-q="'+l.id+'" value="'+(l.qty||'')+'"'+(LOCKED[l.id]?' readonly title="برابر تعداد کالای مرجع است"':'')+'></td>'+
      '<td>'+esc(l.unit)+'</td>'+
      '<td>'+(l.it.usd==null?'<div class="pc"><input class="num pr" inputmode="numeric" data-k="p'+l.id+'" data-p="'+l.id+'" placeholder="قیمت خرید" aria-label="قیمت خرید" value="'+(r.priceOv!=null&&r.priceOv!==''?fmt(num(r.priceOv)):'')+'"><input class="num mk" inputmode="decimal" data-k="m'+l.id+'" data-mk="'+l.id+'" placeholder="٪ سود" aria-label="درصد سود" value="'+esc(r.mk==null?'':r.mk)+'"></div><div class="unitFin" data-c="unit"></div>':'<input class="num pr" inputmode="numeric" data-k="p'+l.id+'" data-p="'+l.id+'" placeholder="" value="'+(l.p0?fmt(l.p0):'')+'"><div class="unitFin" data-c="unit"></div>')+'</td>'+
@@ -3078,6 +3090,13 @@ $('pfReset').addEventListener('click',function(){var b=this;
   if(!b.dataset.arm){b.dataset.arm='1';b.textContent='مطمئنید؟ دوباره بزنید';setTimeout(function(){delete b.dataset.arm;b.textContent='ریست'},3500);return}
   delete b.dataset.arm;b.textContent='ریست';
   doNewInv();toast('پیش‌فاکتور ریست شد: مشتری عادی، تاریخ و شماره امروز، فقط اقلام پایه')});
+var FXD={rl:'25',rp:'800000',cn:'50',cp:'2100000'};
+function fxCalc(){var f=S.fx=S.fx||{},i=f.in=f.in||{};if(!f.in.rl&&!f.in.rp&&!f.in.cn&&!f.in.cp&&!(f.pm||f.pb)){f.in=i=Object.assign({},FXD)}
+  if(f.in){var rl=num(i.rl),rp=num(i.rp),cn=num(i.cn),cp=num(i.cp);if(rl>0&&rp>0)f.pm=Math.round(rp*1.25/rl);else if(f.in&&(i.rp!==undefined||i.rl!==undefined))f.pm=0;if(cn>0&&cp>0)f.pb=Math.round(cp*1.25/cn);else if(i.cp!==undefined||i.cn!==undefined)f.pb=0}}
+function fxPanel(){var f=S.fx=S.fx||{};if(!f.in){fxCalc()}var i=f.in||{};
+  return '<div class="fxbox"><div><label>طول هر رول لوله فلکسی (متر)</label><input class="num" inputmode="decimal" data-fx="rl" value="'+esc(i.rl==null?'':i.rl)+'"></div><div><label>قیمت یک رول (ریال)</label><input class="num" inputmode="numeric" data-fx="rp" value="'+esc(i.rp?fmt(num(i.rp)):'')+'"></div>'
+  +'<div><label>تعداد بست در هر بسته</label><input class="num" inputmode="numeric" data-fx="cn" value="'+esc(i.cn==null?'':i.cn)+'"></div><div><label>قیمت یک بسته‌ی بست (ریال)</label><input class="num" inputmode="numeric" data-fx="cp" value="'+esc(i.cp?fmt(num(i.cp)):'')+'"></div>'
+  +'<div class="fxs" data-fxs>برای هر لودسل ۶ متر لوله و ۴ بست؛ قیمت واحد = قیمت بسته × ۱٫۲۵ ÷ تعداد. این مبلغ داخل فی «متعلقات جهت توزین» جمع می‌شود و جدا در فاکتور نمی‌آید.</div></div>'}
 function doNewInv(){var old=S.inv,keep={rate:S.rate,vat:S.vat,fx:S.fx};S=fresh();S.rate=keep.rate;S.vat=keep.vat;if(keep.fx)S.fx=keep.fx;['valid','validTxt','sales','pay','notes'].forEach(function(k){S.inv[k]=old[k]});
   S.noAuto=true;S.cabOff={};setCustomer('none');updateNo();renderSettings();sync();renderRows();renderPicker();save()}
 $('nextInv').addEventListener('click',function(){pfCommit();S.noAuto=true;updateNo();save();toast('شماره‌ی فاکتور بعدی: '+S.inv.no)});
@@ -3091,6 +3110,7 @@ $('clear').addEventListener('click',function(){if(!Object.keys(S.rows).length)re
 $('tbl').addEventListener('input',function(e){var t=e.target;
   if(t.dataset.q){var id=t.dataset.q,r=S.rows[id];if(LOCKED[id])return;r.qty=toEn(t.value);if(BY[id].from||r.cabAuto)r.qtyManual=true;
     var ch=sync();if(ch)renderRows();else{paint();cabInputs()}}
+  else if(t.dataset.fx){var fxs=S.fx=S.fx||{};fxs.in=fxs.in||{};var kk=t.dataset.fx;fxs.in[kk]=toEn(t.value).replace(/[^\d.]/g,'');if(kk==='rp'||kk==='cp')fmtField(t);fxCalc();paint()}
   else if(t.dataset.model){S.rows[t.dataset.model].model=t.value;t.style.borderColor=String(t.value).trim()?'':'var(--warn)';paint()}
   else if(t.dataset.cap){S.rows[t.dataset.cap].cap=toEn(t.value);t.style.borderColor=String(t.value).trim()?'':'var(--warn)';paint()}
   else if(t.dataset.mk){var rm=S.rows[t.dataset.mk];rm.mk=toEn(t.value).replace(/[^\d.]/g,'');try{var dm=JSON.parse(localStorage.getItem('payesh-mkdef')||'{}');dm[t.dataset.mk]=rm.mk;localStorage.setItem('payesh-mkdef',JSON.stringify(dm))}catch(e){}paint()}
@@ -3102,7 +3122,7 @@ $('tbl').addEventListener('click',function(e){var qb=e.target.closest('.qb');if(
 
 /* ---------- output ---------- */
 var tt;function toast(m){var t=$('toast');if(/^ساخت/.test(m)&&(typeof html2pdf==='undefined'||typeof ExcelJS==='undefined'))m+=' کتابخانه‌ی ساخت فایل بارگذاری نشده؛ اینترنت یا فیلتر را بررسی و صفحه را دوباره باز کنید.';t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(function(){t.hidden=true},3800)}
-function fname(ext,kind){var cl=function(s){return String(s||'').replace(/[\\\/:*?"<>|\u0000-\u001f]+/g,' ').replace(/\s+/g,' ').trim()};var b=cl(S.inv.buyer)||(S.cust!=='none'?cust().name:'');return (cl(S.inv.no)||'proforma')+(b?' '+b:'')+(kind==='list'?' لیست تجهیزات':'')+'.'+ext}
+function fname(ext,kind){var cl=function(s){return String(s||'').replace(/[\\\/:*?"<>|\u0000-\u001f]+/g,' ').replace(/\s+/g,' ').trim()};var b=cl(S.inv.buyer)||(S.cust!=='none'?cust().name:'');var hl=String(S.inv.halls||'').trim();return (cl(S.inv.no)||'proforma')+(b?' '+b:'')+(hl?' '+cl(hl)+' سالن':'')+(kind==='list'?' لیست تجهیزات':'')+'.'+ext}
 function nowBusy(btn,on){btn.disabled=on;if(on)btn.dataset.t=btn.textContent,btn.textContent='در حال ساخت…';else btn.textContent=btn.dataset.t||btn.textContent}
 
 var LOGO='data:image/png;base64,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';
@@ -3176,12 +3196,12 @@ async function makeXlsx(){
   var hr=7,hd=['ردیف','نام کالا','تعداد','واحد','فی','مبلغ کل','درصد تخفیف','مبلغ تخفیف','جمع مبلغ کل'];ws.getRow(hr).height=22;
   hd.forEach(function(x,i){put(hr,i+1,hr,i+1,x,{h:'center',sz:11,fill:fillG})});
   var r2=hr,first=hr+1,rowsG=[[],[],[]];
-  var baseRefs=[];c.lines.forEach(function(l,i){if(!l.install&&l.g!=='acc'&&NOINS.indexOf(l.id)<0)baseRefs.push('F'+(hr+1+i))});
+  var baseRefs=[],baseNet=[];c.lines.forEach(function(l,i){if(!l.install&&l.inBase){baseRefs.push('F'+(hr+1+i));baseNet.push('I'+(hr+1+i))}});
   c.lines.forEach(function(l,i){
     r2++;var row=ws.getRow(r2),gi=(l.g==='auto'||l.g==='weigh')?0:(l.g==='side'?1:2);rowsG[gi].push(r2);
     row.getCell(1).value=Q(i+1);row.getCell(2).value=l.name;row.getCell(3).value=Q(l.qty);row.getCell(4).value=l.unit;row.getCell(5).value=l.install?(fa?toFa(l.fi):Number(l.fi)):N(l.price);
     if(fa){row.getCell(6).value=N(l.gross);row.getCell(7).value=toFa(String(l.rate||0))+'٪';row.getCell(8).value=N(l.disc);row.getCell(9).value=N(l.net)}
-    else{row.getCell(6).value=l.install?{formula:'ROUND(('+(baseRefs.length?baseRefs.join('+'):'0')+')*'+(insPct()/100)+',0)',result:l.gross}:{formula:'C'+r2+'*E'+r2,result:l.gross};row.getCell(7).value=l.rate||0;row.getCell(8).value={formula:'ROUND(F'+r2+'*G'+r2+'/100,0)',result:l.disc};row.getCell(9).value={formula:'F'+r2+'-H'+r2,result:l.net}}
+    else{row.getCell(6).value=l.install?{formula:'ROUND(('+((insMode()==='co2'?baseNet:baseRefs).length?(insMode()==='co2'?baseNet:baseRefs).join('+'):'0')+')*'+((l.pct||insPct())/100)+',0)',result:l.gross}:{formula:'C'+r2+'*E'+r2,result:l.gross};row.getCell(7).value=l.rate||0;row.getCell(8).value={formula:'ROUND(F'+r2+'*G'+r2+'/100,0)',result:l.disc};row.getCell(9).value={formula:'F'+r2+'-H'+r2,result:l.net}}
     for(var k=1;k<=9;k++){var cc=row.getCell(k);cc.font={name:F,size:12,bold:true};cc.border=bd;if(k===1)cc.fill=fillG;cc.alignment={vertical:'middle',horizontal:k===2?'right':'center',wrapText:k===2};if(!fa&&(k===5||k===6||k===8||k===9))cc.numFmt=(k===5&&l.install)?'0.00':'#,##0';if(!fa&&k===7)cc.numFmt='0.##"%"'}
     var nx=c.lines[i+1];if(!nx||pgrp(nx.g)!==pgrp(l.g)){for(var k2=1;k2<=9;k2++){var c2=row.getCell(k2);c2.border=Object.assign({},bd,{bottom:thick})}}
   });
@@ -4600,7 +4620,7 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
   }
   function saveInvTo(f){
     var P=window.__proforma;if(!P||!P.snap)return false;
-    var snap=clone(P.snap()),S=snap.S,no=S.inv.no||'',title=(no+' '+(S.inv.buyer||S.inv.proj||'')).trim()||'پیش‌فاکتور',i=-1;
+    var snap=clone(P.snap()),S=snap.S,no=S.inv.no||'',title=((no+' '+(S.inv.buyer||S.inv.proj||'')).trim()+(String(S.inv.halls||'').trim()?' · '+String(S.inv.halls).trim()+' سالن'+(String(S.inv.dim||'').trim()?' ('+String(S.inv.dim).trim()+')':''):'')).trim()||'پیش‌فاکتور',i=-1;
     f.invs.forEach(function(v,j){if(no&&v.no===no)i=j});
     var rec={id:i>=0?f.invs[i].id:uid(),ts:Date.now(),no:no,title:title,snap:snap,final:(function(){try{return Math.round(P.calc().final)||0}catch(e){return 0}})()};
     if(i>=0){['sentTs','follow','fdays'].forEach(function(k){if(f.invs[i][k]!==undefined)rec[k]=f.invs[i][k]})}
@@ -5998,6 +6018,34 @@ html[data-ui=modern] #drawer{border-radius:28px 0 0 28px}
 html[data-ui=modern] .dr-i{border-radius:16px}
 html[data-ui=modern] #bnav{border-radius:28px 28px 0 0}
 html[data-ui=modern] .cu-av,html[data-ui=modern] .tbi{border-radius:50%!important}
+
+/* ۱۱.۳۸: مهتابی، نوار میز کار، چیدمان وب */
+#bnav .bn-plus{background:rgba(18,26,56,.82)!important;border:1px solid rgba(190,205,255,.35);box-shadow:0 0 16px rgba(130,160,255,.5),0 6px 16px rgba(10,16,40,.35)!important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+#bnav .bn-plus .plT{fill:#fff;animation:qkTube 3.2s ease-in-out infinite;filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 7px rgba(130,160,255,.95))}
+#bnav .bn-plus .plT+.plT{animation-delay:.25s}
+@media (prefers-reduced-motion:reduce){#bnav .bn-plus .plT{animation:none}}
+.hmTg.back{position:sticky;top:calc(env(safe-area-inset-top,0px) + 44px);z-index:7;min-height:34px!important;padding:2px 14px!important;margin:0 0 10px!important;font-size:13px!important;background:rgba(255,255,255,.4)!important;color:var(--accent,#354c9b)!important;border:1px solid rgba(255,255,255,.65)!important;-webkit-backdrop-filter:blur(14px) saturate(1.5);backdrop-filter:blur(14px) saturate(1.5);box-shadow:0 1px 6px rgba(20,30,70,.08)}
+:root[data-theme="dark"] .hmTg.back{background:rgba(255,255,255,.07)!important;border-color:rgba(255,255,255,.14)!important;color:#e8ecf8!important}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .hmTg.back{background:rgba(255,255,255,.07)!important;border-color:rgba(255,255,255,.14)!important;color:#e8ecf8!important}}
+.hs-stat{display:none}
+.fxbox{margin-top:6px;padding:8px;border:1px dashed var(--line,#d6dcea);border-radius:10px;font-size:12.5px;display:grid;grid-template-columns:1fr 1fr;gap:6px 8px}
+.fxbox label{display:block;color:var(--muted,#55607a);margin-bottom:2px}.fxbox input{width:100%;box-sizing:border-box;padding:6px;border-radius:8px;border:1px solid var(--line,#d6dcea);background:var(--surface,#fff);color:inherit;font:inherit}
+.fxbox .fxs{grid-column:1/-1;color:var(--muted,#55607a);line-height:1.8}
+@media (min-width:1000px){
+  #app{max-width:1280px}
+  #bnav{inset-inline:auto!important;left:50%!important;right:auto!important;transform:translateX(-50%);width:min(640px,92vw);bottom:16px!important;border-radius:28px!important;border:1px solid var(--line,#d6dcea);box-shadow:0 12px 40px rgba(20,30,70,.22)}
+  #paneD[data-home=simple] header.top{min-height:96px;padding:16px 28px}
+  #hSimple{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;align-items:stretch}
+  #hSimple>.hs-main{grid-column:span 7;margin:0}
+  #hSimple>.hs-stat{display:block;grid-column:span 5;margin:0}
+  #hSimple>.hs-c:not(.hs-main):not(.hs-stat){grid-column:span 6;margin:0}
+  #hSimple>.hs-g{grid-column:1/-1;grid-template-columns:repeat(8,1fr);margin:0}
+  #hSimple .hs-g button{min-height:92px}
+  .hs-stat .fn{margin:8px 0}.hs-stat .fn div{display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px}.hs-stat .fn i{display:block;height:10px;border-radius:99px;background:linear-gradient(90deg,#2d6be6,#3a5bd9)}
+  .hs-stat button.cu-b{margin-top:8px}
+  #paneI .wrap,#paneI{max-width:1240px}
+}
+.hs-rw{display:flex;align-items:center;gap:6px;border-top:1px solid var(--line,#e3e8f1)}.hs-rw .hs-r{border-top:0;flex:1}.hs-fu{flex:none;font:inherit;font-size:12.5px;font-weight:700;border:1px solid #0B6F67;color:#0B6F67;background:transparent;border-radius:99px;padding:5px 12px;cursor:pointer}:root[data-theme="dark"] .hs-fu{color:#7fe0d4;border-color:#7fe0d4}
 /* ۱۱.۳۳: خانه‌ی ساده و ذخیره‌ی محاسبه */
 #paneD[data-home=simple] > :not(header.top):not(#hSimple):not(#hmTg){display:none!important}
 #paneD[data-home=simple] > header.top{margin-bottom:6px}
@@ -6030,9 +6078,9 @@ html[data-ui=classic] .hmTg{border-radius:3px}
 #qkH{width:30px!important;height:66px!important}
 #qkH span{display:none!important}
 #qkH svg{width:28px;height:64px;overflow:visible}
-#qkH .qkBody{fill:rgba(24,34,66,.62);stroke:rgba(255,255,255,.28);stroke-width:1}
+#qkH .qkBody{display:none}
 :root[data-theme="light"] #qkH .qkBody{fill:rgba(40,52,92,.6)}
-#qkH .qkTube{fill:#fff;animation:qkTube 3.2s ease-in-out infinite;filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 7px rgba(255,255,255,.8))}
+#qkH .qkTube{fill:#fff;stroke:rgba(70,90,170,.55);stroke-width:.7;animation:qkTube 3.2s ease-in-out infinite;filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 8px rgba(130,160,255,.95))}
 #qkH .qkTube+.qkTube{animation-delay:.25s}
 @keyframes qkTube{0%,100%{opacity:.4}45%{opacity:1}52%{opacity:.85}60%{opacity:1}}
 #qkH.open .qkTube{animation:none;opacity:1}
@@ -6782,7 +6830,7 @@ loadAll().then(function(){
   function sv(o){try{localStorage.setItem(K,JSON.stringify(o))}catch(e){}}
   var st=null,ov=null;
   function cat(){try{return window.__pfCat()}catch(e){return null}}
-  function init(){var d=ld(),c=cat();st={rate:d.rate||(c&&c.rate)||'',disc:d.disc==null?18:d.disc,mdisc:d.mdisc==null?10:d.mdisc,unit:d.unit||'rial',round:d.round==null?1:d.round,title:d.title||'لیست قیمت همکاران',note:d.note||'',off:d.off||{}}}
+  function init(){var d=ld(),c=cat();st={rate:d.rate||(c&&c.rate)||'',disc:d.disc==null?18:d.disc,mdisc:d.mdisc==null?10:d.mdisc,unit:d.unit||'rial',round:d.round==null?1:d.round,title:d.title||'لیست قیمت همکاران',note:d.note||'',off:d.off||{},pc:d.pc||[10,15,18],exp:!!d.exp}}
   function compute(){
     var c=cat();if(!c)return null;var rate=parseFloat(en(st.rate))||0,rows=[];
     c.groups.forEach(function(g){
@@ -6792,7 +6840,7 @@ loadAll().then(function(){
         var rial=i.usd*rate*(1-d/100);
         var v=st.unit==='toman'?rial/10:rial;
         if(st.round)v=Math.round(v/1000)*1000;
-        return {i:i,d:d,v:v}});
+        var lst=i.usd*rate;lst=st.unit==='toman'?lst/10:lst;if(st.round)lst=Math.round(lst/1000)*1000;return {i:i,d:d,v:v,l:lst}});
       if(out.length)rows.push({g:g,items:out})});
     return {rate:rate,rows:rows,all:c.items};
   }
@@ -6801,7 +6849,7 @@ loadAll().then(function(){
     L.push('*'+st.title+'*');L.push('پایش الکترونیک');
     var dt='';try{dt=fa(new Intl.DateTimeFormat('fa-IR-u-ca-persian-nu-latn',{year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()))}catch(e){}
     L.push((dt?'تاریخ: '+dt+' · ':'')+'ساعت: '+timeFa());
-    r.rows.forEach(function(g){L.push('');L.push('▪️ '+g.g.name);g.items.forEach(function(x){L.push('• '+x.i.name+': '+nf(x.v)+' '+u+(x.i.unit&&x.i.unit!=='عدد'?' / '+x.i.unit:''))})});
+    r.rows.forEach(function(g){L.push('');L.push('▪️ '+g.g.name);g.items.forEach(function(x){L.push('• '+x.i.name+': '+nf(x.v)+' '+u+(st.exp?' (لیست: '+nf(x.l)+')':'')+(x.i.unit&&x.i.unit!=='عدد'?' / '+x.i.unit:''))})});
     if(st.note){L.push('');L.push(st.note)}
     L.push('');L.push('قیمت‌ها بدون ارزش افزوده است و این لیست از زمان صدور تا ۲۴ ساعت اعتبار دارد.');
     return L.join('\n');
@@ -6823,6 +6871,7 @@ loadAll().then(function(){
   +'#colOv .cl-b button{flex:1;min-width:120px;font:inherit;font-weight:700;padding:12px;border-radius:14px;border:1px solid var(--line,#d6dcea);background:var(--surface,#fff);color:inherit;cursor:pointer}'
   +'#colOv .cl-b .p{background:#0B6F67;color:#fff;border-color:#0B6F67}'
   +'#colOv .cl-x{border:1px solid var(--line,#d6dcea);background:var(--surface,#fff);color:inherit;border-radius:50%;width:40px;height:40px;font-size:18px;cursor:pointer}'
+  +'#colOv .cl-an{border:1px solid var(--line);border-radius:14px;padding:10px;margin:10px 0;background:var(--surface)}#colOv .cl-f3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:8px 0}#colOv .cl-ck{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--fg)}#colOv .cl-ck input{width:auto}#colOv .pf{color:#0B6F67;font-size:11.5px}:root[data-theme="dark"] #colOv .pf{color:#7fe0d4}'
   +'#colOv .hint{font-size:12.5px;color:var(--muted,#55607a);line-height:1.8}';document.head.appendChild(s)}
   function draw(keep){
     var r=compute();if(!r){ov.innerHTML='<div class="cl-w"><p>کاتالوگ پیش‌فاکتور هنوز بارگذاری نشده.</p></div>';return}
@@ -6835,26 +6884,29 @@ loadAll().then(function(){
     +'<div class="cl-f"><div><label for="cl_t">عنوان لیست</label><input id="cl_t" value="'+esc(st.title)+'"></div>'
     +'<div><label for="cl_rd">رُند کردن</label><select id="cl_rd"><option value="1"'+(st.round?' selected':'')+'>به هزار</option><option value="0"'+(st.round?'':' selected')+'>بدون رُند</option></select></div></div>'
     +'<label for="cl_n">توضیح پایین لیست (اختیاری)</label><textarea id="cl_n" rows="2">'+esc(st.note)+'</textarea>'
+    +'<div class="cl-an"><b>تحلیل سود همکار (فقط برای خودت)</b><div class="cl-f3"><div><label for="cl_p0">سود ۱ (٪)</label><input id="cl_p0" inputmode="decimal" value="'+esc(fa(st.pc[0]))+'"></div><div><label for="cl_p1">سود ۲ (٪)</label><input id="cl_p1" inputmode="decimal" value="'+esc(fa(st.pc[1]))+'"></div><div><label for="cl_p2">سود ۳ (٪)</label><input id="cl_p2" inputmode="decimal" value="'+esc(fa(st.pc[2]))+'"></div></div><label class="cl-ck"><input type="checkbox" id="cl_exp"'+(st.exp?' checked':'')+'> نمایش «قیمت لیست و سود همکار» در PDF و اکسل (برای همکار)</label><p class="hint">سود همکار = قیمت لیست (بدون تخفیف) × درصد. زیر هر کالا سود او با هر سه درصد دیده می‌شود. تا تیک بالا را نزنی، این ستون‌ها در فایل و متن ارسالی نمی‌آید.</p></div>'
     +'<p class="hint">تخفیف فقط روی کالاهای تخفیف‌پذیر اعمال می‌شود. فقط کالاهای تولید شرکت در لیست هست. تیک هر ردیف را بردار تا از لیست حذف شود.</p>'
     +'<div class="cl-b"><button class="p" data-cl="prev">پیش‌نمایش و دانلود PDF / اکسل</button><button data-cl="copy">کپی متن</button><button data-cl="text">ارسال به صورت متن</button></div>';
-    r.rows.forEach(function(g){h+='<div class="cl-g">'+esc(g.g.name)+'</div>'+g.items.map(function(x){return '<div class="cl-r"><input type="checkbox" checked data-off="'+x.i.id+'" aria-label="نمایش '+esc(x.i.name)+'"><span>'+esc(x.i.name)+(x.d?' <small>(−'+fa(x.d)+'٪)</small>':'')+'</span><b>'+nf(x.v)+' '+u+'</b></div>'}).join('')});
+    r.rows.forEach(function(g){h+='<div class="cl-g">'+esc(g.g.name)+'</div>'+g.items.map(function(x){return '<div class="cl-r"><input type="checkbox" checked data-off="'+x.i.id+'" aria-label="نمایش '+esc(x.i.name)+'"><span>'+esc(x.i.name)+(x.d?' <small>(−'+fa(x.d)+'٪)</small>':'')+((x.i.disc||x.i.motor)?'<br><small class="pf">سود همکار: '+st.pc.map(function(q){return fa(q)+'٪ = '+nf(x.l*q/100)}).join(' · ')+'</small>':'')+'</span><b>'+nf(x.v)+' '+u+'</b></div>'}).join('')});
     var offs=r.all.filter(function(i){return st.off[i.id]});
     if(offs.length)h+='<div class="cl-g">حذف‌شده از لیست</div>'+offs.map(function(i){return '<div class="cl-r off"><input type="checkbox" data-off="'+i.id+'" aria-label="نمایش '+esc(i.name)+'"><span>'+esc(i.name)+'</span></div>'}).join('');
     h+='</div>';
     var y=keep?ov.scrollTop:0,fid=keep&&document.activeElement&&document.activeElement.id;
     ov.innerHTML=h;ov.scrollTop=y;if(fid){var f=document.getElementById(fid);if(f){f.focus();try{f.setSelectionRange(f.value.length,f.value.length)}catch(e){}}}
   }
-  function save(){sv({rate:st.rate,disc:st.disc,mdisc:st.mdisc,unit:st.unit,round:st.round,title:st.title,note:st.note,off:st.off})}
+  function save(){sv({rate:st.rate,disc:st.disc,mdisc:st.mdisc,unit:st.unit,round:st.round,title:st.title,note:st.note,off:st.off,pc:st.pc,exp:st.exp})}
   function toast(m){try{window.__pp.toast(m)}catch(e){}}
   function open(){css();init();if(!ov){ov=document.createElement('div');ov.id='colOv';ov.setAttribute('role','dialog');ov.setAttribute('aria-modal','true');ov.setAttribute('aria-label','لیست قیمت همکاران');ov.dir='rtl';ov.lang='fa';document.body.appendChild(ov);
     ov.addEventListener('input',function(e){var t=e.target,id=t.id;
       if(id==='cl_rate'){st.rate=en(t.value);var d=parseFloat(st.rate)||0;t.value=d?nf(d):''}
       else if(id==='cl_disc')st.disc=parseFloat(en(t.value))||0;else if(id==='cl_md')st.mdisc=parseFloat(en(t.value))||0;
+      else if(id==='cl_p0'||id==='cl_p1'||id==='cl_p2'){st.pc[+id.slice(4)]=parseFloat(en(t.value))||0}
       else if(id==='cl_t')st.title=t.value;else if(id==='cl_n')st.note=t.value;else return;
       save();if(id==='cl_t'||id==='cl_n')return;draw(true)});
     ov.addEventListener('change',function(e){var t=e.target;
       if(t.id==='cl_unit'){st.unit=t.value;save();draw(true)}
       else if(t.id==='cl_rd'){st.round=+t.value;save();draw(true)}
+      else if(t.id==='cl_exp'){st.exp=t.checked;save()}
       else if(t.dataset&&t.dataset.off){if(t.checked)delete st.off[t.dataset.off];else st.off[t.dataset.off]=1;save();draw(true)}});
     ov.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-cl]');if(!b)return;var k=b.dataset.cl,r=compute();
       if(k==='x'){close();return}
@@ -6878,10 +6930,10 @@ loadAll().then(function(){
   function sheetHtml(r){
     var u=uname(),n=0,h='<div class="pv inv"><div class="frame"><div class="hdr"><div class="lgo"><img src="'+pp().LOGO+'" alt=""></div><div class="nb"><div class="n1" style="gap:6px"><span>تاریخ :</span><span style="direction:ltr;unicode-bidi:bidi-override">'+todayFa()+'</span></div><div class="n2" style="gap:6px"><span>ساعت :</span><span style="direction:ltr;unicode-bidi:bidi-override">'+timeFa()+'</span></div></div></div>';
     h+='<div class="ttl2">'+esc(st.title)+'</div>';
-    h+='<table class="it"><colgroup><col style="width:9%"><col style="width:55%"><col style="width:10%"><col style="width:26%"></colgroup><thead><tr><th>ردیف</th><th>نام کالا</th><th>واحد</th><th>قیمت ('+u+')</th></tr></thead><tbody>';
+    h+='<table class="it"><colgroup>'+(st.exp?'<col style="width:7%"><col style="width:39%"><col style="width:8%"><col style="width:23%"><col style="width:23%">':'<col style="width:9%"><col style="width:55%"><col style="width:10%"><col style="width:26%">')+'</colgroup><thead><tr><th>ردیف</th><th>نام کالا</th><th>واحد</th>'+(st.exp?'<th>قیمت لیست</th><th>قیمت همکار ('+u+')</th>':'<th>قیمت ('+u+')</th>')+'</tr></thead><tbody>';
     r.rows.forEach(function(g){
-      h+='<tr><td colspan="4" style="background:#d9d9d9;font-weight:700;text-align:center;border:1.5px solid #000">'+esc(g.g.name)+'</td></tr>';
-      g.items.forEach(function(x,i){n++;h+='<tr'+(i===g.items.length-1?' class="ge"':'')+'><td class="c">'+fa(n)+'</td><td class="nm">'+esc(x.i.name)+'</td><td class="c">'+esc(x.i.unit||'عدد')+'</td><td class="c">'+nf(x.v)+'</td></tr>'})});
+      h+='<tr><td colspan="'+(st.exp?5:4)+'" style="background:#d9d9d9;font-weight:700;text-align:center;border:1.5px solid #000">'+esc(g.g.name)+'</td></tr>';
+      g.items.forEach(function(x,i){n++;h+='<tr'+(i===g.items.length-1?' class="ge"':'')+'><td class="c">'+fa(n)+'</td><td class="nm">'+esc(x.i.name)+'</td><td class="c">'+esc(x.i.unit||'عدد')+'</td>'+(st.exp?'<td class="c">'+nf(x.l)+'</td>':'')+'<td class="c">'+nf(x.v)+'</td></tr>'})});
     h+='</tbody></table><div class="nt">'+esc((st.note?st.note+'\n':'')+'قیمت‌ها بدون ارزش افزوده است و این لیست از زمان صدور تا ۲۴ ساعت اعتبار دارد.')+'</div></div></div>';
     return h;
   }
@@ -6895,24 +6947,24 @@ loadAll().then(function(){
     var faOn=!document.getElementById('xlFa')||document.getElementById('xlFa').checked;
     var wb=new ExcelJS.Workbook(),ws=wb.addWorksheet('لیست قیمت',{views:[{rightToLeft:true,showGridLines:false}],pageSetup:{paperSize:9,fitToPage:true,fitToWidth:1,fitToHeight:0,margins:{left:0.2,right:0.2,top:0.2,bottom:0.2,header:0,footer:0}}});
     var T=function(s){return faOn?fa(s):s};
-    ws.columns=[{width:6},{width:46},{width:10},{width:24}];
+    var NC=st.exp?5:4;ws.columns=st.exp?[{width:6},{width:38},{width:10},{width:20},{width:20}]:[{width:6},{width:46},{width:10},{width:24}];
     var F='B Nazanin',blk={argb:'FF000000'},thin={style:'thin',color:blk},thick={style:'thick',color:blk},bd={top:thin,bottom:thin,left:thin,right:thin},fillG={type:'pattern',pattern:'solid',fgColor:{argb:'FFD9D9D9'}};
     var put=function(r1,c1,r2,c2,val,o){o=o||{};var cl=ws.getCell(r1,c1);cl.value=val;cl.font={name:F,size:o.sz||12,bold:o.b!==false,color:blk};cl.alignment={horizontal:o.h||'right',vertical:'middle',wrapText:!!o.w};cl.border=bd;if(o.fill)cl.fill=o.fill;if(r1!==r2||c1!==c2)ws.mergeCells(r1,c1,r2,c2);return cl};
     ws.getRow(1).height=30;ws.getRow(2).height=30;
-    put(1,1,2,2,'',{});put(1,3,1,4,T('تاریخ : '+todayFa()),{sz:12});put(2,3,2,4,T('ساعت : '+timeFa()),{sz:12});
+    put(1,1,2,2,'',{});put(1,3,1,NC,T('تاریخ : '+todayFa()),{sz:12});put(2,3,2,NC,T('ساعت : '+timeFa()),{sz:12});
     try{var lid=wb.addImage({base64:pp().LOGO,extension:'png'});ws.addImage(lid,{tl:{col:0.2,row:0.1},ext:{width:40,height:58}})}catch(e){}
-    put(3,1,3,4,st.title,{h:'center',sz:14});ws.getRow(3).height=34;
-    var hr=4;ws.getRow(hr).height=22;['ردیف','نام کالا','واحد','قیمت ('+uname()+')'].forEach(function(x,i){put(hr,i+1,hr,i+1,x,{h:'center',sz:11,fill:fillG})});
+    put(3,1,3,NC,st.title,{h:'center',sz:14});ws.getRow(3).height=34;
+    var hr=4;ws.getRow(hr).height=22;(st.exp?['ردیف','نام کالا','واحد','قیمت لیست','قیمت همکار ('+uname()+')']:['ردیف','نام کالا','واحد','قیمت ('+uname()+')']).forEach(function(x,i){put(hr,i+1,hr,i+1,x,{h:'center',sz:11,fill:fillG})});
     var row=hr,n=0;
     r.rows.forEach(function(g){
-      row++;ws.getRow(row).height=22;put(row,1,row,4,g.g.name,{h:'center',fill:fillG});
+      row++;ws.getRow(row).height=22;put(row,1,row,NC,g.g.name,{h:'center',fill:fillG});
       g.items.forEach(function(x,i){row++;n++;var rw=ws.getRow(row);rw.height=21;
-        rw.getCell(1).value=faOn?fa(n):n;rw.getCell(2).value=x.i.name;rw.getCell(3).value=x.i.unit||'عدد';rw.getCell(4).value=faOn?nf(x.v):Math.round(x.v);
-        for(var k=1;k<=4;k++){var c=rw.getCell(k);c.font={name:F,size:12,bold:true};c.border=bd;c.alignment={vertical:'middle',horizontal:k===2?'right':'center',wrapText:k===2};if(!faOn&&k===4)c.numFmt='#,##0';if(k===1)c.fill=fillG;if(i===g.items.length-1)c.border=Object.assign({},bd,{bottom:thick})}})});
-    row++;var nc=put(row,1,row,4,T((st.note?st.note+'\n':'')+'قیمت‌ها بدون ارزش افزوده است و این لیست از زمان صدور تا ۲۴ ساعت اعتبار دارد.'),{w:true});
+        rw.getCell(1).value=faOn?fa(n):n;rw.getCell(2).value=x.i.name;rw.getCell(3).value=x.i.unit||'عدد';if(st.exp){rw.getCell(4).value=faOn?nf(x.l):Math.round(x.l);rw.getCell(5).value=faOn?nf(x.v):Math.round(x.v)}else rw.getCell(4).value=faOn?nf(x.v):Math.round(x.v);
+        for(var k=1;k<=NC;k++){var c=rw.getCell(k);c.font={name:F,size:12,bold:true};c.border=bd;c.alignment={vertical:'middle',horizontal:k===2?'right':'center',wrapText:k===2};if(!faOn&&k>=4)c.numFmt='#,##0';if(k===1)c.fill=fillG;if(i===g.items.length-1)c.border=Object.assign({},bd,{bottom:thick})}})});
+    row++;var nc=put(row,1,row,NC,T((st.note?st.note+'\n':'')+'قیمت‌ها بدون ارزش افزوده است و این لیست از زمان صدور تا ۲۴ ساعت اعتبار دارد.'),{w:true});
     nc.fill={type:'gradient',gradient:'angle',degree:90,stops:[{position:0,color:{argb:'FFFFFFFF'}},{position:1,color:{argb:'FFF4B183'}}]};ws.getRow(row).height=st.note?48:28;
-    for(var rr=1;rr<=row;rr++){var a=ws.getCell(rr,1),z=ws.getCell(rr,4);a.border=Object.assign({},a.border,{left:thick});z.border=Object.assign({},z.border,{right:thick})}
-    for(var cc=1;cc<=4;cc++){var t=ws.getCell(1,cc),b=ws.getCell(row,cc);t.border=Object.assign({},t.border,{top:thick});b.border=Object.assign({},b.border,{bottom:thick})}
+    for(var rr=1;rr<=row;rr++){var a=ws.getCell(rr,1),z=ws.getCell(rr,NC);a.border=Object.assign({},a.border,{left:thick});z.border=Object.assign({},z.border,{right:thick})}
+    for(var cc=1;cc<=NC;cc++){var t=ws.getCell(1,cc),b=ws.getCell(row,cc);t.border=Object.assign({},t.border,{top:thick});b.border=Object.assign({},b.border,{bottom:thick})}
     var buf=await wb.xlsx.writeBuffer();return new Blob([buf],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
   }
   var pv=null,pvBusy=false;
