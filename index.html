@@ -1176,7 +1176,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
   <button type="button" data-qs="lead"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 12a3.6 3.6 0 100-7.2 3.6 3.6 0 000 7.2zM4.5 20c.8-3.8 3.6-5.5 7.5-5.5s6.7 1.7 7.5 5.5"/></svg></i><span><b>مشتری یا سرنخ تازه</b><small>ثبت نام، شماره و مرحله</small></span></button>
   <button type="button" data-qs="cal"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.5h16v13H4zM4 10.5h16M8 4v4M16 4v4"/></svg></i><span><b>کار یا پیگیری در تقویم</b><small>با تاریخ و ساعت</small></span></button>
   <button type="button" data-qs="alarm"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6v7l3 2M5 3.5 2.5 6M19 3.5 21.5 6M12 20a7 7 0 100-14 7 7 0 000 14z"/></svg></i><span><b>یادآور سریع</b><small>چند دقیقه‌ی دیگر</small></span></button>
-  <button type="button" data-qs="gh"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V6M8 10l4-4 4 4M5 19h14"/></svg></i><span><b>ذخیره در گیت‌هاب</b><small>کل اطلاعات این اکانت، همین الان</small></span></button>
+  <button type="button" data-qs="gh"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V6M8 10l4-4 4 4M5 19h14"/></svg></i><span><b>ثبت روی گیت‌هاب</b><small>ذخیره‌ی همین الان در فضای آنلاین</small></span></button>
   <button type="button" data-qs="bk"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v10M8 10l4 4 4-4M5 19h14"/></svg></i><span><b>پشتیبان‌گیری</b><small>ذخیره‌ی فایل روی کامپیوتر</small></span></button>
   <button type="button" data-qs="rs"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V10M8 14l4-4 4 4M5 5h14"/></svg></i><span><b>بازیابی</b><small>برگرداندن از فایل پشتیبان</small></span></button>
 </div>
@@ -1483,9 +1483,15 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
       <div class="fields">
         <div class="field wide"><label for="sy_repo">مخزن خصوصی</label><input type="text" id="sy_repo" placeholder="مثلاً tiam/payesh-data" autocomplete="off"></div>
         <div class="field wide"><label for="sy_tok">توکن دسترسی</label><input type="password" id="sy_tok" autocomplete="off" style="width:100%;box-sizing:border-box;height:42px;padding:0 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);font:inherit;direction:ltr;text-align:center"></div>
-        <label class="check"><input type="checkbox" id="sy_auto" checked> همگام‌سازی خودکار (۱۵ ثانیه بعد از هر تغییر، و موقع باز کردن اپ)</label>
+        <label class="check"><input type="checkbox" id="sy_auto" checked> بررسی خودکار آپدیت (موقع باز کردن اپ — بدون نوشتن روی گیت‌هاب)</label>
       </div>
-      <div class="regrow"><button type="button" class="vbtn" id="sy_go">همگام‌سازی حالا</button><button type="button" class="vbtn" id="sy_push">ذخیره‌ی کل اطلاعات در گیت‌هاب</button><button type="button" class="vbtn" id="sy_clr" style="background:transparent;color:var(--accent)">پاک کردن توکن از این دستگاه</button><span class="regMsg" id="sy_msg"></span></div>
+      <div class="regrow" style="flex-wrap:wrap;gap:8px">
+        <button type="button" class="vbtn" id="sy_push">ثبت روی گیت‌هاب</button>
+        <button type="button" class="vbtn" id="sy_pull" style="background:transparent;color:var(--accent);border:1px solid var(--accent)">دریافت از گیت‌هاب</button>
+        <button type="button" class="vbtn" id="sy_clr" style="background:transparent;color:var(--accent)">پاک کردن توکن از این دستگاه</button>
+        <span class="regMsg" id="sy_msg"></span>
+      </div>
+      <p class="hint" style="margin-top:6px">فقط با دکمه <b>ثبت روی گیت‌هاب</b> اطلاعات این دستگاه روی مخزن نوشته می‌شود. دستگاه‌های دیگر فقط پیغام آپدیت می‌گیرند و با تأیید شما به‌روز می‌شوند.</p>
       <div class="regrow" id="sy_lkw" style="display:none"><button type="button" class="vbtn" id="sy_lk">ساخت لینک راه‌اندازی برای همکار</button><button type="button" class="vbtn" id="sy_lkc" hidden style="background:transparent;color:var(--accent)">کپی لینک</button></div><input type="text" id="sy_lkv" readonly hidden dir="ltr" aria-label="لینک راه‌اندازی" style="margin-top:6px"><p class="hint" id="sy_lkh" hidden>این لینک شامل توکن است؛ فقط برای همکار مورد اعتماد بفرست (تلگرام/واتس‌اپ خصوصی). همکار با یک ضربه روی لینک، همگام‌سازی را روی دستگاه خودش فعال می‌کند.</p>
     </details>
 
@@ -1928,7 +1934,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.45.0</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.44.0</footer>
 </div>
 
 
@@ -2857,7 +2863,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
     if((b=t.closest('[data-qs]'))){var k=b.getAttribute('data-qs');sheet(false);
       if(k==='cust'){cur=null;go('Q');setTimeout(function(){var i=$('cuQ');if(i)i.focus()},120)}
       else if(k==='lead'){go('F');setTimeout(function(){var i=$('fn_name');if(i)i.focus()},150)}
-      else if(k==='cal')go('K');else if(k==='inv'){try{var Pn=window.__proforma,iv=Pn.S().inv;if(!Pn.S().fid&&String(iv.buyer||'').trim()&&!confirm('پیش‌فاکتور فعلی در پوشه‌ای ذخیره نشده. پیش‌فاکتور تازه باز شود؟'))return;Pn.newInv()}catch(x){}go('I')}else if(k==='alarm'){var a=$('tbAlarm');if(a)a.click()}else if(k==='gh'){tst('در حال ذخیره در گیت‌هاب…');(window.__pushNow?window.__pushNow():Promise.resolve({t:'همگام‌سازی در این نسخه نیست'})).then(function(r){tst(r&&r.t?r.t:'انجام شد')})}else if(k==='bk'){if(window.__bkRun)window.__bkRun();tst('فایل پشتیبان دانلود شد')}else if(k==='rs'){var bf=$('bkFile');if(bf)bf.click()}
+      else if(k==='cal')go('K');else if(k==='inv'){try{var Pn=window.__proforma,iv=Pn.S().inv;if(!Pn.S().fid&&String(iv.buyer||'').trim()&&!confirm('پیش‌فاکتور فعلی در پوشه‌ای ذخیره نشده. پیش‌فاکتور تازه باز شود؟'))return;Pn.newInv()}catch(x){}go('I')}else if(k==='alarm'){var a=$('tbAlarm');if(a)a.click()}else if(k==='gh'){tst('در حال ثبت روی گیت‌هاب…');(window.__syncNow?window.__syncNow():Promise.resolve({t:'همگام‌سازی در این نسخه نیست'})).then(function(r){tst(r&&r.t?r.t:'انجام شد')})}else if(k==='bk'){if(window.__bkRun)window.__bkRun();tst('فایل پشتیبان دانلود شد')}else if(k==='rs'){var bf=$('bkFile');if(bf)bf.click()}
       return}
   });
   document.addEventListener('input',function(e){if(e.target&&e.target.id==='cuQ'){q=e.target.value;var pos=e.target.selectionStart;renderList();var i=$('cuQ');if(i){i.focus();try{i.setSelectionRange(pos,pos)}catch(x){}}}});
@@ -5136,7 +5142,7 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
   var $=function(id){return document.getElementById(id)};
   function jget(k){try{return JSON.parse(localStorage.getItem(k))||{}}catch(e){return {}}}
   function jset(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
-  var cfg=jget(CK), meta=jget(MK), busy=false, timer=null;
+  var cfg=jget(CK), meta=jget(MK), busy=false, timer=null, pendingRemote=null;
   if(cfg.auto===undefined)cfg.auto=true;
   if(!cfg.repo||!cfg.token||window.__paySetupApplied){var dv=jget('pay-setup-cfg');if(dv.repo&&dv.token){cfg.repo=dv.repo;cfg.token=dv.token;jset(CK,cfg)}}
 
@@ -5152,24 +5158,9 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
     opt.headers=Object.assign({'Authorization':'Bearer '+cfg.token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'},opt.headers||{});
     return fetch('https://api.github.com/repos/'+cfg.repo+'/contents/'+path,opt);
   }
-  window.__pushNow=async function(){
-    if(!FILE)return {t:'اول با حساب خودت وارد شو.',kind:'bad'};
-    if(!cfg.repo||!cfg.token)return {t:'اول نام مخزن و توکن را در «حساب و تنظیمات» وارد کن.',kind:'bad'};
-    if(busy)return {t:'همگام‌سازی در حال انجام است؛ چند ثانیه بعد دوباره بزن.',kind:'bad'};
-    busy=true;
-    try{
-      for(var att=0;att<3;att++){
-        var rem=await remoteGet(),data=snapData();
-        if(rem&&rem.snap&&rem.snap.data)jset('payesh-sync-remote-bak',{ts:new Date().toISOString(),data:rem.snap.data});
-        try{markSynced(await push(data,rem?rem.sha:null),data);var n=Object.keys(data).length;say('کل اطلاعات این اکانت در گیت‌هاب ذخیره شد ✓','ok');return {t:'کل اطلاعات این اکانت در گیت‌هاب ذخیره شد ✓ ('+n+' بخش)',kind:'ok'}}
-        catch(e){if(e.conflict)continue;throw e}
-      }
-      return {t:'ذخیره نشد؛ دوباره بزن.',kind:'bad'};
-    }catch(e){return {t:'خطا: '+(e&&e.message||e),kind:'bad'}}
-    finally{busy=false}
-  };
-  window.__syncNow=async function(){lastSay={t:'',kind:''};await sync(true);return lastSay};
+  window.__syncNow=async function(){lastSay={t:'',kind:''};await pushLocal();return lastSay};
   window.__payGh={cfg:function(){return cfg},api:api,b64e:b64e,b64d:b64d};
+
   async function remoteGet(){
     var r=await api(FILE);
     if(r.status===404)return null;
@@ -5184,13 +5175,13 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
     var body={message:'sync '+new Date().toISOString(),content:b64e(JSON.stringify({app:'payesh-sync',v:1,updated:new Date().toISOString(),data:data}))};
     if(sha)body.sha=sha;
     var r=await api(FILE,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-    if(r.status===409||r.status===422){var ce=new Error('هم‌زمان نسخه‌ی دیگری ذخیره شد؛ دوباره همگام‌سازی کن.');ce.conflict=true;throw ce}
+    if(r.status===409||r.status===422){var ce=new Error('هم‌زمان نسخه‌ی دیگری ذخیره شد؛ دوباره تلاش کن.');ce.conflict=true;throw ce}
     if(r.status===401||r.status===403||r.status===404)throw new Error('نوشتن ممکن نشد؛ دسترسی توکن (Contents: Read and write) و نام مخزن را بررسی کن.');
     if(!r.ok)throw new Error('پاسخ گیت‌هاب: '+r.status);
     var j=await r.json();
     return j.content.sha;
   }
-  function markSynced(sha,data){meta.sha=sha;meta.hash=hash(data);meta.t=Date.now();jset(MK,meta);jset('payesh-sync-base',{data:data})}
+  function markSynced(sha,data){meta.sha=sha;meta.hash=hash(data);meta.t=Date.now();jset(MK,meta);jset('payesh-sync-base',{data:data});pendingRemote=null;hideUpdateBanner()}
   function applyRemote(rem){
     var cur=snapData();
     jset(BK,{ts:new Date().toISOString(),data:cur});
@@ -5198,23 +5189,42 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
     Object.keys(cur).forEach(function(k){if(!(k in d))localStorage.removeItem(k)});
     Object.keys(d).forEach(function(k){if(/^payesh-/.test(k)&&!SKIP.test(k))localStorage.setItem(k,d[k])});
     markSynced(rem.sha,snapData());
-    say('نسخه‌ی گیت‌هاب آمد؛ صفحه دوباره باز می‌شود. نسخه‌ی قبلی این دستگاه در حافظه‌ی پشتیبان ماند.','ok');
+    say('نسخه‌ی گیت‌هاب اعمال شد؛ صفحه دوباره باز می‌شود. نسخه‌ی قبلی این دستگاه پشتیبان ماند.','ok');
     setTimeout(function(){location.reload()},900);
   }
-  var ask=function(){return new Promise(function(res){
-    var o=document.createElement('div');
-    o.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;z-index:100;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;padding:16px';
-    var c=document.createElement('div');c.dir='rtl';
-    c.style.cssText='background:#fff;color:#1a2133;border-radius:12px;padding:16px;max-width:420px;line-height:1.8;font-family:inherit';
-    c.innerHTML='<p style="margin:0 0 12px"><b>دو نسخه‌ی متفاوت وجود دارد.</b><br>هم روی گیت‌هاب تغییر کرده و هم روی این دستگاه. کدام بماند؟</p>';
-    [['local','نسخه‌ی این دستگاه بماند (جایگزین گیت‌هاب)'],['remote','نسخه‌ی گیت‌هاب بیاید (جایگزین این دستگاه)'],['cancel','فعلاً هیچ‌کدام']].forEach(function(p){
-      var b=document.createElement('button');b.type='button';b.textContent=p[1];
-      b.style.cssText='display:block;width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid #354c9b;background:'+(p[0]==='cancel'?'#fff':'#354c9b')+';color:'+(p[0]==='cancel'?'#354c9b':'#fff')+';font:inherit;cursor:pointer';
-      b.onclick=function(){document.body.removeChild(o);res(p[0])};c.appendChild(b)});
-    o.appendChild(c);document.body.appendChild(o);
-  })};
 
-  /* ---- ادغام خودکار سه‌طرفه (پایه = آخرین همگام‌سازی) ---- */
+  function showUpdateBanner(){
+    var b=$('sy_upd_banner');
+    if(!b){
+      b=document.createElement('div');
+      b.id='sy_upd_banner';
+      b.dir='rtl';
+      b.style.cssText='position:fixed;bottom:16px;left:16px;right:16px;z-index:90;max-width:420px;margin:0 auto;background:#354c9b;color:#fff;border-radius:12px;padding:14px 16px;box-shadow:0 8px 24px rgba(0,0,0,.25);font:14px/1.7 inherit;display:flex;flex-direction:column;gap:10px';
+      b.innerHTML='<div><b>آپدیت جدید آمده</b><br>روی گیت‌هاب نسخهٔ تازه‌تری هست. می‌خواهی این دستگاه به‌روز شود؟</div><div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" id="sy_upd_yes" style="flex:1;padding:10px;border:0;border-radius:8px;background:#fff;color:#354c9b;font:inherit;font-weight:600;cursor:pointer">بله، به‌روز شو</button><button type="button" id="sy_upd_no" style="padding:10px 14px;border:1px solid rgba(255,255,255,.5);border-radius:8px;background:transparent;color:#fff;font:inherit;cursor:pointer">بعداً</button></div>';
+      document.body.appendChild(b);
+      b.querySelector('#sy_upd_yes').onclick=function(){if(pendingRemote)applyRemote(pendingRemote)};
+      b.querySelector('#sy_upd_no').onclick=function(){hideUpdateBanner()};
+    }
+    b.style.display='flex';
+  }
+  function hideUpdateBanner(){var b=$('sy_upd_banner');if(b)b.style.display='none'}
+
+  function askConfirm(title, yesLabel, noLabel){
+    return new Promise(function(res){
+      var o=document.createElement('div');
+      o.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;z-index:100;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;padding:16px';
+      var c=document.createElement('div');c.dir='rtl';
+      c.style.cssText='background:#fff;color:#1a2133;border-radius:12px;padding:16px;max-width:420px;line-height:1.8;font-family:inherit';
+      c.innerHTML='<p style="margin:0 0 12px">'+title+'</p>';
+      [[true,yesLabel||'بله'],[false,noLabel||'انصراف']].forEach(function(p){
+        var b=document.createElement('button');b.type='button';b.textContent=p[1];
+        b.style.cssText='display:block;width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid #354c9b;background:'+(p[0]?'#354c9b':'#fff')+';color:'+(p[0]?'#fff':'#354c9b')+';font:inherit;cursor:pointer';
+        b.onclick=function(){document.body.removeChild(o);res(p[0])};c.appendChild(b)});
+      o.appendChild(c);document.body.appendChild(o);
+    });
+  }
+
+  /* merge kept for rare conflict recovery but not used for auto push */
   function eq(a,b){return JSON.stringify(a)===JSON.stringify(b)}
   function isObj(x){return x!==null&&typeof x==='object'&&!Array.isArray(x)}
   function okIds(a){return Array.isArray(a)&&a.every(function(x){return isObj(x)&&x.id!=null})}
@@ -5266,62 +5276,156 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
   function safeReload(){
     (function w(){var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&document.visibilityState==='visible'){setTimeout(w,2500);return}location.reload()})()}
 
-  async function sync(manual){
+  /** فقط بررسی آپدیت — هرگز روی گیت‌هاب نمی‌نویسد */
+  async function checkUpdate(manual){
     if(busy)return;
     if(!FILE){if(manual)say('برای همگام‌سازی اول با حساب خودت وارد شو.','bad');return}
     if(!cfg.repo||!cfg.token){if(manual)say('اول نام مخزن و توکن را وارد کن.','bad');return}
-    busy=true;say('در حال همگام‌سازی…');
+    busy=true;if(manual)say('در حال بررسی…');
     try{
-      for(var att=0;att<4;att++){
-        var rem=await remoteGet(),data=snapData(),h=hash(data);
-        var dirty=Object.keys(data).length>0&&h!==meta.hash;
-        if(!rem){markSynced(await push(data,null),data);say('اولین نسخه در گیت‌هاب ذخیره شد.','ok');break}
-        var rdata=(rem.snap&&rem.snap.data)||{};
-        if(rem.sha===meta.sha){
-          if(dirty){
-            try{markSynced(await push(data,rem.sha),data);say('ذخیره شد در گیت‌هاب.','ok');break}
-            catch(e){if(e.conflict)continue;throw e}
-          }else{say('همه‌چیز هماهنگ است.','ok');break}
-        }
-        if(hash(rdata)===h){meta.sha=rem.sha;meta.hash=h;meta.t=Date.now();jset(MK,meta);jset('payesh-sync-base',{data:data});say('همه‌چیز هماهنگ است.','ok');break}
-        if(!dirty){applyRemote(rem);break}
-        /* هر دو طرف تغییر کرده‌اند: ادغام خودکار */
-        var base=(jget('payesh-sync-base')||{}).data||{};
-        var merged=mergeTop(base,data,rdata);
-        jset(BK,{ts:new Date().toISOString(),data:data});
-        var changedLocal=hash(merged)!==h;
-        if(changedLocal)applyMerged(merged,data);
-        try{
-          if(hash(merged)!==hash(rdata)){markSynced(await push(merged,rem.sha),snapData())}
-          else{meta.sha=rem.sha;meta.hash=hash(snapData());meta.t=Date.now();jset(MK,meta);jset('payesh-sync-base',{data:snapData()})}
-        }catch(e){if(e.conflict)continue;throw e}
-        say(changedLocal?'تغییرات دو دستگاه ادغام شد ✓ (نسخه‌ی قبلی این دستگاه پشتیبان گرفته شد)؛ صفحه به‌روز می‌شود.':'ذخیره شد در گیت‌هاب.','ok');
-        if(changedLocal)safeReload();
-        break;
+      var rem=await remoteGet(),data=snapData(),h=hash(data);
+      var localDirty=Object.keys(data).length>0&&h!==meta.hash;
+      if(!rem){
+        pendingRemote=null;hideUpdateBanner();
+        if(localDirty)say('هنوز چیزی روی گیت‌هاب نیست. برای اولین ثبت، دکمه «ثبت روی گیت‌هاب» را بزن.');
+        else say('گیت‌هاب خالی است و این دستگاه هم داده‌ای ندارد.');
+        return;
+      }
+      var rdata=(rem.snap&&rem.snap.data)||{};
+      var rh=hash(rdata);
+      // remote same as what we last synced
+      if(rem.sha===meta.sha || rh===meta.hash){
+        pendingRemote=null;hideUpdateBanner();
+        if(localDirty)say('تغییرات محلی ثبت‌نشده داری. برای نوشتن روی گیت‌هاب دکمه «ثبت روی گیت‌هاب» را بزن.');
+        else say('همه‌چیز هماهنگ است.','ok');
+        return;
+      }
+      // remote differs from last known
+      if(rh===h){
+        // content same, just update meta sha
+        markSynced(rem.sha,data);
+        say('همه‌چیز هماهنگ است.','ok');
+        return;
+      }
+      // remote has different content → notify
+      pendingRemote=rem;
+      if(localDirty){
+        say('هم روی این دستگاه تغییر هست و هم روی گیت‌هاب نسخهٔ دیگری هست. اول یکی را انتخاب کن.','bad');
+      }else{
+        say('آپدیت جدید روی گیت‌هاب آمده.','ok');
+      }
+      showUpdateBanner();
+      if(manual && !localDirty){
+        var ok=await askConfirm('<b>آپدیت جدید آمده.</b><br>نسخهٔ گیت‌هاب جدیدتر است. می‌خواهی این دستگاه به‌روز شود؟','بله، به‌روز شو','فعلاً نه');
+        if(ok)applyRemote(rem);
       }
     }catch(e){say('خطا: '+(e&&e.message||e),'bad')}
     finally{busy=false}
   }
 
-  function schedule(){clearTimeout(timer);timer=setTimeout(function(){sync(false)},5000)}
-  try{
-    var oSet=Storage.prototype.setItem;
-    Storage.prototype.setItem=function(k){
-      var r=oSet.apply(this,arguments);
-      try{if(this===localStorage&&cfg.auto&&cfg.repo&&cfg.token&&/^payesh-/.test(k)&&!SKIP.test(k))schedule()}catch(e){}
-      return r;
-    };
-  }catch(e){}
+  /** فقط با دکمه کاربر — نوشتن روی گیت‌هاب */
+  async function pushLocal(){
+    if(busy)return;
+    if(!FILE){say('برای ثبت اول با حساب خودت وارد شو.','bad');return}
+    if(!cfg.repo||!cfg.token){say('اول نام مخزن و توکن را وارد کن.','bad');return}
+    busy=true;say('در حال ثبت روی گیت‌هاب…');
+    try{
+      for(var att=0;att<4;att++){
+        var rem=await remoteGet(),data=snapData(),h=hash(data);
+        if(Object.keys(data).length===0){say('داده‌ای برای ثبت نیست.','bad');break}
+        if(!rem){
+          var ok0=await askConfirm('<b>اولین ثبت روی گیت‌هاب</b><br>فایل همگام‌سازی ساخته می‌شود. ادامه می‌دهی؟','ثبت کن','انصراف');
+          if(!ok0){say('لغو شد.');break}
+          markSynced(await push(data,null),data);
+          say('اولین نسخه در گیت‌هاب ذخیره شد.','ok');
+          break;
+        }
+        var rdata=(rem.snap&&rem.snap.data)||{};
+        var rh=hash(rdata);
+        // remote is still our last version → safe overwrite with local
+        if(rem.sha===meta.sha || rh===meta.hash){
+          if(h===meta.hash){say('تغییر جدیدی نسبت به آخرین ثبت نیست.','ok');break}
+          try{
+            markSynced(await push(data,rem.sha),data);
+            say('با موفقیت روی گیت‌هاب ثبت شد.','ok');
+            break;
+          }catch(e){if(e.conflict)continue;throw e}
+        }
+        // remote content same as local
+        if(rh===h){
+          markSynced(rem.sha,data);
+          say('از قبل هماهنگ بود؛ ثبت لازم نبود.','ok');
+          break;
+        }
+        // CONFLICT: remote changed by another device
+        var choice=await new Promise(function(res){
+          var o=document.createElement('div');
+          o.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;z-index:100;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;padding:16px';
+          var c=document.createElement('div');c.dir='rtl';
+          c.style.cssText='background:#fff;color:#1a2133;border-radius:12px;padding:16px;max-width:420px;line-height:1.8;font-family:inherit';
+          c.innerHTML='<p style="margin:0 0 12px"><b>گیت‌هاب نسخهٔ دیگری دارد.</b><br>اگر ثبت کنی، نسخهٔ فعلی گیت‌هاب با دادهٔ این دستگاه جایگزین می‌شود و ممکن است اطلاعات دستگاه دیگر از بین برود.</p>';
+          [['force','با این حال ثبت کن (جایگزین گیت‌هاب)'],['pull','اول نسخهٔ گیت‌هاب را بگیر'],['cancel','انصراف']].forEach(function(p){
+            var b=document.createElement('button');b.type='button';b.textContent=p[1];
+            b.style.cssText='display:block;width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid #354c9b;background:'+(p[0]==='cancel'?'#fff':(p[0]==='force'?'#b33':'#354c9b'))+';color:'+(p[0]==='cancel'?'#354c9b':'#fff')+';font:inherit;cursor:pointer';
+            b.onclick=function(){document.body.removeChild(o);res(p[0])};c.appendChild(b)});
+          o.appendChild(c);document.body.appendChild(o);
+        });
+        if(choice==='cancel'){say('ثبت لغو شد.');break}
+        if(choice==='pull'){applyRemote(rem);break}
+        // force push
+        try{
+          markSynced(await push(data,rem.sha),data);
+          say('با اجبار روی گیت‌هاب ثبت شد.','ok');
+          break;
+        }catch(e){if(e.conflict)continue;throw e}
+      }
+    }catch(e){say('خطا: '+(e&&e.message||e),'bad')}
+    finally{busy=false}
+  }
+
+  /** دریافت دستی از گیت‌هاب */
+  async function pullRemote(){
+    if(busy)return;
+    if(!FILE){say('اول با حساب خودت وارد شو.','bad');return}
+    if(!cfg.repo||!cfg.token){say('اول نام مخزن و توکن را وارد کن.','bad');return}
+    busy=true;say('در حال دریافت…');
+    try{
+      var rem=await remoteGet(),data=snapData(),h=hash(data);
+      if(!rem){say('روی گیت‌هاب فایلی نیست.','bad');return}
+      var rdata=(rem.snap&&rem.snap.data)||{};
+      if(hash(rdata)===h){markSynced(rem.sha,data);say('از قبل هماهنگ بود.','ok');return}
+      var localDirty=Object.keys(data).length>0&&h!==meta.hash;
+      var msg=localDirty
+        ?'<b>دریافت از گیت‌هاب</b><br>تغییرات ثبت‌نشدهٔ این دستگاه با نسخهٔ گیت‌هاب جایگزین می‌شود (پشتیبان محلی نگه داشته می‌شود). ادامه؟'
+        :'<b>دریافت از گیت‌هاب</b><br>نسخهٔ گیت‌هاب روی این دستگاه اعمال می‌شود. ادامه؟';
+      var ok=await askConfirm(msg,'بله، دریافت کن','انصراف');
+      if(!ok){say('لغو شد.');return}
+      applyRemote(rem);
+    }catch(e){say('خطا: '+(e&&e.message||e),'bad')}
+    finally{busy=false}
+  }
+
+  // سازگاری با کد قدیمی
+  async function sync(manual){return checkUpdate(manual)}
 
   function bind(){
-    if(!$('sy_go'))return;
-    $('sy_repo').value=cfg.repo||'';$('sy_tok').value=cfg.token||'';$('sy_auto').checked=cfg.auto!==false;
-    var saveCfg=function(){cfg.repo=$('sy_repo').value.trim().replace(/^https?:\/\/github\.com\//,'').replace(/\/+$/,'');cfg.token=$('sy_tok').value.trim();cfg.auto=$('sy_auto').checked;jset(CK,cfg)};
-    ['sy_repo','sy_tok'].forEach(function(id){$(id).addEventListener('change',saveCfg)});
-    $('sy_auto').addEventListener('change',saveCfg);
-    $('sy_go').addEventListener('click',function(){saveCfg();sync(true)});
-    $('sy_push').addEventListener('click',function(){saveCfg();window.__pushNow().then(function(r){say(r.t,r.kind)})});
-    $('sy_clr').addEventListener('click',function(){cfg.token='';$('sy_tok').value='';jset(CK,cfg);say('توکن از این دستگاه پاک شد.')});
+    if(!$('sy_push')&&!$('sy_go'))return;
+    if($('sy_repo'))$('sy_repo').value=cfg.repo||'';
+    if($('sy_tok'))$('sy_tok').value=cfg.token||'';
+    if($('sy_auto'))$('sy_auto').checked=cfg.auto!==false;
+    var saveCfg=function(){
+      if($('sy_repo'))cfg.repo=$('sy_repo').value.trim().replace(/^https?:\/\/github\.com\//,'').replace(/\/+$/,'');
+      if($('sy_tok'))cfg.token=$('sy_tok').value.trim();
+      if($('sy_auto'))cfg.auto=$('sy_auto').checked;
+      jset(CK,cfg);
+    };
+    ['sy_repo','sy_tok'].forEach(function(id){if($(id))$(id).addEventListener('change',saveCfg)});
+    if($('sy_auto'))$('sy_auto').addEventListener('change',saveCfg);
+    if($('sy_push'))$('sy_push').addEventListener('click',function(){saveCfg();pushLocal()});
+    if($('sy_pull'))$('sy_pull').addEventListener('click',function(){saveCfg();pullRemote()});
+    // سازگاری اگر هنوز sy_go باشد
+    if($('sy_go'))$('sy_go').addEventListener('click',function(){saveCfg();checkUpdate(true)});
+    if($('sy_clr'))$('sy_clr').addEventListener('click',function(){cfg.token='';if($('sy_tok'))$('sy_tok').value='';jset(CK,cfg);say('توکن از این دستگاه پاک شد.')});
     (function(){var w=$('sy_lkw');if(!w)return;var r=window.__payRole&&window.__payRole(),ok=!window.__payAdminFrom&&(r==='admin'||r==='mgr');w.style.display=ok?'':'none';if(!ok)return;
       $('sy_lk').addEventListener('click',function(){saveCfg();if(!cfg.repo||!cfg.token){say('اول مخزن و توکن را وارد کن.','bad');return}
         var u=location.href.split('#')[0]+'#setup='+btoa(unescape(encodeURIComponent(JSON.stringify({r:cfg.repo,t:cfg.token})))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
@@ -5331,13 +5435,14 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
     var t=meta.t?new Date(meta.t).toLocaleString('fa-IR'):'';
     if(t)say('آخرین همگام‌سازی این دستگاه: '+t);
   }
-  window.__paySync={sync:sync,snapData:snapData,setAsk:function(f){ask=f},mergeTop:mergeTop};
+  window.__paySync={sync:sync,checkUpdate:checkUpdate,pushLocal:pushLocal,pullRemote:pullRemote,snapData:snapData,setAsk:function(){},mergeTop:mergeTop};
   bind();
   if(cfg.repo&&cfg.token){
-    setTimeout(function(){sync(false)},1500);
-    document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')sync(false)});
-    setInterval(function(){if(document.visibilityState==='visible'&&!busy)sync(false)},60000);
-    window.addEventListener('online',function(){sync(false)});
+    // فقط بررسی آپدیت — هرگز خودکار push نمی‌کند
+    setTimeout(function(){if(cfg.auto!==false)checkUpdate(false)},1500);
+    document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&cfg.auto!==false)checkUpdate(false)});
+    setInterval(function(){if(document.visibilityState==='visible'&&!busy&&cfg.auto!==false)checkUpdate(false)},120000);
+    window.addEventListener('online',function(){if(cfg.auto!==false)checkUpdate(false)});
   }
 })();
 </script>
