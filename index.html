@@ -1176,7 +1176,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
   <button type="button" data-qs="lead"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 12a3.6 3.6 0 100-7.2 3.6 3.6 0 000 7.2zM4.5 20c.8-3.8 3.6-5.5 7.5-5.5s6.7 1.7 7.5 5.5"/></svg></i><span><b>مشتری یا سرنخ تازه</b><small>ثبت نام، شماره و مرحله</small></span></button>
   <button type="button" data-qs="cal"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.5h16v13H4zM4 10.5h16M8 4v4M16 4v4"/></svg></i><span><b>کار یا پیگیری در تقویم</b><small>با تاریخ و ساعت</small></span></button>
   <button type="button" data-qs="alarm"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6v7l3 2M5 3.5 2.5 6M19 3.5 21.5 6M12 20a7 7 0 100-14 7 7 0 000 14z"/></svg></i><span><b>یادآور سریع</b><small>چند دقیقه‌ی دیگر</small></span></button>
-  <button type="button" data-qs="gh"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V6M8 10l4-4 4 4M5 19h14"/></svg></i><span><b>ثبت روی گیت‌هاب</b><small>ذخیره‌ی همین الان در فضای آنلاین</small></span></button>
+  <button type="button" data-qs="gh"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V6M8 10l4-4 4 4M5 19h14"/></svg></i><span><b>ذخیره در گیت‌هاب</b><small>کل اطلاعات این اکانت، همین الان</small></span></button>
   <button type="button" data-qs="bk"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v10M8 10l4 4 4-4M5 19h14"/></svg></i><span><b>پشتیبان‌گیری</b><small>ذخیره‌ی فایل روی کامپیوتر</small></span></button>
   <button type="button" data-qs="rs"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V10M8 14l4-4 4 4M5 5h14"/></svg></i><span><b>بازیابی</b><small>برگرداندن از فایل پشتیبان</small></span></button>
 </div>
@@ -1485,7 +1485,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
         <div class="field wide"><label for="sy_tok">توکن دسترسی</label><input type="password" id="sy_tok" autocomplete="off" style="width:100%;box-sizing:border-box;height:42px;padding:0 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);font:inherit;direction:ltr;text-align:center"></div>
         <label class="check"><input type="checkbox" id="sy_auto" checked> همگام‌سازی خودکار (۱۵ ثانیه بعد از هر تغییر، و موقع باز کردن اپ)</label>
       </div>
-      <div class="regrow"><button type="button" class="vbtn" id="sy_go">همگام‌سازی حالا</button><button type="button" class="vbtn" id="sy_clr" style="background:transparent;color:var(--accent)">پاک کردن توکن از این دستگاه</button><span class="regMsg" id="sy_msg"></span></div>
+      <div class="regrow"><button type="button" class="vbtn" id="sy_go">همگام‌سازی حالا</button><button type="button" class="vbtn" id="sy_push">ذخیره‌ی کل اطلاعات در گیت‌هاب</button><button type="button" class="vbtn" id="sy_clr" style="background:transparent;color:var(--accent)">پاک کردن توکن از این دستگاه</button><span class="regMsg" id="sy_msg"></span></div>
       <div class="regrow" id="sy_lkw" style="display:none"><button type="button" class="vbtn" id="sy_lk">ساخت لینک راه‌اندازی برای همکار</button><button type="button" class="vbtn" id="sy_lkc" hidden style="background:transparent;color:var(--accent)">کپی لینک</button></div><input type="text" id="sy_lkv" readonly hidden dir="ltr" aria-label="لینک راه‌اندازی" style="margin-top:6px"><p class="hint" id="sy_lkh" hidden>این لینک شامل توکن است؛ فقط برای همکار مورد اعتماد بفرست (تلگرام/واتس‌اپ خصوصی). همکار با یک ضربه روی لینک، همگام‌سازی را روی دستگاه خودش فعال می‌کند.</p>
     </details>
 
@@ -1928,7 +1928,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.44.0</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.45.0</footer>
 </div>
 
 
@@ -2857,7 +2857,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
     if((b=t.closest('[data-qs]'))){var k=b.getAttribute('data-qs');sheet(false);
       if(k==='cust'){cur=null;go('Q');setTimeout(function(){var i=$('cuQ');if(i)i.focus()},120)}
       else if(k==='lead'){go('F');setTimeout(function(){var i=$('fn_name');if(i)i.focus()},150)}
-      else if(k==='cal')go('K');else if(k==='inv'){try{var Pn=window.__proforma,iv=Pn.S().inv;if(!Pn.S().fid&&String(iv.buyer||'').trim()&&!confirm('پیش‌فاکتور فعلی در پوشه‌ای ذخیره نشده. پیش‌فاکتور تازه باز شود؟'))return;Pn.newInv()}catch(x){}go('I')}else if(k==='alarm'){var a=$('tbAlarm');if(a)a.click()}else if(k==='gh'){tst('در حال ثبت روی گیت‌هاب…');(window.__syncNow?window.__syncNow():Promise.resolve({t:'همگام‌سازی در این نسخه نیست'})).then(function(r){tst(r&&r.t?r.t:'انجام شد')})}else if(k==='bk'){if(window.__bkRun)window.__bkRun();tst('فایل پشتیبان دانلود شد')}else if(k==='rs'){var bf=$('bkFile');if(bf)bf.click()}
+      else if(k==='cal')go('K');else if(k==='inv'){try{var Pn=window.__proforma,iv=Pn.S().inv;if(!Pn.S().fid&&String(iv.buyer||'').trim()&&!confirm('پیش‌فاکتور فعلی در پوشه‌ای ذخیره نشده. پیش‌فاکتور تازه باز شود؟'))return;Pn.newInv()}catch(x){}go('I')}else if(k==='alarm'){var a=$('tbAlarm');if(a)a.click()}else if(k==='gh'){tst('در حال ذخیره در گیت‌هاب…');(window.__pushNow?window.__pushNow():Promise.resolve({t:'همگام‌سازی در این نسخه نیست'})).then(function(r){tst(r&&r.t?r.t:'انجام شد')})}else if(k==='bk'){if(window.__bkRun)window.__bkRun();tst('فایل پشتیبان دانلود شد')}else if(k==='rs'){var bf=$('bkFile');if(bf)bf.click()}
       return}
   });
   document.addEventListener('input',function(e){if(e.target&&e.target.id==='cuQ'){q=e.target.value;var pos=e.target.selectionStart;renderList();var i=$('cuQ');if(i){i.focus();try{i.setSelectionRange(pos,pos)}catch(x){}}}});
@@ -5152,6 +5152,22 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
     opt.headers=Object.assign({'Authorization':'Bearer '+cfg.token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'},opt.headers||{});
     return fetch('https://api.github.com/repos/'+cfg.repo+'/contents/'+path,opt);
   }
+  window.__pushNow=async function(){
+    if(!FILE)return {t:'اول با حساب خودت وارد شو.',kind:'bad'};
+    if(!cfg.repo||!cfg.token)return {t:'اول نام مخزن و توکن را در «حساب و تنظیمات» وارد کن.',kind:'bad'};
+    if(busy)return {t:'همگام‌سازی در حال انجام است؛ چند ثانیه بعد دوباره بزن.',kind:'bad'};
+    busy=true;
+    try{
+      for(var att=0;att<3;att++){
+        var rem=await remoteGet(),data=snapData();
+        if(rem&&rem.snap&&rem.snap.data)jset('payesh-sync-remote-bak',{ts:new Date().toISOString(),data:rem.snap.data});
+        try{markSynced(await push(data,rem?rem.sha:null),data);var n=Object.keys(data).length;say('کل اطلاعات این اکانت در گیت‌هاب ذخیره شد ✓','ok');return {t:'کل اطلاعات این اکانت در گیت‌هاب ذخیره شد ✓ ('+n+' بخش)',kind:'ok'}}
+        catch(e){if(e.conflict)continue;throw e}
+      }
+      return {t:'ذخیره نشد؛ دوباره بزن.',kind:'bad'};
+    }catch(e){return {t:'خطا: '+(e&&e.message||e),kind:'bad'}}
+    finally{busy=false}
+  };
   window.__syncNow=async function(){lastSay={t:'',kind:''};await sync(true);return lastSay};
   window.__payGh={cfg:function(){return cfg},api:api,b64e:b64e,b64d:b64d};
   async function remoteGet(){
@@ -5304,6 +5320,7 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
     ['sy_repo','sy_tok'].forEach(function(id){$(id).addEventListener('change',saveCfg)});
     $('sy_auto').addEventListener('change',saveCfg);
     $('sy_go').addEventListener('click',function(){saveCfg();sync(true)});
+    $('sy_push').addEventListener('click',function(){saveCfg();window.__pushNow().then(function(r){say(r.t,r.kind)})});
     $('sy_clr').addEventListener('click',function(){cfg.token='';$('sy_tok').value='';jset(CK,cfg);say('توکن از این دستگاه پاک شد.')});
     (function(){var w=$('sy_lkw');if(!w)return;var r=window.__payRole&&window.__payRole(),ok=!window.__payAdminFrom&&(r==='admin'||r==='mgr');w.style.display=ok?'':'none';if(!ok)return;
       $('sy_lk').addEventListener('click',function(){saveCfg();if(!cfg.repo||!cfg.token){say('اول مخزن و توکن را وارد کن.','bad');return}
