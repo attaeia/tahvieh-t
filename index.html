@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><script>try{var _u=localStorage.getItem("pay-ui");document.documentElement.setAttribute("data-ui",_u==="classic"?"classic":"modern")}catch(e){document.documentElement.setAttribute("data-ui","modern")}try{var _t=localStorage.getItem("pay-theme");if(_t!=="light"&&_t!=="dark")_t=null}catch(e){var _t=null}try{if(!_t)_t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light"}catch(e){_t="light"}document.documentElement.setAttribute("data-theme",_t)</script><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#354c9b"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ابزار پایش"><title>دستیار پایش الکترونیک</title><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
+<!doctype html><html><head><meta charset=utf8><script>try{var _u=localStorage.getItem("pay-ui");document.documentElement.setAttribute("data-ui",_u==="classic"?"classic":"modern")}catch(e){document.documentElement.setAttribute("data-ui","modern")}try{var _t=localStorage.getItem("pay-theme");if(_t==="light"||_t==="dark")document.documentElement.setAttribute("data-theme",_t)}catch(e){}</script><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#354c9b"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ابزار پایش"><title>دستیار پایش الکترونیک</title><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
 /* پیش‌فاکتور: بدون نوار شناور؛ دکمه‌ها گروه‌بندی‌شده و جدا */
 #paneI{padding-block-end:24px!important}
 #paneI .backbar.pfnav{position:static!important;min-height:0!important;flex-direction:column!important;flex-wrap:nowrap!important;align-items:flex-start!important;gap:6px!important;padding:2px 0 6px!important;margin:0 0 8px!important;background:none!important;box-shadow:none!important;border:0!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
@@ -1176,6 +1176,8 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
   <button type="button" data-qs="lead"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 12a3.6 3.6 0 100-7.2 3.6 3.6 0 000 7.2zM4.5 20c.8-3.8 3.6-5.5 7.5-5.5s6.7 1.7 7.5 5.5"/></svg></i><span><b>مشتری یا سرنخ تازه</b><small>ثبت نام، شماره و مرحله</small></span></button>
   <button type="button" data-qs="cal"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.5h16v13H4zM4 10.5h16M8 4v4M16 4v4"/></svg></i><span><b>کار یا پیگیری در تقویم</b><small>با تاریخ و ساعت</small></span></button>
   <button type="button" data-qs="alarm"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6v7l3 2M5 3.5 2.5 6M19 3.5 21.5 6M12 20a7 7 0 100-14 7 7 0 000 14z"/></svg></i><span><b>یادآور سریع</b><small>چند دقیقه‌ی دیگر</small></span></button>
+  <button type="button" data-qs="gh"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V6M8 10l4-4 4 4M5 19h14"/></svg></i><span><b>ثبت روی گیت‌هاب</b><small>ذخیره‌ی همین الان در فضای آنلاین</small></span></button>
+  <button type="button" data-qs="bk"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v10M8 10l4 4 4-4M5 19h14"/></svg></i><span><b>پشتیبان‌گیری</b><small>ذخیره‌ی فایل روی کامپیوتر</small></span></button>
   <button type="button" data-qs="rs"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V10M8 14l4-4 4 4M5 5h14"/></svg></i><span><b>بازیابی</b><small>برگرداندن از فایل پشتیبان</small></span></button>
 </div>
 <div id="drOv" hidden></div>
@@ -1926,7 +1928,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.43.3</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.44.0</footer>
 </div>
 
 
@@ -2188,7 +2190,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
   function getU(){try{return localStorage.getItem(UK)==='classic'?'classic':'modern'}catch(e){return 'modern'}}
   function setU(v){try{localStorage.setItem(UK,v)}catch(e){}applyT()}
   function isDark(){var a=document.documentElement.getAttribute('data-theme');return a==='dark'||(a!=='light'&&!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches))}
-  function applyT(){document.documentElement.setAttribute('data-ui',getU());[].forEach.call(document.querySelectorAll('#drUi button'),function(b){b.setAttribute('aria-pressed',b.dataset.u===getU()?'true':'false')});var v=getT(),r=document.documentElement;if(v==='auto'){var sd=false;try{sd=!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)}catch(e){}r.setAttribute('data-theme',sd?'dark':'light')}else r.setAttribute('data-theme',v);
+  function applyT(){document.documentElement.setAttribute('data-ui',getU());[].forEach.call(document.querySelectorAll('#drUi button'),function(b){b.setAttribute('aria-pressed',b.dataset.u===getU()?'true':'false')});var v=getT(),r=document.documentElement;if(v==='auto')r.removeAttribute('data-theme');else r.setAttribute('data-theme',v);
     var m=document.querySelector('meta[name=theme-color]');if(m){var dark=v==='dark'||(v==='auto'&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches);m.setAttribute('content',dark?'#0c132d':'#eef3fc')}
     var tt=$('tbTheme');if(tt){var dk=isDark();tt.classList.toggle('is-dark',dk);tt.setAttribute('aria-pressed',dk?'true':'false')}}
   var ICQ='M9 12a3.5 3.5 0 100-7 3.5 3.5 0 000 7zM2.5 20c0-3.5 3-5.5 6.5-5.5s6.5 2 6.5 5.5M16 4.5a3.5 3.5 0 010 7M18.5 14.8c2 .7 3 2.2 3 4.2';
@@ -2575,7 +2577,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
       nosend.push({r:r,v:v,d:d,vi:r.invs.indexOf(v)})})});
     nosend.sort(function(a,b){return b.d-a.d});
     function nm(r){return esc(r.name)}
-    var h='';
+    var h=bkBanner()+ghNotice();
     // کارت ۱
     h+='<div class="hs-c hs-main"><div class="hs-k">اقدام بعدی</div>';
     if(top){var late1=top.urg===3?daysBetween(top.lead.next,t):0,why=top.urg===3?fa(late1)+' روز عقب‌افتاده':top.urg===2?'قرار امروز':'در جریان';
@@ -2614,7 +2616,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
       +gb('pri','M4 12l8-8h8v8l-8 8zM15.5 8.5h.01','قیمت‌های امروز')
       +gb('st','M4 19V10M10 19V5M16 19v-7M22 19H2M3 6l5 3 5-5 6 3','آمار فروش')
       +gb('ld','M4 5h16l-6.2 7.2V19l-3.6-1.8v-5z','سرنخ‌ها')
-      +'</div>';
+      +gb('bk','M12 4v10M8 10l4 4 4-4M5 19h14','پشتیبان‌گیری')+'</div>';
     if(el._h!==h){el._h=h;el.innerHTML=h}
   }
   (function(){var td=$('tabD');if(td&&window.MutationObserver)new MutationObserver(function(){if(td.getAttribute('aria-selected')!=='true'&&homeMode()==='classic'){try{localStorage.setItem(HK,'simple')}catch(x){}try{homeSimple()}catch(x){}}}).observe(td,{attributes:true,attributeFilter:['aria-selected']});
@@ -2623,7 +2625,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
     if(t.closest('#hmTg')){var toC=homeMode()==='simple';try{localStorage.setItem(HK,toC?'classic':'simple')}catch(x){}if(toC){try{history.pushState(Object.assign({},history.state||{},{mz:1}),'')}catch(x){}}else{var s1=null;try{s1=history.state}catch(x){}if(s1&&s1.mz){try{history.back()}catch(x){}}}homeSimple();window.scrollTo(0,0);return}
     var fb=t.closest('[data-fu]');if(fb){e.preventDefault();fuOpen(fb.getAttribute('data-fu'),+fb.getAttribute('data-fi'));return}
     var b=t.closest('[data-cu-hs]');if(!b)return;var k=b.getAttribute('data-cu-hs');
-    if(k==='cust'){cur=null;mode='';go('Q');render()}else if(k==='inv')go('I');else if(k==='per')go('P');else if(k==='loss')go('L');else if(k==='vent')go('V');else if(k==='cab')go('C');else if(k==='pri')go('T');else if(k==='st'){stCss();statsOpen()}else if(k==='pl'){if(window.__colPrice)window.__colPrice.open()}else if(k==='cal')go('K');else if(k==='ld')go('F');else if(k==='bk'){if(window.__bkRun)window.__bkRun();homeSimple()}else if(k==='rs'){var bf=$('bkFile');if(bf){bf.value='';bf.click()}}else if(k==='bks'){try{localStorage.setItem('pay-bksnooze',String(Date.now()))}catch(x){}homeSimple()}else if(k==='menu'){if(window.__drawerOpen)window.__drawerOpen()}
+    if(k==='cust'){cur=null;mode='';go('Q');render()}else if(k==='inv')go('I');else if(k==='per')go('P');else if(k==='loss')go('L');else if(k==='vent')go('V');else if(k==='cab')go('C');else if(k==='pri')go('T');else if(k==='st'){stCss();statsOpen()}else if(k==='pl'){if(window.__colPrice)window.__colPrice.open()}else if(k==='cal')go('K');else if(k==='ld')go('F');else if(k==='bk'){if(window.__bkRun)window.__bkRun();homeSimple()}else if(k==='acc')go('S');else if(k==='ghs'){try{localStorage.setItem('pay-ghsnooze',String(Date.now()))}catch(x){}homeSimple()}else if(k==='bks'){try{localStorage.setItem('pay-bksnooze',String(Date.now()))}catch(x){}homeSimple()}else if(k==='menu'){if(window.__drawerOpen)window.__drawerOpen()}
     else if(k==='lead'){go('F');setTimeout(function(){var i=$('fn_name');if(i)i.focus()},150)}
     else if(k==='imp'){cur=null;go('Q');mode='imp';IMP=null;renderImp()}});
 
@@ -2732,6 +2734,8 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
     else if(k==='copy'){var en0=B.hist.filter(function(x){return x.id===id})[0];if(en0)copyTxt(en0.report);return}
     homeSimple()});
   function todayLocal(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
+  function ghNotice(){var c=null;try{c=window.__payGh&&window.__payGh.cfg()}catch(e){}if(c&&c.repo&&c.token)return '';var sn=0;try{sn=+localStorage.getItem('pay-ghsnooze')||0}catch(e){}if(Date.now()-sn<864e5)return '';
+    return '<div class="hs-c hs-bk"><div class="hs-k">داده فقط روی همین مرورگر است</div><div class="hs-s">همگام‌سازی گیت‌هاب تنظیم نشده؛ اگر حافظه‌ی مرورگر پاک شود اطلاعات می‌رود. در «حساب و تنظیمات» مخزن و توکن را وارد کن، یا حداقل هر روز پشتیبان بگیر.</div><div class="hs-a"><button type="button" class="cu-b pri" data-cu-hs="acc">رفتن به تنظیمات</button><button type="button" class="cu-b" data-cu-hs="ghs">بعداً</button></div></div>'}
   function bkBanner(){var lb='',sn=0;try{lb=localStorage.getItem('pay-lastbk')||'';sn=+localStorage.getItem('pay-bksnooze')||0}catch(e){}
     if(lb===todayLocal()||Date.now()-sn<4*36e5)return '';
     return '<div class="hs-c hs-bk"><div class="hs-k">پشتیبان‌گیری روزانه</div><div class="hs-s">'+(lb?'آخرین پشتیبان: '+jdate(new Date(lb+'T12:00:00').getTime())+' · ':'هنوز پشتیبان نگرفته‌ای · ')+'امروز یک نسخه روی کامپیوتر ذخیره کن.</div><div class="hs-a"><button type="button" class="cu-b pri" data-cu-hs="bk">ذخیره‌ی پشتیبان</button><button type="button" class="cu-b" data-cu-hs="bks">بعداً</button></div></div>'}
@@ -2853,7 +2857,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
     if((b=t.closest('[data-qs]'))){var k=b.getAttribute('data-qs');sheet(false);
       if(k==='cust'){cur=null;go('Q');setTimeout(function(){var i=$('cuQ');if(i)i.focus()},120)}
       else if(k==='lead'){go('F');setTimeout(function(){var i=$('fn_name');if(i)i.focus()},150)}
-      else if(k==='cal')go('K');else if(k==='inv'){try{var Pn=window.__proforma,iv=Pn.S().inv;if(!Pn.S().fid&&String(iv.buyer||'').trim()&&!confirm('پیش‌فاکتور فعلی در پوشه‌ای ذخیره نشده. پیش‌فاکتور تازه باز شود؟'))return;Pn.newInv()}catch(x){}go('I')}else if(k==='alarm'){var a=$('tbAlarm');if(a)a.click()}else if(k==='bk'){if(window.__bkRun)window.__bkRun();tst('فایل پشتیبان دانلود شد')}else if(k==='rs'){var bf=$('bkFile');if(bf)bf.click()}
+      else if(k==='cal')go('K');else if(k==='inv'){try{var Pn=window.__proforma,iv=Pn.S().inv;if(!Pn.S().fid&&String(iv.buyer||'').trim()&&!confirm('پیش‌فاکتور فعلی در پوشه‌ای ذخیره نشده. پیش‌فاکتور تازه باز شود؟'))return;Pn.newInv()}catch(x){}go('I')}else if(k==='alarm'){var a=$('tbAlarm');if(a)a.click()}else if(k==='gh'){tst('در حال ثبت روی گیت‌هاب…');(window.__syncNow?window.__syncNow():Promise.resolve({t:'همگام‌سازی در این نسخه نیست'})).then(function(r){tst(r&&r.t?r.t:'انجام شد')})}else if(k==='bk'){if(window.__bkRun)window.__bkRun();tst('فایل پشتیبان دانلود شد')}else if(k==='rs'){var bf=$('bkFile');if(bf)bf.click()}
       return}
   });
   document.addEventListener('input',function(e){if(e.target&&e.target.id==='cuQ'){q=e.target.value;var pos=e.target.selectionStart;renderList();var i=$('cuQ');if(i){i.focus();try{i.setSelectionRange(pos,pos)}catch(x){}}}});
@@ -5140,13 +5144,15 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
   function hash(o){var s=JSON.stringify(o),h=5381;for(var i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return s.length+':'+h}
   function b64e(s){return btoa(unescape(encodeURIComponent(s)))}
   function b64d(s){return decodeURIComponent(escape(atob(String(s).replace(/\s/g,''))))}
-  function say(t,kind){var e=$('sy_msg');if(e){e.textContent=t;e.style.color=kind==='bad'?'var(--bad)':(kind==='ok'?'var(--good)':'')}}
+  var lastSay={t:'',kind:''};
+  function say(t,kind){lastSay={t:t,kind:kind||''};var e=$('sy_msg');if(e){e.textContent=t;e.style.color=kind==='bad'?'var(--bad)':(kind==='ok'?'var(--good)':'')}}
 
   function api(path,opt){
     opt=opt||{};
     opt.headers=Object.assign({'Authorization':'Bearer '+cfg.token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'},opt.headers||{});
     return fetch('https://api.github.com/repos/'+cfg.repo+'/contents/'+path,opt);
   }
+  window.__syncNow=async function(){lastSay={t:'',kind:''};await sync(true);return lastSay};
   window.__payGh={cfg:function(){return cfg},api:api,b64e:b64e,b64d:b64d};
   async function remoteGet(){
     var r=await api(FILE);
@@ -6447,7 +6453,7 @@ html[data-theme=dark] .cu-tabs button[aria-selected=true]{color:#cfd8ff}
 var pane=document.getElementById('paneZ');
 if(!pane) return;
 var OK = !!window.__paySlug && !window.__payAdminFrom, DBN = window.__paySlug==='ataei' ? 'payesh-disc' : 'payesh-disc-'+window.__paySlug;
-if(!OK){ ['paneZ','tabZ','zRow'].forEach(function(id){var e=document.getElementById(id); if(e&&e.parentNode) e.parentNode.removeChild(e);}); return; }
+if(!OK){ ['paneZ','tabZ','zRow','zCss'].forEach(function(id){var e=document.getElementById(id); if(e&&e.parentNode) e.parentNode.removeChild(e);}); return; }
 document.getElementById('zRow').hidden=false;
 
 /* ---------- ثابت‌ها و کمکی‌ها ---------- */
