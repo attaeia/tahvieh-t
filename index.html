@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><script>try{var _u=localStorage.getItem("pay-ui");document.documentElement.setAttribute("data-ui",_u==="classic"?"classic":"modern")}catch(e){document.documentElement.setAttribute("data-ui","modern")}try{var _t=localStorage.getItem("pay-theme");if(_t==="light"||_t==="dark")document.documentElement.setAttribute("data-theme",_t)}catch(e){}</script><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#354c9b"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ابزار پایش"><title>دستیار پایش الکترونیک</title><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
+<!doctype html><html><head><meta charset=utf8><script>try{var _u=localStorage.getItem("pay-ui");document.documentElement.setAttribute("data-ui",_u==="classic"?"classic":"modern")}catch(e){document.documentElement.setAttribute("data-ui","modern")}try{var _t=localStorage.getItem("pay-theme");if(_t!=="light"&&_t!=="dark")_t=null}catch(e){var _t=null}try{if(!_t)_t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light"}catch(e){_t="light"}document.documentElement.setAttribute("data-theme",_t)</script><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#354c9b"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ابزار پایش"><title>دستیار پایش الکترونیک</title><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
 /* پیش‌فاکتور: بدون نوار شناور؛ دکمه‌ها گروه‌بندی‌شده و جدا */
 #paneI{padding-block-end:24px!important}
 #paneI .backbar.pfnav{position:static!important;min-height:0!important;flex-direction:column!important;flex-wrap:nowrap!important;align-items:flex-start!important;gap:6px!important;padding:2px 0 6px!important;margin:0 0 8px!important;background:none!important;box-shadow:none!important;border:0!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
@@ -29,6 +29,19 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 #bnav[hidden]{display:none!important}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) #bnav{background:rgba(16,22,48,.9);border-top-color:rgba(255,255,255,.1)}:root:not([data-theme="light"]) #bnav button{color:#9aa2b1}:root:not([data-theme="light"]) #bnav button[aria-current=page]{color:#cfd8ff;background:rgba(255,255,255,.09)}}
 @media print{#bnav{display:none!important}}
+<style id="v40css">
+.backbar .bkb{order:1;align-self:flex-start;min-height:38px;padding:0 14px;font-size:13px;display:inline-flex;align-items:center;background:transparent!important;color:var(--pg-sec-fg,#354c9b)!important;border:1px solid var(--pg-line,#c9d1e6)!important;border-radius:999px}
+.backbar.col .bkb{order:2}
+#paneI .backbar.pfnav .bkb{min-height:26px!important;height:26px!important;padding:0 10px!important;font-size:12px!important;border-radius:999px!important;width:auto!important;flex:none}
+.hs-bt .bt-r{display:flex;align-items:center;gap:6px;border-top:1px solid var(--line,#e3e8f1);padding:7px 0}
+.hs-bt .bt-r.on .bt-n{opacity:.55;text-decoration:line-through}
+.hs-bt .bt-n{flex:1;font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis}.hs-bt .bt-n a{color:inherit;text-decoration:none}
+.hs-bt .bt-r button,.hs-bt .bt-b button{font:inherit;font-size:12.5px;border:1px solid var(--line,#d6dcea);background:transparent;color:inherit;border-radius:99px;padding:5px 11px;cursor:pointer}
+.hs-bt .bt-b{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.hs-bt .bt-b button.pri{background:#354c9b;color:#fff;border-color:#354c9b}
+.hs-bt pre{white-space:pre-wrap;font:inherit;font-size:12.5px;line-height:1.9;margin:6px 0}.hs-bt details{margin:6px 0}
+.cu-gh{font-size:12.5px;font-weight:800;color:var(--muted,#55607a);margin:14px 4px 4px;display:flex;gap:6px;align-items:center}.cu-gh em{font-style:normal;font-weight:400}
+.hs-fd{font:inherit;font-size:12.5px;font-weight:700;border:1px solid #354c9b;color:#354c9b;background:transparent;border-radius:99px;padding:3px 10px;cursor:pointer}
+#hSimple>.hs-g{grid-template-columns:repeat(5,1fr)!important}
 </style></head><body>
 <script>
 (function(){try{var m=/[#&]setup=([A-Za-z0-9_\-]+)/.exec(location.hash);if(!m)return;
@@ -1163,6 +1176,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
   <button type="button" data-qs="lead"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 12a3.6 3.6 0 100-7.2 3.6 3.6 0 000 7.2zM4.5 20c.8-3.8 3.6-5.5 7.5-5.5s6.7 1.7 7.5 5.5"/></svg></i><span><b>مشتری یا سرنخ تازه</b><small>ثبت نام، شماره و مرحله</small></span></button>
   <button type="button" data-qs="cal"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.5h16v13H4zM4 10.5h16M8 4v4M16 4v4"/></svg></i><span><b>کار یا پیگیری در تقویم</b><small>با تاریخ و ساعت</small></span></button>
   <button type="button" data-qs="alarm"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6v7l3 2M5 3.5 2.5 6M19 3.5 21.5 6M12 20a7 7 0 100-14 7 7 0 000 14z"/></svg></i><span><b>یادآور سریع</b><small>چند دقیقه‌ی دیگر</small></span></button>
+  <button type="button" data-qs="rs"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V10M8 14l4-4 4 4M5 5h14"/></svg></i><span><b>بازیابی</b><small>برگرداندن از فایل پشتیبان</small></span></button>
 </div>
 <div id="drOv" hidden></div>
 <aside id="drawer" dir="rtl" lang="fa" role="dialog" aria-modal="true" aria-label="منوی برنامه" hidden>
@@ -1912,7 +1926,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.39.0</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.43.3</footer>
 </div>
 
 
@@ -2174,12 +2188,12 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
   function getU(){try{return localStorage.getItem(UK)==='classic'?'classic':'modern'}catch(e){return 'modern'}}
   function setU(v){try{localStorage.setItem(UK,v)}catch(e){}applyT()}
   function isDark(){var a=document.documentElement.getAttribute('data-theme');return a==='dark'||(a!=='light'&&!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches))}
-  function applyT(){document.documentElement.setAttribute('data-ui',getU());[].forEach.call(document.querySelectorAll('#drUi button'),function(b){b.setAttribute('aria-pressed',b.dataset.u===getU()?'true':'false')});var v=getT(),r=document.documentElement;if(v==='auto')r.removeAttribute('data-theme');else r.setAttribute('data-theme',v);
+  function applyT(){document.documentElement.setAttribute('data-ui',getU());[].forEach.call(document.querySelectorAll('#drUi button'),function(b){b.setAttribute('aria-pressed',b.dataset.u===getU()?'true':'false')});var v=getT(),r=document.documentElement;if(v==='auto'){var sd=false;try{sd=!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)}catch(e){}r.setAttribute('data-theme',sd?'dark':'light')}else r.setAttribute('data-theme',v);
     var m=document.querySelector('meta[name=theme-color]');if(m){var dark=v==='dark'||(v==='auto'&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches);m.setAttribute('content',dark?'#0c132d':'#eef3fc')}
     var tt=$('tbTheme');if(tt){var dk=isDark();tt.classList.toggle('is-dark',dk);tt.setAttribute('aria-pressed',dk?'true':'false')}}
   var ICQ='M9 12a3.5 3.5 0 100-7 3.5 3.5 0 000 7zM2.5 20c0-3.5 3-5.5 6.5-5.5s6.5 2 6.5 5.5M16 4.5a3.5 3.5 0 010 7M18.5 14.8c2 .7 3 2.2 3 4.2';
   var G=[
-    ['میز کار',[['d','خانه','M3 11.5 12 4l9 7.5M5.5 10v9.5h13V10'],['st','آمار فروش','M4 19V10M10 19V5M16 19v-7M22 19H2'],['f','پیگیری و قیف فروش','M4 5h16l-6.2 7.2V19l-3.6-1.8v-5z'],['k','تقویم و کارها','M4 6.5h16v13H4zM4 10.5h16M8 4v4M16 4v4'],['r','گزارش روز','M6 3.5h9l3 3v14H6zM9 12h6M9 16h6'],['m','پیام‌ها','M3 6h18v12H3zM3.5 7l8.5 6 8.5-6']]],
+    ['میز کار',[['d','خانه','M3 11.5 12 4l9 7.5M5.5 10v9.5h13V10'],['st','آمار فروش','M4 19V10M10 19V5M16 19v-7M22 19H2'],['f','سرنخ‌ها و پیگیری','M4 5h16l-6.2 7.2V19l-3.6-1.8v-5z'],['k','تقویم و کارها','M4 6.5h16v13H4zM4 10.5h16M8 4v4M16 4v4'],['r','گزارش روز','M6 3.5h9l3 3v14H6zM9 12h6M9 16h6'],['m','پیام‌ها','M3 6h18v12H3zM3.5 7l8.5 6 8.5-6']]],
     ['مشتریان',[['q','مشتریان',ICQ],['p','پرسونا و پوشه‌ی مشتری','M12 12a3.6 3.6 0 100-7.2 3.6 3.6 0 000 7.2zM4.5 20c.8-3.8 3.6-5.5 7.5-5.5s6.7 1.7 7.5 5.5'],['o','اعتراض‌ها','M12 3a9 9 0 100 18 9 9 0 000-18zM12 8v5M12 16.5v.5']]],
     ['ابزار فنی',[['v','تهویه','M12 12m-1.5 0a1.5 1.5 0 103 0 1.5 1.5 0 10-3 0M12 10.5C12 6 14 4 16 4s2 3-1.5 6M13.5 12c4.5 0 6.5 2 6.5 4s-3 2-6.5-1.5M12 13.5C12 18 10 20 8 20s-2-3 1.5-6M10.5 12C6 12 4 10 4 8s3-2 6.5 1.5'],['c','کابل','M4 8h6v8H4zM14 8h6v8h-6zM10 12h4'],['w','تابلو برق','M13 2 4 14h7l-1 8 9-12h-7z'],['h','تخم‌گذار','M12 3c3 0 5 4 5 8a5 5 0 01-10 0c0-4 2-8 5-8z'],['g','گلخانه','M12 21v-9M12 12c-4 0-6-2-6-6 4 0 6 2 6 6zM12 14c4 0 6-2 6-6-4 0-6 2-6 6z']]],
     ['مالی و پیشنهاد',[['i','پیش‌فاکتور','M6 3.5h9l3 3v14H6zM9 12h6M9 16h4'],['t','قیمت‌ها','M4 12l8-8h8v8l-8 8zM15.5 8.5h.01'],['pl','لیست قیمت همکاران','M4 5h16v14H4zM4 10h16M9 10v9M14 14h3'],['e','برآورد','M5 4h14v16H5zM8 8h8M8 12h3M8 16h3M14 12h2M14 16h2'],['l','سود و زیان','M4 19V9M10 19V5M16 19v-7M22 19H2']]],
@@ -2230,10 +2244,10 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
   try{if(window.matchMedia)matchMedia('(prefers-color-scheme: dark)').addEventListener('change',applyT)}catch(e){}
 
   /* ---- دسترسی سریع شناور (گوشه‌ی راست) ---- */
-  var QK='pay-quick',QDEF=['q','k','i'],qEdit=false,qAdd=false;
+  var QK='pay-quick',QDEF=['q','f','k','i'],qEdit=false,qAdd=false;
   function flat(){var o=[];G.forEach(function(g){g[1].forEach(function(it){o.push(it)})});return o}
   function okItem(it){if(it[3]===1)return isMgr();if(!$('tab'+it[0].toUpperCase()))return false;if(it[3]===2&&!$('paneZ'))return false;if(document.documentElement.getAttribute('data-role')==='member'&&(it[0]==='i'||it[0]==='p'||it[0]==='q'))return false;return true}
-  function qGet(){try{var v=JSON.parse(localStorage.getItem(QK));if(Array.isArray(v))return v}catch(e){}return QDEF.slice()}
+  function qGet(){try{var v=JSON.parse(localStorage.getItem(QK));if(Array.isArray(v)){if(!localStorage.getItem('pay-quick-f')){localStorage.setItem('pay-quick-f','1');if(v.indexOf('f')<0&&v.length<6){v.splice(Math.min(1,v.length),0,'f');localStorage.setItem(QK,JSON.stringify(v))}}return v}localStorage.setItem('pay-quick-f','1')}catch(e){}return QDEF.slice()}
   function qSet(v){try{localStorage.setItem(QK,JSON.stringify(v))}catch(e){}}
   function ic(d){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+d+'"/></svg>'}
   function qRender(){
@@ -2312,7 +2326,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
       var last=0;calls.forEach(function(c){if(c.ts>last)last=c.ts});invs.forEach(function(v){last=Math.max(last,v.sentTs||0,v.ts||0)});if(lead)last=Math.max(last,lead.stTs||0,lead.created||0);if(f)last=Math.max(last,f.ts||0);
       var open=lead&&(lead.stage==='sent'||lead.stage==='talk'),urg=0;
       if(open){urg=1;if(lead.next&&lead.next<t)urg=3;else if(lead.next&&lead.next===t)urg=2}
-      return {id:id,f:f,lead:lead,name:plain((f&&f.name)||lead.name)||'بی‌نام',info:(f&&f.info)||{},ph:ph,phone:(f&&(f.phone||(f.persona&&f.persona.phone)))||(lead&&lead.phone)||'',calls:calls,objs:objs,invs:invs,last:last,urg:urg,stage:lead?lead.stage:''};
+      return {id:id,f:f,lead:lead,name:(function(){var n0=plain((f&&f.name)||lead.name)||'بی‌نام';return (f&&f.info&&f.info.noName&&/^\d+$/.test(n0))?fa(n0):n0})(),info:(f&&f.info)||{},ph:ph,phone:(f&&(f.phone||(f.persona&&f.persona.phone)))||(lead&&lead.phone)||'',calls:calls,objs:objs,invs:invs,last:last,urg:urg,stage:lead?lead.stage:''};
     }
     F.forEach(function(f){var ph=phs((f.persona&&f.persona.phone)||'').concat(phs(f.phone||'')),lead=null;
       L.forEach(function(l){if(l.cid===f.id||(ph.length&&p10(l.phone)&&ph.indexOf(p10(l.phone))>=0)){if(!lead||(l.created||0)>(lead.created||0))lead=l}});
@@ -2328,7 +2342,8 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
   function stChip(r){
     if(r.urg===3)return '<span class="cu-ch cu-r">عقب‌افتاده</span>';
     if(r.urg===2)return '<span class="cu-ch cu-a">امروز</span>';
-    if(isNew(r))return '<span class="cu-ch cu-a">سرنخ'+(r.info.src?' · '+esc(r.info.src):'')+'</span>';
+    if(isNew(r))return '<span class="cu-ch cu-a">'+esc(r.info.src||'سرنخ')+'</span>';
+    if(r.stage==='lost'&&r.info&&r.info.qs)return '<span class="cu-ch cu-z">'+esc(r.info.qs)+'</span>';
     if(r.stage)return '<span class="cu-ch cu-'+(r.stage==='won'?'g':r.stage==='lost'?'z':'n')+'">'+STG[r.stage]+'</span>';
     return '';
   }
@@ -2340,6 +2355,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
     return ev.length?ev[0].s:(r.lead&&r.lead.note)||'هنوز اقدامی ثبت نشده';
   }
   function matches(r){
+    if(/^s:/.test(flt)&&(r.info.src||'')!==flt.slice(2))return false;
     if(flt==='act'&&r.urg<2)return false;
     if(flt==='new'&&!isNew(r))return false;
     if(flt==='talk'&&r.stage!=='talk')return false;
@@ -2350,26 +2366,27 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
   }
   function row(r){
     return '<button type="button" class="cu-row" data-cu="'+esc(r.id)+'"><span class="cu-av'+(r.urg?' cu-ring'+r.urg:'')+'" style="background:'+colr(r.name)+'">'+esc(ini(r.name))+'</span>'
-      +'<span class="cu-mid"><b>'+esc(r.name)+'</b><small>'+esc(lastLine(r))+'</small></span>'
+      +'<span class="cu-mid"><b>'+esc(r.name)+'</b><small>'+esc((r.info.noName?[r.info.city,r.info.phone2?fa(r.info.phone2):''].filter(Boolean).join(' · ')+(r.info.city||r.info.phone2?' · ':''):(r.info.city?r.info.city+' · ':''))+lastLine(r)+(r.info.src&&!isNew(r)?' · '+r.info.src:''))+'</small></span>'
       +'<span class="cu-end"><i>'+short(r.last)+'</i>'+stChip(r)+'</span></button>';
   }
   function renderList(){
     var el=$('cuBody');if(!el)return;
     ROWS=build();
     var h='<div class="cu-imb"><button type="button" class="cu-b" data-cu-imp>⬆ ورود از اکسل</button></div><div class="cu-sr"><input id="cuQ" type="search" autocomplete="off" placeholder="جستجو: نام یا ۴ رقم آخر شماره" aria-label="جستجوی مشتری" value="'+esc(q)+'"></div>'
-      +'<div class="cu-fl" role="group" aria-label="فیلتر">'+FL.map(function(f){return '<button type="button" data-cf="'+f[0]+'" aria-pressed="'+(flt===f[0])+'">'+f[1]+'</button>'}).join('')+'</div>';
+      +'<div class="cu-fl" role="group" aria-label="فیلتر">'+FL.concat((function(){var m={},o=[];ROWS.forEach(function(r){var x=r.info&&r.info.src;if(x&&!m[x]){m[x]=1;o.push(['s:'+x,x])}});return o})()).map(function(f){return '<button type="button" data-cf="'+f[0]+'" aria-pressed="'+(flt===f[0])+'">'+f[1]+'</button>'}).join('')+'</div>';
     var list=ROWS.filter(matches);
-    h+=list.length?'<div class="cu-list">'+list.map(row).join('')+'</div>':'<p class="hint cu-empty">'+(ROWS.length?'مشتری با این فیلتر پیدا نشد.':'هنوز مشتری یا پوشه‌ای نداری. با دکمه‌ی «+» پایین یک مشتری یا سرنخ تازه بساز.')+'</p>';
+    var grp=(flt==='new'||/^s:/.test(flt));if(grp){var gi={},gs=[];list.forEach(function(r){var k=r.info.src||'بدون منبع';if(!gi[k]){gi[k]=[];gs.push(k)}gi[k].push(r)});list=[];var gh='';gs.forEach(function(k){gh+='<div class="cu-gh">'+esc(k)+' <em>'+fa(gi[k].length)+' سرنخ</em></div>'+gi[k].map(row).join('')});h+=gh?'<div class="cu-list">'+gh+'</div>':''}
+    h+=grp?'':list.length?'<div class="cu-list">'+list.map(row).join('')+'</div>':'<p class="hint cu-empty">'+(ROWS.length?'مشتری با این فیلتر پیدا نشد.':'هنوز مشتری یا پوشه‌ای نداری. با دکمه‌ی «+» پایین یک مشتری یا سرنخ تازه بساز.')+'</p>';
     el.innerHTML=h;
   }
 
 
   /* ---- ۱۱.۳۰: ورود مشتریان از اکسل و ویرایش مشتری ---- */
   var mode='',IMP=null;
-  var COLSX=[['name','نام و نام‌خانوادگی'],['co','شرکت / مزرعه'],['phone','موبایل (اجباری)'],['phone2','تلفن دوم'],['prov','استان'],['city','شهر'],['act','نوع فعالیت'],['halls','تعداد سالن'],['src','منبع (مثلاً نمایشگاه ۴۰۵)'],['next','تاریخ پیگیری'],['note','یادداشت']];
+  var COLSX=[['name','نام و نام‌خانوادگی'],['co','شرکت / مزرعه'],['phone','موبایل (اجباری)'],['phone2','تلفن دوم'],['prov','استان'],['city','شهر'],['act','نوع فعالیت'],['halls','تعداد سالن'],['addr','آدرس'],['src','منبع (مثلاً نمایشگاه ۴۰۵)'],['next','تاریخ پیگیری'],['note','یادداشت']];
   function nrm(s){return String(s==null?'':s).replace(/ي/g,'ی').replace(/ك/g,'ک').replace(/[ \t\r\n]+/g,' ').trim()}
   function normPhone(v){var d=en(v).replace(/\D/g,'');if(d.indexOf('0098')===0)d='0'+d.slice(4);else if(d.indexOf('98')===0&&d.length===12)d='0'+d.slice(2);else if(d.length===10&&d.charAt(0)==='9')d='0'+d;return(d.length===11&&d.charAt(0)==='0')?d:''}
-  var HR=[['phone2',/دوم|ثابت/],['phone',/موبایل|همراه|تلفن|شماره/],['prov',/استان/],['city',/شهر/],['act',/فعالیت|نوع/],['halls',/سالن/],['src',/منبع|نمایشگاه/],['next',/پیگیری|تاریخ/],['note',/یادداشت|توضیح/],['co',/شرکت|مزرعه|واحد/],['name',/نام|مشتری/]];
+  var HR=[['phone2',/دوم|ثابت|[2۲]\s*$/],['addr',/آدرس|نشانی/],['phone',/موبایل|همراه|تلفن|شماره/],['prov',/استان/],['city',/شهر/],['act',/فعالیت|نوع/],['halls',/سالن/],['src',/منبع|نمایشگاه/],['next',/پیگیری|تاریخ/],['note',/یادداشت|توضیح/],['co',/شرکت|مزرعه|واحد/],['name',/نام|مشتری/]];
   function mapHead(row){var m={};row.forEach(function(h,i){h=nrm(h).replace(/\u200c/g,' ');if(!h)return;for(var k=0;k<HR.length;k++){if(HR[k][1].test(h)&&m[HR[k][0]]==null){m[HR[k][0]]=i;break}}});return m}
   async function inflate(u8){var ds=new DecompressionStream('deflate-raw'),w=ds.writable.getWriter();w.write(u8);w.close();return new Uint8Array(await new Response(ds.readable).arrayBuffer())}
   async function readXlsx(buf){
@@ -2399,9 +2416,10 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
     rows.slice(hi+1).forEach(function(r,ix){
       if(!r||!r.some(function(x){return nrm(x)}))return;
       function g(k){return m[k]==null?'':nrm(r[m[k]])}
-      var ph=normPhone(g('phone')),name=plain(g('name'))||g('co'),o={line:hi+ix+2,name:name,phone:ph,info:{co:g('co'),phone2:normPhone(g('phone2'))||g('phone2'),prov:g('prov'),city:g('city'),act:g('act'),halls:g('halls'),src:g('src')||defSrc,note:g('note')},next:nextISO(m.next==null?'':r[m.next])};
+      var ph=normPhone(g('phone')),name=plain(g('name'))||g('co'),nn0=false,o0=null,o={line:hi+ix+2,name:name,phone:ph,info:{co:g('co'),phone2:normPhone(g('phone2'))||g('phone2'),prov:g('prov'),city:g('city'),addr:g('addr'),act:g('act'),halls:g('halls'),src:g('src')||defSrc,note:g('note')},next:nextISO(m.next==null?'':r[m.next])};
       if(!ph){o.why=g('phone')?'شماره معتبر نیست':'شماره ندارد';bad.push(o);return}
-      if(!name){o.why='نام ندارد';bad.push(o);return}
+      if(!name){o.name=ph;o.info.noName=1}
+      if(!name&&ph)o.info.ph1=ph;
       var k=ph.slice(-10);if(seen[k]){o.why='تکراری';dup.push(o);return}
       seen[k]=1;ok.push(o)});
     return {ok:ok,dup:dup,bad:bad}}
@@ -2492,7 +2510,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
         +'<div class="cu-ir"><span>تاریخ</span><b>'+jdate(v.sentTs||v.ts)+'</b></div>'
         +'<div class="cu-ir"><span>مبلغ نهایی</span><b>'+(v.final?money(v.final)+' تومان':'—')+'</b></div>'
         +(v.follow?'<div class="cu-ir"><span>پیگیری</span><b>'+jd(v.follow)+'</b></div>':'')
-        +'<div class="cu-ia"><button type="button" class="cu-b pri" data-cu-iopen="'+esc(v.id)+'">باز کردن</button></div>'
+        +'<div class="cu-ia"><button type="button" class="cu-b pri" data-cu-iopen="'+esc(v.id)+'">باز کردن</button>'+(r.f?'<button type="button" class="cu-b" data-cu-isent="'+esc(v.id)+'">'+(v.sentTs?'لغو «ارسال شد»':'ارسال شد ✓')+'</button>':'')+'</div>'
         +(old.length?'<details class="cu-vs"><summary>نسخه‌های قبلی ('+fa(old.length)+')</summary>'+old.map(function(o,k){return '<div class="cu-ir"><span>نسخه '+fa(old.length-k)+' · '+jdate(o.ts)+(o.final?' · '+money(o.final):'')+'</span><button type="button" class="cu-mini" data-cu-iopen="'+esc(v.id)+'" data-vi="'+k+'">باز کردن</button></div>'}).join('')+'</details>':'')
         +'</section>';
     });
@@ -2527,8 +2545,8 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
     var bar=tabsBar(r);if(ftab==='calc'&&!r.calcs.length)ftab='sum';
     var h='<div class="cu-top"><button type="button" class="cu-back" data-cu-back aria-label="بازگشت به فهرست مشتریان">›</button><span class="cu-hdr">پرونده</span></div>'
       +'<div class="cu-head"><span class="cu-av cu-big'+(r.urg?' cu-ring'+r.urg:'')+'" style="background:'+colr(r.name)+'">'+esc(ini(r.name))+'</span><div class="cu-hn"><b>'+esc(r.name)+'</b><small>'+esc([p&&p.farmType,phone?fa(phone):''].filter(Boolean).join(' · ')||'اطلاعات پایه ثبت نشده')+'</small></div>'+stChip(r)+'</div>'
-      +'<div class="cu-act">'+(phone?'<a class="cu-b pri" href="tel:'+phone+'" data-call="'+phone+'" data-name="'+esc(r.name)+'" data-cid="'+esc(r.f?r.f.id:'')+'">تماس</a><a class="cu-b" href="https://wa.me/'+wa+'" target="_blank" rel="noopener">واتس‌اپ</a>':'')+'<button type="button" class="cu-b" data-cu-edit>ویرایش</button></div>'
-      +bar;
+      +'<div class="cu-act">'+(phone?'<a class="cu-b pri" href="tel:'+phone+'" data-call="'+phone+'" data-name="'+esc(r.name)+'" data-cid="'+esc(r.f?r.f.id:'')+'">تماس</a><a class="cu-b" href="https://wa.me/'+wa+'" target="_blank" rel="noopener">واتس‌اپ</a>':'')+'<button type="button" class="cu-b" data-cu-edit>ویرایش</button>'+(function(){var p2=normPhone(r.info&&r.info.phone2);return p2?'<a class="cu-b pri" href="tel:'+p2+'" data-call="'+p2+'" data-name="'+esc(r.name)+'" data-cid="'+esc(r.f?r.f.id:'')+'">تماس با شماره دوم</a>':''})()+(r.f?'<button type="button" class="cu-b" data-cu-per>پرسونا</button>':'')+'</div>'
+      +qfBox(r)+statusBox(r)+bar;
     h+='<div class="cu-sec" role="tabpanel">'+(ftab==='inv'?secInv(r):ftab==='calc'?secCalc(r):ftab==='per'?secPer(r,p):ftab==='his'?secHis(r):secSum(r,p,lc,miss))+'</div>';
     el.innerHTML=h;
   }
@@ -2546,7 +2564,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
     var m=homeMode();pd.setAttribute('data-home',m);
     if(tg){tg.innerHTML=m==='simple'?'<img alt="" src="'+((document.getElementById('hdrLogo')||{}).src||'')+'"><b>میز کار</b><span>›</span>':'<span>→</span><b>خانه</b><em>میز کار</em>';tg.classList.toggle('back',m!=='simple')}
     if(m!=='simple'){el.innerHTML='';el._h='';return}
-    var rows=build(),t=today(),open=rows.filter(function(r){return r.lead&&(r.lead.stage==='sent'||r.lead.stage==='talk')});
+    var rows=build(),t=today(),t0=new Date().setHours(0,0,0,0),open=rows.filter(function(r){return r.lead&&(r.lead.stage==='sent'||r.lead.stage==='talk')&&!r.calls.some(function(c){return c.outcome!==MSG&&c.ts>=t0})});
     var cand=open.slice().sort(function(a,b){return b.urg-a.urg||String(a.lead.next||'9').localeCompare(String(b.lead.next||'9'))}),top=cand[0];
     var late=open.filter(function(r){return r.urg===3}).sort(function(a,b){return String(a.lead.next).localeCompare(String(b.lead.next))});
     var fresh=rows.filter(isNew);
@@ -2566,11 +2584,12 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
         +(ph?'<a class="cu-b pri" href="tel:'+ph+'" data-call="'+ph+'" data-name="'+esc(top.name)+'" data-cid="'+esc(top.f?top.f.id:'')+'">تماس و ثبت نتیجه</a>':'')
         +'<button type="button" class="cu-b" data-cu="'+esc(top.id)+'">پرونده</button></div>'}
     else if(fresh.length){var f0=fresh[0],ph0=en(f0.phone).replace(/\D/g,'');
-      h+='<div class="hs-n">'+nm(f0)+'</div><div class="hs-s">سرنخ تازه · '+fa(fresh.length)+' سرنخ منتظر اولین تماس است</div><div class="hs-a">'
+      h+='<div class="hs-n">'+nm(f0)+'</div><div class="hs-s">'+esc(f0.info.src||'سرنخ تازه')+' · '+fa(fresh.length)+' سرنخ منتظر اولین تماس است</div><div class="hs-a">'
         +(ph0?'<a class="cu-b pri" href="tel:'+ph0+'" data-call="'+ph0+'" data-name="'+esc(f0.name)+'" data-cid="'+esc(f0.f?f0.f.id:'')+'">تماس و ثبت نتیجه</a>':'')
         +'<button type="button" class="cu-b" data-cu="'+esc(f0.id)+'">پرونده</button></div>'}
     else h+='<div class="hs-s">کار فوری نداری. یک مشتری یا سرنخ تازه ثبت کن یا از اکسل وارد کن.</div><div class="hs-a"><button type="button" class="cu-b pri" data-cu-hs="imp">ورود از اکسل</button><button type="button" class="cu-b" data-cu-hs="lead">ثبت سرنخ</button></div>';
     h+='</div>';
+    try{h+=batchCard(rows)}catch(e){}
     // کارت آمار (فقط وب)
     try{var sd=statsData(30),mx0=Math.max(1,sd.created,sd.contacted,sd.sent,sd.won);
       h+='<div class="hs-c hs-stat"><div class="hs-k">قیف ۳۰ روز اخیر</div>'+[['سرنخ',sd.created],['تماس',sd.contacted],['پیش‌فاکتور',sd.sent],['فروش',sd.won]].map(function(x){return '<div class="fn"><div><span>'+x[0]+'</span><b>'+fa(x[1])+'</b></div><i style="width:'+Math.max(2,Math.round(x[1]*100/mx0))+'%"></i></div>'}).join('')+'<button type="button" class="cu-b" data-cu-hs="st">آمار کامل</button></div>'}catch(e){}
@@ -2593,7 +2612,9 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
       +gb('vent','M12 12m-1.5 0a1.5 1.5 0 103 0 1.5 1.5 0 10-3 0M12 10.5C12 6 14 4 16 4s2 3-1.5 6M13.5 12c4.5 0 6.5 2 6.5 4s-3 2-6.5-1.5M12 13.5C12 18 10 20 8 20s-2-3 1.5-6M10.5 12C6 12 4 10 4 8s3-2 6.5 1.5','تهویه')
       +gb('cab','M4 8h6v8H4zM14 8h6v8h-6zM10 12h4','کابل')
       +gb('pri','M4 12l8-8h8v8l-8 8zM15.5 8.5h.01','قیمت‌های امروز')
-      +gb('st','M4 19V10M10 19V5M16 19v-7M22 19H2M3 6l5 3 5-5 6 3','آمار فروش')+'</div>';
+      +gb('st','M4 19V10M10 19V5M16 19v-7M22 19H2M3 6l5 3 5-5 6 3','آمار فروش')
+      +gb('ld','M4 5h16l-6.2 7.2V19l-3.6-1.8v-5z','سرنخ‌ها')
+      +'</div>';
     if(el._h!==h){el._h=h;el.innerHTML=h}
   }
   (function(){var td=$('tabD');if(td&&window.MutationObserver)new MutationObserver(function(){if(td.getAttribute('aria-selected')!=='true'&&homeMode()==='classic'){try{localStorage.setItem(HK,'simple')}catch(x){}try{homeSimple()}catch(x){}}}).observe(td,{attributes:true,attributeFilter:['aria-selected']});
@@ -2602,9 +2623,119 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
     if(t.closest('#hmTg')){var toC=homeMode()==='simple';try{localStorage.setItem(HK,toC?'classic':'simple')}catch(x){}if(toC){try{history.pushState(Object.assign({},history.state||{},{mz:1}),'')}catch(x){}}else{var s1=null;try{s1=history.state}catch(x){}if(s1&&s1.mz){try{history.back()}catch(x){}}}homeSimple();window.scrollTo(0,0);return}
     var fb=t.closest('[data-fu]');if(fb){e.preventDefault();fuOpen(fb.getAttribute('data-fu'),+fb.getAttribute('data-fi'));return}
     var b=t.closest('[data-cu-hs]');if(!b)return;var k=b.getAttribute('data-cu-hs');
-    if(k==='cust'){cur=null;mode='';go('Q');render()}else if(k==='inv')go('I');else if(k==='per')go('P');else if(k==='loss')go('L');else if(k==='vent')go('V');else if(k==='cab')go('C');else if(k==='pri')go('T');else if(k==='st'){stCss();statsOpen()}else if(k==='pl'){if(window.__colPrice)window.__colPrice.open()}else if(k==='cal')go('K');else if(k==='menu'){if(window.__drawerOpen)window.__drawerOpen()}
+    if(k==='cust'){cur=null;mode='';go('Q');render()}else if(k==='inv')go('I');else if(k==='per')go('P');else if(k==='loss')go('L');else if(k==='vent')go('V');else if(k==='cab')go('C');else if(k==='pri')go('T');else if(k==='st'){stCss();statsOpen()}else if(k==='pl'){if(window.__colPrice)window.__colPrice.open()}else if(k==='cal')go('K');else if(k==='ld')go('F');else if(k==='bk'){if(window.__bkRun)window.__bkRun();homeSimple()}else if(k==='rs'){var bf=$('bkFile');if(bf){bf.value='';bf.click()}}else if(k==='bks'){try{localStorage.setItem('pay-bksnooze',String(Date.now()))}catch(x){}homeSimple()}else if(k==='menu'){if(window.__drawerOpen)window.__drawerOpen()}
     else if(k==='lead'){go('F');setTimeout(function(){var i=$('fn_name');if(i)i.focus()},150)}
     else if(k==='imp'){cur=null;go('Q');mode='imp';IMP=null;renderImp()}});
+
+
+
+  /* ---- ۱۱.۴۳: فرم تکمیل اطلاعات سرنخ ---- */
+  var QSTAT=['فعال','دیگر فعالیت نمی‌کند','جمع کرده','اجاره داده','شماره اشتباه است'],QDEAD={'دیگر فعالیت نمی‌کند':1,'جمع کرده':1,'اجاره داده':1,'شماره اشتباه است':1};
+  function qChips(k,arr,cur0){return '<div class="cu-fl" data-qf="'+k+'" role="group">'+arr.map(function(x){return '<button type="button" data-qv="'+esc(x)+'" aria-pressed="'+(cur0===x)+'">'+esc(x)+'</button>'}).join('')+'</div>'}
+  function qfBox(r){
+    if(!r.f||!(r.info&&(r.info.src||r.info.noName||r.info.qd)))return '';var I=r.info||{};
+    var nmv=I.noName?'':r.name,fl=function(id,l,v,ex){return '<label class="hint" for="'+id+'">'+l+'</label><input class="cu-in" id="'+id+'" value="'+esc(v||'')+'"'+(ex||'')+'>'};
+    return '<section class="cu-card cu-qf"><div class="cu-ct"><b>تکمیل اطلاعات'+(I.src?' · '+esc(I.src):'')+'</b><small>'+(I.qd?'ثبت شده ✓':'ثبت نشده')+'</small></div>'
+      +(I.phone2||r.phone?'<p class="hint">'+[r.phone?fa(r.phone):'',I.phone2?fa(I.phone2):''].filter(Boolean).join(' · ')+'</p>':'')
+      +fl('qf_name','نام (اگر فهمیدی)',nmv)+fl('qf_city','شهر',I.city)+fl('qf_addr','آدرس',I.addr)+fl('qf_halls','تعداد سالن',I.halls,' inputmode="numeric"')
+      +'<label class="hint">سیستم اتوماسیون دارد؟</label>'+qChips('auto',['اتوماتیک است','اتوماتیک نیست','نمی‌داند'],I.auto)
+      +'<label class="hint">تجهیزات می‌خواهد؟</label>'+qChips('want',['می‌خواهد','نمی‌خواهد','بعداً'],I.want)
+      +'<label class="hint">وضعیت واحد</label>'+qChips('qs',QSTAT,I.qs||'')
+      +'<label class="hint" for="qf_next">پیگیری بعدی (تاریخ دلخواه)</label><input class="cu-in" id="qf_next" readonly inputmode="none" placeholder="برای انتخاب تاریخ بزن" value="'+esc(I.qnext||'')+'" style="cursor:pointer">'
+      +fl('qf_note','یادداشت دقیق',I.note)
+      +'<button type="button" class="cu-b pri" data-cu-qsave style="width:100%;margin-top:10px">ذخیره‌ی اطلاعات</button></section>';
+  }
+  function qfSave(){
+    var r=curRow();if(!r||!r.f||!window.__cust)return;var box=document.querySelector('.cu-qf');if(!box)return;
+    function v(id){var e=$(id);return e?nrm(e.value):''}
+    function ch(k){var b=box.querySelector('[data-qf="'+k+'"] [aria-pressed="true"]');return b?b.getAttribute('data-qv'):''}
+    var nm=plain(v('qf_name')),info={city:v('qf_city'),addr:v('qf_addr'),halls:v('qf_halls'),auto:ch('auto'),want:ch('want'),qs:ch('qs'),qnext:v('qf_next'),note:v('qf_note'),qd:1};
+    var patch={info:info};if(nm){patch.name=nm;info.noName=0}
+    window.__cust.update(r.f.id,patch);
+    var dead=!!QDEAD[info.qs],iso=info.qnext&&J()?J().parseJ(info.qnext):'',L=ls('payesh-leads'),l=r.lead?L.filter(function(x){return x.id===r.lead.id})[0]:null,now=Date.now();
+    if(dead||info.want==='نمی‌خواهد'){var why=dead?info.qs:'نمی‌خواهد';if(l){if(l.stage!=='lost'){l.stFrom=l.stage;l.stTs=now}l.stage='lost';l.reason=why;l.next='';l.fdone=true}else L.push({id:'q'+now.toString(36),name:nm||r.name,phone:r.phone,amount:0,stage:'lost',reason:why,next:'',time:'',note:info.note||'',cid:r.f.id,created:now,stTs:now,fdone:true});saveLeadsArr(L)}
+    else if(iso){if(l){if(l.stage!=='talk'&&l.stage!=='sent'){l.stFrom=l.stage;l.stTs=now}if(l.stage==='lost'||l.stage==='won')l.stage='talk';l.next=iso;l.time=l.time||'10:00';l.fdone=false;l.note=info.note||l.note||'پیگیری سرنخ'}
+      else L.push({id:'q'+now.toString(36),name:nm||r.name,phone:r.phone,amount:0,stage:'talk',reason:'',next:iso,time:'10:00',note:info.note||'پیگیری سرنخ',cid:r.f.id,created:now,stTs:now,fdone:false});saveLeadsArr(L)}
+    render();try{if(window.__crmRefresh)window.__crmRefresh()}catch(x){}tst('اطلاعات ذخیره شد');
+  }
+  document.addEventListener('click',function(e){var t=e.target;if(!t.closest)return;var b;
+    if((b=t.closest('.cu-qf [data-qv]'))){var on=b.getAttribute('aria-pressed')==='true';[].forEach.call(b.parentNode.children,function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed',on?'false':'true');return}
+    if(t.id==='qf_next'&&window.__pkOpen){window.__pkOpen(t);return}
+    if(t.closest('[data-cu-qsave]')){qfSave();return}
+  });
+  /* ---- ۱۱.۴۱: وضعیت قابل‌تغییر، تیک کاتالوگ، لغو ارسال ---- */
+  var CATN='کاتالوگ ارسال شد';
+  function hasCat(r){return r.calls.some(function(c){return c.outcome===MSG&&c.note===CATN})}
+  function statusBox(r){
+    var st=r.stage||'',B=[['talk','در مذاکره'],['sent','پیش‌فاکتور رفته'],['won','مشتری شد'],['lost','از دست رفته']];
+    return '<section class="cu-card cu-stb"><div class="cu-ct"><b>وضعیت</b><small>هر زمان قابل تغییر</small></div><div class="cu-fl" role="group" aria-label="وضعیت">'+B.map(function(x){return '<button type="button" data-cu-stg="'+x[0]+'" aria-pressed="'+(st===x[0])+'">'+x[1]+'</button>'}).join('')+'</div>'
+      +'<label class="cu-cat"><input type="checkbox" data-cu-cat'+(hasCat(r)?' checked':'')+'> '+CATN+'</label></section>';
+  }
+  function setStage(r,k){
+    var L=ls('payesh-leads'),now=Date.now(),l=r.lead?L.filter(function(x){return x.id===r.lead.id})[0]:null;
+    if(l){if(l.stage!==k){l.stFrom=l.stage;l.stTs=now}l.stage=k;l.fdone=false;if(k==='lost'&&!l.reason)l.reason='سایر'}
+    else L.push({id:'s'+now.toString(36)+Math.random().toString(36).slice(2,5),name:r.name,phone:r.phone,amount:0,stage:k,reason:k==='lost'?'سایر':'',next:'',time:'',note:'',cid:r.f?r.f.id:'',created:now,stTs:now,fdone:false});
+    saveLeadsArr(L)}
+  function curRow(){ROWS=build();return ROWS.filter(function(x){return x.id===cur})[0]}
+  document.addEventListener('click',function(e){var t=e.target;if(!t.closest)return;var b;
+    if((b=t.closest('[data-cu-stg]'))){var r=curRow();if(!r)return;setStage(r,b.getAttribute('data-cu-stg'));render();try{if(window.__crmRefresh)window.__crmRefresh()}catch(x){}tst('وضعیت: '+STG[b.getAttribute('data-cu-stg')]);return}
+    if((b=t.closest('[data-cu-cat]'))){var r2=curRow();if(!r2)return;var C=ls('payesh-calls');
+      if(b.checked){C.push({id:'c'+Date.now().toString(36),ts:Date.now(),phone:r2.phone,name:r2.name,cid:r2.f?r2.f.id:'',outcome:MSG,note:CATN})}
+      else{var ids={};r2.calls.forEach(function(c){if(c.outcome===MSG&&c.note===CATN)ids[c.id]=1});C=C.filter(function(c){return !ids[c.id]})}
+      try{localStorage.setItem('payesh-calls',JSON.stringify(C))}catch(x){}render();try{if(window.__crmRefresh)window.__crmRefresh()}catch(x){}return}
+    if((b=t.closest('[data-cu-isent]'))){var r3=curRow();if(!r3||!r3.f||!window.__cust)return;var m=window.__cust.toggleSent(r3.f.id,b.getAttribute('data-cu-isent'));render();try{if(window.__crmRefresh)window.__crmRefresh()}catch(x){}tst(m||'انجام شد');return}
+  });
+  /* ---- ۱۱.۴۰: ۵ سرنخ روزانه برای تکمیل پرسونا + گزارش CRM + یادآور پشتیبان ---- */
+  var BKY='payesh-batch',BN=5,PK=['farmType','decider','problems','when','bought','reasons','price','crit','barriers','alt'];
+  function bget(){try{var v=JSON.parse(localStorage.getItem(BKY));if(v&&typeof v==='object')return {cur:v.cur||null,hist:Array.isArray(v.hist)?v.hist:[],last:v.last||''}}catch(e){}return {cur:null,hist:[],last:''}}
+  function bset(b){try{localStorage.setItem(BKY,JSON.stringify(b))}catch(e){}}
+  function perFill(r){var p=r.f&&r.f.persona,n=0;if(!p)return 0;PK.forEach(function(k){if(!empty(p[k]))n++});return n}
+  function perDone(r,B){return !!(B&&B.cur&&B.cur.done&&B.cur.done[r.id])||perFill(r)>=3||!!(r.info&&r.info.qd)}
+  function bUsed(B){var u={};B.hist.forEach(function(h){h.items.forEach(function(i){u[i.rid]=1})});if(B.cur)B.cur.ids.forEach(function(i){u[i]=1});return u}
+  function bAvail(r,B,u){return r.f&&!u[r.id]&&!perDone(r,B)&&!(r.lead&&(r.lead.stage==='won'||r.lead.stage==='lost'))}
+  function bSources(rows,B){var u=bUsed(B),m={},o=[];rows.forEach(function(r){var x=r.f&&r.info&&r.info.src;if(!x)return;if(!m[x]){m[x]={src:x,left:0};o.push(m[x])}if(bAvail(r,B,u))m[x].left++});return o}
+  function bPick(rows,B,src){var u=bUsed(B);return rows.filter(function(r){return r.info&&r.info.src===src&&bAvail(r,B,u)}).sort(function(a,b){return (a.f.ts||0)-(b.f.ts||0)}).slice(0,BN)}
+  function bReport(e,rows){
+    var L=['گزارش پرسونا برای CRM','تاریخ: '+jdate(e.ts)+' | منبع: '+e.src,'تعداد: '+fa(e.items.length)+' سرنخ',''];
+    e.items.forEach(function(it,i){var r=rows.filter(function(x){return x.id===it.rid})[0],p=(r&&r.f&&r.f.persona)||{},parts=[];
+      PK.forEach(function(k){if(!empty(p[k]))parts.push((PL[k]||k)+': '+pval(p[k]))});
+      if(r&&r.info){var I0=r.info;if(I0.city)parts.push('شهر: '+I0.city);if(I0.halls)parts.push('تعداد سالن: '+I0.halls);if(I0.auto)parts.push('اتوماسیون: '+I0.auto);if(I0.want)parts.push('تمایل: '+I0.want);if(I0.qs)parts.push('وضعیت: '+I0.qs);if(I0.qnext)parts.push('پیگیری: '+I0.qnext)}
+      var lc='';if(r){var cs=r.calls.filter(function(c){return c.outcome!==MSG}).sort(function(a,b){return b.ts-a.ts});if(cs.length)lc=cs[0].outcome+' ('+jdate(cs[0].ts)+')'}
+      L.push(fa(i+1)+') '+it.name+' — '+fa(String(it.phone||''))+((r&&r.info.co)?' — '+r.info.co:'')+'\n   آخرین تماس: '+(lc||'ثبت نشده')+'\n   پرسونا: '+(parts.length?parts.join('، '):'کامل نشده'))});
+    return L.join('\n')}
+  function bAuto(rows){var B=bget();if(!B.cur)return B;var items=B.cur.ids.map(function(id){return rows.filter(function(r){return r.id===id})[0]}).filter(Boolean);
+    if(!items.length){B.cur=null;bset(B);return B}
+    if(items.every(function(r){return perDone(r,B)})){var e={id:B.cur.id,src:B.cur.src,ts:Date.now(),items:items.map(function(r){return {rid:r.id,name:r.name,phone:r.phone}})};e.report=bReport(e,rows);B.hist.unshift(e);B.hist=B.hist.slice(0,30);B.last=e.id;B.cur=null;bset(B)}
+    return B}
+  function batchCard(rows){
+    var B=bAuto(rows),src=bSources(rows,B);if(!B.cur&&!src.length&&!B.hist.length)return '';
+    var h='<div class="hs-c hs-bt">';
+    if(B.cur){var items=B.cur.ids.map(function(id){return rows.filter(function(r){return r.id===id})[0]}).filter(Boolean),dn=items.filter(function(r){return perDone(r,B)}).length;
+      h+='<div class="hs-k">پرسونای امروز <em>'+fa(dn)+' از '+fa(items.length)+'</em></div><div class="hs-s">منبع: '+esc(B.cur.src)+' · روی نام بزن و تماس بگیر، پرسونا را تکمیل کن، بعد «تکمیل شد».</div>';
+      items.forEach(function(r){var d=perDone(r,B),ph=en(r.phone).replace(/\D/g,'');
+        h+='<div class="bt-r'+(d?' on':'')+'"><span class="bt-n">'+(ph?'<a href="tel:'+ph+'" data-call="'+ph+'" data-name="'+esc(r.name)+'" data-cid="'+esc(r.f?r.f.id:'')+'">'+esc(r.name)+'</a>':esc(r.name))+'</span><button type="button" data-cu="'+esc(r.id)+'">تکمیل</button><button type="button" data-bt="'+(d?'un':'ok')+'" data-id="'+esc(r.id)+'">'+(d?'✓ تکمیل':'تکمیل شد')+'</button></div>'});
+      h+='<div class="bt-b"><button type="button" data-bt="drop">انصراف از این دسته</button></div>'}
+    else{h+='<div class="hs-k">پرسونای امروز</div>';
+      var le=B.last&&B.hist.filter(function(x){return x.id===B.last})[0];
+      if(le)h+='<div class="hs-s">✓ دسته‌ی قبلی ('+esc(le.src)+') تکمیل شد؛ گزارش CRM آماده است.</div><div class="bt-b"><button type="button" class="pri" data-bt="copy" data-id="'+esc(le.id)+'">کپی گزارش CRM</button></div>';
+      var av=src.filter(function(x){return x.left>0});
+      if(av.length){h+='<div class="hs-s">'+fa(BN)+' سرنخ بعدی را از کدام منبع بگیرم؟</div><div class="bt-b">'+av.map(function(x){return '<button type="button" data-bt="start" data-src="'+esc(x.src)+'"'+(le&&le.src===x.src?' class="pri"':'')+'>'+esc(x.src)+' · '+fa(x.left)+' مانده</button>'}).join('')+'</div>'}
+      else h+='<div class="hs-s">سرنخ بدون پرسونا نمانده. فایل اکسل تازه (با ستون منبع) وارد کن.</div>'}
+    if(B.hist.length)h+='<details><summary class="hs-s">گزارش دسته‌های قبلی ('+fa(B.hist.length)+')</summary>'+B.hist.slice(0,10).map(function(x){return '<details><summary>'+esc(x.src)+' · '+jdate(x.ts)+'</summary><pre>'+esc(x.report)+'</pre><div class="bt-b"><button type="button" data-bt="copy" data-id="'+esc(x.id)+'">کپی</button></div></details>'}).join('')+'</details>';
+    return h+'</div>'}
+  function copyTxt(t){(navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(t):Promise.reject()).then(function(){tst('کپی شد')},function(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');tst('کپی شد')}catch(x){}ta.remove()})}
+  document.addEventListener('click',function(e){var t=e.target;if(!t.closest)return;var b=t.closest('[data-bt]');if(!b)return;e.preventDefault();
+    var k=b.getAttribute('data-bt'),B=bget(),id=b.getAttribute('data-id');
+    if(k==='start'){var pk=bPick(build(),B,b.getAttribute('data-src'));if(!pk.length){tst('سرنخ آماده‌ای از این منبع نمانده');return}B.cur={id:'b'+Date.now().toString(36),src:b.getAttribute('data-src'),ts:Date.now(),ids:pk.map(function(r){return r.id}),done:{}};B.last='';bset(B)}
+    else if(k==='ok'||k==='un'){if(B.cur){if(k==='ok')B.cur.done[id]=Date.now();else delete B.cur.done[id];bset(B)}}
+    else if(k==='drop'){if(confirm('این دسته‌ی ۵تایی رها شود؟ (سرنخ‌ها دوباره پیشنهاد می‌شوند)')){B.cur=null;bset(B)}else return}
+    else if(k==='copy'){var en0=B.hist.filter(function(x){return x.id===id})[0];if(en0)copyTxt(en0.report);return}
+    homeSimple()});
+  function todayLocal(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
+  function bkBanner(){var lb='',sn=0;try{lb=localStorage.getItem('pay-lastbk')||'';sn=+localStorage.getItem('pay-bksnooze')||0}catch(e){}
+    if(lb===todayLocal()||Date.now()-sn<4*36e5)return '';
+    return '<div class="hs-c hs-bk"><div class="hs-k">پشتیبان‌گیری روزانه</div><div class="hs-s">'+(lb?'آخرین پشتیبان: '+jdate(new Date(lb+'T12:00:00').getTime())+' · ':'هنوز پشتیبان نگرفته‌ای · ')+'امروز یک نسخه روی کامپیوتر ذخیره کن.</div><div class="hs-a"><button type="button" class="cu-b pri" data-cu-hs="bk">ذخیره‌ی پشتیبان</button><button type="button" class="cu-b" data-cu-hs="bks">بعداً</button></div></div>'}
+  /* ---- پایان ۱۱.۴۰ ---- */
   /* ---- ۱۱.۳۷: آمار قیف فروش و پیام پیگیری ---- */
   function stCss(){if($('stCss'))return;var s=document.createElement('style');s.id='stCss';s.textContent=
    '#stOv,#fuOv{position:fixed;inset:0;z-index:262;overflow:auto;-webkit-overflow-scrolling:touch;font-family:var(--font,Vazirmatn,Tahoma,sans-serif);--bg:#eef3fc;--fg:#1b2440;--surface:#fff;--line:#d6dcea;--muted:#55607a;background:var(--bg);color:var(--fg)}'
@@ -2722,7 +2853,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
     if((b=t.closest('[data-qs]'))){var k=b.getAttribute('data-qs');sheet(false);
       if(k==='cust'){cur=null;go('Q');setTimeout(function(){var i=$('cuQ');if(i)i.focus()},120)}
       else if(k==='lead'){go('F');setTimeout(function(){var i=$('fn_name');if(i)i.focus()},150)}
-      else if(k==='cal')go('K');else if(k==='inv'){try{var Pn=window.__proforma,iv=Pn.S().inv;if(!Pn.S().fid&&String(iv.buyer||'').trim()&&!confirm('پیش‌فاکتور فعلی در پوشه‌ای ذخیره نشده. پیش‌فاکتور تازه باز شود؟'))return;Pn.newInv()}catch(x){}go('I')}else if(k==='alarm'){var a=$('tbAlarm');if(a)a.click()}
+      else if(k==='cal')go('K');else if(k==='inv'){try{var Pn=window.__proforma,iv=Pn.S().inv;if(!Pn.S().fid&&String(iv.buyer||'').trim()&&!confirm('پیش‌فاکتور فعلی در پوشه‌ای ذخیره نشده. پیش‌فاکتور تازه باز شود؟'))return;Pn.newInv()}catch(x){}go('I')}else if(k==='alarm'){var a=$('tbAlarm');if(a)a.click()}else if(k==='bk'){if(window.__bkRun)window.__bkRun();tst('فایل پشتیبان دانلود شد')}else if(k==='rs'){var bf=$('bkFile');if(bf)bf.click()}
       return}
   });
   document.addEventListener('input',function(e){if(e.target&&e.target.id==='cuQ'){q=e.target.value;var pos=e.target.selectionStart;renderList();var i=$('cuQ');if(i){i.focus();try{i.setSelectionRange(pos,pos)}catch(x){}}}});
@@ -2859,7 +2990,7 @@ var NOINS=['wjb','wbox','box4060','box4050','box4050t','box5070','flat','c12','c
 
 var CUST=[
  {id:'none',name:'مشتری عادی',pct:0,mpct:0,ins:15,all:false,hint:'درصد تخفیف را دستی وارد کنید؛ فقط روی کالاهای تخفیف‌دار اعمال می‌شود.'},
- {id:'tay',name:'طیوران ابزار',pct:18,mpct:10,ins:8,all:false,hint:'۱۸٪ روی کالاهای تخفیف‌دار، ۱۰٪ موتور اینلت و سنسور فشار، نصب ۸٪.'},
+ {id:'tay',name:'طیوران صنعت شهریار',pct:18,mpct:10,ins:8,all:false,hint:'۱۸٪ روی کالاهای تخفیف‌دار، ۱۰٪ موتور اینلت و سنسور فشار، نصب ۸٪.'},
  {id:'shah',name:'طیوران ابزار شهریار',pct:13,mpct:10,ins:15,all:false,hint:'۱۳٪ روی کالاهای تخفیف‌دار، ۱۰٪ موتور اینلت و سنسور فشار.'},
  {id:'rsp',name:'RSP',pct:15,mpct:10,ins:15,all:false,hint:'۱۵٪ روی کالاهای تخفیف‌دار، ۱۰٪ موتور اینلت و سنسور فشار.'},
  {id:'amir',name:'امیر سلطانی',pct:10,mpct:10,ins:15,all:true,hint:'۱۰٪ روی همه‌ی اقلام. هزینه نصب و راه‌اندازی تخفیف نمی‌گیرد، مگر تیک «تخفیف» همان ردیف را بزنید. برای هر ردیف دیگری که تخفیف نمی‌گیرد، تیک را بردارید.'}
@@ -2905,7 +3036,7 @@ function fmtField(el){var d=toEn(el.value).replace(/[^\d.]/g,'');if(d===''){el.v
 
 /* ---------- model ---------- */
 function parentsQty(it){var s=0;it.from.forEach(function(p){var r=S.rows[p];if(r)s+=num(r.qty)});return s*(it.mult||1)}
-var LOCKED={presfit:1,wacc:1,flex:1,flexclamp:1};/* تعداد این دو همیشه برابر والدشان است */
+var LOCKED={};/* تعداد این دو همیشه برابر والدشان است */
 function qtyOf(id){var it=BY[id],r=S.rows[id];if(!r)return 0;if(it.from&&(!r.qtyManual||LOCKED[id]))return parentsQty(it);return num(r.qty)}
 function up50(x){x=Math.round(x*1e6)/1e6;return Math.ceil(x/50)*50}
 function hgList(){var g=S.inv.hg;if(!Array.isArray(g)||!g.length){var m=toLat(S.inv.dim||'').match(/\d+(?:\.\d+)?/g)||[];g=[{n:S.inv.halls||'',l:m[0]||'',w:m[1]||''}];S.inv.hg=g}return g}
@@ -2973,7 +3104,7 @@ function calc(){
     l.p0=l.price;var fxo=S.fx||{};l.fxAdd=l.id==='wacc'?Math.round(6*(+fxo.pm||0)+4*(+fxo.pb||0)):0;if(l.fxAdd)l.price+=l.fxAdd;
     var upp=Math.max(0,num(S.up));l.upP=upp;if(upp>0)l.price=Math.round(l.price*(1+upp/100));
     l.gross=Math.round(l.price*l.qty);
-    l.inBase=insMode()?(inEquip(l)&&COEXCL.indexOf(l.id)<0):(NOINS.indexOf(l.id)<0&&(l.g!=='acc'||INSINC.indexOf(l.id)>=0));
+    l.inBase=insMode()?(inEquip(l)&&COEXCL.indexOf(l.id)<0):(inEquip(l));
     if(l.inBase)base+=l.gross;
   });
   var tot=0,dsc=0;
@@ -3122,7 +3253,7 @@ $('tbl').addEventListener('click',function(e){var qb=e.target.closest('.qb');if(
 
 /* ---------- output ---------- */
 var tt;function toast(m){var t=$('toast');if(/^ساخت/.test(m)&&(typeof html2pdf==='undefined'||typeof ExcelJS==='undefined'))m+=' کتابخانه‌ی ساخت فایل بارگذاری نشده؛ اینترنت یا فیلتر را بررسی و صفحه را دوباره باز کنید.';t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(function(){t.hidden=true},3800)}
-function fname(ext,kind){var cl=function(s){return String(s||'').replace(/[\\\/:*?"<>|\u0000-\u001f]+/g,' ').replace(/\s+/g,' ').trim()};var b=cl(S.inv.buyer)||(S.cust!=='none'?cust().name:'');var hl=String(S.inv.halls||'').trim();return (cl(S.inv.no)||'proforma')+(b?' '+b:'')+(hl?' '+cl(hl)+' سالن':'')+(kind==='list'?' لیست تجهیزات':'')+'.'+ext}
+function fname(ext,kind){var cl=function(s){return String(s||'').replace(/[\\\/:*?"<>|\u0000-\u001f]+/g,' ').replace(/\s+/g,' ').trim()};var b=cl(S.inv.buyer)||cl(S.inv.attn);if(!b&&S.fid){try{JSON.parse(localStorage.getItem('payesh-folders')||'[]').forEach(function(f){if(f.id===S.fid)b=cl(f.name)})}catch(e){}}if(!b&&S.cust!=='none')b=cl(cust().name);var hl=String(S.inv.halls||'').trim(),qn=function(id){var r=S.rows[id];return r?Math.round(num(r.qty)):0},ds=hl?cl(hl)+' سالن':(qn('ntc')?qn('ntc')+' NTC':((S.rows.base||S.rows.host||S.rows.hostc)?'سرور':''));return (cl(S.inv.no)||'proforma')+(b?' '+b:'')+(ds?' '+ds:'')+(kind==='list'?' لیست تجهیزات':'')+'.'+ext}
 function nowBusy(btn,on){btn.disabled=on;if(on)btn.dataset.t=btn.textContent,btn.textContent='در حال ساخت…';else btn.textContent=btn.dataset.t||btn.textContent}
 
 var LOGO='data:image/png;base64,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';
@@ -4346,6 +4477,7 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
     if(Array.isArray(old))old.forEach(function(p){var q=blankP();q.name=p.name||'';q.farmType=p.biz||'';q.quote=p.quote||'';q.objection=p.objection||'';q.next=p.next||'';F.push({id:p.id,name:p.name||'',ts:p.ts||Date.now(),persona:q,invs:[],pl:null})});
     ls(FK,F);try{localStorage.removeItem('payesh-persona')}catch(e){}}
   function saveF(){ls(FK,F)}
+  (function(){var ch=false;F.forEach(function(f){(f.invs||[]).forEach(function(v){if(v.snap&&v.snap.S&&!v.snap.S.invRid){v.snap.S.invRid=v.id;ch=true}(v.old||[]).forEach(function(o){if(o.snap&&o.snap.S&&!o.snap.S.invRid){o.snap.S.invRid=v.id;ch=true}})})});if(ch)ls(FK,F)})();
   function fById(id){var r=null;F.forEach(function(f){if(f.id===id)r=f});return r}
   function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,5)}
   function blankP(){return {name:'',phone:'',prov:'',city:'',country:'',addr:'',proj:'',attn:'',role:'',farmType:'',farms:'',halls:[],problems:[],bought:'',reasons:[],after:[],decider:[],source:[],tone:'',quote:'',objection:'',next:'',notes:{},impact:'',trigger:[],when:[],barriers:[],alt:[],crit:[],joy:[],disc:'',risk:'',price:'',age:'',work:'',hobby:'',msg:'',cross:''}}
@@ -4613,16 +4745,25 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
   }
   function invRow(v){
     var L=verList(v),n=L.length;
-    return '<div class="li"><span><b>'+esc(v.title)+'</b></span><span class="btns" style="margin:0"><button type="button" data-a="iopen" data-id="'+v.id+'">باز کردن</button><button type="button" data-a="isent" data-id="'+v.id+'"'+(v.sentTs?'':' class="pri"')+'>'+(v.sentTs?'لغو ارسال':'ارسال شد ✓')+'</button><button type="button" data-a="idel" data-id="'+v.id+'">حذف</button></span>'+
+    return '<div class="li"><span><b>'+esc(v.title)+'</b></span><span class="btns" style="margin:0"><button type="button" data-a="iopen" data-id="'+v.id+'">باز کردن</button><button type="button" data-a="isent" data-id="'+v.id+'"'+(v.sentTs?'':' class="pri"')+'>'+(v.sentTs?'لغو ارسال':'ارسال شد ✓')+'</button><button type="button" data-a="idel" data-id="'+v.id+'">حذف</button>'+(v.sentTs?'<button type="button" data-a="ifol" data-id="'+v.id+'">تغییر تاریخ پیگیری</button>':'')+'</span>'+
       '<div class="hint" style="flex-basis:100%">آخرین ویرایش: <b>'+esc(L[0].lab)+'</b>'+(n>1?' · '+nf(n)+' نسخه':'')+'</div>'+
       (v.sentTs?'<div class="hint" style="flex-basis:100%">✓ ارسال شد '+dstr(v.sentTs)+(v.follow?' · پیگیری: '+dstr(new Date(v.follow+'T12:00:00').getTime())+' ('+nf(v.fdays||0)+' روز بعد)':'')+'</div>':'')+
       (n>1?'<details style="flex-basis:100%"><summary style="cursor:pointer;font-size:13px">نسخه‌های قبلی</summary>'+L.map(function(x,k){return '<div class="li"><span>نسخه '+nf(n-k)+(k===0?' (آخرین)':'')+' · '+esc(x.lab)+(x.final?' · '+nf(x.final)+' ریال':'')+'</span><button type="button" data-a="iver" data-id="'+v.id+'" data-i="'+x.idx+'">باز کردن</button></div>'}).join('')+'</details>':'')+'</div>';
   }
+  function pfDesc(S){
+    var hl=String(S.inv.halls||'').trim(),n=function(id){var r=S.rows&&S.rows[id];return r?Math.round(parseFloat(String(r.qty).replace(/[^\d.]/g,''))||0):0};
+    if(hl)return hl+' سالن'+(String(S.inv.dim||'').trim()?' ('+String(S.inv.dim).trim()+')':'');
+    if(n('ntc'))return nf(n('ntc'))+' سنسور NTC';
+    if(S.rows&&(S.rows.base||S.rows.host||S.rows.hostc))return 'سرور / هاستینگ';
+    return '';
+  }
   function saveInvTo(f){
     var P=window.__proforma;if(!P||!P.snap)return false;
-    var snap=clone(P.snap()),S=snap.S,no=S.inv.no||'',title=((no+' '+(S.inv.buyer||S.inv.proj||'')).trim()+(String(S.inv.halls||'').trim()?' · '+String(S.inv.halls).trim()+' سالن'+(String(S.inv.dim||'').trim()?' ('+String(S.inv.dim).trim()+')':''):'')).trim()||'پیش‌فاکتور',i=-1;
-    f.invs.forEach(function(v,j){if(no&&v.no===no)i=j});
-    var rec={id:i>=0?f.invs[i].id:uid(),ts:Date.now(),no:no,title:title,snap:snap,final:(function(){try{return Math.round(P.calc().final)||0}catch(e){return 0}})()};
+    var snap=clone(P.snap()),S=snap.S,no=S.inv.no||'',ds=pfDesc(S),title=((no+' '+(S.inv.buyer||S.inv.proj||f.name||'')).trim()+(ds?' · '+ds:'')).trim()||'پیش‌فاکتور',i=-1;
+    if(S.invRid)f.invs.forEach(function(v,j){if(v.id===S.invRid)i=j});
+    var rid=i>=0?f.invs[i].id:uid();S.invRid=rid;
+    var rec={id:rid,ts:Date.now(),no:no,title:title,snap:snap,final:(function(){try{return Math.round(P.calc().final)||0}catch(e){return 0}})()};
+    try{P.S().invRid=rid}catch(e){}
     if(i>=0){['sentTs','follow','fdays'].forEach(function(k){if(f.invs[i][k]!==undefined)rec[k]=f.invs[i][k]})}
     lastSame=false;
     if(i>=0){var old0=f.invs[i];
@@ -4681,6 +4822,12 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
       if(a==='pcopy'){copyTxt(crmText(f2),b);return}
       if(a==='isave'){var rs=saveInvTo(f2),tx=!rs?'ذخیره نشد.':(lastSame?'تغییری نسبت به آخرین نسخه نبود؛ نسخه‌ی تازه‌ای ساخته نشد.':(rs.old&&rs.old.length?'نسخه‌ی '+nf(rs.old.length+1)+' ذخیره شد؛ نسخه‌های قبلی هم نگه داشته شد.':'پیش‌فاکتور در پوشه ذخیره شد.'));render();msg(tx);return}
       if(a==='iver'){var vid=b.getAttribute('data-id'),vi=+b.getAttribute('data-i'),vr=null;f2.invs.forEach(function(v){if(v.id===vid)vr=v});if(!vr)return;var sn=vi<0?vr.snap:(vr.old&&vr.old[vi]&&vr.old[vi].snap);if(!sn)return;try{window.__proforma.load(sn);$('tabI').click()}catch(x){msg('باز کردن نسخه انجام نشد.')}return}
+      if(a==='ifol'){var fid0=b.getAttribute('data-id'),fr=null;f2.invs.forEach(function(v){if(v.id===fid0)fr=v});if(!fr||!window.__pkOpen)return;
+        var ti=document.createElement('input');ti.readOnly=true;ti.style.cssText='position:fixed;opacity:0;pointer-events:none';document.body.appendChild(ti);
+        ti.addEventListener('change',function(){var J=window.__crmJ,iso=ti.value?J.parseJ(ti.value):'';ti.remove();if(!iso)return;fr.follow=iso;fr.fdays=Math.max(0,Math.round((new Date(iso+'T12:00:00').getTime()-fr.sentTs)/864e5));
+          var ld=ls('payesh-leads')||[],ph=fPhones(f2);ld.forEach(function(x){if(x.cid===f2.id||(ph.length&&phNums(x.phone||'').some(function(y){return ph.indexOf(y)>=0}))){if(x.stage==='sent'||x.stage==='talk'){x.next=iso;x.fdone=false}}});ls('payesh-leads',ld);
+          touch(f2);try{planRender()}catch(x){}render();msg('تاریخ پیگیری: '+dstr(new Date(iso+'T12:00:00').getTime()))});
+        window.__pkOpen(ti);return}
       if(a==='isent'){var rid=b.getAttribute('data-id'),rr=null;f2.invs.forEach(function(v){if(v.id===rid)rr=v});if(!rr)return;var res=rr.sentTs?unmarkSent(f2,rr):markSent(f2,rr);render();msg(res);return}
       if(a==='iopen'||a==='idel'){var id=b.getAttribute('data-id'),rec=null;f2.invs.forEach(function(v){if(v.id===id)rec=v});if(!rec)return;
         if(a==='iopen'){try{window.__proforma.load(rec.snap);$('tabI').click()}catch(x){msg('باز کردن پیش‌فاکتور انجام نشد.')}}
@@ -4781,11 +4928,9 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
     var body=$('dayBody');if(!body)return;
     var d=dayData(),row=function(main,sub,attrs){return '<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px dashed var(--line);padding:6px 0"><span><b>'+esc(main)+'</b> <small style="color:var(--muted)">'+sub+'</small></span><button type="button" '+attrs+' style="font:inherit;font-size:13px;padding:5px 12px;border-radius:8px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer">باز کردن</button></div>'};
     $('dayLbl').textContent=dayLabel(d);
-    var h='<p style="margin:0 0 6px;font-size:13.5px"><b>'+nf(d.invs.length)+'</b> پیش‌فاکتور · <b>'+nf(d.pers.length)+'</b> پرسونا</p>';
+    var h='<p style="margin:0 0 6px;font-size:13.5px"><b>'+nf(d.invs.length)+'</b> پیش‌فاکتور</p>';
     h+='<div style="font-size:13px;font-weight:700;color:var(--muted);margin-top:8px">پیش‌فاکتورها</div>';
     h+=d.invs.length?d.invs.map(function(x){var f=x.fid?fById(x.fid):null;return row(x.title||x.no||'پیش‌فاکتور',tm(x.ts)+(f?' · مشتری: '+esc(f.name):''),'data-day="oi" data-id="'+esc(x.id||'')+'" data-fid="'+esc(x.fid||'')+'" data-rid="'+esc(x.rid||'')+'"')}).join(''):'<p class="hint" style="margin:4px 0">پیش‌فاکتوری ثبت نشده.</p>';
-    h+='<div style="font-size:13px;font-weight:700;color:var(--muted);margin-top:10px">پرسونا</div>';
-    h+=d.pers.length?d.pers.map(function(x){var f=fById(x.fid);return row(x.name||(f&&f.name)||'مشتری',tm(x.ts),'data-day="op" data-fid="'+esc(x.fid||'')+'"'+(f?'':' disabled'))}).join(''):'<p class="hint" style="margin:4px 0">پرسونایی ثبت نشده.</p>';
     body.innerHTML=h;
   }
   $('dayBody').addEventListener('click',function(e){
@@ -4804,8 +4949,6 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
   $('dayCopy').addEventListener('click',function(){
     var d=dayData(),L=['گزارش کار '+dayLabel(d),'','پیش‌فاکتورها ('+nf(d.invs.length)+'):'];
     d.invs.forEach(function(x){var f=x.fid?fById(x.fid):null;L.push('- '+(x.title||x.no)+' ('+tm(x.ts)+')'+(f?' - مشتری: '+f.name:''))});
-    L.push('','پرسونا ('+nf(d.pers.length)+'):');
-    d.pers.forEach(function(x){L.push('- '+(x.name||'')+' ('+tm(x.ts)+')')});
     try{if(window.__crm){var X=window.__crm.dayText(d.base);if(X)L.push('',X)}}catch(e){}
     copyTxt(L.join('\n'),$('dayCopy'));
   });
@@ -4972,6 +5115,7 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
     all:function(){return F.map(function(f){var p=f.persona||{},I=f.info||{};return {id:f.id,name:f.name,phones:fPhones(f),phone:f.phone||'',farm:p.farmType||'',co:I.co||'',prov:p.prov||I.prov||'',city:p.city||I.city||'',addr:p.addr||'',attn:p.attn||'',invs:(f.invs||[]).map(function(v){return {title:v.title,ts:v.ts,id:v.id}})}})},
     open:function(id){if(!fById(id))return false;$('tabP').click();openId=id;view='folder';render();return true},
     add:function(name,phone){var f={id:uid(),name:name||phone||'مشتری جدید',ts:Date.now(),persona:null,phone:phone||'',invs:[],pl:null};F.unshift(f);saveF();if(view==='list')render();return f.id},
+    toggleSent:function(fid,vid){var f=fById(fid),rec=null;if(!f)return '';f.invs.forEach(function(v){if(v.id===vid)rec=v});if(!rec)return '';var m=rec.sentTs?unmarkSent(f,rec):markSent(f,rec);saveF();return m},
     addMany:function(a){var ids=[],n=0;a.forEach(function(x){var f={id:uid()+(n++).toString(36),name:x.name,ts:Date.now(),persona:null,phone:x.phone||'',invs:[],pl:null,info:x.info||{}};F.unshift(f);ids.push(f.id)});saveF();if(view==='list')render();return ids},
     update:function(id,patch){var f=fById(id);if(!f)return false;Object.keys(patch).forEach(function(k){if(k==='info')f.info=Object.assign({},f.info||{},patch.info);else f[k]=patch[k]});saveF();if(view==='list')render();return true},
     loadInvById:function(fid,iid,vi){var f=fById(fid);if(!f||!window.__proforma)return false;var rec=null;f.invs.forEach(function(v){if(v.id===iid)rec=v});if(!rec)return false;var sn=(vi>=0&&rec.old&&rec.old[vi])?rec.old[vi].snap:rec.snap;if(!sn)return false;try{window.__proforma.load(sn);$('tabI').click();return true}catch(e){return false}},
@@ -5183,6 +5327,8 @@ if('serviceWorker' in navigator&&location.protocol==='https:'){window.addEventLi
 (function(){
   var SV='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
   document.querySelectorAll('.backbar .goto').forEach(function(b){ if(b.dataset.ico)return; b.dataset.ico=1; b.innerHTML=SV+'<span>خانه</span>'; });
+  document.querySelectorAll('.backbar .goto[data-go="d"]').forEach(function(b){ var x=document.createElement('button'); x.type='button'; x.className='bkb'; x.setAttribute('aria-label','بازگشت به صفحه‌ی قبل'); x.innerHTML='<span>عقب</span>'; b.insertAdjacentElement('afterend',x); });
+  document.addEventListener('click',function(e){ var b=e.target.closest&&e.target.closest('.bkb'); if(!b)return; e.preventDefault(); if(history.length>1){ try{history.back()}catch(x){} } else { var t=document.getElementById('tabD'); if(t)t.click(); } });
   var bars=[].slice.call(document.querySelectorAll('.backbar'));
   var tick=false;
   function upd(){ tick=false; var y=(window.scrollY||document.documentElement.scrollTop); bars.forEach(function(b){ var on=b.classList.contains('col'); b.classList.toggle('col',on?y>20:y>70); }); }
@@ -5283,7 +5429,7 @@ if('serviceWorker' in navigator&&location.protocol==='https:'){window.addEventLi
     var o={name:$('fn_name').value.trim(),phone:$('fn_phone').value.trim(),amount:+en($('fn_amt').value).replace(/\D/g,'')||0,stage:$('fn_stage').value,reason:$('fn_stage').value==='lost'?$('fn_reason').value:'',next:nx||'',time:$('fn_time').value||'',note:$('fn_note').value.trim(),cid:$('fn_cust').value||''};
     if(!o.name)return;
     if(editId){a=a.map(function(l){return l.id===editId?Object.assign({},l,o,{fdone:false},(l.stage!==o.stage?{stTs:Date.now(),stFrom:l.stage}:{})):l})}else{o.id=uid();o.created=Date.now();o.stTs=o.created;a.push(o)}
-    sv(LK,a);resetForm();renderFunnel();renderCal()});
+    sv(LK,a);resetForm();renderFunnel();renderCal();try{window.__pp.toast('ذخیره شد')}catch(x){}setTimeout(function(){var t=$('tabD');if(t)t.click();window.scrollTo(0,0)},350)});
   function custList(){try{return window.__cust?window.__cust.all():[]}catch(e){return []}}
   function custPick(id){if(!id)return null;var c=custList().filter(function(x){return x.id===id})[0];return c?{id:c.id,name:c.name,phone:c.phones[0]?'0'+c.phones[0]:(c.phone||'')}:null}
   function fillCustSel(){['k_cust','fn_cust'].forEach(function(id){var el=$(id);if(!el)return;var v=el.value,first=el.options[0].outerHTML;el.innerHTML=first+custList().map(function(c){return '<option value="'+esc(c.id)+'">'+esc(c.name)+(c.phones[0]?' · 0'+c.phones[0]:'')+'</option>'}).join('');el.value=v})}
@@ -5399,7 +5545,7 @@ if('serviceWorker' in navigator&&location.protocol==='https:'){window.addEventLi
   document.addEventListener('visibilitychange',function(){if(!document.hidden)tick()});
   window.addEventListener('storage',function(){renderFunnel();renderCal()});
   window.__crmRefresh=function(){renderFunnel();renderCal()};
-  window.__crmJ={parseJ:parseJ,jStr:jStr,todayISO:todayISO,addDays:addDays,g2j:g2j,iso:isoLocal};
+  window.__pkOpen=pkOpen;window.__crmJ={parseJ:parseJ,jStr:jStr,todayISO:todayISO,addDays:addDays,g2j:g2j,iso:isoLocal};
   window.__crmAddEvent=function(o){var a=ld(EK);o.id=uid();a.push(o);sv(EK,a);renderCal();return o};
   window.__crmItems=items;
 })();
@@ -5558,18 +5704,15 @@ if('serviceWorker' in navigator&&location.protocol==='https:'){window.addEventLi
   window.__crm.dayText=function(base){
     var b=new Date(base);b.setHours(0,0,0,0);var t0=b.getTime(),t1=new Date(b.getFullYear(),b.getMonth(),b.getDate()+1).getTime(),parts=[];
     var cs=callsIn(t0,t1);if(cs.length)parts.push('تماس‌ها ('+fa(cs.length)+'):\n'+cs.map(callLine).join('\n'));
-    var ot=objText([t0,t1]);if(ot)parts.push(ot);
     var iso=isoOf(b),fu=(window.__crmItems?window.__crmItems():[]).filter(function(i){return i.date===iso&&!i.done});
     if(fu.length)parts.push('برنامه/پیگیری‌های این روز ('+fa(fu.length)+'):\n'+fu.map(function(i){return '- '+(i.time?fa(i.time)+' | ':'')+i.title}).join('\n'));
     return parts.join('\n\n')};
   window.__crm.weekText=function(){
     var now=new Date(),t1=now.getTime(),t0=t1-7*864e5,lines=['گزارش هفتگی ('+J().jStr(isoOf(new Date(t0)))+' تا '+J().jStr(isoOf(now))+')',''];
     var inv=[],per=[];try{(window.__cust.day()||[]).forEach(function(x){if(x.ts>=t0){if(x.k==='inv')inv.push(x);else if(x.k==='per')per.push(x)}})}catch(e){}
-    lines.push('پیش‌فاکتور ساخته/ارسال‌شده: '+fa(inv.length));lines.push('پرسونای ثبت‌شده: '+fa(per.length));
+    lines.push('پیش‌فاکتور ساخته/ارسال‌شده: '+fa(inv.length));
     var cs=callsIn(t0,t1),ans=cs.filter(function(x){return x.outcome==='جواب داد'||x.outcome==='پیش‌فاکتور خواست'}).length;
     lines.push('تماس ثبت‌شده: '+fa(cs.length)+' (پاسخ‌داده: '+fa(ans)+')');
-    var ob=ld('payesh-objs').filter(function(x){return x.ts>=t0}),cnt={};ob.forEach(function(x){cnt[x.cat]=(cnt[x.cat]||0)+1});
-    lines.push('اعتراض‌ها: '+fa(ob.length)+(ob.length?' — '+Object.keys(cnt).sort(function(a,b){return cnt[b]-cnt[a]}).map(function(k){return k+' '+fa(cnt[k])}).join('، '):''));
     var L=ld('payesh-leads'),c={sent:0,talk:0,won:0,lost:0};L.forEach(function(l){c[l.stage]=(c[l.stage]||0)+1});
     lines.push('','وضعیت قیف فروش (کل): ارسال‌شده '+fa(c.sent)+' · در مذاکره '+fa(c.talk)+' · برنده '+fa(c.won)+' · از دست رفته '+fa(c.lost));
     var today=isoOf(now),od=L.filter(function(l){return l.next&&l.next<today&&(l.stage==='sent'||l.stage==='talk')});
@@ -5611,11 +5754,26 @@ if('serviceWorker' in navigator&&location.protocol==='https:'){window.addEventLi
 
   /* ---- یادآور سریع ---- */
   function nextHalf(){var d=new Date(Date.now()+30*60000);d.setMinutes(d.getMinutes()<30?30:0,0,0);if(d.getMinutes()===0)d.setHours(d.getHours()+1);return pad(d.getHours())+':'+pad(d.getMinutes())}
+  function qaPool(){var a=custAll().map(function(c){return {id:c.id,name:c.name,ph:c.phones[0]?phShow(c.phones[0]):(c.phone||'')}}),seen={};a.forEach(function(x){if(x.ph)seen[p10(x.ph)]=1});
+    ld('payesh-leads').forEach(function(l){var k=p10(l.phone||'');if(l.cid&&custById(l.cid))return;if(k&&seen[k])return;if(k)seen[k]=1;a.push({id:'l:'+l.id,name:l.name||l.phone||'',ph:l.phone||''})});return a}
+  function qaRef(id){if(/^l:/.test(id)){var x=qaPool().filter(function(y){return y.id===id})[0];return x?{id:x.id,name:x.name,phone:x.ph}:null}return custRef(id)}
+  function qaSearch(cid){
+    var sel=$('qa_cust');if(!sel)return;sel.style.display='none';var P=qaPool();
+    var inp=document.createElement('input');inp.type='search';inp.id='qa_s';inp.autocomplete='off';inp.placeholder='جستجوی مشتری: نام یا ۴ رقم آخر شماره';
+    var box=document.createElement('div');box.id='qa_res';box.style.cssText='max-height:170px;overflow:auto;margin-top:6px;border:1px solid var(--pg-line,#ccd5e6);border-radius:12px';
+    sel.parentNode.insertBefore(inp,sel);sel.parentNode.insertBefore(box,sel);
+    function draw(){var q=en(inp.value).toLowerCase().trim(),d=q.replace(/\D/g,'');
+      var L=P.filter(function(x){return !q||x.name.toLowerCase().indexOf(q)>=0||(d.length>=3&&p10(x.ph)&&(p10(x.ph).indexOf(d)>=0))}).slice(0,12);
+      box.innerHTML=L.length?L.map(function(x){return '<button type="button" data-qp="'+esc(x.id)+'" style="display:block;width:100%;text-align:right;font:inherit;padding:8px 10px;border:0;border-bottom:1px solid var(--pg-line,#e3e8f1);background:transparent;color:inherit;cursor:pointer">'+esc(x.name)+(x.ph?' · '+esc(fa(x.ph)):'')+'</button>'}).join(''):'<div style="padding:8px 10px;opacity:.7">پیدا نشد</div>';box.hidden=false}
+    function pick(id){var x=P.filter(function(y){return y.id===id})[0];if(!x)return;if(![].some.call(sel.options,function(o){return o.value===id})){var o=document.createElement('option');o.value=id;o.textContent=x.name;sel.appendChild(o)}sel.value=id;inp.value=x.name+(x.ph?' · '+fa(x.ph):'');box.hidden=true}
+    inp.addEventListener('input',draw);inp.addEventListener('focus',function(){if(sel.value&&box.hidden)inp.select();else draw()});
+    box.addEventListener('click',function(e){var b=e.target.closest('[data-qp]');if(b)pick(b.getAttribute('data-qp'))});
+    if(cid)pick(cid);else{sel.value='';box.hidden=true}}
   function openQuick(cid){
     var p=panel('<div class="bpH"><b>یادآور سریع</b></div><form id="qaForm" autocomplete="off"><div class="fields"><div class="field wide"><label for="qa_t">چه چیزی را یادآوری کنم؟</label><input type="text" id="qa_t" required></div><div class="field wide"><label for="qa_cust">مشتری (اختیاری)</label><select id="qa_cust"><option value="">— بدون مشتری —</option></select></div><div class="field"><label for="qa_d">تاریخ شمسی</label><input type="text" id="qa_d" inputmode="numeric"></div><div class="field"><label for="qa_h">ساعت</label><input type="time" id="qa_h"></div><div class="field"><label for="qa_r">یادآوری</label><select id="qa_r"><option value="0">سر ساعت</option><option value="10" selected>۱۰ دقیقه قبل</option><option value="30">۳۰ دقیقه قبل</option><option value="60">۱ ساعت قبل</option><option value="1440">۱ روز قبل</option></select></div></div><div class="regrow"><button type="submit" class="vbtn">ثبت یادآور</button></div></form>');p.dataset.k='quick';
-    fillSel('qa_cust');if(cid)$('qa_cust').value=cid;$('qa_d').value=J().jStr(J().todayISO());$('qa_h').value=nextHalf();setTimeout(function(){$('qa_t').focus()},50);
+    fillSel('qa_cust');if(cid)$('qa_cust').value=cid;qaSearch(cid);$('qa_d').value=J().jStr(J().todayISO());$('qa_h').value=nextHalf();setTimeout(function(){$('qa_t').focus()},50);
     $('qaForm').addEventListener('submit',function(e){e.preventDefault();var d=J().parseJ($('qa_d').value);if(!d){alert('تاریخ را مثل ۱۴۰۵/۰۷/۲۸ وارد کن.');return}
-      window.__crmAddEvent({title:$('qa_t').value.trim(),date:d,time:$('qa_h').value,rem:+$('qa_r').value,note:'',cust:custRef($('qa_cust').value)});$('tbPanel').hidden=true;toast('یادآور ثبت شد ('+J().jStr(d)+' '+fa($('qa_h').value)+')')})}
+      window.__crmAddEvent({title:$('qa_t').value.trim(),date:d,time:$('qa_h').value,rem:+$('qa_r').value,note:'',cust:qaRef($('qa_cust').value)});$('tbPanel').hidden=true;toast('یادآور ثبت شد ('+J().jStr(d)+' '+fa($('qa_h').value)+')')})}
   $('tbAlarm').addEventListener('click',function(e){e.stopPropagation();var p=$('tbPanel');if(!p.hidden&&p.dataset.k==='quick'){p.hidden=true;return}openQuick()});
   $('tbMsg').addEventListener('click',function(){go('M')});
 
@@ -5847,8 +6005,9 @@ if('serviceWorker' in navigator&&location.protocol==='https:'){window.addEventLi
     s.innerHTML='<h2>پشتیبان فایل و کاتالوگ‌ها</h2><p class="hint">همگام‌سازی گیت‌هاب کپی خودکار آنلاین است. این‌جا یک فایل پشتیبان روی همین دستگاه می‌گیری (همه‌ی مشتری‌ها، پیش‌فاکتورها، پیگیری‌ها، تماس‌ها و اعتراض‌ها) و هر زمان می‌توانی برگردانی.</p><div class="regrow"><button type="button" class="vbtn" id="bkOut">دانلود فایل پشتیبان</button><button type="button" class="vbtn" id="bkIn" style="background:transparent;color:var(--accent)">بازگردانی از فایل</button><input type="file" id="bkFile" accept=".json,application/json" hidden></div><p class="hint" id="bkMsg"></p><div class="sub">لینک کاتالوگ‌ها</div><div id="catList"></div><div class="regrow"><button type="button" class="mini" id="catAdd">+ افزودن لینک کاتالوگ</button></div>';
     host.appendChild(s);
     function keys(){return window.__payUserKeys?window.__payUserKeys():Object.keys(localStorage)}
-    $('bkOut').addEventListener('click',function(){var o={};keys().forEach(function(k){if(/^payesh-/.test(k)&&!/^payesh-(sync-|tab$)/.test(k))o[k]=localStorage.getItem(k)});
-      var blob=new Blob([JSON.stringify({app:'payesh-backup',v:1,user:slug||'guest',ts:new Date().toISOString(),data:o})],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='payesh-backup-'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},3000);$('bkMsg').textContent='فایل پشتیبان دانلود شد.'});
+    window.__bkRun=function(){var o={};keys().forEach(function(k){if(/^payesh-/.test(k)&&!/^payesh-(sync-|tab$)/.test(k))o[k]=localStorage.getItem(k)});
+      var blob=new Blob([JSON.stringify({app:'payesh-backup',v:1,user:slug||'guest',ts:new Date().toISOString(),data:o})],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='payesh-backup-'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},3000);var d0=new Date();try{localStorage.setItem('pay-lastbk',d0.getFullYear()+'-'+('0'+(d0.getMonth()+1)).slice(-2)+'-'+('0'+d0.getDate()).slice(-2))}catch(x){}var bm=$('bkMsg');if(bm)bm.textContent='فایل پشتیبان دانلود شد.';try{if(window.__crmRefresh)window.__crmRefresh()}catch(x){}};
+    $('bkOut').addEventListener('click',function(){window.__bkRun()});
     $('bkIn').addEventListener('click',function(){$('bkFile').click()});
     $('bkFile').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{var j=JSON.parse(r.result);if(j.app!=='payesh-backup'||!j.data)throw 0;if(!confirm('داده‌های فعلی با محتوای این فایل جایگزین شود؟'))return;Object.keys(j.data).forEach(function(k){if(/^payesh-/.test(k)&&!/^payesh-(sync-|tab$)/.test(k))localStorage.setItem(k,j.data[k])});$('bkMsg').textContent='بازگردانی شد؛ برنامه دوباره بارگذاری می‌شود…';setTimeout(function(){location.reload()},900)}catch(e){$('bkMsg').textContent='این فایل پشتیبان معتبر نیست.'}};r.readAsText(f)});
     function drawCat(){var cl=catalogs();$('catList').innerHTML=cl.length?cl.map(function(x,i){return '<div class="li"><span><b>'+esc(x.title)+'</b><div class="hint" style="direction:ltr;text-align:right">'+esc(x.url)+'</div></span><span class="btns" style="margin:0"><button type="button" class="mini" data-cr="'+i+'">حذف</button></span></div>'}).join(''):'<p class="hint">هنوز لینکی ثبت نشده.</p>'}
@@ -6288,7 +6447,7 @@ html[data-theme=dark] .cu-tabs button[aria-selected=true]{color:#cfd8ff}
 var pane=document.getElementById('paneZ');
 if(!pane) return;
 var OK = !!window.__paySlug && !window.__payAdminFrom, DBN = window.__paySlug==='ataei' ? 'payesh-disc' : 'payesh-disc-'+window.__paySlug;
-if(!OK){ ['paneZ','tabZ','zRow','zCss'].forEach(function(id){var e=document.getElementById(id); if(e&&e.parentNode) e.parentNode.removeChild(e);}); return; }
+if(!OK){ ['paneZ','tabZ','zRow'].forEach(function(id){var e=document.getElementById(id); if(e&&e.parentNode) e.parentNode.removeChild(e);}); return; }
 document.getElementById('zRow').hidden=false;
 
 /* ---------- ثابت‌ها و کمکی‌ها ---------- */
