@@ -1176,7 +1176,8 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
   <button type="button" data-qs="lead"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 12a3.6 3.6 0 100-7.2 3.6 3.6 0 000 7.2zM4.5 20c.8-3.8 3.6-5.5 7.5-5.5s6.7 1.7 7.5 5.5"/></svg></i><span><b>مشتری یا سرنخ تازه</b><small>ثبت نام، شماره و مرحله</small></span></button>
   <button type="button" data-qs="cal"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.5h16v13H4zM4 10.5h16M8 4v4M16 4v4"/></svg></i><span><b>کار یا پیگیری در تقویم</b><small>با تاریخ و ساعت</small></span></button>
   <button type="button" data-qs="alarm"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6v7l3 2M5 3.5 2.5 6M19 3.5 21.5 6M12 20a7 7 0 100-14 7 7 0 000 14z"/></svg></i><span><b>یادآور سریع</b><small>چند دقیقه‌ی دیگر</small></span></button>
-  <button type="button" data-qs="gh"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V6M8 10l4-4 4 4M5 19h14"/></svg></i><span><b>ثبت روی گیت‌هاب</b><small>ذخیره‌ی همین الان در فضای آنلاین</small></span></button>
+  <button type="button" data-qs="gh"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V6M8 10l4-4 4 4M5 19h14"/></svg></i><span><b>ثبت در فضای ابری</b><small>ذخیره روی مخزن گیت‌هاب</small></span></button>
+  <button type="button" data-qs="cloud"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V10M8 14l4-4 4 4M5 5h14"/></svg></i><span><b>بازیابی از فضای ابری</b><small>برگرداندن اطلاعات از گیت‌هاب</small></span></button>
   <button type="button" data-qs="bk"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v10M8 10l4 4 4-4M5 19h14"/></svg></i><span><b>پشتیبان‌گیری</b><small>ذخیره‌ی فایل روی کامپیوتر</small></span></button>
   <button type="button" data-qs="rs"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V10M8 14l4-4 4 4M5 5h14"/></svg></i><span><b>بازیابی</b><small>برگرداندن از فایل پشتیبان</small></span></button>
 </div>
@@ -1485,12 +1486,12 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
         <div class="field wide"><label for="sy_tok">توکن دسترسی</label><input type="password" id="sy_tok" autocomplete="off" style="width:100%;box-sizing:border-box;height:42px;padding:0 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);font:inherit;direction:ltr;text-align:center"></div>
       </div>
       <div class="regrow" style="flex-wrap:wrap;gap:8px">
-        <button type="button" class="vbtn" id="sy_push">ثبت روی گیت‌هاب</button>
-        <button type="button" class="vbtn" id="sy_pull" style="background:transparent;color:var(--accent);border:1px solid var(--accent)">بازیابی از گیت‌هاب</button>
+        <button type="button" class="vbtn" id="sy_push">ثبت در فضای ابری</button>
+        <button type="button" class="vbtn" id="sy_pull" style="background:transparent;color:var(--accent);border:1px solid var(--accent)">بازیابی از فضای ابری</button>
         <button type="button" class="vbtn" id="sy_clr" style="background:transparent;color:var(--accent)">پاک کردن توکن از این دستگاه</button>
         <span class="regMsg" id="sy_msg"></span>
       </div>
-      <p class="hint" style="margin-top:6px">هیچ ذخیره‌سازی خودکاری نیست. <b>ثبت روی گیت‌هاب</b> دادهٔ همین دستگاه را روی مخزن می‌نویسد. <b>بازیابی از گیت‌هاب</b> نسخهٔ ذخیره‌شده روی مخزن را روی این دستگاه برمی‌گرداند (نسخهٔ فعلی دستگاه پشتیبان محلی می‌ماند).</p>
+      <p class="hint" style="margin-top:6px">هیچ ذخیره‌سازی خودکاری نیست. <b>ثبت در فضای ابری</b> دادهٔ همین دستگاه را ذخیره می‌کند. <b>بازیابی از فضای ابری</b> همان نسخه را روی این دستگاه برمی‌گرداند. روی هر دو دستگاه باید با <b>همان حساب</b> وارد شده باشید و مخزن/توکن یکسان باشد.</p>
       <div class="regrow" id="sy_lkw" style="display:none"><button type="button" class="vbtn" id="sy_lk">ساخت لینک راه‌اندازی برای همکار</button><button type="button" class="vbtn" id="sy_lkc" hidden style="background:transparent;color:var(--accent)">کپی لینک</button></div><input type="text" id="sy_lkv" readonly hidden dir="ltr" aria-label="لینک راه‌اندازی" style="margin-top:6px"><p class="hint" id="sy_lkh" hidden>این لینک شامل توکن است؛ فقط برای همکار مورد اعتماد بفرست (تلگرام/واتس‌اپ خصوصی). همکار با یک ضربه روی لینک، همگام‌سازی را روی دستگاه خودش فعال می‌کند.</p>
     </details>
 
@@ -1933,7 +1934,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.46.0</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.47.0</footer>
 </div>
 
 
@@ -2630,7 +2631,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
     if(t.closest('#hmTg')){var toC=homeMode()==='simple';try{localStorage.setItem(HK,toC?'classic':'simple')}catch(x){}if(toC){try{history.pushState(Object.assign({},history.state||{},{mz:1}),'')}catch(x){}}else{var s1=null;try{s1=history.state}catch(x){}if(s1&&s1.mz){try{history.back()}catch(x){}}}homeSimple();window.scrollTo(0,0);return}
     var fb=t.closest('[data-fu]');if(fb){e.preventDefault();fuOpen(fb.getAttribute('data-fu'),+fb.getAttribute('data-fi'));return}
     var b=t.closest('[data-cu-hs]');if(!b)return;var k=b.getAttribute('data-cu-hs');
-    if(k==='cust'){cur=null;mode='';go('Q');render()}else if(k==='inv')go('I');else if(k==='per')go('P');else if(k==='loss')go('L');else if(k==='vent')go('V');else if(k==='cab')go('C');else if(k==='pri')go('T');else if(k==='st'){stCss();statsOpen()}else if(k==='pl'){if(window.__colPrice)window.__colPrice.open()}else if(k==='cal')go('K');else if(k==='ld')go('F');else if(k==='bk'){if(window.__bkRun)window.__bkRun();homeSimple()}else if(k==='acc')go('S');else if(k==='ghs'){try{localStorage.setItem('pay-ghsnooze',String(Date.now()))}catch(x){}homeSimple()}else if(k==='bks'){try{localStorage.setItem('pay-bksnooze',String(Date.now()))}catch(x){}homeSimple()}else if(k==='menu'){if(window.__drawerOpen)window.__drawerOpen()}
+    if(k==='cust'){cur=null;mode='';go('Q');render()}else if(k==='inv')go('I');else if(k==='per')go('P');else if(k==='loss')go('L');else if(k==='vent')go('V');else if(k==='cab')go('C');else if(k==='pri')go('T');else if(k==='st'){stCss();statsOpen()}else if(k==='pl'){if(window.__colPrice)window.__colPrice.open()}else if(k==='cal')go('K');else if(k==='ld')go('F');else if(k==='cloud'){tst('در حال بازیابی از فضای ابری…');(window.__paySync&&window.__paySync.pullRemote?window.__paySync.pullRemote():Promise.resolve()).then(function(){var m=document.getElementById('sy_msg');tst(m&&m.textContent?m.textContent:'انجام شد')}).catch(function(e){tst(e&&e.message||'خطا')})}else if(k==='bk'){if(window.__bkRun)window.__bkRun();homeSimple()}else if(k==='acc')go('S');else if(k==='ghs'){try{localStorage.setItem('pay-ghsnooze',String(Date.now()))}catch(x){}homeSimple()}else if(k==='bks'){try{localStorage.setItem('pay-bksnooze',String(Date.now()))}catch(x){}homeSimple()}else if(k==='menu'){if(window.__drawerOpen)window.__drawerOpen()}
     else if(k==='lead'){go('F');setTimeout(function(){var i=$('fn_name');if(i)i.focus()},150)}
     else if(k==='imp'){cur=null;go('Q');mode='imp';IMP=null;renderImp()}});
 
@@ -2862,7 +2863,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
     if((b=t.closest('[data-qs]'))){var k=b.getAttribute('data-qs');sheet(false);
       if(k==='cust'){cur=null;go('Q');setTimeout(function(){var i=$('cuQ');if(i)i.focus()},120)}
       else if(k==='lead'){go('F');setTimeout(function(){var i=$('fn_name');if(i)i.focus()},150)}
-      else if(k==='cal')go('K');else if(k==='inv'){try{var Pn=window.__proforma,iv=Pn.S().inv;if(!Pn.S().fid&&String(iv.buyer||'').trim()&&!confirm('پیش‌فاکتور فعلی در پوشه‌ای ذخیره نشده. پیش‌فاکتور تازه باز شود؟'))return;Pn.newInv()}catch(x){}go('I')}else if(k==='alarm'){var a=$('tbAlarm');if(a)a.click()}else if(k==='gh'){tst('در حال ثبت روی گیت‌هاب…');(window.__syncNow?window.__syncNow():Promise.resolve({t:'همگام‌سازی در این نسخه نیست'})).then(function(r){tst(r&&r.t?r.t:'انجام شد')})}else if(k==='bk'){if(window.__bkRun)window.__bkRun();tst('فایل پشتیبان دانلود شد')}else if(k==='rs'){var bf=$('bkFile');if(bf)bf.click()}
+      else if(k==='cal')go('K');else if(k==='inv'){try{var Pn=window.__proforma,iv=Pn.S().inv;if(!Pn.S().fid&&String(iv.buyer||'').trim()&&!confirm('پیش‌فاکتور فعلی در پوشه‌ای ذخیره نشده. پیش‌فاکتور تازه باز شود؟'))return;Pn.newInv()}catch(x){}go('I')}else if(k==='alarm'){var a=$('tbAlarm');if(a)a.click()}else if(k==='gh'){tst('در حال ثبت در فضای ابری…');(window.__paySync&&window.__paySync.pushLocal?window.__paySync.pushLocal():window.__syncNow?window.__syncNow():Promise.resolve()).then(function(){var m=document.getElementById('sy_msg');tst(m&&m.textContent?m.textContent:'انجام شد')}).catch(function(e){tst(e&&e.message||'خطا')})}else if(k==='cloud'){tst('در حال بازیابی از فضای ابری…');(window.__paySync&&window.__paySync.pullRemote?window.__paySync.pullRemote():Promise.resolve()).then(function(){var m=document.getElementById('sy_msg');tst(m&&m.textContent?m.textContent:'انجام شد')}).catch(function(e){tst(e&&e.message||'خطا')})}else if(k==='bk'){if(window.__bkRun)window.__bkRun();tst('فایل پشتیبان دانلود شد')}else if(k==='rs'){var bf=$('bkFile');if(bf)bf.click()}
       return}
   });
   document.addEventListener('input',function(e){if(e.target&&e.target.id==='cuQ'){q=e.target.value;var pos=e.target.selectionStart;renderList();var i=$('cuQ');if(i){i.focus();try{i.setSelectionRange(pos,pos)}catch(x){}}}});
@@ -5136,7 +5137,7 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
 
 <script>
 (function(){
-  var CK='payesh-sync-cfg', MK='payesh-sync-meta', BK='payesh-sync-backup', FILE=!window.__paySlug?'':(window.__paySlug==='ataei'?'payesh-sync.json':'payesh-sync-'+window.__paySlug+'.json');
+  var CK='payesh-sync-cfg', MK='payesh-sync-meta', BK='payesh-sync-backup';
   var SKIP=/^payesh-(sync-|tab$)/;
   var $=function(id){return document.getElementById(id)};
   function jget(k){try{return JSON.parse(localStorage.getItem(k))||{}}catch(e){return {}}}
@@ -5144,7 +5145,27 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
   var cfg=jget(CK), meta=jget(MK), busy=false;
   if(!cfg.repo||!cfg.token||window.__paySetupApplied){var dv=jget('pay-setup-cfg');if(dv.repo&&dv.token){cfg.repo=dv.repo;cfg.token=dv.token;jset(CK,cfg)}}
 
-  function snapData(){var o={},ks=window.__payUserKeys?window.__payUserKeys():Object.keys(localStorage);ks.sort().forEach(function(k){if(/^payesh-/.test(k)&&!SKIP.test(k))o[k]=localStorage.getItem(k)});return o}
+  function getFile(){
+    var sl=window.__paySlug||'';
+    if(!sl)return '';
+    return sl==='ataei'?'payesh-sync.json':'payesh-sync-'+sl+'.json';
+  }
+
+  function snapData(){
+    var o={},ks=window.__payUserKeys?window.__payUserKeys():[];
+    if(!ks.length){
+      for(var i=0;i<localStorage.length;i++){
+        var rk=localStorage.key(i);
+        if(rk&&/^payesh-/.test(rk)&&!/^payesh-(auth-|u-|sync-)/.test(rk))ks.push(rk);
+      }
+    }
+    ks.sort().forEach(function(k){
+      if(!/^payesh-/.test(k)||SKIP.test(k))return;
+      var v=localStorage.getItem(k);
+      if(v!=null&&v!=='')o[k]=v;
+    });
+    return o;
+  }
   function hash(o){var s=JSON.stringify(o),h=5381;for(var i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return s.length+':'+h}
   function b64e(s){return btoa(unescape(encodeURIComponent(s)))}
   function b64d(s){return decodeURIComponent(escape(atob(String(s).replace(/\s/g,''))))}
@@ -5159,6 +5180,8 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
   window.__payGh={cfg:function(){return cfg},api:api,b64e:b64e,b64d:b64d};
 
   async function remoteGet(){
+    var FILE=getFile();
+    if(!FILE)throw new Error('اول با حساب خودت وارد شو.');
     var r=await api(FILE);
     if(r.status===404)return null;
     if(r.status===401||r.status===403)throw new Error('توکن یا دسترسی درست نیست.');
@@ -5166,28 +5189,63 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
     var j=await r.json(),text;
     if(j.content&&j.encoding==='base64')text=b64d(j.content);
     else{var r2=await api(FILE,{headers:{'Accept':'application/vnd.github.raw+json'}});if(!r2.ok)throw new Error('خواندن فایل ممکن نشد.');text=await r2.text()}
-    return {sha:j.sha,snap:JSON.parse(text)};
+    var snap;
+    try{snap=JSON.parse(text)}catch(e){throw new Error('فایل فضای ابری خراب است.')}
+    if(snap&&snap.data==null&&typeof snap==='object'){
+      var keys=Object.keys(snap).filter(function(k){return /^payesh-/.test(k)});
+      if(keys.length)snap={app:'payesh-sync',v:1,data:snap};
+    }
+    return {sha:j.sha,snap:snap,name:FILE};
   }
   async function push(data,sha){
-    var body={message:'sync '+new Date().toISOString(),content:b64e(JSON.stringify({app:'payesh-sync',v:1,updated:new Date().toISOString(),data:data}))};
+    var FILE=getFile();
+    var body={message:'cloud-save '+new Date().toISOString(),content:b64e(JSON.stringify({app:'payesh-sync',v:1,updated:new Date().toISOString(),user:window.__paySlug||'',data:data}))};
     if(sha)body.sha=sha;
     var r=await api(FILE,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
     if(r.status===409||r.status===422){var ce=new Error('هم‌زمان نسخه‌ی دیگری ذخیره شد؛ دوباره تلاش کن.');ce.conflict=true;throw ce}
-    if(r.status===401||r.status===403||r.status===404)throw new Error('نوشتن ممکن نشد؛ دسترسی توکن (Contents: Read and write) و نام مخزن را بررسی کن.');
+    if(r.status===401||r.status===403||r.status===404)throw new Error('نوشتن ممکن نشد؛ دسترسی توکن و نام مخزن را بررسی کن.');
     if(!r.ok)throw new Error('پاسخ گیت‌هاب: '+r.status);
     var j=await r.json();
     return j.content.sha;
   }
   function markSynced(sha,data){meta.sha=sha;meta.hash=hash(data);meta.t=Date.now();jset(MK,meta);jset('payesh-sync-base',{data:data})}
+
+  function normalizeRemoteData(raw){
+    var d={},src=raw||{};
+    Object.keys(src).forEach(function(k){
+      var nk=k,v=src[k];
+      if(v==null)return;
+      if(/^payesh-u-/.test(k)&&k.indexOf('::')>0){
+        nk='payesh-'+k.split('::').slice(1).join('::');
+      }
+      if(!/^payesh-/.test(nk)||SKIP.test(nk)||/^payesh-(auth-|u-)/.test(nk))return;
+      d[nk]=typeof v==='string'?v:JSON.stringify(v);
+    });
+    return d;
+  }
+  function countUseful(d){
+    var detail=[];
+    try{var f=JSON.parse(d['payesh-folders']||'[]');if(Array.isArray(f)&&f.length)detail.push(f.length+' مشتری')}catch(e){}
+    try{var l=JSON.parse(d['payesh-leads']||'[]');if(Array.isArray(l)&&l.length)detail.push(l.length+' سرنخ')}catch(e){}
+    try{var c=JSON.parse(d['payesh-calls']||'[]');if(Array.isArray(c)&&c.length)detail.push(c.length+' تماس')}catch(e){}
+    return {detail:detail.join('، ')||(Object.keys(d).length+' بخش')};
+  }
+
   function applyRemote(rem){
     var cur=snapData();
     jset(BK,{ts:new Date().toISOString(),data:cur});
-    var d=(rem.snap&&rem.snap.data)||{};
+    var d=normalizeRemoteData((rem.snap&&rem.snap.data)||{});
+    var info=countUseful(d);
+    if(!Object.keys(d).length){
+      say('فایل فضای ابری خالی است یا با این حساب سازگار نیست.','bad');
+      return false;
+    }
     Object.keys(cur).forEach(function(k){if(!(k in d))localStorage.removeItem(k)});
-    Object.keys(d).forEach(function(k){if(/^payesh-/.test(k)&&!SKIP.test(k))localStorage.setItem(k,d[k])});
+    Object.keys(d).forEach(function(k){localStorage.setItem(k,d[k])});
     markSynced(rem.sha,snapData());
-    say('بازیابی از گیت‌هاب انجام شد؛ صفحه دوباره باز می‌شود. نسخهٔ قبلی این دستگاه در پشتیبان محلی ماند.','ok');
+    say('بازیابی شد: '+info.detail+' — صفحه دوباره باز می‌شود.','ok');
     setTimeout(function(){location.reload()},900);
+    return true;
   }
 
   function askConfirm(title, yesLabel, noLabel){
@@ -5205,46 +5263,45 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
     });
   }
 
-  /** ثبت دستی روی گیت‌هاب — هیچ‌وقت خودکار اجرا نمی‌شود */
   async function pushLocal(){
     if(busy)return;
-    if(!FILE){say('برای ثبت اول با حساب خودت وارد شو.','bad');return}
+    if(!getFile()){say('برای ثبت اول با حساب خودت وارد شو.','bad');return}
     if(!cfg.repo||!cfg.token){say('اول نام مخزن و توکن را وارد کن.','bad');return}
-    busy=true;say('در حال ثبت روی گیت‌هاب…');
+    busy=true;say('در حال ثبت در فضای ابری…');
     try{
       for(var att=0;att<4;att++){
         var rem=await remoteGet(),data=snapData(),h=hash(data);
-        if(Object.keys(data).length===0){say('داده‌ای برای ثبت نیست.','bad');break}
+        var info=countUseful(data);
+        if(!Object.keys(data).length){say('داده‌ای برای ثبت نیست.','bad');break}
         if(!rem){
-          var ok0=await askConfirm('<b>اولین ثبت روی گیت‌هاب</b><br>فایل همگام‌سازی روی مخزن ساخته می‌شود. ادامه می‌دهی؟','ثبت کن','انصراف');
+          var ok0=await askConfirm('<b>اولین ثبت در فضای ابری</b><br>'+info.detail+' ذخیره می‌شود. ادامه؟','ثبت کن','انصراف');
           if(!ok0){say('لغو شد.');break}
           markSynced(await push(data,null),data);
-          say('اولین نسخه در گیت‌هاب ذخیره شد.','ok');
+          say('ثبت شد: '+info.detail,'ok');
           break;
         }
-        var rdata=(rem.snap&&rem.snap.data)||{};
+        var rdata=normalizeRemoteData((rem.snap&&rem.snap.data)||{});
         var rh=hash(rdata);
         if(rem.sha===meta.sha || rh===meta.hash){
           if(h===meta.hash){say('تغییر جدیدی نسبت به آخرین ثبت نیست.','ok');break}
           try{
             markSynced(await push(data,rem.sha),data);
-            say('با موفقیت روی گیت‌هاب ثبت شد.','ok');
+            say('ثبت شد: '+info.detail,'ok');
             break;
           }catch(e){if(e.conflict)continue;throw e}
         }
         if(rh===h){
           markSynced(rem.sha,data);
-          say('از قبل با گیت‌هاب یکسان بود.','ok');
+          say('از قبل با فضای ابری یکسان بود.','ok');
           break;
         }
-        // گیت‌هاب نسخه دیگری دارد
         var choice=await new Promise(function(res){
           var o=document.createElement('div');
           o.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;z-index:100;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;padding:16px';
           var c=document.createElement('div');c.dir='rtl';
           c.style.cssText='background:#fff;color:#1a2133;border-radius:12px;padding:16px;max-width:420px;line-height:1.8;font-family:inherit';
-          c.innerHTML='<p style="margin:0 0 12px"><b>گیت‌هاب نسخهٔ دیگری دارد.</b><br>اگر ثبت کنی، نسخهٔ فعلی گیت‌هاب با دادهٔ این دستگاه جایگزین می‌شود.</p>';
-          [['force','با این حال ثبت کن'],['pull','اول بازیابی از گیت‌هاب'],['cancel','انصراف']].forEach(function(p){
+          c.innerHTML='<p style="margin:0 0 12px"><b>فضای ابری نسخهٔ دیگری دارد.</b><br>اگر ثبت کنی، نسخهٔ ابری با دادهٔ این دستگاه جایگزین می‌شود.</p>';
+          [['force','با این حال ثبت کن'],['pull','اول بازیابی از فضای ابری'],['cancel','انصراف']].forEach(function(p){
             var b=document.createElement('button');b.type='button';b.textContent=p[1];
             b.style.cssText='display:block;width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid #354c9b;background:'+(p[0]==='cancel'?'#fff':(p[0]==='force'?'#b33':'#354c9b'))+';color:'+(p[0]==='cancel'?'#354c9b':'#fff')+';font:inherit;cursor:pointer';
             b.onclick=function(){document.body.removeChild(o);res(p[0])};c.appendChild(b)});
@@ -5254,7 +5311,7 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
         if(choice==='pull'){applyRemote(rem);break}
         try{
           markSynced(await push(data,rem.sha),data);
-          say('با اجبار روی گیت‌هاب ثبت شد.','ok');
+          say('ثبت شد: '+info.detail,'ok');
           break;
         }catch(e){if(e.conflict)continue;throw e}
       }
@@ -5262,24 +5319,23 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
     finally{busy=false}
   }
 
-  /** بازیابی دستی از گیت‌هاب */
   async function pullRemote(){
     if(busy)return;
-    if(!FILE){say('اول با حساب خودت وارد شو.','bad');return}
+    if(!getFile()){say('اول با حساب خودت وارد شو.','bad');return}
     if(!cfg.repo||!cfg.token){say('اول نام مخزن و توکن را وارد کن.','bad');return}
-    busy=true;say('در حال خواندن از گیت‌هاب…');
+    busy=true;say('در حال خواندن از فضای ابری…');
     try{
       var rem=await remoteGet(),data=snapData(),h=hash(data);
-      if(!rem){say('روی گیت‌هاب فایلی برای بازیابی نیست.','bad');return}
-      var rdata=(rem.snap&&rem.snap.data)||{};
-      if(hash(rdata)===h){markSynced(rem.sha,data);say('دادهٔ این دستگاه با گیت‌هاب یکسان است؛ بازیابی لازم نبود.','ok');return}
-      var localDirty=Object.keys(data).length>0&&h!==meta.hash;
-      var updated = (rem.snap&&rem.snap.updated)?rem.snap.updated:'';
-      var when = '';
-      if(updated){try{when='<br>زمان ثبت روی گیت‌هاب: '+new Date(updated).toLocaleString('fa-IR')}catch(e){}}
-      var msg=localDirty
-        ?'<b>بازیابی از گیت‌هاب</b>'+when+'<br><br>تغییرات ثبت‌نشدهٔ این دستگاه با نسخهٔ گیت‌هاب جایگزین می‌شود. نسخهٔ فعلی دستگاه در پشتیبان محلی نگه داشته می‌شود. ادامه می‌دهی؟'
-        :'<b>بازیابی از گیت‌هاب</b>'+when+'<br><br>نسخهٔ ذخیره‌شده روی گیت‌هاب روی این دستگاه اعمال می‌شود. ادامه؟';
+      if(!rem){say('در فضای ابری فایلی برای این حساب («'+(window.__paySlug||'?')+'») نیست. اول از همان حساب روی دستگاه دیگر ثبت کن.','bad');return}
+      var rdata=normalizeRemoteData((rem.snap&&rem.snap.data)||{});
+      var info=countUseful(rdata);
+      if(!Object.keys(rdata).length){say('فایل فضای ابری خالی است.','bad');return}
+      if(hash(rdata)===h){markSynced(rem.sha,data);say('از قبل یکسان بود: '+info.detail,'ok');return}
+      var updated=(rem.snap&&rem.snap.updated)?rem.snap.updated:'';
+      var when='';
+      if(updated){try{when='<br>زمان ثبت: '+new Date(updated).toLocaleString('fa-IR')}catch(e){}}
+      var fileNote='<br>فایل: <bdi dir="ltr">'+((rem.name)||getFile())+'</bdi>';
+      var msg='<b>بازیابی از فضای ابری</b>'+when+fileNote+'<br><br>محتوا: <b>'+info.detail+'</b><br>نسخهٔ فعلی این دستگاه با نسخهٔ ابری جایگزین می‌شود (پشتیبان محلی نگه داشته می‌شود). ادامه؟';
       var ok=await askConfirm(msg,'بله، بازیابی کن','انصراف');
       if(!ok){say('بازیابی لغو شد.');return}
       applyRemote(rem);
@@ -5311,9 +5367,8 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
     var t=meta.t?new Date(meta.t).toLocaleString('fa-IR'):'';
     if(t)say('آخرین ثبت/بازیابی این دستگاه: '+t);
   }
-  window.__paySync={pushLocal:pushLocal,pullRemote:pullRemote,snapData:snapData};
+  window.__paySync={pushLocal:pushLocal,pullRemote:pullRemote,snapData:snapData,getFile:getFile};
   bind();
-  // هیچ همگام‌سازی خودکاری نیست — فقط دستی
 })();
 </script>
 
