@@ -1937,7 +1937,7 @@ window.addEventListener('error',function(e){try{var d=document.getElementById('e
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.47.4</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.47.6</footer>
 </div>
 
 
@@ -2998,7 +2998,7 @@ I('c06','cab','کابل ۰۶',null,0,{unit:'متر',hide:1});
 I('c4','cab','کابل ۴×۰.۵',null,0,{unit:'متر'});
 var BY={};CAT.forEach(function(c){BY[c.id]=c});
 // فقط این کالاها در مبنای هزینه نصب و راه‌اندازی حساب نمی‌شوند: باکس‌ها (از جمله باکس توزین)، کابل‌ها (از جمله کابل تخت)، هاستینگ‌ها، آژیر، پایه سرور، اتصالات سنسور فشار، متعلقات نصب وینچ و روشنایی
-var INSINC=['al','alsms'];
+var INSINC=[];
 var NOINS=['wjb','wbox','box4060','box4050','box4050t','box5070','flat','c12','c2','c06','c4','host','hostc','siren','base','presfit','winacc','lacc'];
 
 var CUST=[
@@ -5395,7 +5395,7 @@ window.__proforma={newInv:function(){doNewInv()},buyerRows:function(){return buy
         var merged=mergeSnap(bd,local,rdata,lastLocal>ru?'l':'r');
         var mh=hash(merged),needPush=mh!==hash(rdata),needApply=mh!==hash(local);
         if(!needPush&&!needApply){markSynced(rem.sha,merged);if(!auto)say('همه‌چیز از قبل همگام است.','ok');break}
-        if(needApply&&auto&&typing()){schedAuto();break}
+        if(needApply&&auto){if(Date.now()>(window.__synSnooze||0)){window.__synSnooze=Date.now()+600000;banner('نسخه‌ی جدیدتری از اطلاعات در فضای ابری هست. وقتی کارت تمام شد به‌روز کن.','به‌روزرسانی',function(){syncMerge(false)})}break}
         var sha=rem.sha;
         if(needPush){try{sha=await push(merged,rem.sha)}catch(e){if(e.conflict)continue;throw e}}
         if(needApply){
