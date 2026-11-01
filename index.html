@@ -76,7 +76,7 @@ if(o&&typeof o.r==='string'&&typeof o.t==='string'&&/^[\w.\-]+\/[\w.\-]+$/.test(
   --accent:#8FA3E8; --on-accent:#0E1430; --accent-soft:#242D52;
   --good:#5BC48C; --good-soft:#173627; --warn:#E0A44A; --warn-soft:#3A2D12; --bad:#F07C72; --bad-soft:#40201D;
   color-scheme:dark;
-}#app{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.7}#app{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:20px 40px}#app .top h1{font-family:var(--f-display);font-weight:400;font-size:34px;line-height:1.3;margin:0;text-wrap:balance}#app .top p{margin:2px 0 0;color:var(--muted);font-size:14px}#app .sum{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;padding:8px;background:var(--surface);border:1px solid var(--line);border-radius:10px}#app .sum:empty{display:none}#app .sum div{flex:1 1 28%;min-width:0;text-align:center;background:var(--bg);border-radius:8px;padding:4px 6px}#app .sum span{display:block;font-size:11.5px;color:var(--muted);line-height:1.5}#app .sum b{display:block;font-family:var(--f-display);font-weight:400;font-size:20px;line-height:1.4;color:var(--accent);font-variant-numeric:tabular-nums;white-space:nowrap}#app .layout{display:grid;gap:16px;margin-top:16px;grid-template-columns:minmax(0,1fr)}@media (min-width:900px){#app .layout{grid-template-columns:minmax(0,380px) minmax(0,1fr);align-items:start}}#app .col{display:grid;gap:16px;min-width:0;align-content:start}#app .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;min-width:0}#app .card h2{font-size:15px;font-weight:700;margin:0 0 12px}#app .fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px}#app .field{display:grid;gap:4px;min-width:0;align-content:start}#app .field.wide{grid-column:1 / -1}#app .field label{font-size:12.5px;color:var(--muted);line-height:1.5}#app .hint{font-size:11.5px;color:var(--muted);line-height:1.6;margin:0}#app input[type=text],#app select{
+}#app{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.7}#app{max-width:none;margin:0 auto;padding-inline:16px;padding-block:20px 40px}#app .top h1{font-family:var(--f-display);font-weight:400;font-size:34px;line-height:1.3;margin:0;text-wrap:balance}#app .top p{margin:2px 0 0;color:var(--muted);font-size:14px}#app .sum{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;padding:8px;background:var(--surface);border:1px solid var(--line);border-radius:10px}#app .sum:empty{display:none}#app .sum div{flex:1 1 28%;min-width:0;text-align:center;background:var(--bg);border-radius:8px;padding:4px 6px}#app .sum span{display:block;font-size:11.5px;color:var(--muted);line-height:1.5}#app .sum b{display:block;font-family:var(--f-display);font-weight:400;font-size:20px;line-height:1.4;color:var(--accent);font-variant-numeric:tabular-nums;white-space:nowrap}#app .layout{display:grid;gap:16px;margin-top:16px;grid-template-columns:minmax(0,1fr)}@media (min-width:900px){#app .layout{grid-template-columns:minmax(0,380px) minmax(0,1fr);align-items:start}}#app .col{display:grid;gap:16px;min-width:0;align-content:start}#app .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;min-width:0}#app .card h2{font-size:15px;font-weight:700;margin:0 0 12px}#app .fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px}#app .field{display:grid;gap:4px;min-width:0;align-content:start}#app .field.wide{grid-column:1 / -1}#app .field label{font-size:12.5px;color:var(--muted);line-height:1.5}#app .hint{font-size:11.5px;color:var(--muted);line-height:1.6;margin:0}#app input[type=text],#app select{
   width:100%;box-sizing:border-box;height:42px;padding:0 10px;border:1px solid var(--line);border-radius:6px;
   background:var(--bg);color:var(--fg);font:inherit;font-variant-numeric:tabular-nums;text-align:center;direction:ltr
 }#app input::placeholder{color:var(--muted);opacity:.7}#app select{direction:rtl;text-align:start}#app input[type=text]:focus-visible,#app select:focus-visible,#app input[type=range]:focus-visible,#app .seg input:focus-visible + span,#app input[type=checkbox]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}#app .seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}#app .seg label{display:block;cursor:pointer}#app .seg input{position:absolute;opacity:0;pointer-events:none}#app .seg span{display:block;padding:10px 12px;border:1px solid var(--line);border-radius:8px;text-align:center;font-weight:700;background:var(--bg)}#app .seg small{display:block;font-weight:400;font-size:12px;color:var(--muted)}#app .seg input:checked + span{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}#app .seg input:checked + span small{color:var(--on-accent);opacity:.85}#app .age{margin-top:14px;display:grid;gap:4px}#app .age .head{display:flex;justify-content:space-between;align-items:baseline;font-size:12.5px;color:var(--muted)}#app .age .head b{color:var(--fg);font-size:16px}#app input[type=range]{width:100%;direction:ltr;accent-color:var(--accent)}#app .group{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}#app details.card summary{cursor:pointer;font-weight:700;font-size:15px}#app details.card .fields{margin-top:12px}#app .check{display:flex;gap:8px;align-items:center;font-size:12.5px;color:var(--muted);grid-column:1 / -1}#app .sec{font-size:13px;font-weight:700;color:var(--muted);margin:6px 0 -6px}#app .boxes{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:10px}#app .box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0;display:grid;gap:2px;align-content:start}#app .box .lab{font-size:12.5px;color:var(--muted);line-height:1.5}#app .box b{font-family:var(--f-display);font-weight:400;font-size:26px;line-height:1.4;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}#app .box b small{font-family:var(--f-body);font-size:12.5px;color:var(--muted);margin-inline-start:4px}#app .box.key b{color:var(--accent)}#app .box .fx{font-size:11.5px;color:var(--muted);text-align:right;line-height:1.6;overflow-wrap:anywhere}#app .box .pill{justify-self:start;margin-top:2px}#app .pill{display:inline-block;padding:2px 10px;border-radius:99px;font-size:12.5px;font-weight:500;line-height:1.7}#app .pill.good{background:var(--good-soft);color:var(--good)}#app .pill.warn{background:var(--warn-soft);color:var(--warn)}#app .pill.bad{background:var(--bad-soft);color:var(--bad)}#app .note{margin:0;padding:10px 12px;background:var(--accent-soft);border-radius:8px;font-size:13px;line-height:1.7}#app .stack{display:grid;gap:10px}#app .sug{display:grid;gap:8px}#app .sug p{margin:0;padding:10px 12px;border-radius:8px;font-size:13px;line-height:1.7}#app .sug p.good{background:var(--good-soft);color:var(--fg)}#app .sug p.warn{background:var(--warn-soft);color:var(--fg)}#app .sug p.bad{background:var(--bad-soft);color:var(--fg)}#app .sug p.info{background:var(--accent-soft);color:var(--fg)}#app .tblwrap{overflow-x:auto;margin-top:8px}#app .tbl{width:100%;border-collapse:collapse;font-size:13px;min-width:430px}#app .tbl th,#app .tbl td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:center;font-variant-numeric:tabular-nums;white-space:nowrap}#app .tbl th{font-weight:500;color:var(--muted);font-size:12px}#app .tbl td:first-child,#app .tbl th:first-child{text-align:start}#app .tbl tr.best td{background:var(--accent-soft);font-weight:700}#app .tbl tr:last-child td{border-bottom:0}#app svg.chart{display:block;width:100%;height:auto;direction:ltr}#app svg.chart text{fill:var(--muted);font-family:var(--f-body);font-size:10px}#app svg.chart .grid{stroke:var(--line);stroke-width:1}#app svg.chart .line{fill:none;stroke:var(--accent);stroke-width:2}#app svg.chart .dot{fill:var(--accent)}#app svg.chart .lbl{fill:var(--fg);font-weight:700;font-size:11px}#app .foot{font-size:12.5px;color:var(--muted);margin:0}#app .tabs{display:flex;gap:8px;margin-top:14px}#app .tabs button{flex:1;height:42px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg);font:inherit;font-weight:700;cursor:pointer}#app .tabs button[aria-selected=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}#app .tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -91,7 +91,7 @@ if(o&&typeof o.r==='string'&&typeof o.t==='string'&&/^[\w.\-]+\/[\w.\-]+$/.test(
   --accent:#8fa3e8; --accent-ink:#0e1430; --accent-soft:#242d52; --warn:#f0b35c; --warn-soft:#3a2b12; --bad:#ff8a80; --group:#222836; color-scheme:dark}}:root[data-theme="dark"] #paneI{
   --bg:#11141c; --surface:#1a1f2a; --ink:#e5e8f0; --muted:#9aa2b1; --line:#323a49; --field:#151922;
   --accent:#8fa3e8; --accent-ink:#0e1430; --accent-soft:#242d52; --warn:#f0b35c; --warn-soft:#3a2b12; --bad:#ff8a80; --group:#222836; color-scheme:dark}#paneI *,#printHost *{box-sizing:border-box}#paneI{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.7;direction:rtl;
-  padding-inline:16px;padding-block:16px 120px;margin:0}#paneI .wrap{max-width:1100px;margin-inline:auto;display:flex;flex-direction:column;gap:16px}#paneI h1{font-size:20px;margin:0;font-weight:700}#paneI .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}#paneI .top small{color:var(--muted)}#paneI .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}#paneI .card h2{font-size:15px;margin:0 0 12px;font-weight:700}#paneI .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}#paneI .f{display:flex;flex-direction:column;gap:4px;min-width:0}#paneI .f label{font-size:12px;color:var(--muted)}#paneI input,#paneI select,#paneI textarea{font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:6px;padding:7px 9px;min-width:0;width:100%}#paneI input:focus-visible,#paneI select:focus-visible,#paneI textarea:focus-visible,#paneI button:focus-visible,#paneI summary:focus-visible{outline:2px solid var(--accent);outline-offset:1px}#paneI input.num{text-align:left;direction:ltr;font-variant-numeric:tabular-nums}#paneI .hint{font-size:12px;color:var(--muted)}#paneI .chk{display:flex;align-items:center;gap:8px;font-size:13px}#paneI .chk input{width:auto}#paneI details.inv summary{cursor:pointer;font-weight:700;font-size:15px}#paneI details.inv .grid{margin-top:12px}#paneI .span2{grid-column:span 2}@media (max-width:480px){#paneI .span2{grid-column:auto}}#paneI .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}#paneI button{font:inherit;cursor:pointer;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:7px 14px}#paneI button.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:700}#paneI button:disabled{opacity:.5;cursor:default}#paneI button.ghost{border-color:transparent;color:var(--muted);padding:2px 8px}#paneI .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}#paneI table{border-collapse:collapse;width:100%;min-width:900px}#paneI th,#paneI td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right;vertical-align:middle}#paneI th{font-size:12px;color:var(--muted);font-weight:500;background:var(--group);white-space:nowrap}#paneI tr.g td{background:var(--group);font-weight:700;color:var(--accent)}#paneI td.n{text-align:left;direction:ltr;font-variant-numeric:tabular-nums;white-space:nowrap}#paneI td input.num{min-width:96px}#paneI td input.q{width:72px}#paneI .badge{font-size:11px;background:var(--accent-soft);color:var(--accent);border-radius:99px;padding:1px 8px;margin-inline-start:6px;white-space:nowrap}#paneI tr.need td input.pr{border-color:var(--warn);background:var(--warn-soft)}
+  padding-inline:16px;padding-block:16px 120px;margin:0}#paneI .wrap{max-width:none;margin-inline:auto;display:flex;flex-direction:column;gap:16px}#paneI h1{font-size:20px;margin:0;font-weight:700}#paneI .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}#paneI .top small{color:var(--muted)}#paneI .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}#paneI .card h2{font-size:15px;margin:0 0 12px;font-weight:700}#paneI .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}#paneI .f{display:flex;flex-direction:column;gap:4px;min-width:0}#paneI .f label{font-size:12px;color:var(--muted)}#paneI input,#paneI select,#paneI textarea{font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:6px;padding:7px 9px;min-width:0;width:100%}#paneI input:focus-visible,#paneI select:focus-visible,#paneI textarea:focus-visible,#paneI button:focus-visible,#paneI summary:focus-visible{outline:2px solid var(--accent);outline-offset:1px}#paneI input.num{text-align:left;direction:ltr;font-variant-numeric:tabular-nums}#paneI .hint{font-size:12px;color:var(--muted)}#paneI .chk{display:flex;align-items:center;gap:8px;font-size:13px}#paneI .chk input{width:auto}#paneI details.inv summary{cursor:pointer;font-weight:700;font-size:15px}#paneI details.inv .grid{margin-top:12px}#paneI .span2{grid-column:span 2}@media (max-width:480px){#paneI .span2{grid-column:auto}}#paneI .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}#paneI button{font:inherit;cursor:pointer;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:7px 14px}#paneI button.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:700}#paneI button:disabled{opacity:.5;cursor:default}#paneI button.ghost{border-color:transparent;color:var(--muted);padding:2px 8px}#paneI .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}#paneI table{border-collapse:collapse;width:100%;min-width:900px}#paneI th,#paneI td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right;vertical-align:middle}#paneI th{font-size:12px;color:var(--muted);font-weight:500;background:var(--group);white-space:nowrap}#paneI tr.g td{background:var(--group);font-weight:700;color:var(--accent)}#paneI td.n{text-align:left;direction:ltr;font-variant-numeric:tabular-nums;white-space:nowrap}#paneI td input.num{min-width:96px}#paneI td input.q{width:72px}#paneI .badge{font-size:11px;background:var(--accent-soft);color:var(--accent);border-radius:99px;padding:1px 8px;margin-inline-start:6px;white-space:nowrap}#paneI tr.need td input.pr{border-color:var(--warn);background:var(--warn-soft)}
 #tbl td input.q.err,#tbl td input.pr.err{border-color:var(--bad);background:var(--warn-soft);box-shadow:0 0 0 2px rgba(179,38,30,.28)}#paneI .disc{display:flex;align-items:center;gap:6px;white-space:nowrap}#paneI .disc input{width:auto}#paneI .empty{padding:28px;text-align:center;color:var(--muted)}#paneI .picker{display:flex;flex-direction:column;gap:12px}#paneI .pgroup h3{font-size:13px;margin:0 0 6px;color:var(--accent)}#paneI .chips{display:flex;flex-wrap:wrap;gap:6px}#paneI .chip{display:inline-flex;gap:6px;align-items:center;font-size:12.5px;padding:4px 10px}#paneI .chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}#paneI .chip small{color:var(--muted)}#paneI .sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px 24px;direction:rtl}#paneI .sum div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding:4px 0}#paneI .sum b{font-variant-numeric:tabular-nums;direction:ltr}#paneI .final{position:fixed;inset-inline:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);
   padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;z-index:5}#paneI .final .amt{font-size:18px;font-weight:700;font-variant-numeric:tabular-nums;direction:ltr}#paneI .final .lbl{font-size:12px;color:var(--muted)}#toast{position:fixed;inset-inline:16px;bottom:calc(86px + env(safe-area-inset-bottom,0px));max-width:420px;margin-inline:auto;background:var(--ink);color:var(--bg);padding:9px 14px;border-radius:8px;font-size:13px;z-index:9}#toast[hidden]{display:none}#paneI .warnline{color:var(--warn);font-size:13px}#printHost{position:fixed;left:0;top:0;width:794px;opacity:0;pointer-events:none;z-index:-1;direction:ltr}.pv{width:794px;background:#fff;color:#000;font-family:'B Nazanin','BNazanin','Nazanin','Noto Naskh Arabic',serif;direction:rtl;padding:22px 26px;font-size:14px;line-height:1.65}.pv .hd{display:flex;direction:ltr;justify-content:space-between;align-items:flex-start;gap:16px;border-bottom:2px solid #000;padding-bottom:8px;margin-bottom:8px}.pv .hd>div{direction:rtl}.pv .hd .ttl{flex:1;min-width:0;text-align:right}.pv .hd h1{font-size:18.5px;line-height:1.6;margin:0;color:#000}.pv .hd .lg{flex:none;width:60px}.pv .hd .lg img{display:block;width:60px;height:auto}.pv .hd .meta{flex:none;text-align:left;direction:rtl;line-height:1.8;white-space:nowrap}.pv .buyer{border:1.5px solid #000;padding:6px 10px;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:2px 22px}.pv table{min-width:0;width:100%;border-collapse:collapse;table-layout:fixed}.pv td{overflow-wrap:anywhere;word-break:break-word}.pv th{background:#d9d9d9;color:#000;font-size:13.5px;font-weight:700;padding:4px 5px;border:1.5px solid #000;text-align:center}.pv td{border:1.5px solid #000;padding:3px 5px;font-size:13.5px;color:#000;background:#fff}.pv tr.g td{background:#d9d9d9;font-weight:700;color:#000}.pv table:not(.tot) tbody td:first-child{background:#d9d9d9}.pv td.n{text-align:left;direction:ltr;font-size:12.5px}.pv td.c{text-align:center}.pv tr.ge td{border-bottom:3px solid #000}.pv .under{display:flex;align-items:stretch;margin-top:-1.5px;page-break-inside:avoid}.pv .tot{width:46%;flex:none;margin:0;margin-inline-start:-1.5px;height:auto}.pv .tot td{padding:4px 8px}.pv .tot td{background:#d9d9d9;color:#000;font-weight:700}.pv .tot td.n{background:#fff}.pv .tot tr.fin td{font-size:15px}.pv .notes{flex:1;min-width:0;margin:0;white-space:pre-line;font-size:12px;line-height:1.6;color:#000;border:1.5px solid #000;padding:0;display:flex;flex-direction:column}.pv .nt1{background:#d9d9d9;padding:6px 10px;border-bottom:1.5px solid #000;font-weight:700}.pv .nt2{flex:1;background:linear-gradient(to bottom,#fff,#f4b183);padding:6px 10px}.pv .sign{display:flex;justify-content:space-between;margin-top:14px;font-size:13px}.pv tr{page-break-inside:avoid}.pv.inv{padding:12px}.inv .frame{border:3px solid #000;background:#fff}.inv .hdr{display:flex;height:62px;border-bottom:3px solid #000}.inv .lgo{flex:1;position:relative}.inv .lgo img{position:absolute;right:14px;top:3px;width:42px;height:auto}.inv .nb{flex:0 0 37.8%;border-right:1.5px solid #000;display:flex;flex-direction:column;font-weight:700;font-size:14px}.inv .n1{flex:0 0 24%;border-bottom:1.5px solid #000;padding:0 8px;display:flex;align-items:center}.inv .n2{flex:1;padding:0 8px;display:flex;align-items:center}.inv .ttl2{text-align:center;font-weight:700;font-size:16px;padding:5px 8px;border-bottom:1.5px solid #000;font-family:'B Titr','B Nazanin','BNazanin','Noto Naskh Arabic',serif}.inv .br{display:flex;border-bottom:1.5px solid #000;font-weight:700;font-size:13.5px;line-height:1.4;padding:1px 8px}.inv .br .b1{flex:0 0 45%}.inv .br .b2{flex:0 0 25%}.inv .br .b3{flex:1}.inv .br .b1:only-child{flex:1 1 auto}.inv table.it{margin:0}.inv table.it th{font-size:12.5px;padding:3px 2px;border-top:0}.inv table.it th:first-child{font-size:10.5px;padding:3px 0}.inv table.it td{font-size:13px;padding:1px 3px;height:20px;font-weight:700}.inv table.it td.c{text-align:center}.inv table.it td.nm{font-weight:700;text-align:right}.inv table.it tbody tr:last-child td{border-bottom:1.5px solid #000}.inv .tb{display:flex;margin-top:-1.5px}.inv .rb{flex:0 0 49.2%;display:flex;flex-direction:column}.inv .r1{display:flex;min-height:21px}.inv .pay{flex:0 0 75%;background:#d9d9d9;border:1.5px solid #000;border-top:0;font-weight:700;font-size:13px;padding:2px 8px;white-space:pre;display:flex;align-items:center}.inv .gp{flex:1;background:#d9d9d9;border:1.5px solid #000;border-top:0;border-right:0}.inv .bx{flex:1;background:#d9d9d9;border:1.5px solid #000;border-top:0;margin-top:-1.5px}.inv .lb{flex:1}.inv .rw{display:flex;height:21px;margin-bottom:-1.5px}.inv .tl{flex:0 0 43%;background:#d9d9d9;border:1.5px solid #000;font-weight:700;font-size:11px;padding:0 5px;display:flex;align-items:center;white-space:nowrap;overflow:hidden}.inv .tv{flex:1;border:1.5px solid #000;border-right:0;font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;direction:ltr}.inv .nt{background:linear-gradient(to bottom,#fff,#f4b183);border-top:1.5px solid #000;margin-top:1.5px;padding:4px 12px;font-weight:700;font-size:11.5px;line-height:1.6;white-space:pre-line;text-align:right}.inv .nt .rd{color:#f00}.inv .sl{border-top:1.5px solid #000;padding:3px 12px;font-weight:700;font-size:13.5px;text-align:right}
 
@@ -250,7 +250,7 @@ body{margin:0;background:#FAFBFE}
 
 /* ---- صفحه و متن ---- */
 html:root:root body{background-color:var(--pg-page);background-image:var(--pg-bg-img);background-attachment:fixed;color:var(--pg-fg);font-family:var(--pg-font)}
-#app{background:transparent;max-width:1240px;padding:24px clamp(12px,3.5vw,40px) 70px;font-size:14px;line-height:1.85}
+#app{background:transparent;max-width:none;padding:24px clamp(12px,3.5vw,40px) 70px;font-size:14px;line-height:1.85}
 #app h1,#app h2,#app h3,#paneI h1{letter-spacing:-.35px}
 
 /* ---- کارت شیشه‌ای ---- */
@@ -1763,7 +1763,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 <details class="card say" id="sayC"><summary>توضیح ساده کابل و لودسل (برای خواندن برای مشتری)</summary><div class="sayBody">
 <h3>کابل‌ها چه کاری می‌کنند؟</h3>
 <p>در سیستم اتوماسیون، سنسورها و موتورها و نمایشگر باید با دستگاه مرکزی حرف بزنند. کابل مثل «رگ» این سیستم است. چند نوع کابل داریم:</p>
-<p><b>کابل ۲×۰٫۵:</b> برای اتصال سنسورهای دما (NTC)، موتورهای اینلت و آژیر. متراژ هر سالن از این‌ها جمع می‌شود: طول سالن × ۰٫۷ برای هر سنسور دما، به‌اضافه ۵۰ متر برای هر موتور اینلت و ۲۰ متر برای هر آژیر. نمایشگر (۴۰ متر) و سنسور دمای بیرون (۵۰ متر) در کابل ۴×۰٫۵ حساب می‌شوند.</p>
+<p><b>کابل ۲×۰٫۵:</b> برای اتصال سنسورهای دما (NTC)، موتورهای اینلت و آژیر. متراژ هر سالن از این‌ها جمع می‌شود: طول سالن × ۰٫۷ برای هر سنسور دما، به‌اضافه ۵۰ متر برای هر موتور اینلت و ۲۰ متر برای هر آژیر. نمایشگر (۲۰ متر) و سنسور دمای بیرون (۵۰ متر) در کابل ۴×۰٫۵ حساب می‌شوند.</p>
 <p><b>کابل ۴×۰٫۵:</b> برای سنسورهای حساس‌تر مثل رطوبت، آمونیاک، گاز CO₂ و سیستم گشت. هر کدام از این‌ها طول سالن × ۰٫۸ کابل می‌خواهند (گشت ۱٫۱۲). به ازای هر سیستم توزین هم ۵۰ متر اضافه می‌شود.</p>
 <p><b>کابل ۱۲×۰٫۵:</b> کابل فرمان؛ برای هر سالن ۱۲ متر.</p>
 <p>همه‌ی عددها را به بالا و به مضرب ۵۰ متر رد می‌کنیم تا هیچ‌وقت کابل کم نیاید.</p>
@@ -1785,6 +1785,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
           <button type="button" class="ghost" id="cgAdd" style="margin-top:8px">+ افزودن سالن</button>
           <div class="fields" style="margin-top:10px">
             <div class="field"><label for="gp">فاصله بین هر سالن (متر)</label><input type="text" id="gp" inputmode="decimal" placeholder="خالی = ۰"></div>
+            <div class="field"><label for="gs">جمع فاصله‌های بین سالن‌ها (متر) ×۴٫۱۶۷</label><input type="text" id="gs" inputmode="decimal" placeholder="اگر پر شود جای فاصله‌ی بالا را می‌گیرد"></div>
           </div>
           <p class="hint" style="margin-top:6px">یک سالن تعریف کن (طول، عرض، تعداد). اگر سالن دیگری با ابعاد متفاوت داری، «+ افزودن سالن» را بزن.</p>
         </section>
@@ -1810,12 +1811,12 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
             <div class="field"><label for="hn">تعداد سنسور رطوبت AHS</label><input type="text" id="hn" inputmode="numeric" placeholder="خالی = ۰"></div>
             <div class="field"><label for="en">تعداد سنسور آمونیاک</label><input type="text" id="en" inputmode="numeric" placeholder="خالی = ۰"></div>
             <div class="field"><label for="qn">تعداد سنسور CO₂</label><input type="text" id="qn" inputmode="numeric" placeholder="خالی = ۰"></div>
-            <div class="field"><label for="dn">تعداد نمایشگر (هر عدد ۴۰ متر)</label><input type="text" id="dn" inputmode="numeric" placeholder="خالی = ۰"></div>
+            <div class="field"><label for="dn">تعداد نمایشگر (هر عدد ۲۰ متر)</label><input type="text" id="dn" inputmode="numeric" placeholder="خالی = ۰"></div>
             <div class="field"><label for="on">تعداد سنسور دمای بیرون (هر عدد ۵۰ متر)</label><input type="text" id="on" inputmode="numeric" placeholder="خالی = ۰"></div>
             <div class="field"><label for="gn">تعداد سنسور گشت (طول × ۱٫۱۲ برای هر عدد)</label><input type="text" id="gn" inputmode="numeric" placeholder="خالی = ۰"></div>
             <div class="field"><label for="wn">تعداد سیستم توزین (هر عدد ۵۰ متر)</label><input type="text" id="wn" inputmode="numeric" placeholder="خالی = ۰"></div>
 <details class="more" style="grid-column:1 / -1"><summary>اطلاعات بیشتر</summary><div class="fields" style="margin-top:10px">
-            <div class="field wide"><p class="hint">تعداد سنسورها (رطوبت، آمونیاک، CO₂) با هم جمع می‌شود و در طول × ۰٫۸ ضرب می‌شود. به ازای هر نمایشگر ۴۰ متر و هر سنسور دمای بیرون ۵۰ متر به رقم اضافه می‌شود. سنسور گشت جدا حساب می‌شود: طول × ۱٫۱۲ × تعداد گشت. به ازای هر سیستم توزین ۵۰ متر ثابت اضافه می‌شود. فاصله بین هر سالن × تعداد سالن، بدون گرد کردن، به متراژ کل ۴×۰٫۵ اضافه می‌شود (تعداد سالن را در کارت ۱۲×۰٫۵ بنویس). کادر خالی یعنی صفر. اگر ۴×۰٫۵ لازم نیست، همه را خالی بگذار.</p></div>
+            <div class="field wide"><p class="hint">تعداد سنسورها (رطوبت، آمونیاک، CO₂) با هم جمع می‌شود و در طول × ۰٫۸ ضرب می‌شود. به ازای هر نمایشگر ۲۰ متر و هر سنسور دمای بیرون ۵۰ متر به رقم اضافه می‌شود. سنسور گشت جدا حساب می‌شود: طول × ۱٫۱۲ × تعداد گشت. به ازای هر سیستم توزین ۵۰ متر ثابت اضافه می‌شود. فاصله بین هر سالن × تعداد سالن، بدون گرد کردن، به متراژ کل ۴×۰٫۵ اضافه می‌شود (تعداد سالن را در کارت ۱۲×۰٫۵ بنویس). کادر خالی یعنی صفر. اگر ۴×۰٫۵ لازم نیست، همه را خالی بگذار.</p></div>
             <div class="field"><label for="p4">قیمت هر متر (ریال، اختیاری)</label><input type="text" id="p4" inputmode="decimal" placeholder="ریال"></div>
 </div></details>
           </div>
@@ -1963,7 +1964,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.9</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.12</footer>
 </div>
 
 
@@ -3146,13 +3147,13 @@ function cabCalc(){
   if(!V.length)return has12?{c2:0,c4:0,c12:halls0*12}:null;
   var q=function(id){return S.rows[id]?num(qtyOf(id)):0};
   var sens=(q('ahs')+q('nh3')+q('co2'))/halls,sg=q('patrol')/halls,wn=(q('wfeed')+q('wbird'))/halls;
-  var c2=0,c4=0;
+  var c2=0,c4=0,c4r=0;
   V.forEach(function(g){var L=g.L;
     var raw2=L*0.7*q('ntc')/halls+q('inlet')*50/halls+(q('siren')*20)/halls;
-    var raw4=(sens+sg>0?L*0.8*sens+L*1.12*sg:0)+wn*50+(q('disp')*40+q('outs')*50)/halls;
-    if(raw2>0)c2+=up50(raw2)*g.n;if(raw4>0)c4+=up50(raw4)*g.n});
+    var raw4=(sens+sg>0?L*0.8*sens+L*1.12*sg:0)+wn*50+(q('disp')*20+q('outs')*50)/halls;
+    if(raw2>0)c2+=up50(raw2)*g.n;if(raw4>0)c4r+=raw4*g.n});
   var gp=num(S.inv.gap);if(!(gp>0))gp=0;
-  if(c4>0)c4+=gapMeters(gp,halls);
+  if(c4r>0)c4=up50(c4r+gapMeters(gp,halls));
   return {c2:c2,c4:c4,c12:has12?halls0*12:0}}
 function cabInputs(){['c2','c4','c12'].forEach(function(id){var r=S.rows[id],inp=document.querySelector('#tbl [data-q="'+id+'"]');if(r&&r.cabAuto&&!r.qtyManual&&inp&&document.activeElement!==inp)inp.value=r.qty})}
 function cabAutoRows(){var changed=false;['c2','c4','c12'].forEach(function(id){var r=S.rows[id];if(r&&r.cabAuto){if(r.qtyManual){delete r.cabAuto}else{delete S.rows[id]}changed=true}});return changed}
@@ -4023,7 +4024,7 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},commit:function(){pfCommi
     var per2 = fin(raw2) ? up50(raw2) : NaN;
     var sh = opt('hk', 'hn', 1), se = opt('ek', 'en', 1), sq = opt('qk', 'qn', 1), sg = opt('gk', 'gn', 1);
     var sens = sh + se + sq;
-    var wn = val('wn'); wn = wn > 0 ? wn / HT : 0; var wcab = wn * 50 + disp * 40 + outs * 50;
+    var wn = val('wn'); wn = wn > 0 ? wn / HT : 0; var wcab = wn * 50 + disp * 20 + outs * 50;
     var any4 = (sens + sg) > 0;
     var has4 = (fin(L) && any4) || (wcab > 0 && !any4);
     var raw4 = has4 ? (any4 ? L * 0.8 * sens + L * 1.12 * sg : 0) + wcab : NaN;
@@ -4032,7 +4033,8 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},commit:function(){pfCommi
     var multi = isMulti(), GR = groupsC();
     if (multi) { var hs = 0, anyn = false; GR.forEach(function(g){ if (fin(g.n)) { hs += g.n; anyn = true; } }); halls = anyn ? hs : NaN; }
     var gp = val('gp'); gp = gp > 0 ? gp : 0;
-    function gapM(g, h){ return g > 0 && h > 1 ? Math.round(g * 50 / 12 * (h - 1) * 100) / 100 : 0; }
+    var gs = val('gs'); gs = gs > 0 ? gs : 0;
+    function gapM(g, h){ if (gs > 0) return Math.round(gs * 50 / 12 * 100) / 100; return g > 0 && h > 1 ? Math.round(g * 50 / 12 * (h - 1) * 100) / 100 : 0; }
     var raw12 = fin(halls) ? halls * 12 : NaN;
     var t12 = raw12;
     function money(meters, id){ var pr = val(id); return (fin(meters) && fin(pr)) ? ' · قیمت: <b><bdi>' + nf(meters, 0) + ' × ' + nf(pr, 2) + ' = ' + nf(meters * pr, 0) + '</bdi></b> ریال' : ''; }
@@ -4040,7 +4042,7 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},commit:function(){pfCommi
       ? 'خام: <bdi>' + nf(L) + ' × ۰٫۷ × ' + nf(ntc) + ' + ' + nf(mot) + ' × ۵۰' + (siren ? ' + آژیر ' + nf(siren) : '') + ' = ' + nf(raw2, 2) + '</bdi><br>گرد به بالا (مضرب ۵۰): <b><bdi>' + nf(per2, 0) + '</bdi> متر هر سالن</b>' + money(per2, 'p2') + (!multi && fin(halls) && halls > 1 && fin(per2) ? '<br><b>جمع ' + nf(halls) + ' سالن: <bdi>' + nf(per2 * halls, 0) + '</bdi> متر</b>' : '')
       : 'طول سالن، تعداد NTC و تعداد موتور را وارد کن.';
     $('n4').innerHTML = has4
-      ? 'خام: <bdi>' + ((any4 ? nf(L) + ' × ۰٫۸ × ' + nf(sens) + (sg ? ' + ' + nf(L) + ' × ۱٫۱۲' + (sg !== 1 ? ' × ' + nf(sg) : '') : '') : '') + (wcab ? (any4 ? ' + ' : '') + [wn ? 'توزین ' + nf(wn) + ' × ۵۰' : '', disp ? 'نمایشگر ' + nf(disp) + ' × ۴۰' : '', outs ? 'دمای بیرون ' + nf(outs) + ' × ۵۰' : ''].filter(Boolean).join(' + ') : '')) + ' = ' + nf(raw4, 2) + '</bdi><br>گرد به بالا (مضرب ۵۰): <b><bdi>' + nf(per4, 0) + '</bdi> متر هر سالن</b>' + money(per4, 'p4') + (!multi && !(gp > 0) && fin(halls) && halls > 1 && fin(per4) ? '<br><b>جمع ' + nf(halls) + ' سالن: <bdi>' + nf(per4 * halls, 0) + '</bdi> متر</b>' : '') + (!multi && gp > 0 ? (fin(halls) ? '<br>فاصله بین سالن‌ها: <bdi>' + nf(gp) + ' × ۵۰ ÷ ۱۲ × ' + nf(halls - 1) + ' = ' + nf(gapM(gp, halls), 2) + '</bdi> متر (بدون گرد) · جمع کل ۴×۰٫۵: <b><bdi>' + nf(fin(per4) ? per4 * halls + gapM(gp, halls) : gapM(gp, halls), 2) + '</bdi> متر</b>' : '<br>برای افزودن فاصله بین سالن‌ها، تعداد سالن را در کارت «مشخصات سالن» وارد کن.') : '')
+      ? 'خام: <bdi>' + ((any4 ? nf(L) + ' × ۰٫۸ × ' + nf(sens) + (sg ? ' + ' + nf(L) + ' × ۱٫۱۲' + (sg !== 1 ? ' × ' + nf(sg) : '') : '') : '') + (wcab ? (any4 ? ' + ' : '') + [wn ? 'توزین ' + nf(wn) + ' × ۵۰' : '', disp ? 'نمایشگر ' + nf(disp) + ' × ۲۰' : '', outs ? 'دمای بیرون ' + nf(outs) + ' × ۵۰' : ''].filter(Boolean).join(' + ') : '')) + ' = ' + nf(raw4, 2) + '</bdi><br>گرد به بالا (مضرب ۵۰): <b><bdi>' + nf(per4, 0) + '</bdi> متر هر سالن</b>' + money(per4, 'p4') + (!multi && !(gp > 0) && fin(halls) && halls > 1 && fin(per4) ? '<br><b>جمع ' + nf(halls) + ' سالن: <bdi>' + nf(per4 * halls, 0) + '</bdi> متر</b>' : '') + (!multi && gp > 0 ? (fin(halls) ? '<br>فاصله بین سالن‌ها: <bdi>' + nf(gp) + ' × ۵۰ ÷ ۱۲ × ' + nf(halls - 1) + ' = ' + nf(gapM(gp, halls), 2) + '</bdi> متر (بدون گرد) · جمع کل ۴×۰٫۵: <b><bdi>' + nf(fin(per4) ? per4 * halls + gapM(gp, halls) : gapM(gp, halls), 2) + '</bdi> متر</b>' : '<br>برای افزودن فاصله بین سالن‌ها، تعداد سالن را در کارت «مشخصات سالن» وارد کن.') : '')
       : 'طول سالن و حداقل یک سنسور (یا یک سیستم توزین) را وارد کن.';
     $('n12').innerHTML = fin(halls)
       ? '<bdi>۱۲ × ' + nf(halls) + ' = ' + nf(raw12, 0) + '</bdi> متر، بدون گرد کردن' + money(t12, 'p12')
@@ -4054,20 +4056,22 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},commit:function(){pfCommi
         if (!fin(g.n)) return;
         var lab = 'گروه ' + (i + 1) + ': ' + nf(g.n) + ' سالن';
         if (fin(ntc) && fin(g.L)) { var p2 = up50(L2(g.L)); s2 += p2 * g.n; o2 = true; l2.push(lab + ' (طول ' + nf(g.L) + ') = <bdi>' + nf(p2, 0) + ' × ' + nf(g.n) + ' = ' + nf(p2 * g.n, 0) + '</bdi>'); }
-        if ((fin(g.L) && any4) || (wcab > 0 && !any4)) { var p4 = up50(L4(g.L)); s4 += p4 * g.n; o4 = true; l4.push(lab + ' (طول ' + (fin(g.L) ? nf(g.L) : '—') + ') = <bdi>' + nf(p4, 0) + ' × ' + nf(g.n) + ' = ' + nf(p4 * g.n, 0) + '</bdi>'); }
+        if ((fin(g.L) && any4) || (wcab > 0 && !any4)) { var p4 = up50(L4(g.L)); s4 += L4(g.L) * g.n; o4 = true; l4.push(lab + ' (طول ' + (fin(g.L) ? nf(g.L) : '—') + ') = <bdi>' + nf(p4, 0) + ' × ' + nf(g.n) + ' = ' + nf(p4 * g.n, 0) + '</bdi>'); }
       });
       var gm = gapM(gp, halls);
-      tot2 = o2 ? s2 : NaN; tot4 = o4 ? s4 + gm : NaN;
+      tot2 = o2 ? s2 : NaN; tot4 = o4 ? up50(s4 + gm) : NaN;
       $('n2').innerHTML += '<br><b>جمع گروه‌ها:</b><br>' + (l2.length ? l2.join('<br>') + '<br><b>جمع کل ۲×۰٫۵: <bdi>' + nf(s2, 0) + '</bdi> متر</b>' : 'برای هر گروه تعداد و طول را وارد کن.');
       $('n4').innerHTML += '<br><b>جمع گروه‌ها:</b><br>' + (l4.length ? l4.join('<br>') + (gp > 0 ? '<br>فاصله بین سالن‌ها: <bdi>' + nf(gp) + ' × ۵۰ ÷ ۱۲ × ' + nf(Math.max(0, halls - 1)) + ' = ' + nf(gm, 2) + '</bdi> متر (بدون گرد)' : '') + '<br><b>جمع کل ۴×۰٫۵: <bdi>' + nf(s4 + gm, 2) + '</bdi> متر</b>' : 'برای هر گروه تعداد و طول را وارد کن.');
     }
-    (function(){ var gmv = gapM(gp, halls), t4 = multi ? tot4 : (fin(per4) && fin(halls) ? per4 * halls + gmv : NaN);
+    (function(){ var gmv = gapM(gp, halls), t4 = multi ? tot4 : (fin(raw4) && fin(halls) ? up50(raw4 * halls + gmv) : NaN);
       if (gmv > 0 && fin(t4)) $('n4').innerHTML += '<br><small style="opacity:.75;font-size:11.5px">جمع ' + nf(t4, 0) + ' متر که ' + nf(gmv, 0) + ' متر آن فاصله بین سالن‌هاست</small>'; })();
     function both(raw, r){ return fin(r) ? '<bdi>' + nf(raw, 2) + ' ← ' + nf(r, 0) + '</bdi>' : '—'; }
-    SUMC = multi ? [['۲×۰٫۵ کل گروه‌ها', fin(tot2) ? nf(tot2, 0) : '—', 'c2'], ['۴×۰٫۵ کل گروه‌ها (با فاصله)', fin(tot4) ? nf(tot4, 2) : '—', 'c4'], ['۱۲×۰٫۵ کل', fin(raw12) ? nf(raw12, 0) : '—', 'c12']] : [['۲×۰٫۵ هر سالن (خام ← گرد)', both(raw2, per2) + (fin(per2) && fin(halls) && halls > 1 ? ' · جمع ' + nf(halls) + ' سالن: <bdi>' + nf(per2 * halls, 0) + '</bdi>' : ''), 'c2'], ['۴×۰٫۵ هر سالن (خام ← گرد)', both(raw4, per4) + (fin(per4) && fin(halls) && halls > 1 ? ' · جمع ' + nf(halls) + ' سالن: <bdi>' + nf(per4 * halls + gapM(gp, halls), 0) + '</bdi>' : ''), 'c4'], ['۱۲×۰٫۵ کل', fin(raw12) ? nf(raw12, 0) : '—', 'c12']];
+    SUMC = multi ? [['۲×۰٫۵ کل گروه‌ها', fin(tot2) ? nf(tot2, 0) : '—', 'c2'], ['۴×۰٫۵ کل گروه‌ها (با فاصله)', fin(tot4) ? nf(tot4, 2) : '—', 'c4'], ['۱۲×۰٫۵ کل', fin(raw12) ? nf(raw12, 0) : '—', 'c12']] : (function(){ var Hn = (fin(halls) && halls > 0) ? halls : 1, g4 = gapM(gp, Hn);
+      var t2 = fin(per2) ? per2 * Hn : NaN, t4 = fin(raw4) ? up50(raw4 * Hn + g4) : (g4 > 0 && fin(raw4) ? g4 : NaN);
+      return [['۲×۰٫۵ کل' + (Hn > 1 && fin(per2) ? ' (' + nf(per2, 0) + ' هر سالن)' : ''), fin(t2) ? nf(t2, 0) : '—', 'c2'], ['۴×۰٫۵ کل' + (Hn > 1 && fin(per4) ? ' (' + nf(per4, 0) + ' هر سالن' + (g4 > 0 ? ' + ' + nf(g4, 0) + ' فاصله' : '') + ')' : ''), fin(t4) ? nf(t4, 0) : '—', 'c4'], ['۱۲×۰٫۵ کل', fin(raw12) ? nf(raw12, 0) : '—', 'c12']]; })();
     drawSum();
   }
-  ['cl', 'ch', 'p2', 'p4', 'p12', 'cn', 'cm', 'an', 'dn', 'on', 'hn', 'en', 'qn', 'gn', 'wn', 'gp'].forEach(function(id){
+  ['cl', 'ch', 'p2', 'p4', 'p12', 'cn', 'cm', 'an', 'dn', 'on', 'hn', 'en', 'qn', 'gn', 'wn', 'gp', 'gs'].forEach(function(id){
     $(id).addEventListener('input', renderC);
     $(id).addEventListener('change', renderC);
   });
@@ -4181,11 +4185,11 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},commit:function(){pfCommi
       return ok2 ? { id: 'c2', qty: q2, price: val('p2'), unit: 'متر', name: 'کابل ۲×۰٫۵', halls: H } : null;
     }
     var sens = ((val('hn') > 0 ? val('hn') : 0) + (val('en') > 0 ? val('en') : 0) + (val('qn') > 0 ? val('qn') : 0)) / H, sg = (val('gn') > 0 ? val('gn') : 0) / H;
-    var wn = ((val('wn') > 0 ? val('wn') * 50 : 0) + (val('dn') > 0 ? val('dn') * 40 : 0) + (val('on') > 0 ? val('on') * 50 : 0)) / H, any4 = (sens + sg) > 0, q4 = 0, ok4 = false;
-    GR.forEach(function(g){ if (!fin(g.n)) return; if ((fin(g.L) && any4) || (wn > 0 && !any4)) { q4 += up50((any4 && fin(g.L) ? g.L * 0.8 * sens + g.L * 1.12 * sg : 0) + wn) * g.n; ok4 = true; } });
+    var wn = ((val('wn') > 0 ? val('wn') * 50 : 0) + (val('dn') > 0 ? val('dn') * 20 : 0) + (val('on') > 0 ? val('on') * 50 : 0)) / H, any4 = (sens + sg) > 0, q4 = 0, ok4 = false;
+    GR.forEach(function(g){ if (!fin(g.n)) return; if ((fin(g.L) && any4) || (wn > 0 && !any4)) { q4 += ((any4 && fin(g.L) ? g.L * 0.8 * sens + g.L * 1.12 * sg : 0) + wn) * g.n; ok4 = true; } });
     if (!ok4) return null;
-    var gpv = val('gp'); gpv = gpv > 0 ? gpv : 0;
-    return { id: 'c4', qty: q4 + (gpv > 0 && H > 1 ? Math.round(gpv * 50 / 12 * (H - 1) * 100) / 100 : 0), price: val('p4'), unit: 'متر', name: 'کابل ۴×۰٫۵', halls: H };
+    var gpv = val('gp'); gpv = gpv > 0 ? gpv : 0; var gsv = val('gs'); gsv = gsv > 0 ? gsv : 0;
+    return { id: 'c4', qty: up50(q4 + (gsv > 0 ? Math.round(gsv * 50 / 12 * 100) / 100 : (gpv > 0 && H > 1 ? Math.round(gpv * 50 / 12 * (H - 1) * 100) / 100 : 0))), price: val('p4'), unit: 'متر', name: 'کابل ۴×۰٫۵', halls: H };
   }
   function regItem(kind, S0){
     if (isMulti() && (kind === 'c2' || kind === 'c4')) return regMulti(kind);
@@ -4199,11 +4203,11 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},commit:function(){pfCommi
     }
     if (kind === 'c4') {
       var sens = ((val('hn') > 0 ? val('hn') : 0) + (val('en') > 0 ? val('en') : 0) + (val('qn') > 0 ? val('qn') : 0)) / halls, sg = (val('gn') > 0 ? val('gn') : 0) / halls;
-      var wn = ((val('wn') > 0 ? val('wn') * 50 : 0) + (val('dn') > 0 ? val('dn') * 40 : 0) + (val('on') > 0 ? val('on') * 50 : 0)) / halls, any4 = (sens + sg) > 0;
+      var wn = ((val('wn') > 0 ? val('wn') * 50 : 0) + (val('dn') > 0 ? val('dn') * 20 : 0) + (val('on') > 0 ? val('on') * 50 : 0)) / halls, any4 = (sens + sg) > 0;
       if (!((fin(L) && any4) || wn > 0)) return null;
       var raw4 = (any4 && fin(L) ? L * 0.8 * sens + L * 1.12 * sg : 0) + wn;
-      var gpv = val('gp'); gpv = gpv > 0 ? gpv : 0;
-      return { id: 'c4', qty: up50(raw4) * halls + (gpv > 0 && halls > 1 ? Math.round(gpv * 50 / 12 * (halls - 1) * 100) / 100 : 0), price: val('p4'), unit: 'متر', name: 'کابل ۴×۰٫۵', halls: halls };
+      var gpv = val('gp'); gpv = gpv > 0 ? gpv : 0; var gsv = val('gs'); gsv = gsv > 0 ? gsv : 0;
+      return { id: 'c4', qty: up50(raw4 * halls + (gsv > 0 ? Math.round(gsv * 50 / 12 * 100) / 100 : (gpv > 0 && halls > 1 ? Math.round(gpv * 50 / 12 * (halls - 1) * 100) / 100 : 0))), price: val('p4'), unit: 'متر', name: 'کابل ۴×۰٫۵', halls: halls };
     }
     if (kind === 'c12') {
       var h12 = val('ch'); if (!(h12 > 0)) return null;
@@ -5684,8 +5688,7 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},commit:function(){pfCommi
     try{
       var rem=await remoteGet();
       if(!rem||rem.sha===meta.sha)return;
-      if(cfg.auto!==false){syncMerge(true);return}
-      banner('نسخه‌ی جدیدتری در فضای ابری هست.','همگام‌سازی',function(){syncMerge(false)});
+            banner('نسخه‌ی جدیدتری در فضای ابری هست.','همگام‌سازی',function(){syncMerge(false)});
     }catch(e){}
   }
   setTimeout(function(){autoCheck(true)},1800);
@@ -5798,7 +5801,7 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},commit:function(){pfCommi
         if(!force&&S.applied===g.obj.ts){folBusy=false;return {ok:true,msg:'این دستگاه به‌روز است.'}}
         var busyNow=(Date.now()-(lastLocal||0))<90000&&!document.hidden;
         function apply(){var d=g.obj.data,cur=snapData();Object.keys(cur).forEach(function(k){if(!(k in d)){try{localStorage.removeItem(k)}catch(e){}}});Object.keys(d).forEach(function(k){if(/^payesh-/.test(k)&&!/^payesh-(sync-|tab$)/.test(k)){try{localStorage.setItem(k,d[k])}catch(e){}}});stSet({applied:g.obj.ts,fol:Date.now()});location.reload()}
-        if(busyNow&&!force){folBusy=false;banner('اطلاعات تازه‌تری از «'+(g.obj.device||a.obj.name||'دستگاه فعال')+'» در گیت‌هاب هست. وقتی کارت تمام شد به‌روز کن (تغییرات ثبت‌نشده‌ی این دستگاه جایگزین می‌شوند).','به‌روزرسانی',apply);return {ok:true,msg:'منتظر تأیید'}}
+        if(!force){folBusy=false;banner('اطلاعات تازه‌تری از «'+(g.obj.device||a.obj.name||'دستگاه فعال')+'» در گیت‌هاب هست. وقتی کارت تمام شد به‌روز کن (تغییرات ثبت‌نشده‌ی این دستگاه جایگزین می‌شوند).','به‌روزرسانی',apply);return {ok:true,msg:'منتظر تأیید'}}
         apply();return {ok:true,msg:'به‌روزرسانی شد.'}
       }catch(e){folBusy=false;return {ok:false,msg:e&&e.message||'خطا'}}
     }
@@ -6728,7 +6731,7 @@ html[data-ui=modern] .cu-av,html[data-ui=modern] .tbi{border-radius:50%!importan
 .fxbox label{display:block;color:var(--muted,#55607a);margin-bottom:2px}.fxbox input{width:100%;box-sizing:border-box;padding:6px;border-radius:8px;border:1px solid var(--line,#d6dcea);background:var(--surface,#fff);color:inherit;font:inherit}
 .fxbox .fxs{grid-column:1/-1;color:var(--muted,#55607a);line-height:1.8}
 @media (min-width:1000px){
-  #app{max-width:1280px}
+  #app{max-width:none}
   #bnav{inset-inline:auto!important;left:50%!important;right:auto!important;transform:translateX(-50%);width:min(640px,92vw);bottom:16px!important;border-radius:28px!important;border:1px solid var(--line,#d6dcea);box-shadow:0 12px 40px rgba(20,30,70,.22)}
   #paneD[data-home=simple] header.top{min-height:96px;padding:16px 28px}
   #hSimple{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;align-items:stretch}
@@ -6739,7 +6742,7 @@ html[data-ui=modern] .cu-av,html[data-ui=modern] .tbi{border-radius:50%!importan
   #hSimple .hs-g button{min-height:92px}
   .hs-stat .fn{margin:8px 0}.hs-stat .fn div{display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px}.hs-stat .fn i{display:block;height:10px;border-radius:99px;background:linear-gradient(90deg,#2d6be6,#3a5bd9)}
   .hs-stat button.cu-b{margin-top:8px}
-  #paneI .wrap,#paneI{max-width:1240px}
+  #paneI .wrap,#paneI{max-width:none}
 }
 .hs-rw{display:flex;align-items:center;gap:6px;border-top:1px solid var(--line,#e3e8f1)}.hs-rw .hs-r{border-top:0;flex:1}.hs-fu{flex:none;font:inherit;font-size:12.5px;font-weight:700;border:1px solid #0B6F67;color:#0B6F67;background:transparent;border-radius:99px;padding:5px 12px;cursor:pointer}:root[data-theme="dark"] .hs-fu{color:#7fe0d4;border-color:#7fe0d4}
 /* ۱۱.۳۳: خانه‌ی ساده و ذخیره‌ی محاسبه */
@@ -6892,7 +6895,7 @@ input[type=file].cu-in{height:auto;padding:8px 10px}
 :root{--bkp-bg:#fff;--bkp-fg:#1a2133;--bkp-ln:#d6dcea}:root[data-theme=dark]{--bkp-bg:#17234a;--bkp-fg:#edf2ff;--bkp-ln:#34446e}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bkp-bg:#17234a;--bkp-fg:#edf2ff;--bkp-ln:#34446e}}
 #bkcPanel small{opacity:.8}#bkcPanel .vbtn{color:#fff}
 .bkb{font-size:13.5px;line-height:1.9}.bkb.on{border-inline-start:4px solid #2e9e5b}.bkb.off{border-inline-start:4px solid #c0662b}.bkb:empty{display:none}
-/* v11.60.9: کادرهای مشتری و نرخ‌ها هم‌تراز */
+/* v11.60.12: کادرهای مشتری و نرخ‌ها هم‌تراز */
 #paneI .grid>.f{display:flex;flex-direction:column;justify-content:flex-end}#paneI .grid>.f>label:first-child:not(.chk){flex:1;display:flex;align-items:flex-end}#paneI .grid>.f>input.num,#paneI .grid>.f>select{height:44px;box-sizing:border-box;width:100%}
 /* v11.60: سرعت باز شدن پیش‌فاکتور */
 #paneI .card,#paneI details,#paneI section{content-visibility:auto;contain-intrinsic-size:auto 200px}#paneI tbody tr{content-visibility:auto;contain-intrinsic-size:auto 56px}
@@ -7706,7 +7709,7 @@ html[data-skin=fresh][data-ui],html[data-skin=fresh][data-ui] :is(#app,#paneI){-
 html[data-skin=fresh][data-theme=dark][data-ui],html[data-skin=fresh][data-theme=dark][data-ui] :is(#app,#paneI){--bg:#0b1620;--surface:#12212d;--fg:#e8f1f7;--ink:#e8f1f7;--muted:#9fb2c3;--line:#24384a;--field:#0f1c27;--group:#1a2d3b;--accent:#3ed198;--accent-ink:#7be3b8;--accent-soft:#143a2f;--on-accent:#04201a;--good:#46d39a;--pg-accent:#3ed198;--pg-accent-soft:#143a2f;--pg-line:#24384a;--pg-page:#0b1620;--pg-card:#12212d;--pg-card-bd:#223648;--pg-card-sh:0 5px 22px rgba(0,0,0,.28);--pg-seg:#173126;--pg-seg-bd:#21473a;--pg-note:#143a2f;--pg-note-bar:#3ed198;--fr-nav:rgba(18,33,45,.96);--fr-navbd:#24384a;--fr-hov:#12332a;--fr-hovbd:#2b6f58;--fr-focus:rgba(62,209,152,.45);--fr-main:linear-gradient(130deg,#12845d,#0b5a40);color-scheme:dark}
 html[data-skin=fresh],html[data-skin=fresh] body{background:var(--bg);color:var(--fg)}
 html[data-skin=fresh] body{font-family:Tahoma,"Segoe UI",Arial,sans-serif;font-size:14px;line-height:1.75}
-html[data-skin=fresh] #app{max-width:1600px;margin-inline:auto;padding-inline:clamp(10px,2vw,26px)}
+html[data-skin=fresh] #app{max-width:none;margin-inline:auto;padding-inline:clamp(10px,2vw,26px)}
 html[data-skin=fresh] #paneD .top,html[data-skin=fresh] header.top{border-radius:18px;margin:12px 0 16px;background:var(--fr-head);color:#fff;box-shadow:0 8px 24px #1647401f}
 html[data-skin=fresh] #paneD .top h1,html[data-skin=fresh] header.top h1{font-size:clamp(19px,2vw,27px);letter-spacing:-.3px;color:#fff}
 html[data-skin=fresh] #paneD .top p,html[data-skin=fresh] header.top p{color:#d6eee6}
@@ -7798,7 +7801,7 @@ html[data-ios][data-wall=rose]{--wp:radial-gradient(90% 70% at 10% 0%,#ffb0cc,tr
 html[data-ios][data-wall=night]{--wp:radial-gradient(90% 60% at 80% 0%,#2a3f9a,transparent 55%),linear-gradient(180deg,#05080f,#0d1330)}
 html[data-ios],html[data-ios] body{background:var(--wp) fixed!important}
 html[data-ios] body{background:transparent!important}
-html[data-ios] body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--veil);-webkit-backdrop-filter:blur(26px);backdrop-filter:blur(26px);opacity:1;transition:opacity .4s ease}
+html[data-ios] body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--veil);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);opacity:1;transition:opacity .4s ease}
 html[data-ios][data-ipane=D] body::before{opacity:0}
 html[data-ios] #paneD .top h1,html[data-ios] #paneD .top #hdrHi{color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.25)}
 html[data-ios] #paneD .top p,html[data-ios] #hdrSub{color:rgba(255,255,255,.82)}
@@ -8178,7 +8181,7 @@ html[data-ios]:not([data-ipane=I]) #app{padding-top:calc(72px + env(safe-area-in
   window.addEventListener('resize',fit);
   window.addEventListener('scroll',function(){if(R.hasAttribute('data-ios')&&R.getAttribute('data-ipane')==='D'&&(window.scrollY||0)>0)window.scrollTo(0,0)},{passive:true});
   try{new MutationObserver(function(){pane()}).observe(document.body,{attributes:true,subtree:true,attributeFilter:['aria-selected','hidden']})}catch(e){}
-  mark();pane();setTimeout(function(){build();pane()},700);setInterval(function(){build();pane();repFill();glRender();var z=$('paneZ');if(z&&z.closest&&z.closest('#iosSB')&&z.hidden)z.hidden=false},2000);
+  mark();pane();setTimeout(function(){build();pane()},700);setInterval(function(){if(document.hidden)return;build();pane();repFill();glRender();var z=$('paneZ');if(z&&z.closest&&z.closest('#iosSB')&&z.hidden)z.hidden=false},5000);
 })();
 
 </script>
