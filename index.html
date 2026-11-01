@@ -1964,7 +1964,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.13</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.14</footer>
 </div>
 
 
@@ -3147,13 +3147,13 @@ function cabCalc(){
   if(!V.length)return has12?{c2:0,c4:0,c12:halls0*12}:null;
   var q=function(id){return S.rows[id]?num(qtyOf(id)):0};
   var sens=(q('ahs')+q('nh3')+q('co2'))/halls,sg=q('patrol')/halls,wn=(q('wfeed')+q('wbird'))/halls;
-  var c2=0,c4=0,c4r=0;
+  var c2=0,c4=0,c4r=0,c2r=0;
   V.forEach(function(g){var L=g.L;
     var raw2=L*0.7*q('ntc')/halls+q('inlet')*50/halls+(q('siren')*20)/halls;
     var raw4=(sens+sg>0?L*0.8*sens+L*1.12*sg:0)+wn*50+(q('disp')*20+q('outs')*50)/halls;
-    if(raw2>0)c2+=up50(raw2)*g.n;if(raw4>0)c4r+=up50(raw4)*g.n});
+    if(raw2>0)c2r+=raw2*g.n;if(raw4>0)c4r+=raw4*g.n});
   var gp=num(S.inv.gap);if(!(gp>0))gp=0;
-  if(c4r>0)c4=up50(c4r+gapMeters(gp,halls));
+  if(c2r>0)c2=up50(c2r);if(c4r>0)c4=up50(c4r+gapMeters(gp,halls));
   return {c2:c2,c4:c4,c12:has12?halls0*12:0}}
 function cabInputs(){['c2','c4','c12'].forEach(function(id){var r=S.rows[id],inp=document.querySelector('#tbl [data-q="'+id+'"]');if(r&&r.cabAuto&&!r.qtyManual&&inp&&document.activeElement!==inp)inp.value=r.qty})}
 function cabAutoRows(){var changed=false;['c2','c4','c12'].forEach(function(id){var r=S.rows[id];if(r&&r.cabAuto){if(r.qtyManual){delete r.cabAuto}else{delete S.rows[id]}changed=true}});return changed}
@@ -4039,10 +4039,10 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},commit:function(){pfCommi
     var t12 = raw12;
     function money(meters, id){ var pr = val(id); return (fin(meters) && fin(pr)) ? ' · قیمت: <b><bdi>' + nf(meters, 0) + ' × ' + nf(pr, 2) + ' = ' + nf(meters * pr, 0) + '</bdi></b> ریال' : ''; }
     $('n2').innerHTML = has2
-      ? 'خام: <bdi>' + nf(L) + ' × ۰٫۷ × ' + nf(ntc) + ' + ' + nf(mot) + ' × ۵۰' + (siren ? ' + آژیر ' + nf(siren) : '') + ' = ' + nf(raw2, 2) + '</bdi><br>گرد به بالا (مضرب ۵۰): <b><bdi>' + nf(per2, 0) + '</bdi> متر هر سالن</b>' + money(per2, 'p2') + (!multi && fin(halls) && halls > 1 && fin(per2) ? '<br><b>جمع ' + nf(halls) + ' سالن: <bdi>' + nf(per2 * halls, 0) + '</bdi> متر</b>' : '')
+      ? 'خام: <bdi>' + nf(L) + ' × ۰٫۷ × ' + nf(ntc) + ' + ' + nf(mot) + ' × ۵۰' + (siren ? ' + آژیر ' + nf(siren) : '') + ' = ' + nf(raw2, 2) + '</bdi> متر برای هر سالن (بدون گرد)' + (!multi && fin(halls) ? '<br><b>جمع ' + nf(halls) + ' سالن: <bdi>' + nf(raw2 * halls, 2) + ' ← گرد به بالا ' + nf(up50(raw2 * halls), 0) + '</bdi> متر</b>' + money(up50(raw2 * halls), 'p2') : '')
       : 'طول سالن، تعداد NTC و تعداد موتور را وارد کن.';
     $('n4').innerHTML = has4
-      ? 'خام: <bdi>' + ((any4 ? nf(L) + ' × ۰٫۸ × ' + nf(sens) + (sg ? ' + ' + nf(L) + ' × ۱٫۱۲' + (sg !== 1 ? ' × ' + nf(sg) : '') : '') : '') + (wcab ? (any4 ? ' + ' : '') + [wn ? 'توزین ' + nf(wn) + ' × ۵۰' : '', disp ? 'نمایشگر ' + nf(disp) + ' × ۲۰' : '', outs ? 'دمای بیرون ' + nf(outs) + ' × ۵۰' : ''].filter(Boolean).join(' + ') : '')) + ' = ' + nf(raw4, 2) + '</bdi><br>گرد به بالا (مضرب ۵۰): <b><bdi>' + nf(per4, 0) + '</bdi> متر هر سالن</b>' + money(per4, 'p4') + (!multi && !(gp > 0) && fin(halls) && halls > 1 && fin(per4) ? '<br><b>جمع ' + nf(halls) + ' سالن: <bdi>' + nf(per4 * halls, 0) + '</bdi> متر</b>' : '') + (!multi && gp > 0 ? (fin(halls) ? '<br>فاصله بین سالن‌ها: <bdi>' + nf(gp) + ' × ۵۰ ÷ ۱۲ × ' + nf(halls - 1) + ' = ' + nf(gapM(gp, halls), 2) + '</bdi> متر (بدون گرد) · جمع کل ۴×۰٫۵: <b><bdi>' + nf(fin(per4) ? per4 * halls + gapM(gp, halls) : gapM(gp, halls), 2) + '</bdi> متر</b>' : '<br>برای افزودن فاصله بین سالن‌ها، تعداد سالن را در کارت «مشخصات سالن» وارد کن.') : '')
+      ? 'خام: <bdi>' + ((any4 ? nf(L) + ' × ۰٫۸ × ' + nf(sens) + (sg ? ' + ' + nf(L) + ' × ۱٫۱۲' + (sg !== 1 ? ' × ' + nf(sg) : '') : '') : '') + (wcab ? (any4 ? ' + ' : '') + [wn ? 'توزین ' + nf(wn) + ' × ۵۰' : '', disp ? 'نمایشگر ' + nf(disp) + ' × ۲۰' : '', outs ? 'دمای بیرون ' + nf(outs) + ' × ۵۰' : ''].filter(Boolean).join(' + ') : '')) + ' = ' + nf(raw4, 2) + '</bdi> متر برای هر سالن (بدون گرد)' + (!multi && !(gs > 0) && !(gp > 0) && fin(halls) && halls > 1 && fin(raw4) ? '<br><b>جمع ' + nf(halls) + ' سالن: <bdi>' + nf(raw4 * halls, 2) + ' ← گرد به بالا ' + nf(up50(raw4 * halls), 0) + '</bdi> متر</b>' + money(up50(raw4 * halls), 'p4') : '') + (!multi && gp > 0 ? (fin(halls) ? '<br>فاصله بین سالن‌ها: <bdi>' + nf(gp) + ' × ۵۰ ÷ ۱۲ × ' + nf(halls - 1) + ' = ' + nf(gapM(gp, halls), 2) + '</bdi> متر (بدون گرد) · جمع کل ۴×۰٫۵: <b><bdi>' + nf(fin(per4) ? per4 * halls + gapM(gp, halls) : gapM(gp, halls), 2) + '</bdi> متر</b>' : '<br>برای افزودن فاصله بین سالن‌ها، تعداد سالن را در کارت «مشخصات سالن» وارد کن.') : '')
       : 'طول سالن و حداقل یک سنسور (یا یک سیستم توزین) را وارد کن.';
     $('n12').innerHTML = fin(halls)
       ? '<bdi>۱۲ × ' + nf(halls) + ' = ' + nf(raw12, 0) + '</bdi> متر، بدون گرد کردن' + money(t12, 'p12')
@@ -4055,20 +4055,20 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},commit:function(){pfCommi
       GR.forEach(function(g, i){
         if (!fin(g.n)) return;
         var lab = 'گروه ' + (i + 1) + ': ' + nf(g.n) + ' سالن';
-        if (fin(ntc) && fin(g.L)) { var p2 = up50(L2(g.L)); s2 += p2 * g.n; o2 = true; l2.push(lab + ' (طول ' + nf(g.L) + ') = <bdi>' + nf(p2, 0) + ' × ' + nf(g.n) + ' = ' + nf(p2 * g.n, 0) + '</bdi>'); }
-        if ((fin(g.L) && any4) || (wcab > 0 && !any4)) { var p4 = up50(L4(g.L)); s4 += up50(L4(g.L)) * g.n; o4 = true; l4.push(lab + ' (طول ' + (fin(g.L) ? nf(g.L) : '—') + ') = <bdi>' + nf(p4, 0) + ' × ' + nf(g.n) + ' = ' + nf(p4 * g.n, 0) + '</bdi>'); }
+        if (fin(ntc) && fin(g.L)) { var p2 = L2(g.L); s2 += p2 * g.n; o2 = true; l2.push(lab + ' (طول ' + nf(g.L) + ') = <bdi>' + nf(p2, 1) + ' × ' + nf(g.n) + ' = ' + nf(p2 * g.n, 1) + '</bdi>'); }
+        if ((fin(g.L) && any4) || (wcab > 0 && !any4)) { var p4 = L4(g.L); s4 += p4 * g.n; o4 = true; l4.push(lab + ' (طول ' + (fin(g.L) ? nf(g.L) : '—') + ') = <bdi>' + nf(p4, 1) + ' × ' + nf(g.n) + ' = ' + nf(p4 * g.n, 1) + '</bdi>'); }
       });
       var gm = gapM(gp, halls);
-      tot2 = o2 ? s2 : NaN; tot4 = o4 ? up50(s4 + gm) : NaN;
-      $('n2').innerHTML += '<br><b>جمع گروه‌ها:</b><br>' + (l2.length ? l2.join('<br>') + '<br><b>جمع کل ۲×۰٫۵: <bdi>' + nf(s2, 0) + '</bdi> متر</b>' : 'برای هر گروه تعداد و طول را وارد کن.');
-      $('n4').innerHTML += '<br><b>جمع گروه‌ها:</b><br>' + (l4.length ? l4.join('<br>') + (gp > 0 ? '<br>فاصله بین سالن‌ها: <bdi>' + nf(gp) + ' × ۵۰ ÷ ۱۲ × ' + nf(Math.max(0, halls - 1)) + ' = ' + nf(gm, 2) + '</bdi> متر (بدون گرد)' : '') + '<br><b>جمع کل ۴×۰٫۵: <bdi>' + nf(s4 + gm, 2) + '</bdi> متر</b>' : 'برای هر گروه تعداد و طول را وارد کن.');
+      tot2 = o2 ? up50(s2) : NaN; tot4 = o4 ? up50(s4 + gm) : NaN;
+      $('n2').innerHTML += '<br><b>جمع گروه‌ها:</b><br>' + (l2.length ? l2.join('<br>') + '<br><b>جمع کل ۲×۰٫۵: <bdi>' + nf(s2, 2) + ' ← ' + nf(up50(s2), 0) + '</bdi> متر</b>' : 'برای هر گروه تعداد و طول را وارد کن.');
+      $('n4').innerHTML += '<br><b>جمع گروه‌ها:</b><br>' + (l4.length ? l4.join('<br>') + (gp > 0 ? '<br>فاصله بین سالن‌ها: <bdi>' + nf(gp) + ' × ۵۰ ÷ ۱۲ × ' + nf(Math.max(0, halls - 1)) + ' = ' + nf(gm, 2) + '</bdi> متر (بدون گرد)' : '') + '<br><b>جمع کل ۴×۰٫۵: <bdi>' + nf(s4 + gm, 2) + ' ← ' + nf(up50(s4 + gm), 0) + '</bdi> متر</b>' : 'برای هر گروه تعداد و طول را وارد کن.');
     }
-    (function(){ var gmv = gapM(gp, halls), t4 = multi ? tot4 : (fin(per4) && fin(halls) ? up50(per4 * halls + gmv) : NaN);
+    (function(){ var gmv = gapM(gp, halls), t4 = multi ? tot4 : (fin(raw4) && fin(halls) ? up50(raw4 * halls + gmv) : NaN);
       if (gmv > 0 && fin(t4)) $('n4').innerHTML += '<br><small style="opacity:.75;font-size:11.5px">جمع ' + nf(t4, 0) + ' متر که ' + nf(gmv, 0) + ' متر آن فاصله بین سالن‌هاست</small>'; })();
     function both(raw, r){ return fin(r) ? '<bdi>' + nf(raw, 2) + ' ← ' + nf(r, 0) + '</bdi>' : '—'; }
     SUMC = multi ? [['۲×۰٫۵ کل گروه‌ها', fin(tot2) ? nf(tot2, 0) : '—', 'c2'], ['۴×۰٫۵ کل گروه‌ها (با فاصله)', fin(tot4) ? nf(tot4, 2) : '—', 'c4'], ['۱۲×۰٫۵ کل', fin(raw12) ? nf(raw12, 0) : '—', 'c12']] : (function(){ var Hn = (fin(halls) && halls > 0) ? halls : 1, g4 = gapM(gp, Hn);
-      var t2 = fin(per2) ? per2 * Hn : NaN, t4 = fin(per4) ? up50(per4 * Hn + g4) : (g4 > 0 && fin(raw4) ? g4 : NaN);
-      return [['۲×۰٫۵ کل' + (Hn > 1 && fin(per2) ? ' (' + nf(per2, 0) + ' هر سالن)' : ''), fin(t2) ? nf(t2, 0) : '—', 'c2'], ['۴×۰٫۵ کل' + (Hn > 1 && fin(per4) ? ' (' + nf(per4, 0) + ' هر سالن' + (g4 > 0 ? ' + ' + nf(g4, 0) + ' فاصله' : '') + ')' : ''), fin(t4) ? nf(t4, 0) : '—', 'c4'], ['۱۲×۰٫۵ کل', fin(raw12) ? nf(raw12, 0) : '—', 'c12']]; })();
+      var t2 = fin(raw2) ? up50(raw2 * Hn) : NaN, t4 = fin(raw4) ? up50(raw4 * Hn + g4) : (g4 > 0 && fin(raw4) ? g4 : NaN);
+      return [['۲×۰٫۵ کل' + (Hn > 1 && fin(per2) ? ' (' + nf(raw2, 1) + ' خام هر سالن)' : ''), fin(t2) ? nf(t2, 0) : '—', 'c2'], ['۴×۰٫۵ کل' + (Hn > 1 && fin(per4) ? ' (' + nf(raw4, 1) + ' خام هر سالن' + (g4 > 0 ? ' + ' + nf(g4, 0) + ' فاصله' : '') + ')' : ''), fin(t4) ? nf(t4, 0) : '—', 'c4'], ['۱۲×۰٫۵ کل', fin(raw12) ? nf(raw12, 0) : '—', 'c12']]; })();
     drawSum();
   }
   ['cl', 'ch', 'p2', 'p4', 'p12', 'cn', 'cm', 'an', 'dn', 'on', 'hn', 'en', 'qn', 'gn', 'wn', 'gp', 'gs'].forEach(function(id){
@@ -4181,12 +4181,12 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},commit:function(){pfCommi
     if (kind === 'c2') {
       if (!fin(ntc)) return null;
       var acc = (val('an') > 0 ? val('an') * 20 / H : 0), q2 = 0, ok2 = false;
-      GR.forEach(function(g){ if (fin(g.n) && fin(g.L)) { q2 += up50(g.L * 0.7 * ntc + mot * 50 + acc) * g.n; ok2 = true; } });
-      return ok2 ? { id: 'c2', qty: q2, price: val('p2'), unit: 'متر', name: 'کابل ۲×۰٫۵', halls: H } : null;
+      GR.forEach(function(g){ if (fin(g.n) && fin(g.L)) { q2 += (g.L * 0.7 * ntc + mot * 50 + acc) * g.n; ok2 = true; } });
+      return ok2 ? { id: 'c2', qty: up50(q2), price: val('p2'), unit: 'متر', name: 'کابل ۲×۰٫۵', halls: H } : null;
     }
     var sens = ((val('hn') > 0 ? val('hn') : 0) + (val('en') > 0 ? val('en') : 0) + (val('qn') > 0 ? val('qn') : 0)) / H, sg = (val('gn') > 0 ? val('gn') : 0) / H;
     var wn = ((val('wn') > 0 ? val('wn') * 50 : 0) + (val('dn') > 0 ? val('dn') * 20 : 0) + (val('on') > 0 ? val('on') * 50 : 0)) / H, any4 = (sens + sg) > 0, q4 = 0, ok4 = false;
-    GR.forEach(function(g){ if (!fin(g.n)) return; if ((fin(g.L) && any4) || (wn > 0 && !any4)) { q4 += up50((any4 && fin(g.L) ? g.L * 0.8 * sens + g.L * 1.12 * sg : 0) + wn) * g.n; ok4 = true; } });
+    GR.forEach(function(g){ if (!fin(g.n)) return; if ((fin(g.L) && any4) || (wn > 0 && !any4)) { q4 += ((any4 && fin(g.L) ? g.L * 0.8 * sens + g.L * 1.12 * sg : 0) + wn) * g.n; ok4 = true; } });
     if (!ok4) return null;
     var gpv = val('gp'); gpv = gpv > 0 ? gpv : 0; var gsv = val('gs'); gsv = gsv > 0 ? gsv : 0;
     return { id: 'c4', qty: up50(q4 + (gsv > 0 ? Math.round(gsv * 50 / 12 * 100) / 100 : (gpv > 0 && H > 1 ? Math.round(gpv * 50 / 12 * (H - 1) * 100) / 100 : 0))), price: val('p4'), unit: 'متر', name: 'کابل ۴×۰٫۵', halls: H };
@@ -4199,7 +4199,7 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},commit:function(){pfCommi
       var ntc = val('cn') / halls, mot = val('cm') / halls; if (!fin(mot)) mot = 0;
       if (!(fin(L) && fin(ntc) && fin(mot))) return null;
       var raw2 = L * 0.7 * ntc + mot * 50 + (val('an') > 0 ? val('an') * 20 / halls : 0);
-      return { id: 'c2', qty: up50(raw2) * halls, price: val('p2'), unit: 'متر', name: 'کابل ۲×۰٫۵', halls: halls };
+      return { id: 'c2', qty: up50(raw2 * halls), price: val('p2'), unit: 'متر', name: 'کابل ۲×۰٫۵', halls: halls };
     }
     if (kind === 'c4') {
       var sens = ((val('hn') > 0 ? val('hn') : 0) + (val('en') > 0 ? val('en') : 0) + (val('qn') > 0 ? val('qn') : 0)) / halls, sg = (val('gn') > 0 ? val('gn') : 0) / halls;
@@ -4207,7 +4207,7 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},commit:function(){pfCommi
       if (!((fin(L) && any4) || wn > 0)) return null;
       var raw4 = (any4 && fin(L) ? L * 0.8 * sens + L * 1.12 * sg : 0) + wn;
       var gpv = val('gp'); gpv = gpv > 0 ? gpv : 0; var gsv = val('gs'); gsv = gsv > 0 ? gsv : 0;
-      return { id: 'c4', qty: up50(up50(raw4) * halls + (gsv > 0 ? Math.round(gsv * 50 / 12 * 100) / 100 : (gpv > 0 && halls > 1 ? Math.round(gpv * 50 / 12 * (halls - 1) * 100) / 100 : 0))), price: val('p4'), unit: 'متر', name: 'کابل ۴×۰٫۵', halls: halls };
+      return { id: 'c4', qty: up50(raw4 * halls + (gsv > 0 ? Math.round(gsv * 50 / 12 * 100) / 100 : (gpv > 0 && halls > 1 ? Math.round(gpv * 50 / 12 * (halls - 1) * 100) / 100 : 0))), price: val('p4'), unit: 'متر', name: 'کابل ۴×۰٫۵', halls: halls };
     }
     if (kind === 'c12') {
       var h12 = val('ch'); if (!(h12 > 0)) return null;
@@ -6895,7 +6895,7 @@ input[type=file].cu-in{height:auto;padding:8px 10px}
 :root{--bkp-bg:#fff;--bkp-fg:#1a2133;--bkp-ln:#d6dcea}:root[data-theme=dark]{--bkp-bg:#17234a;--bkp-fg:#edf2ff;--bkp-ln:#34446e}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bkp-bg:#17234a;--bkp-fg:#edf2ff;--bkp-ln:#34446e}}
 #bkcPanel small{opacity:.8}#bkcPanel .vbtn{color:#fff}
 .bkb{font-size:13.5px;line-height:1.9}.bkb.on{border-inline-start:4px solid #2e9e5b}.bkb.off{border-inline-start:4px solid #c0662b}.bkb:empty{display:none}
-/* v11.60.13: کادرهای مشتری و نرخ‌ها هم‌تراز */
+/* v11.60.14: کادرهای مشتری و نرخ‌ها هم‌تراز */
 #paneI .grid>.f{display:flex;flex-direction:column;justify-content:flex-end}#paneI .grid>.f>label:first-child:not(.chk){flex:1;display:flex;align-items:flex-end}#paneI .grid>.f>input.num,#paneI .grid>.f>select{height:44px;box-sizing:border-box;width:100%}
 /* v11.60: سرعت باز شدن پیش‌فاکتور */
 #paneI .card,#paneI details,#paneI section{content-visibility:auto;contain-intrinsic-size:auto 200px}#paneI tbody tr{content-visibility:auto;contain-intrinsic-size:auto 56px}
