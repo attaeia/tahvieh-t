@@ -21,7 +21,7 @@
 #paneD .card.tools .h3 b,#paneD .card.tools .hwide b{font-size:13.5px!important;line-height:1.3}
 #paneD .card.tools .h3 span,#paneD .card.tools .hwide .t span{display:none!important}
 #paneD .card.tools .hwide .t{align-items:center}
-body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}html.kbo *,html.kbo *::before,html.kbo *::after{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;transition:none!important}
 #bnav{position:fixed;inset-inline:0;bottom:0;z-index:30;display:flex;justify-content:space-around;align-items:stretch;padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);border-top:1px solid rgba(60,80,140,.14);box-shadow:0 -6px 22px rgba(30,49,115,.10);direction:rtl}
 #bnav button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:54px;margin:0 2px;border:0;border-radius:16px;background:transparent;color:#5b6478;font:inherit;font-size:11.5px;cursor:pointer;position:relative}
 #bnav button svg{width:24px;height:24px}
@@ -1964,7 +1964,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.14</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.15</footer>
 </div>
 
 
@@ -1985,8 +1985,8 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
     if(m){if(src&&!src.hidden&&src.textContent.trim()){if(!bd){bd=document.createElement('em');bd.className='bdg';m.appendChild(bd)}bd.textContent=src.textContent}else if(bd)bd.remove()}
     nav.hidden=(c==='I')||!!document.getElementById('payLogin')||(kb&&!(document.documentElement.hasAttribute('data-ios')&&c==='D'))}
   var kb=false;
-  document.addEventListener('focusin',function(e){var t=e.target;if(t&&/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)&&t.type!=='checkbox'&&t.type!=='radio'&&t.type!=='button'){kb=true;upd()}});
-  document.addEventListener('focusout',function(){setTimeout(function(){var a=document.activeElement;if(!a||!/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)){kb=false;upd()}},150)});
+  document.addEventListener('focusin',function(e){var t=e.target;if(t&&/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)&&t.type!=='checkbox'&&t.type!=='radio'&&t.type!=='button'){kb=true;document.documentElement.classList.add('kbo');upd()}});
+  document.addEventListener('focusout',function(){setTimeout(function(){var a=document.activeElement;if(!a||!/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)){kb=false;document.documentElement.classList.remove('kbo');upd()}},150)});
   nav.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var t=document.getElementById('tab'+b.dataset.n);if(t){t.click();window.scrollTo(0,0)}setTimeout(upd,50)});
   var nt=document.querySelector('nav.tabs');if(nt)new MutationObserver(upd).observe(nt,{subtree:true,attributes:true,attributeFilter:['aria-selected']});
   new MutationObserver(upd).observe(document.body,{childList:true});
@@ -6895,7 +6895,7 @@ input[type=file].cu-in{height:auto;padding:8px 10px}
 :root{--bkp-bg:#fff;--bkp-fg:#1a2133;--bkp-ln:#d6dcea}:root[data-theme=dark]{--bkp-bg:#17234a;--bkp-fg:#edf2ff;--bkp-ln:#34446e}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bkp-bg:#17234a;--bkp-fg:#edf2ff;--bkp-ln:#34446e}}
 #bkcPanel small{opacity:.8}#bkcPanel .vbtn{color:#fff}
 .bkb{font-size:13.5px;line-height:1.9}.bkb.on{border-inline-start:4px solid #2e9e5b}.bkb.off{border-inline-start:4px solid #c0662b}.bkb:empty{display:none}
-/* v11.60.14: کادرهای مشتری و نرخ‌ها هم‌تراز */
+/* v11.60.15: کادرهای مشتری و نرخ‌ها هم‌تراز */
 #paneI .grid>.f{display:flex;flex-direction:column;justify-content:flex-end}#paneI .grid>.f>label:first-child:not(.chk){flex:1;display:flex;align-items:flex-end}#paneI .grid>.f>input.num,#paneI .grid>.f>select{height:44px;box-sizing:border-box;width:100%}
 /* v11.60: سرعت باز شدن پیش‌فاکتور */
 #paneI .card,#paneI details,#paneI section{content-visibility:auto;contain-intrinsic-size:auto 200px}#paneI tbody tr{content-visibility:auto;contain-intrinsic-size:auto 56px}
@@ -7793,6 +7793,7 @@ html[data-skin=glass] .cu-fl button[aria-pressed=true]{background:var(--g-acc)!i
 
 <style id="payIos">
 /* ===== سبک «iOS»: والپیپر، صفحه‌ی آیکون‌ها، Dock و انیمیشن‌های فنری (فقط وقتی انتخاب شده) ===== */
+html.kbo *,html.kbo *::before,html.kbo *::after{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;transition:none!important}
 html[data-ios]{--ios-t:.55;--ios-bar:#354c9b;--wp:radial-gradient(120% 80% at 80% 0%,#4f7cff 0%,transparent 55%),radial-gradient(100% 70% at 0% 100%,#00b4c8 0%,transparent 60%),linear-gradient(160deg,#1b2f78,#354c9b 55%,#2a1f6b);--veil:rgba(238,243,252,.9);--g-card:rgba(255,255,255,calc(.30 + var(--ios-t)*.62))}
 html[data-ios][data-theme=dark]{--veil:rgba(8,12,28,.84);--g-card:rgba(28,38,72,calc(.30 + var(--ios-t)*.55))}
 html[data-ios][data-wall=sunset]{--wp:radial-gradient(110% 80% at 20% 0%,#ff9a62,transparent 55%),radial-gradient(100% 70% at 100% 100%,#c13584,transparent 60%),linear-gradient(160deg,#4a2a8a,#8a3a9c 60%,#e0663c)}
@@ -8181,7 +8182,7 @@ html[data-ios]:not([data-ipane=I]) #app{padding-top:calc(72px + env(safe-area-in
   window.addEventListener('resize',fit);
   window.addEventListener('scroll',function(){if(R.hasAttribute('data-ios')&&R.getAttribute('data-ipane')==='D'&&(window.scrollY||0)>0)window.scrollTo(0,0)},{passive:true});
   try{new MutationObserver(function(){pane()}).observe(document.body,{attributes:true,subtree:true,attributeFilter:['aria-selected','hidden']})}catch(e){}
-  mark();pane();setTimeout(function(){build();pane()},700);setInterval(function(){if(document.hidden)return;build();pane();repFill();glRender();var z=$('paneZ');if(z&&z.closest&&z.closest('#iosSB')&&z.hidden)z.hidden=false},5000);
+  mark();pane();setTimeout(function(){build();pane()},700);setInterval(function(){if(document.hidden||document.documentElement.classList.contains('kbo'))return;build();pane();repFill();glRender();var z=$('paneZ');if(z&&z.closest&&z.closest('#iosSB')&&z.hidden)z.hidden=false},5000);
 })();
 
 </script>
