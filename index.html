@@ -1763,7 +1763,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 <details class="card say" id="sayC"><summary>توضیح ساده کابل و لودسل (برای خواندن برای مشتری)</summary><div class="sayBody">
 <h3>کابل‌ها چه کاری می‌کنند؟</h3>
 <p>در سیستم اتوماسیون، سنسورها و موتورها و نمایشگر باید با دستگاه مرکزی حرف بزنند. کابل مثل «رگ» این سیستم است. چند نوع کابل داریم:</p>
-<p><b>کابل ۲×۰٫۵:</b> برای اتصال سنسورهای دما (NTC)، موتورهای اینلت، آژیر، نمایشگر و سنسور دمای بیرون. متراژ هر سالن از این‌ها جمع می‌شود: طول سالن × ۰٫۷ برای هر سنسور دما، به‌اضافه ۵۰ متر برای هر موتور اینلت، ۲۰ متر برای هر آژیر و نمایشگر و ۵۰ متر برای سنسور بیرون.</p>
+<p><b>کابل ۲×۰٫۵:</b> برای اتصال سنسورهای دما (NTC)، موتورهای اینلت و آژیر. متراژ هر سالن از این‌ها جمع می‌شود: طول سالن × ۰٫۷ برای هر سنسور دما، به‌اضافه ۵۰ متر برای هر موتور اینلت و ۲۰ متر برای هر آژیر. نمایشگر و سنسور دمای بیرون در کابل ۴×۰٫۵ حساب می‌شوند.</p>
 <p><b>کابل ۴×۰٫۵:</b> برای سنسورهای حساس‌تر مثل رطوبت، آمونیاک، گاز CO₂ و سیستم گشت. هر کدام از این‌ها طول سالن × ۰٫۸ کابل می‌خواهند (گشت ۱٫۱۲). به ازای هر سیستم توزین هم ۵۰ متر اضافه می‌شود.</p>
 <p><b>کابل ۱۲×۰٫۵:</b> کابل فرمان؛ برای هر سالن ۱۲ متر.</p>
 <p>همه‌ی عددها را به بالا و به مضرب ۵۰ متر رد می‌کنیم تا هیچ‌وقت کابل کم نیاید.</p>
@@ -1794,11 +1794,9 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
             <div class="field"><label for="cn">تعداد NTC</label><input type="text" id="cn" inputmode="numeric" placeholder="مثلاً ۶"></div>
             <div class="field"><label for="cm">تعداد موتور اینلت</label><input type="text" id="cm" inputmode="numeric" placeholder="مثلاً ۴"></div>
             <div class="field"><label for="an">تعداد آژیر (هر عدد ۲۰ متر)</label><input type="text" id="an" inputmode="numeric" placeholder="خالی = ۰"></div>
-            <div class="field"><label for="dn">تعداد نمایشگر (هر عدد ۲۰ متر)</label><input type="text" id="dn" inputmode="numeric" placeholder="خالی = ۰"></div>
-            <div class="field"><label for="on">تعداد سنسور دمای بیرون (هر عدد ۵۰ متر)</label><input type="text" id="on" inputmode="numeric" placeholder="خالی = ۰"></div>
 <details class="more" style="grid-column:1 / -1"><summary>اطلاعات بیشتر</summary><div class="fields" style="margin-top:10px">
             <div class="field wide"><p class="hint">هر کادری که عدد بنویسی حساب می‌شود. کادر خالی یعنی صفر.</p></div>
-            <div class="field wide"><p class="hint"><b>فرمول:</b> (طول سالن × ۰٫۷ × تعداد NTC) + (تعداد موتور اینلت × ۵۰) + (تعداد آژیر × ۲۰ + تعداد نمایشگر × ۲۰ + تعداد سنسور دمای بیرون × ۵۰). عدد حاصل به بالا و به مضرب ۵۰ متر گرد می‌شود (مثلاً ۱۶۰۲ ← ۱۶۵۰).</p></div>
+            <div class="field wide"><p class="hint"><b>فرمول:</b> (طول سالن × ۰٫۷ × تعداد NTC) + (تعداد موتور اینلت × ۵۰) + (تعداد آژیر × ۲۰). عدد حاصل به بالا و به مضرب ۵۰ متر گرد می‌شود (مثلاً ۱۶۰۲ ← ۱۶۵۰).</p></div>
             <div class="field"><label for="p2">قیمت هر متر (ریال، اختیاری)</label><input type="text" id="p2" inputmode="decimal" placeholder="ریال"></div>
 </div></details>
           </div>
@@ -1810,10 +1808,12 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
             <div class="field"><label for="hn">تعداد سنسور رطوبت AHS</label><input type="text" id="hn" inputmode="numeric" placeholder="خالی = ۰"></div>
             <div class="field"><label for="en">تعداد سنسور آمونیاک</label><input type="text" id="en" inputmode="numeric" placeholder="خالی = ۰"></div>
             <div class="field"><label for="qn">تعداد سنسور CO₂</label><input type="text" id="qn" inputmode="numeric" placeholder="خالی = ۰"></div>
+            <div class="field"><label for="dn">تعداد نمایشگر (مثل سنسور: طول × ۰٫۸)</label><input type="text" id="dn" inputmode="numeric" placeholder="خالی = ۰"></div>
+            <div class="field"><label for="on">تعداد سنسور دمای بیرون (مثل سنسور: طول × ۰٫۸)</label><input type="text" id="on" inputmode="numeric" placeholder="خالی = ۰"></div>
             <div class="field"><label for="gn">تعداد سنسور گشت (طول × ۱٫۱۲ برای هر عدد)</label><input type="text" id="gn" inputmode="numeric" placeholder="خالی = ۰"></div>
             <div class="field"><label for="wn">تعداد سیستم توزین (هر عدد ۵۰ متر)</label><input type="text" id="wn" inputmode="numeric" placeholder="خالی = ۰"></div>
 <details class="more" style="grid-column:1 / -1"><summary>اطلاعات بیشتر</summary><div class="fields" style="margin-top:10px">
-            <div class="field wide"><p class="hint">تعداد سه سنسور اول با هم جمع می‌شود و در طول × ۰٫۸ ضرب می‌شود. سنسور گشت جدا حساب می‌شود: طول × ۱٫۱۲ × تعداد گشت. به ازای هر سیستم توزین ۵۰ متر ثابت اضافه می‌شود. فاصله بین هر سالن × تعداد سالن، بدون گرد کردن، به متراژ کل ۴×۰٫۵ اضافه می‌شود (تعداد سالن را در کارت ۱۲×۰٫۵ بنویس). کادر خالی یعنی صفر. اگر ۴×۰٫۵ لازم نیست، همه را خالی بگذار.</p></div>
+            <div class="field wide"><p class="hint">تعداد سنسورها (رطوبت، آمونیاک، CO₂) به‌اضافه نمایشگر و سنسور دمای بیرون با هم جمع می‌شود و در طول × ۰٫۸ ضرب می‌شود. سنسور گشت جدا حساب می‌شود: طول × ۱٫۱۲ × تعداد گشت. به ازای هر سیستم توزین ۵۰ متر ثابت اضافه می‌شود. فاصله بین هر سالن × تعداد سالن، بدون گرد کردن، به متراژ کل ۴×۰٫۵ اضافه می‌شود (تعداد سالن را در کارت ۱۲×۰٫۵ بنویس). کادر خالی یعنی صفر. اگر ۴×۰٫۵ لازم نیست، همه را خالی بگذار.</p></div>
             <div class="field"><label for="p4">قیمت هر متر (ریال، اختیاری)</label><input type="text" id="p4" inputmode="decimal" placeholder="ریال"></div>
 </div></details>
           </div>
@@ -1961,7 +1961,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.5</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.6</footer>
 </div>
 
 
@@ -3143,10 +3143,10 @@ function cabCalc(){
   var V=G.filter(function(g){return g.n>0&&g.L>0});
   if(!V.length)return has12?{c2:0,c4:0,c12:halls0*12}:null;
   var q=function(id){return S.rows[id]?num(qtyOf(id)):0};
-  var sens=(q('ahs')+q('nh3')+q('co2'))/halls,sg=q('patrol')/halls,wn=(q('wfeed')+q('wbird'))/halls;
+  var sens=(q('ahs')+q('nh3')+q('co2')+q('disp')+q('outs'))/halls,sg=q('patrol')/halls,wn=(q('wfeed')+q('wbird'))/halls;
   var c2=0,c4=0;
   V.forEach(function(g){var L=g.L;
-    var raw2=L*0.7*q('ntc')/halls+q('inlet')*50/halls+(q('siren')*20+q('disp')*20+q('outs')*50)/halls;
+    var raw2=L*0.7*q('ntc')/halls+q('inlet')*50/halls+(q('siren')*20)/halls;
     var raw4=(sens+sg>0?L*0.8*sens+L*1.12*sg:0)+wn*50;
     if(raw2>0)c2+=up50(raw2)*g.n;if(raw4>0)c4+=up50(raw4)*g.n});
   var gp=num(S.inv.gap);if(!(gp>0))gp=0;
@@ -4014,12 +4014,12 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},commit:function(){pfCommi
     var ntc = val('cn'), mot = val('cm'); if (!fin(mot)) mot = 0;
     var has2 = fin(L) && fin(ntc) && fin(mot);
     function opt(ck, nid, m){ var c = val(nid); return (c > 0 ? c : 0) * m; }
-    var siren = opt('ak', 'an', 20), disp = opt('dk', 'dn', 20), outs = opt('ok', 'on', 50);
-    var acc = siren + disp + outs;
+    var siren = opt('ak', 'an', 20), disp = opt('dk', 'dn', 1), outs = opt('ok', 'on', 1);
+    var acc = siren;
     var raw2 = has2 ? L * 0.7 * ntc + mot * 50 + acc : NaN;
     var per2 = fin(raw2) ? up50(raw2) : NaN;
     var sh = opt('hk', 'hn', 1), se = opt('ek', 'en', 1), sq = opt('qk', 'qn', 1), sg = opt('gk', 'gn', 1);
-    var sens = sh + se + sq;
+    var sens = sh + se + sq + disp + outs;
     var wn = val('wn'); wn = wn > 0 ? wn : 0; var wcab = wn * 50;
     var any4 = (sens + sg) > 0;
     var has4 = (fin(L) && any4) || (wcab > 0 && !any4);
@@ -4034,7 +4034,7 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},commit:function(){pfCommi
     var t12 = raw12;
     function money(meters, id){ var pr = val(id); return (fin(meters) && fin(pr)) ? ' · قیمت: <b><bdi>' + nf(meters, 0) + ' × ' + nf(pr, 2) + ' = ' + nf(meters * pr, 0) + '</bdi></b> ریال' : ''; }
     $('n2').innerHTML = has2
-      ? 'خام: <bdi>' + nf(L) + ' × ۰٫۷ × ' + nf(ntc) + ' + ' + nf(mot) + ' × ۵۰' + (siren ? ' + آژیر ' + nf(siren) : '') + (disp ? ' + نمایشگر ' + nf(disp) : '') + (outs ? ' + سنسور دمای بیرون ' + nf(outs) : '') + ' = ' + nf(raw2, 2) + '</bdi><br>گرد به بالا (مضرب ۵۰): <b><bdi>' + nf(per2, 0) + '</bdi> متر هر سالن</b>' + money(per2, 'p2')
+      ? 'خام: <bdi>' + nf(L) + ' × ۰٫۷ × ' + nf(ntc) + ' + ' + nf(mot) + ' × ۵۰' + (siren ? ' + آژیر ' + nf(siren) : '') + ' = ' + nf(raw2, 2) + '</bdi><br>گرد به بالا (مضرب ۵۰): <b><bdi>' + nf(per2, 0) + '</bdi> متر هر سالن</b>' + money(per2, 'p2')
       : 'طول سالن، تعداد NTC و تعداد موتور را وارد کن.';
     $('n4').innerHTML = has4
       ? 'خام: <bdi>' + ((any4 ? nf(L) + ' × ۰٫۸ × ' + nf(sens) + (sg ? ' + ' + nf(L) + ' × ۱٫۱۲' + (sg !== 1 ? ' × ' + nf(sg) : '') : '') : '') + (wcab ? (any4 ? ' + ' : '') + 'توزین ' + nf(wn) + ' × ۵۰' : '')) + ' = ' + nf(raw4, 2) + '</bdi><br>گرد به بالا (مضرب ۵۰): <b><bdi>' + nf(per4, 0) + '</bdi> متر هر سالن</b>' + money(per4, 'p4') + (!multi && gp > 0 ? (fin(halls) ? '<br>فاصله بین سالن‌ها: <bdi>' + nf(gp) + ' × ۵۰ ÷ ۱۲ × ' + nf(halls - 1) + ' = ' + nf(gapM(gp, halls), 2) + '</bdi> متر (بدون گرد) · جمع کل ۴×۰٫۵: <b><bdi>' + nf(fin(per4) ? per4 * halls + gapM(gp, halls) : gapM(gp, halls), 2) + '</bdi> متر</b>' : '<br>برای افزودن فاصله بین سالن‌ها، تعداد سالن را در کارت «مشخصات سالن» وارد کن.') : '')
@@ -4173,11 +4173,11 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},commit:function(){pfCommi
     var ntc = val('cn'), mot = val('cm'); if (!fin(mot)) mot = 0;
     if (kind === 'c2') {
       if (!fin(ntc)) return null;
-      var acc = (val('an') > 0 ? val('an') * 20 : 0) + (val('dn') > 0 ? val('dn') * 20 : 0) + (val('on') > 0 ? val('on') * 50 : 0), q2 = 0, ok2 = false;
+      var acc = (val('an') > 0 ? val('an') * 20 : 0), q2 = 0, ok2 = false;
       GR.forEach(function(g){ if (fin(g.n) && fin(g.L)) { q2 += up50(g.L * 0.7 * ntc + mot * 50 + acc) * g.n; ok2 = true; } });
       return ok2 ? { id: 'c2', qty: q2, price: val('p2'), unit: 'متر', name: 'کابل ۲×۰٫۵', halls: H } : null;
     }
-    var sens = (val('hn') > 0 ? val('hn') : 0) + (val('en') > 0 ? val('en') : 0) + (val('qn') > 0 ? val('qn') : 0), sg = val('gn') > 0 ? val('gn') : 0;
+    var sens = (val('hn') > 0 ? val('hn') : 0) + (val('en') > 0 ? val('en') : 0) + (val('qn') > 0 ? val('qn') : 0) + (val('dn') > 0 ? val('dn') : 0) + (val('on') > 0 ? val('on') : 0), sg = val('gn') > 0 ? val('gn') : 0;
     var wn = val('wn') > 0 ? val('wn') : 0, any4 = (sens + sg) > 0, q4 = 0, ok4 = false;
     GR.forEach(function(g){ if (!fin(g.n)) return; if ((fin(g.L) && any4) || (wn > 0 && !any4)) { q4 += up50((any4 && fin(g.L) ? g.L * 0.8 * sens + g.L * 1.12 * sg : 0) + wn * 50) * g.n; ok4 = true; } });
     if (!ok4) return null;
@@ -4191,11 +4191,11 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},commit:function(){pfCommi
     if (kind === 'c2') {
       var ntc = val('cn'), mot = val('cm'); if (!fin(mot)) mot = 0;
       if (!(fin(L) && fin(ntc) && fin(mot))) return null;
-      var raw2 = L * 0.7 * ntc + mot * 50 + (val('an') > 0 ? val('an') * 20 : 0) + (val('dn') > 0 ? val('dn') * 20 : 0) + (val('on') > 0 ? val('on') * 50 : 0);
+      var raw2 = L * 0.7 * ntc + mot * 50 + (val('an') > 0 ? val('an') * 20 : 0);
       return { id: 'c2', qty: up50(raw2) * halls, price: val('p2'), unit: 'متر', name: 'کابل ۲×۰٫۵', halls: halls };
     }
     if (kind === 'c4') {
-      var sens = (val('hn') > 0 ? val('hn') : 0) + (val('en') > 0 ? val('en') : 0) + (val('qn') > 0 ? val('qn') : 0), sg = val('gn') > 0 ? val('gn') : 0;
+      var sens = (val('hn') > 0 ? val('hn') : 0) + (val('en') > 0 ? val('en') : 0) + (val('qn') > 0 ? val('qn') : 0) + (val('dn') > 0 ? val('dn') : 0) + (val('on') > 0 ? val('on') : 0), sg = val('gn') > 0 ? val('gn') : 0;
       var wn = val('wn') > 0 ? val('wn') : 0, any4 = (sens + sg) > 0;
       if (!((fin(L) && any4) || wn > 0)) return null;
       var raw4 = (any4 && fin(L) ? L * 0.8 * sens + L * 1.12 * sg : 0) + wn * 50;
@@ -6889,7 +6889,7 @@ input[type=file].cu-in{height:auto;padding:8px 10px}
 :root{--bkp-bg:#fff;--bkp-fg:#1a2133;--bkp-ln:#d6dcea}:root[data-theme=dark]{--bkp-bg:#17234a;--bkp-fg:#edf2ff;--bkp-ln:#34446e}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bkp-bg:#17234a;--bkp-fg:#edf2ff;--bkp-ln:#34446e}}
 #bkcPanel small{opacity:.8}#bkcPanel .vbtn{color:#fff}
 .bkb{font-size:13.5px;line-height:1.9}.bkb.on{border-inline-start:4px solid #2e9e5b}.bkb.off{border-inline-start:4px solid #c0662b}.bkb:empty{display:none}
-/* v11.60.5: کادرهای مشتری و نرخ‌ها هم‌تراز */
+/* v11.60.6: کادرهای مشتری و نرخ‌ها هم‌تراز */
 #paneI .grid>.f{display:flex;flex-direction:column;justify-content:flex-end}#paneI .grid>.f>label:first-child:not(.chk){flex:1;display:flex;align-items:flex-end}#paneI .grid>.f>input.num,#paneI .grid>.f>select{height:44px;box-sizing:border-box;width:100%}
 /* v11.60: سرعت باز شدن پیش‌فاکتور */
 #paneI .card,#paneI details,#paneI section{content-visibility:auto;contain-intrinsic-size:auto 200px}#paneI tbody tr{content-visibility:auto;contain-intrinsic-size:auto 56px}
