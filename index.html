@@ -1964,7 +1964,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.16</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.17</footer>
 </div>
 
 
@@ -2626,7 +2626,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
   }
   function render(){if(mode)return;var r=null;if(cur){ROWS=build();ROWS.forEach(function(x){if(x.id===cur)r=x})}
     if(r)renderFile(r);else{cur=null;renderList()}}
-  function openCust(id){mode='';cur=id;(function(){var x=ROWS.filter(function(y){return y.id===id})[0];if(x)seg=isLeadRow(x)?'lead':'cust'})();ftab='sum';var tb=$('tabQ');if(tb&&$('paneQ').hidden)tb.click();render();try{window.scrollTo(0,0)}catch(e){}}
+  function openCust(id){mode='';ROWS=build();cur=id;(function(){var x=ROWS.filter(function(y){return y.id===id})[0];if(x)seg=isLeadRow(x)?'lead':'cust'})();ftab='sum';var tb=$('tabQ');if(tb&&$('paneQ').hidden)tb.click();render();try{window.scrollTo(0,0)}catch(e){}}
 
 
   /* ---- ۱۱.۳۳: خانه‌ی ساده ---- */
@@ -6119,6 +6119,7 @@ if('serviceWorker' in navigator&&location.protocol==='https:'){window.addEventLi
     box.innerHTML=h;box.hidden=false}
   function openEntry(e){
     $('gSugg').hidden=true;$('gSearch').value='';
+    if(window.__cust2&&window.__cust2.open){window.__cust2.open(e.kind==='f'?e.id:'l:'+e.id);return}
     if(e.kind==='f'){if(window.__cust)window.__cust.open(e.id)}
     else{go('F');setTimeout(function(){var b=document.querySelector('#paneF [data-ed="'+e.id+'"]');if(b)b.click()},150)}}
   $('gSearch').addEventListener('input',drawSugg);
@@ -6126,7 +6127,7 @@ if('serviceWorker' in navigator&&location.protocol==='https:'){window.addEventLi
   $('gSearch').addEventListener('keydown',function(ev){if(ev.key==='Enter'&&sgList[0]){ev.preventDefault();openEntry(sgList[0])}});
   $('gSugg').addEventListener('click',function(ev){
     var b=ev.target.closest('[data-sg]');if(b){openEntry(sgList[+b.dataset.sg]);return}
-    var n=ev.target.closest('[data-newc]');if(n){var id=window.__cust.add('',phShow(p10(n.dataset.newc)));$('gSugg').hidden=true;$('gSearch').value='';window.__cust.open(id);toast('مشتری ساخته شد؛ نامش را در پرسونا بنویس.')}});
+    var n=ev.target.closest('[data-newc]');if(n){var id=window.__cust.add('',phShow(p10(n.dataset.newc)));$('gSugg').hidden=true;$('gSearch').value='';(window.__cust2&&window.__cust2.open?window.__cust2.open(id):window.__cust.open(id));toast('مشتری ساخته شد؛ نامش را در کارت بنویس.')}});
   document.addEventListener('click',function(ev){if(!ev.target.closest('.gs'))$('gSugg').hidden=true;if(!ev.target.closest('#tbPanel,#topBar'))$('tbPanel').hidden=true});
 
   /* ================= ثبت تماس با یادداشت ================= */
@@ -6895,7 +6896,7 @@ input[type=file].cu-in{height:auto;padding:8px 10px}
 :root{--bkp-bg:#fff;--bkp-fg:#1a2133;--bkp-ln:#d6dcea}:root[data-theme=dark]{--bkp-bg:#17234a;--bkp-fg:#edf2ff;--bkp-ln:#34446e}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bkp-bg:#17234a;--bkp-fg:#edf2ff;--bkp-ln:#34446e}}
 #bkcPanel small{opacity:.8}#bkcPanel .vbtn{color:#fff}
 .bkb{font-size:13.5px;line-height:1.9}.bkb.on{border-inline-start:4px solid #2e9e5b}.bkb.off{border-inline-start:4px solid #c0662b}.bkb:empty{display:none}
-/* v11.60.16: کادرهای مشتری و نرخ‌ها هم‌تراز */
+/* v11.60.17: کادرهای مشتری و نرخ‌ها هم‌تراز */
 #paneI .grid>.f{display:flex;flex-direction:column;justify-content:flex-end}#paneI .grid>.f>label:first-child:not(.chk){flex:1;display:flex;align-items:flex-end}#paneI .grid>.f>input.num,#paneI .grid>.f>select{height:44px;box-sizing:border-box;width:100%}
 /* v11.60: سرعت باز شدن پیش‌فاکتور */
 #paneI .card,#paneI details,#paneI section{content-visibility:auto;contain-intrinsic-size:auto 200px}#paneI tbody tr{content-visibility:auto;contain-intrinsic-size:auto 56px}
