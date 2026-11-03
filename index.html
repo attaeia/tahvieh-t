@@ -1968,7 +1968,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.31</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.32</footer>
 </div>
 
 
@@ -3537,7 +3537,7 @@ async function makeProposal(){
   var same=inv.attn&&inv.buyer&&sameName(inv.attn,inv.buyer),bn=same?honAttn(inv):(honBuyer(inv)+(inv.attn?' - '+honAttn(inv):''));
   await put(0,[318,745,507,773],bn,{name:1,low:1});await put(0,[328,806,504,831],P(inv.date||''),{low:1});await put(0,[323,863,504,888],P(inv.no||''),{low:1});
   /* صفحه ۲ */
-  await put(1,[555,269,829,305],inv.attn||inv.buyer||'',{name:1});await put(1,[318,269,552,304],P(inv.phone||''),{});
+  await put(1,[555,269,829,305],bn,{name:1});await put(1,[318,269,552,304],P(inv.phone||''),{});
   await put(1,[84,409,554,456],[inv.prov,inv.city,inv.addr].filter(function(x){return String(x||'').trim()}).join('، '),{name:1});
   await put(1,[415,586,650,613],inv.proj||'',{name:1,low:1});await put(1,[84,269,298,304],P(inv.tel||''),{});await put(1,[420,636,604,663],P(inv.halls||''),{low:1});await put(1,[75,586,304,613],inv.farm||'',{name:1,low:1});await put(1,[75,636,265,663],P(inv.dim||''),{low:1});
   /* صفحه‌های ۴ تا ۱۲ قالب ۱۵ صفحه‌ای */
