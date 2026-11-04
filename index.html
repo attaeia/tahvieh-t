@@ -1888,24 +1888,30 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
     <p class="hint" id="custHint" style="margin:10px 0 0"></p>
   </section>
 
-  <details class="card inv" open><summary>سالن‌ها (طول، عرض، تعداد)</summary>
-    <div class="grid">
-      <input id="i_halls" type="hidden"><input id="i_dim" type="hidden">
-      <div class="f span2" id="hgBox" style="grid-column:1 / -1"><label>سالن‌ها (طول، عرض، تعداد)</label><div id="hgRows" style="display:grid;gap:6px"></div><button type="button" class="ghost" id="hgAdd" style="margin-top:6px">+ افزودن سالن</button><div class="hint" id="cabHint"></div></div>
-      <div class="f" hidden style="display:none"><label for="i_gap">فاصله بین هر سالن (متر)</label><input id="i_gap" class="num" inputmode="decimal" placeholder="خالی = ۰"><div class="hint" id="gapHint"></div></div>
+    <section class="card" id="noCard" aria-label="شماره پیش‌فاکتور" style="padding:8px 10px;margin-top:8px">
+    <input id="i_no" style="display:none">
+    <div style="display:flex;align-items:center;gap:8px">
+      <div style="flex:1;min-width:0">
+        <div id="noBox" dir="ltr" style="display:flex;align-items:flex-end;gap:4px;max-width:340px;margin:0 auto">
+          <label style="flex:1.25 1 0;min-width:0;font-size:9px;white-space:nowrap;text-align:center;color:var(--muted)"><input id="np_a" inputmode="numeric" maxlength="4" autocomplete="off" style="width:100%;min-width:0;text-align:center;padding:6px 1px;font-size:13px"><br>حرف و سال</label>
+          <label style="flex:1.1 1 0;min-width:0;font-size:9px;white-space:nowrap;text-align:center;color:var(--muted)"><input id="np_u" inputmode="numeric" maxlength="4" autocomplete="off" style="width:100%;min-width:0;text-align:center;padding:6px 1px;font-size:13px"><br>دلار</label>
+          <span style="padding-bottom:16px;color:var(--muted)">-</span>
+          <label style="flex:1.25 1 0;min-width:0;font-size:9px;white-space:nowrap;text-align:center;color:var(--muted)"><input id="np_md" inputmode="numeric" maxlength="4" autocomplete="off" style="width:100%;min-width:0;text-align:center;padding:6px 1px;font-size:13px"><br>ماه و روز</label>
+          <label style="flex:1 1 0;min-width:0;font-size:9px;white-space:nowrap;text-align:center;color:var(--muted)"><input id="np_c" inputmode="numeric" maxlength="3" autocomplete="off" style="width:100%;min-width:0;text-align:center;padding:6px 1px;font-size:13px"><br>مشتری</label>
+          <label style="flex:1 1 0;min-width:0;font-size:9px;white-space:nowrap;text-align:center;color:var(--muted)"><input id="np_v" inputmode="numeric" maxlength="3" autocomplete="off" style="width:100%;min-width:0;text-align:center;padding:6px 1px;font-size:13px"><br>ورژن</label>
+        </div>
+        <div id="noSt" style="font-size:10px;margin-top:2px;text-align:center"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px;flex:0 0 auto">
+        <button type="button" id="nextInv" class="ghost" style="color:var(--accent);padding:5px 8px;font-size:12px;min-height:0">ثبت و شماره‌ی بعدی</button>
+        <button type="button" id="autoInv" class="ghost" style="padding:5px 8px;font-size:12px;min-height:0">شماره‌ی خودکار</button>
+      </div>
     </div>
-  </details>
+  </section>
+
   <details class="card inv"><summary>مشخصات پیش‌فاکتور</summary>
     <div class="grid">
       <div class="f" style="grid-column:1 / -1"><label for="i_find">جستجوی مشتری در پوشه‌ها</label><input id="i_find" autocomplete="off" placeholder="نام، شرکت یا شماره‌ی مشتری را بنویس"><div id="findRes" class="findRes"></div><div id="findLink" class="findLink" hidden></div></div>
-      <div class="f"><label for="i_no">شماره</label><input id="i_no" style="display:none"><div class="bar" style="margin-top:4px"><button type="button" id="nextInv" class="ghost" style="color:var(--accent)">ثبت و شماره‌ی بعدی</button><button type="button" id="autoInv" class="ghost">شماره‌ی خودکار</button></div><div id="noBox" dir="ltr" style="display:flex;align-items:flex-end;gap:6px;justify-content:center">
-          <label style="font-size:10px;text-align:center;color:var(--muted)"><input id="np_a" maxlength="4" autocomplete="off" style="width:62px;text-align:center;padding:8px 2px"><br>حرف و سال</label>
-          <label style="font-size:10px;text-align:center;color:var(--muted)"><input id="np_u" inputmode="numeric" maxlength="4" autocomplete="off" style="width:62px;text-align:center;padding:8px 2px"><br>دلار</label>
-          <span style="padding-bottom:22px;color:var(--muted)">-</span>
-          <label style="font-size:10px;text-align:center;color:var(--muted)"><input id="np_md" inputmode="numeric" maxlength="4" autocomplete="off" style="width:62px;text-align:center;padding:8px 2px"><br>ماه و روز</label>
-          <label style="font-size:10px;text-align:center;color:var(--muted)"><input id="np_c" inputmode="numeric" maxlength="3" autocomplete="off" style="width:52px;text-align:center;padding:8px 2px"><br>مشتری</label>
-          <label style="font-size:10px;text-align:center;color:var(--muted)"><input id="np_v" inputmode="numeric" maxlength="3" autocomplete="off" style="width:52px;text-align:center;padding:8px 2px"><br>ورژن</label>
-        </div></div>
       <div class="f"><label for="i_date">تاریخ</label><input id="i_date"></div>
       <div class="f"><label for="i_buyer">خریدار</label><input id="i_buyer" list="custlist" autocomplete="off" placeholder="نام مشتری را انتخاب کنید"><datalist id="custlist"></datalist></div>
       <div class="f"><label for="i_proj">پروژه</label><input id="i_proj" placeholder="مثلاً پروژه رهپویان"></div>
@@ -1925,6 +1931,14 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
       <div class="f span2" style="grid-column:1 / -1"><label for="i_validTxt">متن قرمز پیش‌فاکتور (دلخواه)</label><input id="i_validTxt" placeholder="خالی = متن خودکار: «مدت اعتبار پیش فاکتور به مدت … از تاریخ صدور می باشد»"></div>
       <div class="f"><label for="i_sales">واحد فروش</label><input id="i_sales" class="num"></div>
       <div class="f span2"><label for="i_notes">توضیحات پایین فاکتور</label><textarea id="i_notes" rows="6"></textarea></div>
+    </div>
+  </details>
+
+  <details class="card inv" open><summary>سالن‌ها (طول، عرض، تعداد)</summary>
+    <div class="grid">
+      <input id="i_halls" type="hidden"><input id="i_dim" type="hidden">
+      <div class="f span2" id="hgBox" style="grid-column:1 / -1"><label>سالن‌ها (طول، عرض، تعداد)</label><div id="hgRows" style="display:grid;gap:6px"></div><button type="button" class="ghost" id="hgAdd" style="margin-top:6px">+ افزودن سالن</button><div class="hint" id="cabHint"></div></div>
+      <div class="f" hidden style="display:none"><label for="i_gap">فاصله بین هر سالن (متر)</label><input id="i_gap" class="num" inputmode="decimal" placeholder="خالی = ۰"><div class="hint" id="gapHint"></div></div>
     </div>
   </details>
 
@@ -1975,7 +1989,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.40</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.45</footer>
 </div>
 
 
@@ -3130,13 +3144,15 @@ function pfLetter(){var sl=window.__paySlug||'',nm=String(window.__payUserName||
 function pfKey(){var d=toLat(S.inv.phone||'').replace(/\D/g,'');if(d.length>=7)return 'p:'+d.slice(-10);var b=String(S.inv.buyer||'').trim();return b?'n:'+b:'x'}
 function pfDate(){var m=toLat(S.inv.date||'').match(/(\d{2,4})\D+(\d{1,2})\D+(\d{1,2})/),z=function(n){return String(n).padStart(2,'0')};return m?{y:z(String(m[1]).slice(-2)),mo:z(m[2]),d:z(m[3])}:{y:'00',mo:'00',d:'00'}}
 function pfSeq(){var dt=pfDate(),D=pfDays()[dt.y+dt.mo+dt.d]||{ord:{},cnt:{}},k=pfKey(),o,n;if(D.ord[k]){o=D.ord[k];n=(D.cnt[k]||0)+1}else{o=1;Object.keys(D.ord).forEach(function(x){if(D.ord[x]>=o)o=D.ord[x]+1});n=1}return {o:o,n:n,k:k,dk:dt.y+dt.mo+dt.d}}
-function pfCommit(){var q=pfSeq(),all=pfDays();var D=all[q.dk]||(all[q.dk]={ord:{},cnt:{}});D.ord[q.k]=q.o;D.cnt[q.k]=q.n;var ks=Object.keys(all).sort();while(ks.length>60)delete all[ks.shift()];try{localStorage.setItem(SKEY,JSON.stringify(all))}catch(e){}}
-function autoNo(){var dt=pfDate(),q=pfSeq();return pfLetter()+dt.y+Math.round((num(S.rate)||0)/10000)+'-'+dt.mo+dt.d+String(q.o)+String(q.n)}
+function pfSig(){var d=pfDate();return pfKey()+'|'+d.y+d.mo+d.d}
+function pfCommit(){try{if(!calc().lines.length)return}catch(e){return}if(S.regNo&&S.regNo===S.inv.no&&S.regSig===pfSig())return;var q=pfSeq(),all=pfDays();var D=all[q.dk]||(all[q.dk]={ord:{},cnt:{}});D.ord[q.k]=q.o;D.cnt[q.k]=q.n;var ks=Object.keys(all).sort();while(ks.length>60)delete all[ks.shift()];try{localStorage.setItem(SKEY,JSON.stringify(all))}catch(e){}S.regNo=S.inv.no;S.regSig=pfSig();try{noStat()}catch(e2){}}
+function noStat(){var e=$('noSt');if(!e)return;var ok=S.regNo&&S.regNo===S.inv.no&&S.regSig===pfSig();e.textContent=ok?'✓ ثبت شده':'ثبت نشده (با «ذخیره در پوشه مشتری» ثبت می‌شود)';e.style.color=ok?'var(--accent)':'var(--muted)'}
+function autoNo(){if(S.regNo&&S.regSig===pfSig())return S.regNo;var dt=pfDate(),q=pfSeq();return pfLetter()+dt.y+Math.round((num(S.rate)||0)/10000)+'-'+dt.mo+dt.d+String(q.o)+String(q.n)}
 function noParse(no){var m=String(no||'').replace(/[۰-۹]/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)}).match(/^([A-Za-z]*\d{2})(\d+)-(\d{4})(\d+)$/);if(!m)return null;var t=m[4];return {a:m[1],u:m[2],md:m[3],c:t.length>1?t.slice(0,-1):t,v:t.length>1?t.slice(-1):''}}
 var NOIDS=['a','u','md','c','v'];
 function noFill(){var ac=document.activeElement;if(ac&&ac.id&&ac.id.indexOf('np_')===0)return;var p=noParse(S.inv.no);NOIDS.forEach(function(k){var e=$('np_'+k);if(e)e.value=p?p[k]:''})}
 function noCompose(){var v={};NOIDS.forEach(function(k){v[k]=String(($('np_'+k)||{}).value||'').trim()});var e=$('i_no');e.value=v.a+v.u+'-'+v.md+v.c+v.v;e.dispatchEvent(new Event('input',{bubbles:true}))}
-function updateNo(){if(S.noAuto===false){try{noFill()}catch(e){}return}S.inv.no=autoNo();var e=$('i_no');if(e&&e.value!==S.inv.no)e.value=S.inv.no;try{noFill()}catch(e2){}}
+function updateNo(){try{noStat()}catch(e0){}if(S.noAuto===false){try{noFill()}catch(e){}return}S.inv.no=autoNo();var e=$('i_no');if(e&&e.value!==S.inv.no)e.value=S.inv.no;try{noFill()}catch(e2){}}
 
 function newNo(){var d=new Date(),z=function(n){return String(n).padStart(2,'0')};return 'A-'+String(d.getFullYear()).slice(2)+z(d.getMonth()+1)+z(d.getDate())+'-'+z(d.getHours())+z(d.getMinutes())}
 var DEFNOTES='*تمامی مبالغ درج شده در پیش‌فاکتور به ريال می‌باشند.\n*تمامی محصولات با برند پایش الکترونیک و ساخت ایران می‌باشند.\n*تمامی قطعات دارای یک سال ضمانت و پنج سال خدمات پس از فروش می‌باشند.\n*هزینه ایاب و ذهاب، اقامت و خروج از کشور تکنسین‌های نصب به عهده کارفرمای محترم می‌باشد.\n*هزینه حمل کالا، جرثقیل و بتن‌ریزی و سیم‌کشی در فضای آزاد و نیز تغییرات تابلو برق به عهده کارفرمای محترم می‌باشد.\n*مقادیر کابل محاسبه‌شده تقریبی است و بنا به شرایط نصب توسط کارشناسان فنی تغییر خواهد کرد.';
@@ -3364,9 +3380,7 @@ function fxPanel(){var f=S.fx=S.fx||{};if(!f.in){fxCalc()}var i=f.in||{};
 function doNewInv(clr){var old=S.inv,keep={rate:S.rate,vat:S.vat,fx:S.fx};S=fresh();S.rate=clr?0:keep.rate;S.vat=keep.vat;if(keep.fx)S.fx=keep.fx;['valid','validTxt','sales','pay','notes'].forEach(function(k){S.inv[k]=old[k]});
   S.noAuto=true;S.cabOff={};setCustomer('none');updateNo();renderSettings();sync();renderRows();renderPicker();save()}
 NOIDS.forEach(function(k){var e=$('np_'+k);if(e)e.addEventListener('input',noCompose)});$('i_no').addEventListener('input',function(){try{noFill()}catch(e){}});
-var noFresh=null;
-['input','change'].forEach(function(ev){var pn=$('paneI');if(pn)pn.addEventListener(ev,function(e){if(e.target&&e.target.id==='nextInv')return;noFresh=null},true)});
-$('nextInv').addEventListener('click',function(){if(noFresh&&S.inv.no===noFresh){toast('این شماره هنوز استفاده نشده؛ اول پیش‌فاکتور را بساز یا تغییر بده');return}pfCommit();S.noAuto=true;updateNo();noFresh=S.inv.no;save();toast('شماره‌ی فاکتور بعدی: '+S.inv.no)});
+$('nextInv').addEventListener('click',function(){if(!(S.regNo&&S.regNo===S.inv.no&&S.regSig===pfSig())){toast('این پیش‌فاکتور هنوز ثبت نشده؛ اول «ذخیره در پوشه مشتری» را بزن و بعد شماره‌ی بعدی بگیر');return}S.regNo=null;S.regSig=null;S.noAuto=true;updateNo();save();toast('شماره‌ی فاکتور بعدی: '+S.inv.no)});
 $('autoInv').addEventListener('click',function(){S.noAuto=true;updateNo();save()});
 $('q').addEventListener('input',renderPicker);
 $('picker').addEventListener('click',function(e){var b=e.target.closest('[data-add]');if(!b)return;var id=b.dataset.add;
@@ -5016,12 +5030,12 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},commit:function(){pfCommi
     if(i>=0){['sentTs','follow','fdays'].forEach(function(k){if(f.invs[i][k]!==undefined)rec[k]=f.invs[i][k]})}
     lastSame=false;
     if(i>=0){var old0=f.invs[i];
-      if(sameSnap(old0.snap,snap)){lastSame=true;touch(f);return old0}
+      if(sameSnap(old0.snap,snap)){lastSame=true;touch(f);try{P.commit()}catch(e){}return old0}
       rec.old=[{ts:old0.ts,snap:old0.snap,final:old0.final||0}].concat(old0.old||[]).slice(0,15)}
     if(i>=0)f.invs[i]=rec;else f.invs.unshift(rec);
     logAdd({k:'inv',fid:f.id,rid:rec.id,no:no,title:title});
     if(S.inv.phone&&!fPhones(f).length)f.phone=S.inv.phone;
-    touch(f);return rec;
+    touch(f);try{P.commit()}catch(e){}return rec;
   }
   /* delegated events */
   $('pMain').addEventListener('input',function(e){
