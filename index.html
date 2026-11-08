@@ -2059,7 +2059,9 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
             <div class="field"><label for="qn">تعداد سنسور CO₂</label><input type="text" id="qn" inputmode="numeric" placeholder="خالی = ۰"></div>
             <div class="field"><label for="dn">تعداد نمایشگر (هر عدد ۲۰ متر)</label><input type="text" id="dn" inputmode="numeric" placeholder="خالی = ۰"></div>
             <div class="field"><label for="gn">تعداد سنسور گشت (طول × ۱٫۱۲ برای هر عدد)</label><input type="text" id="gn" inputmode="numeric" placeholder="خالی = ۰"></div>
-            <div class="field"><label for="wn">تعداد سیستم توزین (هر عدد ۵۰ متر)</label><input type="text" id="wn" inputmode="numeric" placeholder="خالی = ۰"></div>
+            <div class="field"><label for="wn">تعداد سیستم توزین دان (هر عدد ۵۰ متر)</label><input type="text" id="wn" inputmode="numeric" placeholder="خالی = ۰"></div>
+            <div class="field"><label for="bn">تعداد کفه‌ی توزین پرنده در هر سالن</label><input type="text" id="bn" inputmode="numeric" placeholder="خالی = ۰ (مثلاً ۴)"></div>
+            <div class="field wide"><p class="hint">توزین پرنده: طول سالن را بر تعداد کفه تقسیم می‌کنیم؛ هر کفه یک نقطه است (مثلاً سالن ۱۰۰ متر و ۴ کفه = نقطه‌های ۲۵، ۵۰، ۷۵، ۱۰۰). برای هر نقطه ۱۵ متر ثابت هم اضافه می‌شود: (۱۵+۲۵)+(۱۵+۵۰)+(۱۵+۷۵)+(۱۵+۱۰۰) = ۳۱۰ متر برای هر سالن.</p></div>
 <details class="more" style="grid-column:1 / -1"><summary>اطلاعات بیشتر</summary><div class="fields" style="margin-top:10px">
             <div class="field wide"><p class="hint">تعداد سنسورها (رطوبت، آمونیاک، CO₂) با هم جمع می‌شود و در طول × ۰٫۸ ضرب می‌شود. به ازای هر نمایشگر ۲۰ متر به رقم اضافه می‌شود. سنسور دمای بیرون در کادر جدا (کارت پایین‌تر) حساب می‌شود و در «خام هر سالن» نیست. سنسور گشت جدا حساب می‌شود: طول × ۱٫۱۲ × تعداد گشت. به ازای هر سیستم توزین ۵۰ متر ثابت اضافه می‌شود. فاصله بین هر سالن × تعداد سالن، بدون گرد کردن، به متراژ کل ۴×۰٫۵ اضافه می‌شود (تعداد سالن را در کارت ۱۲×۰٫۵ بنویس). کادر خالی یعنی صفر. اگر ۴×۰٫۵ لازم نیست، همه را خالی بگذار.</p></div>
             <div class="field"><label for="p4">قیمت هر متر (ریال، اختیاری)</label><input type="text" id="p4" inputmode="decimal" placeholder="ریال"></div>
@@ -2244,7 +2246,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.64</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.68</footer>
 </div>
 
 
@@ -3398,7 +3400,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
   function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
   function clean(t){return String(t||'').replace(/\s+/g,' ').replace(/درج در فاکتور/g,'').trim()}
   function lines(kind){var out=[];
-    if(kind==='cable'){[].forEach.call($('sumC').children,function(d){var l=clean(d.querySelector('span')&&d.querySelector('span').textContent),v=clean(d.querySelector('b')&&d.querySelector('b').textContent);if(l&&v&&v!=='—')out.push([l,v])})}
+    if(kind==='cable'){[].forEach.call($('sumC').children,function(d){var l=clean(d.querySelector('span')&&d.querySelector('span').textContent),v=clean(d.querySelector('b')&&d.querySelector('b').textContent);if(l&&v&&v!=='—'){out.push([l+(d.querySelector('.b2')?' (روش ۱: گرد هر سالن)':''),v]);var b2=d.querySelector('.b2');if(b2)out.push([l+' (روش ۲: خام × سالن، بعد گرد)',clean(b2.textContent)])}})}
     else{['b-hall','b-mode','b-temp'].forEach(function(id){var h=$(id);if(!h)return;[].forEach.call(h.children,function(b){var ch=b.children,l,v;if(ch.length>=2){l=clean(ch[0].textContent);v=clean([].slice.call(ch,1).map(function(x){return x.textContent}).join(' '))}else{var tx=clean(b.textContent);l=tx;v=''}if(l&&(v||l)&&out.length<24)out.push([l,v||'—'])})})}
     return out}
   function pfRows(){var P=window.__proforma;if(!P)return null;var S=P.S(),o={},any=false;['c2','c4','c12','wload','wacc'].forEach(function(k){if(S.rows[k]){o[k]=JSON.parse(JSON.stringify(S.rows[k]));any=true}});return any?{rows:o,fx:S.fx||null}:null}
@@ -3415,7 +3417,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
     var L=lines(kind);if(!L.length){m.textContent='اول محاسبه را انجام بده.';return}
     var cid=cidOf(w);if(!cid)return;
     var f=(window.__cust.all()||[]).filter(function(c){return c.id===cid})[0];
-    if(act==='pf'){var host=$('sumC');[].forEach.call(host.children,function(d){var bb=d.querySelector('b'),rb=d.querySelector('.regBtn');if(rb&&bb&&clean(bb.textContent)!=='—')rb.click()})}
+    if(act==='pf'){var host=$('sumC');[].forEach.call(host.children,function(d){var bb=d.querySelector('b'),rb=d.querySelector('.regBtn');if(rb&&bb&&clean(bb.textContent)!=='—'&&!/b$/.test(rb.dataset.reg||''))rb.click()})}
     var a=ld(),pf=kind==='cable'?pfRows():null;
     a.push({id:uid(),cid:cid,type:kind,title:kind==='cable'?'محاسبه‌ی کابل':'محاسبه‌ی تهویه',ts:Date.now(),summary:L.slice(0,3).map(function(x){return x[0]+': '+x[1]}).join(' · '),lines:L,pf:pf});
     sv(a);fill();w.querySelector('.cs-sel').value=cid;w.querySelector('.cs-new').hidden=true;
@@ -4526,6 +4528,8 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},addProduct:npAddProduct,r
   function up50(x){ return Math.ceil(x / 50 - 1e-9) * 50; }
   function padM(x){return x>0?Math.ceil(Math.round((x+30)*1e6)/1e6/5)*5:0}
   function cmM(x){return Math.ceil(Math.round(x*1e6)/1e6)}
+  function birdM(l){ var n = val('bn'); n = n > 0 ? Math.round(n) : 0; return (n > 0 && fin(l) && l > 0) ? 15 * n + l * (n + 1) / 2 : 0; }
+  function birdTxt(l){ var n = Math.round(val('bn')), pts = [], k; for (k = 1; k <= n; k++) pts.push('(۱۵+' + nf(Math.round(l * k / n * 100) / 100) + ')'); return pts.join(' + '); }
   function B(label, v, fx, key){
     return '<div class="box' + (key ? ' key' : '') + '"><span class="lab">' + label + '</span>' +
       '<b>' + (fin(v) ? nf(v, 2) : '—') + (fin(v) ? '<small><bdi>m</bdi></small>' : '') + '</b>' +
@@ -4533,18 +4537,34 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},addProduct:npAddProduct,r
   }
   var FLEX = {}, userFx = false;
   ['fl1','fp1','fl2','fp2'].forEach(function(id){ var e = document.getElementById(id); if (e) e.addEventListener('input', function(){ userFx = true; }, true); });
-  var SUMC = [], LCSUM = ['لودسل', '—', 'lc'], LCSUM2 = ['متعلقات توزین', '—', 'wacc'], LCSUM3 = ['لوله فلکسی ۱۳٫۵', '—', 'flex'], LCSUM4 = ['بست لوله فلکسی', '—', 'flexclamp'], REGMSG = {};
+  var ALTQ = {}, SUMC = [], LCSUM = ['لودسل', '—', 'lc'], LCSUM2 = ['متعلقات توزین', '—', 'wacc'], LCSUM3 = ['لوله فلکسی ۱۳٫۵', '—', 'flex'], LCSUM4 = ['بست لوله فلکسی', '—', 'flexclamp'], REGMSG = {};
   function drawSum(){
     var it = SUMC.slice(), host = $('sumC'); it.push(LCSUM); it.push(LCSUM2); it.push(LCSUM3); it.push(LCSUM4);
-    /* build the boxes once and update them in place, so a button is never replaced between mousedown and mouseup (blur of a field re-renders) */
-    if (host.children.length !== it.length) {
-      host.innerHTML = it.map(function(x){ return '<div data-k="' + x[2] + '"><span></span><b></b><button type="button" class="regBtn" data-reg="' + x[2] + '">درج در فاکتور</button><small class="regMsg"></small></div>'; }).join('');
+    var sig = it.map(function(x){ return x[2] + (x[3] ? '2' : '1'); }).join(',');
+    /* boxes are built once and updated in place, so a button is never replaced between mousedown and mouseup */
+    if (host.dataset.sig !== sig || host.children.length !== it.length) {
+      host.dataset.sig = sig;
+      host.innerHTML = it.map(function(x){
+        if (x[3]) return '<div data-k="' + x[2] + '" class="two"><span></span>' +
+          '<section class="cr cr1"><em class="cap"></em><b></b><small class="ex"></small><button type="button" class="regBtn" data-reg="' + x[2] + '">درج در فاکتور</button></section>' +
+          '<section class="cr cr2"><em class="cap"></em><b class="b2"></b><small class="ex"></small><small class="df"></small><button type="button" class="regBtn" data-reg="' + x[2] + 'b">درج در فاکتور</button></section>' +
+          '<small class="regMsg"></small></div>';
+        return '<div data-k="' + x[2] + '"><span></span><b></b><button type="button" class="regBtn" data-reg="' + x[2] + '">درج در فاکتور</button><small class="regMsg"></small></div>';
+      }).join('');
     }
     it.forEach(function(x, i){
       var d = host.children[i];
       d.querySelector('span').textContent = x[0];
+      var m = d.querySelector('.regMsg'), msg = REGMSG[x[2]] || REGMSG[x[2] + 'b'] || ''; m.textContent = msg; m.style.display = msg ? 'block' : 'none';
+      if (x[3]) {
+        var a = x[3], r1 = d.querySelector('.cr1'), r2 = d.querySelector('.cr2');
+        r1.querySelector('.cap').textContent = a.capA; r2.querySelector('.cap').textContent = a.capB;
+        var b1 = r1.querySelector('b'), v1 = String(x[1]); if (b1.innerHTML !== v1) b1.innerHTML = v1;
+        var b2 = r2.querySelector('b'), v2 = String(a.vB); if (b2.innerHTML !== v2) b2.innerHTML = v2;
+        r1.querySelector('.ex').innerHTML = a.exA || ''; r2.querySelector('.ex').innerHTML = a.exB || ''; r2.querySelector('.df').textContent = a.df || '';
+        return;
+      }
       var bb = d.querySelector('b'), v = String(x[1]); if (bb.innerHTML !== v) bb.innerHTML = v;
-      var m = d.querySelector('.regMsg'); m.textContent = REGMSG[x[2]] || ''; m.style.display = REGMSG[x[2]] ? 'block' : 'none';
     });
   }
   function renderC(){
@@ -4563,8 +4583,8 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},addProduct:npAddProduct,r
     var sens = sh + se + sq;
     var wn = val('wn'); wn = wn > 0 ? wn / HT : 0; var wcab = wn * 50 + disp * 20;
     var any4 = (sens + sg) > 0;
-    var has4 = (fin(L) && any4) || ((wcab > 0 || outT > 0) && !any4);
-    var raw4 = has4 ? (any4 ? L * 0.8 * sens + L * 1.12 * sg : 0) + wcab : NaN;
+    var bd = val('bn') > 0, has4 = (fin(L) && (any4 || bd)) || ((wcab > 0 || outT > 0) && !any4 && !bd);
+    var raw4 = has4 ? (any4 ? L * 0.8 * sens + L * 1.12 * sg : 0) + wcab + birdM(L) : NaN;
     var per4 = fin(raw4) ? padM(raw4) : NaN;
     var halls = val('ch'); halls = (halls > 0) ? Math.round(halls) : NaN;
     var multi = isMulti(), GR = groupsC();
@@ -4600,6 +4620,7 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},addProduct:npAddProduct,r
       if (any4 && sens > 0) l4r.push(RW('سنسور رطوبت، آمونیاک و CO₂', 'هر سنسور ۰٫۸ × طول سالن', nf(sens) + ' سنسور × ' + nf(L) + ' × ۰٫۸', L * 0.8 * sens));
       if (any4 && sg > 0) l4r.push(RW('سنسور گشت', 'هر سنسور ۱٫۱۲ × طول سالن', nf(sg) + ' × ' + nf(L) + ' × ۱٫۱۲', L * 1.12 * sg));
       if (wn > 0) l4r.push(RW('سیستم توزین', 'هر سیستم ۵۰ متر', nf(wn) + ' × ۵۰', wn * 50));
+      if (bd && fin(L)) { var nbp = Math.round(val('bn')); l4r.push(RW('توزین پرنده', nf(nbp) + ' کفه، هر کفه ۱۵ متر ثابت + فاصله‌اش از ابتدا (طول ÷ ' + nf(nbp) + ')', birdTxt(L), birdM(L))); }
       if (disp > 0) l4r.push(RW('نمایشگر', 'هر نمایشگر ۲۰ متر', nf(disp) + ' × ۲۰', disp * 20));
       if (!l4r.length) l4r.push(NOTE('برای خود سالن‌ها چیزی وارد نشده؛ ۰ متر (فقط سنسور بیرون دارد).'));
     }
@@ -4617,7 +4638,7 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},addProduct:npAddProduct,r
       ? '<bdi>۱۲ × ' + nf(halls) + ' = ' + nf(raw12, 0) + '</bdi> متر، بدون گرد کردن' + money(t12, 'p12')
       : 'تعداد سالن را وارد کن.';
     function L2(l){ return l * 0.7 * ntc + mot * 50 + acc; }
-    function L4(l){ return (any4 && fin(l) ? l * 0.8 * sens + l * 1.12 * sg : 0) + wcab; }
+    function L4(l){ return (any4 && fin(l) ? l * 0.8 * sens + l * 1.12 * sg : 0) + wcab + birdM(l); }
     var tot2 = NaN, tot4 = NaN;
     if (multi) {
       var l2 = [], l4 = [], s2 = 0, s4 = 0, o2 = false, o4 = false;
@@ -4625,7 +4646,7 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},addProduct:npAddProduct,r
         if (!fin(g.n)) return;
         var lab = 'گروه ' + (i + 1) + ': ' + nf(g.n) + ' سالن';
         if (fin(ntc) && fin(g.L)) { var p2 = padM(L2(g.L)); s2 += p2 * g.n; o2 = true; l2.push(lab + ' (طول ' + nf(g.L) + ') = <bdi>' + nf(p2, 1) + ' × ' + nf(g.n) + ' = ' + nf(p2 * g.n, 1) + '</bdi>'); }
-        if ((fin(g.L) && any4) || (wcab > 0 && !any4)) { var p4 = padM(L4(g.L)); s4 += p4 * g.n; o4 = true; l4.push(lab + ' (طول ' + (fin(g.L) ? nf(g.L) : '—') + ') = <bdi>' + nf(p4, 1) + ' × ' + nf(g.n) + ' = ' + nf(p4 * g.n, 1) + '</bdi>'); }
+        if ((fin(g.L) && (any4 || val('bn') > 0)) || (wcab > 0 && !any4)) { var p4 = padM(L4(g.L)); s4 += p4 * g.n; o4 = true; l4.push(lab + ' (طول ' + (fin(g.L) ? nf(g.L) : '—') + ') = <bdi>' + nf(p4, 1) + ' × ' + nf(g.n) + ' = ' + nf(p4 * g.n, 1) + '</bdi>'); }
       });
       var gm = gapM(gp, halls); if (outT > 0) o4 = true;
       tot2 = o2 ? cmM(s2) : NaN; tot4 = o4 ? cmM(s4 + gm + outT) : NaN;
@@ -4638,10 +4659,36 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},addProduct:npAddProduct,r
     SUMC = multi ? [['۲×۰٫۵ کل گروه‌ها', fin(tot2) ? nf(tot2, 0) : '—', 'c2'], ['۴×۰٫۵ کل گروه‌ها (با فاصله)', fin(tot4) ? nf(tot4, 2) : '—', 'c4'], ['۱۲×۰٫۵ کل', fin(raw12) ? nf(raw12, 0) : '—', 'c12']] : (function(){ var Hn = (fin(halls) && halls > 0) ? halls : 1, g4 = gapM(gp, Hn);
       var t2 = fin(per2) ? per2 * Hn : NaN, t4 = fin(per4) ? cmM(per4 * Hn + g4 + outT) : NaN;
       return [['۲×۰٫۵ کل' + (Hn > 1 && fin(per2) ? ' (' + nf(per2, 0) + ' هر سالن بعد از گرد)' : ''), fin(t2) ? nf(t2, 0) : '—', 'c2'], ['۴×۰٫۵ کل' + ((Hn > 1 || outT > 0) && fin(per4) ? ' (' + nf(per4, 0) + ' هر سالن بعد از گرد' + (g4 > 0 ? ' + ' + nf(g4, 0) + ' فاصله' : '') + (outT > 0 ? ' + ' + nf(outT, 0) + ' بیرون' : '') + ')' : ''), fin(t4) ? nf(t4, 0) : '—', 'c4'], ['۱۲×۰٫۵ کل', fin(raw12) ? nf(raw12, 0) : '—', 'c12']]; })();
+    ALTQ = {};
+    (function(){
+      var Hn = (fin(halls) && halls > 0) ? halls : 1, A2, B2, A4, B4, a2 = null, a4 = null;
+      var CA = 'روش ۱: هر سالن جدا گرد می‌شود، بعد × تعداد سالن', CB = 'روش ۲: خام × تعداد سالن، بعد یک‌جا گرد می‌شود';
+      function df(b, a){ var d = b - a; return d === 0 ? 'با روش ۱ برابر است' : (d > 0 ? nf(d, 0) + ' متر بیشتر از روش ۱' : nf(-d, 0) + ' متر کمتر از روش ۱'); }
+      if (multi) {
+        var s2 = 0, s4 = 0, r2 = 0, r4 = 0, o2 = false, o4 = false;
+        GR.forEach(function(g){ if (!fin(g.n)) return;
+          if (fin(ntc) && fin(g.L)) { var x = L2(g.L); r2 += x * g.n; s2 += padM(x) * g.n; o2 = true; }
+          if ((fin(g.L) && (any4 || val('bn') > 0)) || (wcab > 0 && !any4)) { var y = L4(g.L); r4 += y * g.n; s4 += padM(y) * g.n; o4 = true; } });
+        var gm = gapM(gp, halls); if (outT > 0) o4 = true;
+        if (o2 && Hn > 1) { A2 = cmM(s2); B2 = padM(r2); a2 = { capA: CA, capB: CB, exA: '', exB: '<bdi>خام کل ' + nf(r2, 2) + ' ← ' + nf(B2, 0) + '</bdi>', vB: nf(B2, 0), df: df(B2, A2) }; ALTQ.c2 = B2; }
+        if (o4 && Hn > 1) { A4 = cmM(s4 + gm + outT); B4 = cmM((r4 > 0 ? padM(r4) : 0) + gm + outT); a4 = { capA: CA, capB: CB, exA: '', exB: '<bdi>خام کل ' + nf(r4, 2) + ' ← ' + nf(r4 > 0 ? padM(r4) : 0, 0) + (gm > 0 ? ' + ' + nf(gm, 0) + ' فاصله' : '') + (outT > 0 ? ' + ' + nf(outT, 0) + ' بیرون' : '') + '</bdi>', vB: nf(B4, 0), df: df(B4, A4) }; ALTQ.c4 = B4; }
+      } else {
+        if (fin(per2) && Hn > 1) { A2 = per2 * Hn; B2 = padM(raw2 * Hn);
+          a2 = { capA: CA, capB: CB, exA: '<bdi>' + nf(per2, 0) + ' × ' + nf(Hn) + ' = ' + nf(A2, 0) + '</bdi>', exB: '<bdi>' + nf(raw2, 2) + ' × ' + nf(Hn) + ' = ' + nf(raw2 * Hn, 2) + ' ← ' + nf(B2, 0) + '</bdi>', vB: nf(B2, 0), df: df(B2, A2) }; ALTQ.c2 = B2; }
+        if (fin(per4) && Hn > 1) { var g4 = gapM(gp, Hn), pr = raw4 > 0 ? padM(raw4 * Hn) : 0; A4 = cmM(per4 * Hn + g4 + outT); B4 = cmM(pr + g4 + outT);
+          var tail = (g4 > 0 ? ' + ' + nf(g4, 0) + ' فاصله' : '') + (outT > 0 ? ' + ' + nf(outT, 0) + ' بیرون' : '');
+          a4 = { capA: CA, capB: CB, exA: '<bdi>' + nf(per4, 0) + ' × ' + nf(Hn) + tail + ' = ' + nf(A4, 0) + '</bdi>', exB: '<bdi>' + nf(raw4, 2) + ' × ' + nf(Hn) + ' = ' + nf(raw4 * Hn, 2) + ' ← ' + nf(pr, 0) + tail + ' = ' + nf(B4, 0) + '</bdi>', vB: nf(B4, 0), df: df(B4, A4) }; ALTQ.c4 = B4; }
+      }
+      if (a2 && SUMC[0]) SUMC[0] = [SUMC[0][0].replace(/ \(.*\)$/, ''), SUMC[0][1], 'c2', a2];
+      if (a4 && SUMC[1]) SUMC[1] = [SUMC[1][0].replace(/ \(.*\)$/, ''), SUMC[1][1], 'c4', a4];
+      /* هر دو عدد در کارت توضیح هم دیده شوند */
+      function addB(id, a, A){ var e = $(id); if (!e || !a) return; e.innerHTML += '<div style="margin-top:8px;padding:8px 10px;border-radius:12px;border:1px dashed currentColor;font-size:13px;line-height:1.9"><b>دو روش گرد کردن:</b><br>۱) هر سالن جدا گرد، بعد ضرب در سالن = <bdi><b>' + nf(A, 0) + '</b></bdi> متر<br>۲) خام × سالن، بعد گرد = <bdi><b>' + a.vB + '</b></bdi> متر (' + a.df + ')</div>'; }
+      addB('n2', a2, A2); addB('n4', a4, A4);
+    })();
     (function(){ var e = $('n4o'); if (!e) return;
       if (!(onN > 0)) { e.innerHTML = 'تعداد سنسور دمای بیرون را بنویس تا محاسبه‌اش اینجا دیده شود.'; return; }
       var base4;
-      if (multi) { var sx = 0; GR.forEach(function(g){ if (fin(g.n) && ((fin(g.L) && any4) || (wcab > 0 && !any4))) sx += padM(L4(g.L)) * g.n; }); base4 = sx + gapM(gp, halls); } else base4 = (fin(per4) ? per4 * Hn0 : 0) + g40;
+      if (multi) { var sx = 0; GR.forEach(function(g){ if (fin(g.n) && ((fin(g.L) && (any4 || val('bn') > 0)) || (wcab > 0 && !any4))) sx += padM(L4(g.L)) * g.n; }); base4 = sx + gapM(gp, halls); } else base4 = (fin(per4) ? per4 * Hn0 : 0) + g40;
       var tt = base4 + outT;
       e.innerHTML = '<div style="border:1px dashed currentColor;border-radius:12px;padding:8px 10px;background:rgba(127,127,127,.07)"><b>محاسبه‌ی سنسور بیرون</b><br><bdi>' + nf(onN) + ' × ۵۰ = ' + nf(outT, 0) + '</bdi> متر<br>' +
         '<span style="font-size:13px;line-height:1.9">به فارسی: ' + nf(onN) + ' سنسور دمای بیرون داریم و هر کدام ۵۰ متر کابل ۴×۰٫۵ می‌خواهد؛ پس ' + nf(onN) + ' ضربدر ۵۰ می‌شود ' + nf(outT, 0) + ' متر. این کابل مال سالن‌ها نیست، پس در تعداد سالن ضرب نمی‌شود و فقط یک بار به جمع کابل ۴×۰٫۵ اضافه می‌شود.</span></div>' +
@@ -4652,7 +4699,7 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},addProduct:npAddProduct,r
   function fillFromP(auto){
     var P = window.__proforma; if (!P || !P.S) return 0; var S = P.S(), R = S.rows || {}, n = 0;
     function q(id){ var r = R[id]; if (!r) return 0; var v = parseFloat(String(r.qty).replace(/[^0-9.]/g, '')); return v > 0 ? v : 0; }
-    var M = { cn: q('ntc'), cm: q('inlet'), an: q('siren'), hn: q('ahs'), en: q('nh3'), qn: q('co2'), gn: q('patrol'), dn: q('disp'), on: q('outs'), wn: q('wfeed') + q('wbird') };
+    var M = { cn: q('ntc'), cm: q('inlet'), an: q('siren'), hn: q('ahs'), en: q('nh3'), qn: q('co2'), gn: q('patrol'), dn: q('disp'), on: q('outs'), wn: q('wfeed') };
     var hl = parseFloat(String((S.inv && S.inv.halls) || '').replace(/[^0-9.]/g, '')); if (hl > 0 && !isMulti()) M.ch = hl;
     if (auto) { var any = false; Object.keys(M).forEach(function(k){ if ($(k) && String($(k).value).trim()) any = true; }); if (any) return 0; }
     Object.keys(M).forEach(function(k){ var e = $(k); if (e && M[k] > 0) { e.value = String(M[k]); n++; } });
@@ -4661,7 +4708,7 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},addProduct:npAddProduct,r
   }
   if ($('cFromP')) $('cFromP').addEventListener('click', function(){ var n = fillFromP(false); $('cFromPm').textContent = n ? n + ' مورد از پیش‌فاکتور پر شد. طول سالن را خودت بنویس.' : 'در پیش‌فاکتور هنوز سنسوری انتخاب نشده.'; });
   if ($('tabC')) $('tabC').addEventListener('click', function(){ setTimeout(function(){ if (fillFromP(true)) $('cFromPm').textContent = 'تعداد سنسورها از پیش‌فاکتور پر شد؛ طول سالن را خودت بنویس.'; }, 80); });
-  ['cl', 'ch', 'p2', 'p4', 'p12', 'cn', 'cm', 'an', 'dn', 'on', 'hn', 'en', 'qn', 'gn', 'wn', 'gp', 'gs'].forEach(function(id){
+  ['cl', 'ch', 'p2', 'p4', 'p12', 'cn', 'cm', 'an', 'dn', 'on', 'hn', 'en', 'qn', 'gn', 'wn', 'bn', 'gp', 'gs'].forEach(function(id){
     $(id).addEventListener('input', renderC);
     $(id).addEventListener('change', renderC);
   });
@@ -4776,7 +4823,7 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},addProduct:npAddProduct,r
     }
     var sens = ((val('hn') > 0 ? val('hn') : 0) + (val('en') > 0 ? val('en') : 0) + (val('qn') > 0 ? val('qn') : 0)) / H, sg = (val('gn') > 0 ? val('gn') : 0) / H;
     var wn = ((val('wn') > 0 ? val('wn') * 50 : 0) + (val('dn') > 0 ? val('dn') * 20 : 0)) / H, any4 = (sens + sg) > 0, q4 = 0, ok4 = false;
-    GR.forEach(function(g){ if (!fin(g.n)) return; if ((fin(g.L) && any4) || (wn > 0 && !any4)) { q4 += padM((any4 && fin(g.L) ? g.L * 0.8 * sens + g.L * 1.12 * sg : 0) + wn) * g.n; ok4 = true; } });
+    GR.forEach(function(g){ if (!fin(g.n)) return; if ((fin(g.L) && (any4 || val('bn') > 0)) || (wn > 0 && !any4)) { q4 += padM((any4 && fin(g.L) ? g.L * 0.8 * sens + g.L * 1.12 * sg : 0) + wn + birdM(g.L)) * g.n; ok4 = true; } });
     var outR = val('on') > 0 ? val('on') * 50 : 0; if (outR > 0) ok4 = true;
     if (!ok4) return null;
     var gpv = val('gp'); gpv = gpv > 0 ? gpv : 0; var gsv = val('gs'); gsv = gsv > 0 ? gsv : 0;
@@ -4795,8 +4842,8 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},addProduct:npAddProduct,r
     if (kind === 'c4') {
       var sens = ((val('hn') > 0 ? val('hn') : 0) + (val('en') > 0 ? val('en') : 0) + (val('qn') > 0 ? val('qn') : 0)) / halls, sg = (val('gn') > 0 ? val('gn') : 0) / halls;
       var wn = ((val('wn') > 0 ? val('wn') * 50 : 0) + (val('dn') > 0 ? val('dn') * 20 : 0)) / halls, any4 = (sens + sg) > 0, outR = val('on') > 0 ? val('on') * 50 : 0;
-      if (!((fin(L) && any4) || wn > 0 || outR > 0)) return null;
-      var raw4 = (any4 && fin(L) ? L * 0.8 * sens + L * 1.12 * sg : 0) + wn;
+      if (!((fin(L) && (any4 || val('bn') > 0)) || wn > 0 || outR > 0)) return null;
+      var raw4 = (any4 && fin(L) ? L * 0.8 * sens + L * 1.12 * sg : 0) + wn + birdM(L);
       var gpv = val('gp'); gpv = gpv > 0 ? gpv : 0; var gsv = val('gs'); gsv = gsv > 0 ? gsv : 0;
       return { id: 'c4', qty: cmM((raw4 > 0 ? padM(raw4) : 0) * halls + outR + (gsv > 0 ? Math.round(gsv * 50 / 12 * 100) / 100 : (gpv > 0 && halls > 1 ? Math.round(gpv * 50 / 12 * (halls - 1) * 100) / 100 : 0))), price: val('p4'), unit: 'متر', name: 'کابل ۴×۰٫۵', halls: halls };
     }
@@ -4819,6 +4866,11 @@ window.__proforma={newInv:function(clr){doNewInv(clr)},addProduct:npAddProduct,r
     }
     return null;
   }
+  var regItem0 = regItem;
+  regItem = function(kind, S0){
+    if (kind === 'c2b' || kind === 'c4b') { var k = kind.slice(0, 2), it = regItem0(k, S0); if (!it) return null; if (ALTQ[k] != null) it.qty = ALTQ[k]; it.alt = true; return it; }
+    return regItem0(kind, S0);
+  };
   $('sumC').addEventListener('click', function(e){
     var btn = e.target.closest && e.target.closest('.regBtn'); if (!btn) return;
     var P = window.__proforma; if (!P) return;
@@ -8977,4 +9029,142 @@ html[data-ios] [id^=pane]:not(#paneD) :is(.chip[aria-pressed=true],.chip.on) sma
 html[data-ios][data-theme=dark] [id^=pane]:not(#paneD) :is(.vbtn,.mini,.btn,.ghost,.regBtn,.qb,a.mini,.badge){color:#8CC2FF!important}
 html[data-ios][data-theme=dark] [id^=pane]:not(#paneD) :is(.vbtn,.mini,.btn,.ghost,.regBtn,.qb,a.mini):where(.on,[aria-pressed=true],.pri,[style*="color:#fff"]){color:#fff!important}
 html[data-ios] [id^=pane]:not(#paneD) button:not([class])[aria-pressed=true]:not([data-cu-seg]):not([data-cu-view]):not([data-cf]),html[data-ios][data-theme=dark] [id^=pane]:not(#paneD) button:not([class])[aria-pressed=true]:not([data-cu-seg]):not([data-cu-view]):not([data-cf]){background:#0A84FF!important;color:#fff!important}
+</style>
+<style id="eggplant">
+/* متن‌های کم‌اهمیت (راهنما، توضیح، برچسب‌های خاکستری‌آبی) ← بادمجانی پررنگ */
+html:not([data-theme=dark]) :is(#app,#paneI,[id^=pane]),html[data-ios]:not([data-theme=dark]) :is(#app,#paneI,[id^=pane]):not(#paneD){--muted:#5B2A5F;--pg-muted:#5B2A5F;--g-mut:#5B2A5F}
+html[data-theme=dark] :is(#app,#paneI,[id^=pane]),html[data-ios][data-theme=dark] :is(#app,#paneI,[id^=pane]):not(#paneD){--muted:#DDBCE6;--pg-muted:#DDBCE6;--g-mut:#DDBCE6}
+html:not([data-theme=dark]) :is(.hint,small,.sub,.lbl,.lab,.fx,.ctdesc,.sec){color:#5B2A5F}
+html[data-theme=dark] :is(.hint,small,.sub,.lbl,.lab,.fx,.ctdesc,.sec){color:#DDBCE6}
+html[data-ios]:not([data-theme=dark]) [id^=pane]:not(#paneD) :is(.hint,small,.sub,.lbl,.lab,.fx,.ctdesc,.sec),html[data-ios]:not([data-theme=dark]) #paneD .top p,html[data-ios]:not([data-theme=dark]) #hdrSub,html[data-ios]:not([data-theme=dark]) #credit,html[data-ios]:not([data-theme=dark]) #iosSB .isb-cr,html[data-ios]:not([data-theme=dark]) #iosSB .isb-cr *{color:#5B2A5F!important}
+html[data-ios][data-theme=dark] [id^=pane]:not(#paneD) :is(.hint,small,.sub,.lbl,.lab,.fx,.ctdesc,.sec){color:#DDBCE6!important}
+html[data-ios]:not([data-theme=dark]) [id^=pane]:not(#paneD) :is(.chip,.picker) small,html[data-ios] #paneI .picker .chip small{color:#5B2A5F!important}
+</style>
+<style id="nbar">
+/* نوار ناوبری ثابت (iOS): عقب راست، عنوان وسط، خانه چپ؛ هیچ‌چیز جابه‌جا نمی‌شود */
+.nbar{display:none}
+html[data-ios] .nbar{display:grid;grid-template-columns:96px 1fr 96px;align-items:center;gap:6px;position:sticky;top:env(safe-area-inset-top,0px);z-index:30;height:56px;margin:0 0 2px;padding:0 2px;direction:rtl;isolation:isolate}
+html[data-ios] #paneD .nbar{display:none}
+html[data-ios] .nbar::before{content:"";position:absolute;inset:0 -8px;z-index:-1;background:rgba(241,239,234,.80);-webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%);border-bottom:1px solid rgba(60,55,40,.10);border-radius:0 0 20px 20px;opacity:0;transition:opacity .2s}
+html[data-ios] .nbar.on::before{opacity:1}
+html[data-ios] .nbar button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;display:inline-flex;align-items:center;justify-content:center;height:44px;min-width:44px;border-radius:999px;color:#0A5BC4;background:rgba(255,255,255,.66);border:1px solid rgba(255,255,255,.95);box-shadow:0 2px 12px rgba(60,55,40,.14);-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);transition:transform .12s}
+html[data-ios] .nbar button:active{transform:scale(.92)}
+html[data-ios] .nbar .nb-back{justify-self:start;padding:0 16px 0 12px;gap:2px;font-size:15.5px;font-weight:700}
+html[data-ios] .nbar .nb-home{justify-self:end}
+html[data-ios] .nbar svg{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+html[data-ios] .nbar .nb-home svg{width:22px;height:22px;stroke-width:2}
+html[data-ios] .nbar .nb-t{text-align:center;font-weight:800;font-size:17px;letter-spacing:-.2px;color:#121b33;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:0;transform:translateY(4px);transition:opacity .2s,transform .2s}
+html[data-ios] .nbar.on .nb-t{opacity:1;transform:none}
+html[data-ios][data-theme=dark] .nbar::before{background:rgba(10,14,32,.74);border-bottom-color:rgba(255,255,255,.10)}
+html[data-ios][data-theme=dark] .nbar button{color:#8CC2FF;background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.22);box-shadow:0 2px 12px rgba(0,0,0,.35)}
+html[data-ios][data-theme=dark] .nbar .nb-t{color:#f1efe9}
+/* دکمه‌های قدیمی عقب/خانه در iOS مخفی (جایگزین: نوار ثابت) */
+html[data-ios].nb-scr #topBar{transform:translateY(-90px)!important;opacity:0!important;pointer-events:none!important;transition:transform .25s,opacity .2s}
+html[data-ios] [id^=pane]:not(#paneD) .backbar>:is(.goto,.bkb){display:none!important}
+html[data-ios] [id^=pane]:not(#paneD) .backbar{margin:0 0 12px!important;padding-top:0!important}
+html[data-ios] #paneI .backbar.pfnav{margin:0 0 6px!important}
+</style>
+<script id="nbarjs">
+(function(){
+  var HOME='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v9.5h13V10"/></svg>';
+  var BACK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
+  var bars=[];
+  function paneOf(el){var a=el.closest('[id^=pane]');return a?a.id.slice(4):'D'}
+  function tab(l){return document.getElementById('tab'+l)}
+  /* تاریخچه‌ی صفحه‌ها برای «عقب» واقعی */
+  var stack=[],last=document.documentElement.getAttribute('data-ipane')||'D',skip=false;
+  new MutationObserver(function(){
+    var c=document.documentElement.getAttribute('data-ipane')||'D';
+    if(c===last)return;
+    if(!skip){stack.push(last);if(stack.length>30)stack.shift()}
+    skip=false;last=c;
+  }).observe(document.documentElement,{attributes:true,attributeFilter:['data-ipane']});
+  function goBack(){
+    var t='D';
+    while(stack.length){var x=stack.pop();if(x&&x!==last){t=x;break}}
+    var el=tab(t);if(!el)el=tab('D');
+    skip=true;if(el)el.click();window.scrollTo(0,0);
+  }
+  function goHome(){stack=[];var el=tab('D');if(el)el.click();window.scrollTo(0,0)}
+  document.querySelectorAll('.backbar').forEach(function(b){
+    if(b.closest('#paneD')||b.previousElementSibling&&b.previousElementSibling.classList.contains('nbar'))return;
+    var t=b.querySelector('b'),n=document.createElement('div');
+    n.className='nbar';
+    n.innerHTML='<button type="button" class="nb-back" aria-label="بازگشت به صفحه‌ی قبل">'+BACK+'<span>عقب</span></button><span class="nb-t"></span><button type="button" class="nb-home" aria-label="خانه">'+HOME+'</button>';
+    n.querySelector('.nb-t').textContent=t?t.textContent:'پیش‌فاکتور';
+    n.querySelector('.nb-back').addEventListener('click',goBack);
+    n.querySelector('.nb-home').addEventListener('click',goHome);
+    b.parentNode.insertBefore(n,b);bars.push(n);
+  });
+  var tick=false;
+  function upd(){tick=false;var y=window.scrollY||document.documentElement.scrollTop;var on=y>(document.documentElement.classList.contains('nb-scr')?36:60);bars.forEach(function(n){n.classList.toggle('on',on)});document.documentElement.classList.toggle('nb-scr',on&&(document.documentElement.getAttribute('data-ipane')||'D')!=='D')}
+  window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});
+  upd();
+})();
+</script>
+<style id="cable2">
+#app #sumC>div.two{flex:2 1 290px;text-align:center}
+#app #sumC .cr{display:block;margin:7px 0 0;padding:9px 10px 10px;border-radius:14px;background:rgba(127,127,127,.10);border:1px solid rgba(127,127,127,.28);text-align:center}
+#app #sumC .cr2{background:rgba(10,132,255,.09);border-color:rgba(10,132,255,.35)}
+#app #sumC .cr .cap{display:block;font-style:normal;font-weight:700;font-size:12.5px;line-height:1.7;color:var(--fg,inherit);opacity:.95}
+#app #sumC .cr .ex,#app #sumC .cr .df{display:block;font-size:12px;line-height:1.7;color:var(--muted);white-space:normal;margin-top:2px}
+#app #sumC .cr .df{font-weight:700}
+#app #sumC .cr b{margin-top:2px}
+</style>
+<style id="audit1">
+/* ۱) دکمه‌های اصلی: سفید روی آبی تیره‌تر (کنتراست ≥ ۴٫۵) */
+html[data-ios] [id^=pane]:not(#paneD):not(#zz):not(#zy) :is(.pri,.zpri,.cu-tbn.pri,.cu-b.pri,.vbtn.pri,[data-cs=save],button[type=submit],button.vbtn[type=submit],#nextInv,.vbtn#fnSave){background:linear-gradient(180deg,#1E7FEF,#0A5FCC)!important;color:#fff!important;-webkit-text-fill-color:#fff}
+html[data-ios] [id^=pane]:not(#paneD):not(#zz):not(#zy) :is(.pri,.zpri,[data-cs=save],button[type=submit],#nextInv) *{color:#fff!important}
+html[data-ios] #paneI #nextInv{background:linear-gradient(180deg,#1E7FEF,#0A5FCC)!important;color:#fff!important}
+/* ۲) کارت‌های شیشه‌ای تاریک: مات‌تر تا روی والپیپر روشن هم خوانا بماند */
+html[data-ios][data-theme=dark]{--ic:rgba(20,26,58,.76);--ib:rgba(255,255,255,.16)}
+html[data-ios][data-theme=dark] [id^=pane]:not(#paneD) :is(input:not([type=checkbox]):not([type=radio]),select,textarea){background-color:rgba(255,255,255,.12)!important}
+html[data-ios][data-theme=dark] input::placeholder,html[data-ios][data-theme=dark] textarea::placeholder{color:rgba(235,235,245,.62)!important;opacity:1}
+html[data-ios]:not([data-theme=dark]) input::placeholder,html[data-ios]:not([data-theme=dark]) textarea::placeholder{color:#6a5a72!important;opacity:1}
+html[data-ios][data-theme=dark] [id^=pane]:not(#paneD) :is(.vbtn,.mini,.btn,.ghost,.regBtn,.qb,.cu-b,.cu-tbn,.zb,.zsm,summary,button:not([class])):where(:not(.pri):not(.zpri):not(.goto):not(.bkb):not(.pfsm):not([role=tab]):not([data-cu-seg]):not([data-cu-view]):not([data-cf]):not([type=submit]):not(#nextInv)){background:rgba(120,175,255,.20)!important;color:#A9D1FF!important}
+/* ۳) چیپ/دکمه‌ی انتخاب‌شده: همه‌ی متن‌های داخلش سفید */
+html[data-ios] [id^=pane]:not(#paneD):not(#zz):not(#zy) :is(.chip.on,.chip[aria-pressed=true],button[aria-pressed=true]) :is(small,span,b,i,em){color:rgba(255,255,255,.92)!important}
+/* ۴) جزئی‌ها */
+html[data-ios]:not([data-theme=dark]) #hdrApp,html[data-ios]:not([data-theme=dark]) #paneD small#hdrApp{color:#0A55B8!important}
+html[data-ios]:not([data-theme=dark]) #paneY i{color:#17653A!important}
+html[data-ios] #paneM i.av{color:#fff!important;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+</style>
+<style id="audit2">
+html[data-ios][data-theme=dark][data-ipane]:not([data-ipane=D]){--g-card:rgba(22,28,62,var(--gcA));--ic:rgba(22,28,62,var(--gcA))}
+html[data-ios][data-theme=dark] :is(#app,#paneI,[id^=pane]):not(#paneD){--surface:rgba(22,28,62,var(--gcA));--pg-card:rgba(22,28,62,var(--gcA));--field:rgba(255,255,255,.11)}
+html[data-ios][data-theme=dark] [id^=pane]:not(#paneD) :is(.card,.hdc,.cu-card,details.card,.calcSave){background:rgba(22,28,62,var(--gcA))!important}
+</style>
+<style id="audit3">
+html[data-ios] #app .seg input:checked + span small,html[data-ios] #app .chip[aria-pressed=true] small,html[data-ios] #app .chip.on small{color:#fff!important;opacity:.92}
+html[data-ios] [id^=pane]:not(#paneD) :is(.chip.on,.chip[aria-pressed=true]){background:#0A66D6!important}
+html[data-ios][data-theme=dark] :is(#paneI .tablewrap,#paneI .pfamt,#paneI .final,#paneC .sum,#paneV .sum,.sum){background:rgba(22,28,62,var(--gcA))!important}
+html[data-ios][data-theme=dark] #gSearch,html[data-ios][data-theme=dark] #paneI td input{background-color:rgba(22,28,62,var(--gcA))!important;color:#f2f2f7!important}
+</style>
+<style id="glassT">
+/* اسلایدر «شفافیت» منو: غلظت شیشه‌ی کارت‌ها و نوارها را تنظیم می‌کند (۰ = شفاف‌تر، ۱۰۰ = مات) */
+html[data-ios]{--gcA:calc(.26 + var(--ios-t,.55) * .66);--gcN:calc(.18 + var(--ios-t,.55) * .6)}
+html[data-ios][data-theme=dark]{--gcA:calc(.42 + var(--ios-t,.55) * .58);--gcN:calc(.2 + var(--ios-t,.55) * .6)}
+html[data-ios][data-ipane]:not([data-ipane=D]){--g-card:rgba(255,255,255,var(--gcA));--ic:rgba(255,255,255,var(--gcA))}
+html[data-ios][data-theme=dark][data-ipane]:not([data-ipane=D]){--g-card:rgba(22,28,62,var(--gcA));--ic:rgba(22,28,62,var(--gcA))}
+html[data-ios] :is(#app,#paneI,[id^=pane]):not(#paneD){--surface:rgba(255,255,255,var(--gcA));--pg-card:rgba(255,255,255,var(--gcA))}
+html[data-ios][data-theme=dark] :is(#app,#paneI,[id^=pane]):not(#paneD){--surface:rgba(22,28,62,var(--gcA));--pg-card:rgba(22,28,62,var(--gcA))}
+html[data-ios]{--gl:rgba(255,255,255,var(--gcN));--gl2:rgba(255,255,255,var(--gcA))}
+html[data-ios][data-theme=dark]{--gl:rgba(40,50,90,var(--gcN));--gl2:rgba(60,72,120,var(--gcA))}
+html[data-ios][data-ipane]:not([data-ipane=D]) :is(#paneI,#app) :is(.card,.hdc){background:var(--g-card)!important}
+html[data-ios]:not([data-theme=dark]) [id^=pane]:not(#paneD) :is(.card,.hdc,.cu-card,details.card,.calcSave){background:var(--ic)!important}
+html[data-ios] #drGlass{touch-action:pan-x}
+html[data-ios] #app .seg input:checked + span small:not(#zz):not(#zy){color:#fff!important}
+html:not([data-ios]) #paneD :is(header.top,.top) :is(small,p){color:#d4e3ff!important}
+</style>
+<style id="gsfix">
+/* کادر جستجوی بالا: آیکن و متن دقیقاً داخل کادر، وسط عمودی */
+html[data-ios] #topBar .gs{position:relative!important;display:flex;align-items:center;flex:1 1 auto;min-width:0;height:46px}
+html[data-ios] #topBar .gs>svg{position:absolute!important;inset-inline-start:14px;inset-inline-end:auto;top:50%!important;transform:translateY(-50%);width:19px;height:19px;z-index:2;pointer-events:none;color:var(--g-mut,#636366)}
+html[data-ios] #topBar .gs input{width:100%;height:46px;line-height:normal;padding:0 42px!important;text-align:center;font-size:14px}
+html[data-ios] #topBar .gs input::placeholder{font-size:13px;line-height:normal}
+html[data-ios][data-ipane=D] #credit{display:none}
+</style>
+<style id="gsfix2">
+html[data-ios] #iosSB .isb-cr{bottom:calc(114px + env(safe-area-inset-bottom,0px))}
+html[data-ios] #qkH{top:56%!important;bottom:auto!important}
 </style>
