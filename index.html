@@ -2091,14 +2091,15 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
           <div class="calc" id="n12" aria-live="polite"></div>
         </section>
         <section class="card" id="lcCard">
-          <h2>لودسل سیلو (توزین دان)</h2>
+          <h2>لودسل خمشی سیلو (توزین دان)</h2>
           <div class="fields">
             <div class="field"><label for="lw">وزن سیلو (تن)</label><input type="text" id="lw" inputmode="decimal" placeholder="مثلاً ۱۰"></div>
             <div class="field"><label for="ll">تعداد پایه سیلو</label><input type="text" id="ll" inputmode="numeric" placeholder="مثلاً ۶"></div>
             <div class="field"><label for="ls">تعداد سیلو</label><input type="text" id="ls" inputmode="numeric" value="1"></div>
             <div class="field"><label for="lm">مدل لودسل</label><select id="lm"><option value="Zemic H8C">Zemic H8C</option><option value="SouthOcean GX1S">SouthOcean GX1S</option></select></div>
             <div class="field"><label for="lf">ضریب اطمینان</label><input type="text" id="lf" inputmode="decimal" value="1"></div>
-            <div class="field"><label for="lo">ظرفیت دلخواه هر لودسل (تن، اختیاری)</label><input type="text" id="lo" inputmode="decimal" placeholder="خالی = خودکار"></div>
+            <div class="field"><label for="lo">ظرفیت دلخواه هر لودسل (اختیاری)</label><input type="text" id="lo" inputmode="decimal" placeholder="خالی = خودکار"></div>
+            <div class="field"><label for="lou">واحد ظرفیت دلخواه</label><select id="lou"><option value="t">تن</option><option value="kg">کیلوگرم</option></select></div>
 <details class="more" style="grid-column:1 / -1"><summary>اطلاعات بیشتر</summary><div class="fields" style="margin-top:10px">
             <div class="field wide"><p class="hint">تعداد لودسل = تعداد پایه سیلو (هر پایه یک لودسل). مجموع ظرفیت لودسل‌ها باید از وزن سیلو × ضریب اطمینان بیشتر یا مساوی باشد؛ کوچک‌ترین ظرفیت استاندارد که این شرط را برآورده کند پیشنهاد می‌شود. لیست ظرفیت‌های استاندارد (۰٫۵، ۱، ۲، ۳، ۵، ۱۰ تن) فرضی است و باید با موجودی و قیمت سایت <a href="https://www.nikcell.com/portal/products?categoryId=59" target="_blank" rel="noopener">nikcell</a> چک شود. <b>یادآوری:</b> قیمت لودسل را از همان سایت بردار و در ردیف لودسل پیش‌فاکتور وارد کن؛ قیمت دلاری ندارد.</p></div>
 </div></details>
@@ -2106,24 +2107,16 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
           <div class="calc" id="nL" aria-live="polite"></div>
         </section>
         <section class="card" id="lcbCard">
-          <h2>لودسل توزین پرنده</h2>
+          <h2>لودسل کششی توزین پرنده</h2>
           <div class="fields">
             <div class="field"><label for="bq">تعداد لودسل پرنده</label><input type="text" id="bq" inputmode="numeric" placeholder="مثلاً ۴"></div>
-            <div class="field"><label for="bc">ظرفیت هر لودسل</label><input type="text" id="bc" inputmode="decimal" placeholder="مثلاً ۵۰"></div>
-            <div class="field"><label for="bu">واحد ظرفیت</label><select id="bu"><option value="kg">کیلوگرم</option><option value="t">تن</option></select></div>
+            <div class="field"><label for="bc">ظرفیت هر لودسل (کیلوگرم)</label><input type="text" id="bc" inputmode="decimal" placeholder="مثلاً ۵۰"></div>
             <div class="field"><label for="bm">مدل لودسل</label><select id="bm"><option value="Zemic H8C">Zemic H8C</option><option value="SouthOcean GX1S">SouthOcean GX1S</option></select></div>
           </div>
           <div class="calc" id="nB" aria-live="polite"></div>
         </section>
         <section class="card" id="flexCard">
-          <h2>متعلقات توزین (لوله فلکسی و بست)</h2>
-          <div class="fields">
-            <div class="field"><label for="fb">مبلغ اولیه متعلقات هر لودسل (ریال)</label><input type="text" id="fb" inputmode="numeric" placeholder="ریال" value="360000"></div>
-            <div class="field"><label for="fpc">درصد افزایش قیمت</label><input type="text" id="fpc" inputmode="decimal" value="25"></div>
-<details class="more" style="grid-column:1 / -1"><summary>اطلاعات بیشتر</summary><div class="fields" style="margin-top:10px">
-            <div class="field wide"><p class="hint">به ازای هر لودسل (دان و پرنده) ۶ متر لوله فلکسی و ۴ بست لازم است. مبلغ اولیه شامل هر دو است؛ فی نهایی = مبلغ اولیه × (۱ + درصد).</p></div>
-</div></details>
-          </div>
+          <h2>متعلقات توزین</h2>
           <div class="calc" id="nF" aria-live="polite"></div>
         </section>
     </div>
@@ -2254,7 +2247,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.73</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.75</footer>
 </div>
 
 
@@ -3492,8 +3485,8 @@ I('pres','side','سنسور فشار',61,1,{motor:true});
 // توزین
 I('wfeed','weigh','سیستم توزین دان',275,1);
 I('wio','weigh','کارت IO جهت توزین دان',90,1,{from:['wfeed']});
-I('wload','weigh','لودسل توزین دان',null,0);
-I('wloadb','weigh','لودسل توزین پرنده',null,0);
+I('wload','weigh','لودسل خمشی توزین دان',null,0);
+I('wloadb','weigh','لودسل کششی توزین پرنده',null,0);
 I('wjb','weigh','جعبه تقسیم',null,0,{from:['wfeed']});
 I('wbird','weigh','سیستم توزین پرنده',275,1);
 I('wpan','weigh','کفه توزین بدون لودسل',25,0);
@@ -3634,7 +3627,7 @@ var COEXCL=['wbox'];
 function inEquip(l){return l.g==='auto'||l.g==='side'||l.g==='weigh'||INSINC.indexOf(l.id)>=0}
 function insPct(){var m=insMode();if(m)return COPARTS[m][0][1]+COPARTS[m][1][1];return S.insSel==='x'?Math.max(0,num(S.insX)):num(S.insSel)}
 function discOn(id,it){var r=S.rows[id];if(r&&typeof r.disc==='boolean')return r.disc;return cust().all?true:it.disc}
-function lcName(it,r){if(it.id==='wjb'&&r)return it.name+(String(r.model||'').trim()?' '+String(r.model).trim():'');if((it.id!=='wload'&&it.id!=='wloadb')||!r)return it.name;var c=String(r.cap==null?'':r.cap).trim();return it.name+(c?' '+c+(r.capU==='kg'?' کیلوگرم':' تن'):'')}
+function lcName(it,r){if(it.id==='wjb'&&r)return it.name+(String(r.model||'').trim()?' '+String(r.model).trim():'');if((it.id!=='wload'&&it.id!=='wloadb')||!r)return it.name;var c=String(r.cap==null?'':r.cap).trim();return it.name+(c?' '+c+((r.capU==='kg'||it.id==='wloadb')?' کیلوگرم':' تن'):'')}
 function drOf(l,id){var r=S.rows[id],v=r?r.dr:null;if(v===undefined||v===null||String(v).trim()==='')return l.defRate;return Math.max(0,Math.min(100,num(v)))}
 function calc(){
   var lines=[],base=0,rate=num(S.rate);
@@ -3651,7 +3644,7 @@ function calc(){
     l.computed=it.fixed?it.fixed:(it.usd!=null?Math.round(it.usd*rate):0);
     l.mk=it.usd==null?Math.max(0,num(r.mk)):0;l.price=ov!=null?(l.mk?Math.round(ov*(1+l.mk/100)):ov):(it.usd!=null?l.computed:0);
     l.hasOv=ov!=null;
-    l.p0=l.price;var fxo=S.fx||{};l.fxAdd=l.id==='wacc'?fxVal(fxo):0;if(l.fxAdd)l.price+=l.fxAdd;
+    l.p0=l.price;var fxo=S.fx||{};l.fxAdd=0;
     var upp=Math.max(0,num(S.up));l.upP=upp;if(upp>0)l.price=Math.round(l.price*(1+upp/100));
     l.gross=Math.round(l.price*l.qty);
     l.inBase=insMode()?(inEquip(l)&&COEXCL.indexOf(l.id)<0):(inEquip(l));
@@ -3706,7 +3699,7 @@ function renderRows(){
        '<td class="n" data-c="disc"></td><td class="n" data-c="net"></td><td></td></tr>';return}
     var r=S.rows[l.id];
     h+='<tr data-id="'+l.id+'" class="'+(l.it.usd==null&&!l.hasOv?'need':'')+'"><td>'+n+'</td>'+
-     '<td>'+esc(l.it.name)+(l.id==='c4'?gapNote():'')+(l.id==='wjb'?'<div style="margin-top:4px"><input type="text" style="max-width:200px'+(String(r.model||'').trim()?'':';border-color:var(--warn)')+'" data-model="wjb" placeholder="برند / نام جعبه تقسیم" aria-label="برند جعبه تقسیم" value="'+esc(r.model||'')+'"></div>':'')+(l.id==='wacc'?fxPanel():'')+((l.id==='wload'||l.id==='wloadb')?'<div style="margin-top:4px;display:flex;gap:6px;flex-wrap:wrap"><input class="num" style="max-width:170px'+(String(r.cap||'').trim()?'':';border-color:var(--warn)')+'" data-cap="'+l.id+'" inputmode="decimal" placeholder="ظرفیت هر لودسل" aria-label="ظرفیت هر لودسل" value="'+esc(r.cap||'')+'"><select data-capu="'+l.id+'" aria-label="واحد ظرفیت لودسل" style="max-width:110px"><option value="t"'+(r.capU==='kg'?'':' selected')+'>تن</option><option value="kg"'+(r.capU==='kg'?' selected':'')+'>کیلوگرم</option></select></div>':'')+((l.it.from||r.cabAuto)&&!r.qtyManual?'<span class="badge">خودکار</span>':'')+(l.it.note&&l.hasOv&&l.it.usd==null?'<span class="badge" style="background:var(--warn-soft);color:var(--warn)">'+esc(l.it.note)+'</span>':'')+'</td>'+
+     '<td>'+esc(l.it.name)+(l.id==='c4'?gapNote():'')+(l.id==='wjb'?'<div style="margin-top:4px"><input type="text" style="max-width:200px'+(String(r.model||'').trim()?'':';border-color:var(--warn)')+'" data-model="wjb" placeholder="مثلاً ۴ کاناله یا ۶ کاناله" aria-label="برند جعبه تقسیم" value="'+esc(r.model||'')+'"></div>':'')+((l.id==='wload'||l.id==='wloadb')?'<div style="margin-top:4px;display:flex;gap:6px;flex-wrap:wrap"><input class="num" style="max-width:170px'+(String(r.cap||'').trim()?'':';border-color:var(--warn)')+'" data-cap="'+l.id+'" inputmode="decimal" placeholder="ظرفیت هر لودسل" aria-label="ظرفیت هر لودسل" value="'+esc(r.cap||'')+'">'+(l.id==='wloadb'?'<span class="badge">کیلوگرم</span>':'<select data-capu="'+l.id+'" aria-label="واحد ظرفیت لودسل" style="max-width:110px"><option value="t"'+(r.capU==='kg'?'':' selected')+'>تن</option><option value="kg"'+(r.capU==='kg'?' selected':'')+'>کیلوگرم</option></select>')+'</div>':'')+((l.it.from||r.cabAuto)&&!r.qtyManual?'<span class="badge">خودکار</span>':'')+(l.it.note&&l.hasOv&&l.it.usd==null?'<span class="badge" style="background:var(--warn-soft);color:var(--warn)">'+esc(l.it.note)+'</span>':'')+'</td>'+
      '<td><input class="num q" inputmode="decimal" data-k="q'+l.id+'" data-q="'+l.id+'" value="'+(l.qty||(String(r.qty==null?'':r.qty).trim()===''?'':'0'))+'"'+(LOCKED[l.id]?' readonly title="برابر تعداد کالای مرجع است"':'')+'></td>'+
      '<td>'+esc(l.unit)+'</td>'+
      '<td>'+(l.it.usd==null?'<div class="pc"><input class="num pr" inputmode="numeric" data-k="p'+l.id+'" data-p="'+l.id+'" placeholder="قیمت خرید" aria-label="قیمت خرید" value="'+(r.priceOv!=null&&r.priceOv!==''?fmt(num(r.priceOv)):'')+'"><input class="num mk" inputmode="decimal" data-k="m'+l.id+'" data-mk="'+l.id+'" placeholder="٪ سود" aria-label="درصد سود" value="'+esc(r.mk==null?'':r.mk)+'"></div><div class="unitFin" data-c="unit"></div>':'<input class="num pr" inputmode="numeric" data-k="p'+l.id+'" data-p="'+l.id+'" placeholder="" value="'+(l.p0?fmt(l.p0):'')+'"><div class="unitFin" data-c="unit"></div>')+'</td>'+
@@ -3985,7 +3978,46 @@ async function makeProposal(){
   await pq(6,L('ntc'),[307,242,394,282],[505,242,547,282]);await pq(6,L('nh3'),[123,428,256,468],[322,428,363,468]);await pq(6,L('co2'),[307,615,440,657],[506,615,547,657]);
   await pq(7,L('inlet'),[397,559,557,582],[677,559,712,582]);await pq(7,L('pres'),[123,887,335,910],[404,887,439,910]);
   await pq(8,L('wfeed'),[392,535,599,558],[673,535,708,558]);await pq(8,L('wio'),[118,864,325,886],[399,864,433,886]);
-  await pq(9,(function(){var a=L('wload'),b=L('wloadb');if(a&&b){var q=a.qty+b.qty;return {qty:q,price:q>0?Math.round((a.price*a.qty+b.price*b.qty)/q):0}}return a||b})(),[362,395,480,440],[490,395,543,440]);await pq(9,L('wjb'),[362,531,480,571],[490,531,543,571]);
+  await pq(9,L('wload'),[362,395,480,440],[490,395,543,440]);
+  var rJ=S.rows.wjb;if(L('wjb')&&rJ&&String(rJ.model||'').trim()){mask(9,[124,528,352,574]);await put(9,[124,531,352,571],'جعبه تقسیم '+P(String(rJ.model).trim()),{name:1,cap:9.5})}
+  var rW=S.rows.wload,wbI=L('wloadb'),rB=S.rows.wloadb;
+  if(L('wload')&&rW&&String(rW.cap||'').trim()){mask(9,[124,392,352,446]);await put(9,[124,395,352,443],'لودسل خمشی '+P(String(rW.cap).trim())+(rW.capU==='kg'?' کیلوگرم':' تن'),{name:1,cap:9.5})}
+  if(wbI&&rB){
+    var app=!!L('wload'),top=app?618:350,bot=app?752:484,F=4,bx=[100,app?594:341,800,app?762:492],cv=document.createElement('canvas');
+    cv.width=(bx[2]-bx[0])*F;cv.height=(bx[3]-bx[1])*F;var g=cv.getContext('2d');
+    var X=function(x){return (x-bx[0])*F},Y=function(y){return (y-bx[1])*F};
+    g.fillStyle='#fff';g.fillRect(0,0,cv.width,cv.height);g.lineCap='butt';
+    g.strokeStyle='#cecece';g.lineWidth=2.5*F;
+    [357,484.5,547,659.5].forEach(function(x){g.beginPath();g.moveTo(X(x),Y(bx[1]));g.lineTo(X(x),Y(bot));g.stroke()});
+    g.beginPath();g.moveTo(X(117),Y(app?619:349));g.lineTo(X(779),Y(app?619:349));g.stroke();
+    if(!app){g.beginPath();g.moveTo(X(117),Y(484));g.lineTo(X(779),Y(484));g.stroke()}
+    g.strokeStyle='#a9a9a9';g.lineWidth=2*F;var R=28;g.beginPath();
+    if(app){g.moveTo(X(116),Y(bx[1]));g.lineTo(X(116),Y(bot-R));g.arcTo(X(116),Y(bot),X(116+R),Y(bot),R*F);g.lineTo(X(780-R),Y(bot));g.arcTo(X(780),Y(bot),X(780),Y(bot-R),R*F);g.lineTo(X(780),Y(bx[1]))}
+    else{g.moveTo(X(116),Y(bx[1]));g.lineTo(X(116),Y(bx[3]));g.moveTo(X(780),Y(bx[1]));g.lineTo(X(780),Y(bx[3]))}
+    g.stroke();
+    /* تصویر: یا فایل loadcell-tension.png کنار برنامه، یا نقاشی ساده‌ی لودسل S */
+    var cx0=548,cx1=659,cy0=top+14,cy1=bot-14,done=false;
+    try{var rr=await fetch('loadcell-tension.png');if(rr.ok){var bm=await createImageBitmap(await rr.blob()),sc=Math.min((cx1-cx0)/bm.width,(cy1-cy0)/bm.height);var iw=bm.width*sc,ih=bm.height*sc;g.drawImage(bm,X(cx0+((cx1-cx0)-iw)/2),Y(cy0+((cy1-cy0)-ih)/2),iw*F,ih*F);done=true}}catch(e){}
+    if(!done){
+      var bw=62,bh=80,x0=cx0+(cx1-cx0-bw)/2-4,y0=top+(bot-top-bh)/2,r2=8;
+      var gr=g.createLinearGradient(X(x0),Y(y0),X(x0+bw),Y(y0+bh));gr.addColorStop(0,'#eef1f4');gr.addColorStop(.5,'#b7bec6');gr.addColorStop(1,'#8c959f');
+      g.lineWidth=1.2*F;g.strokeStyle='#5f6a75';
+      /* کابل */
+      g.strokeStyle='#222';g.lineWidth=3*F;g.beginPath();g.moveTo(X(x0+bw),Y(y0+bh*.5));g.quadraticCurveTo(X(x0+bw+16),Y(y0+bh*.5),X(x0+bw+16),Y(y0+bh*.2));g.stroke();
+      g.fillStyle=gr;g.strokeStyle='#5f6a75';g.lineWidth=1.2*F;g.beginPath();g.roundRect?g.roundRect(X(x0),Y(y0),bw*F,bh*F,r2*F):g.rect(X(x0),Y(y0),bw*F,bh*F);g.fill();g.stroke();
+      g.fillStyle='#fff';
+      [[x0-1,y0+bh*.27,bw*.74,bh*.11],[x0+bw*.27,y0+bh*.62,bw*.74+1,bh*.11]].forEach(function(q){g.beginPath();g.roundRect?g.roundRect(X(q[0]),Y(q[1]),q[2]*F,q[3]*F,4*F):g.rect(X(q[0]),Y(q[1]),q[2]*F,q[3]*F);g.fill();g.stroke()});
+      g.fillStyle='#4a535d';[y0+bh*.12,y0+bh*.88].forEach(function(cy){g.beginPath();g.ellipse(X(x0+bw/2),Y(cy),8*F,5*F,0,0,7);g.fill()});
+      g.fillStyle='#e9edf0';g.fillRect(X(x0+bw*.2),Y(y0+bh*.43),bw*.6*F,bh*.1*F);
+    }
+    var png=await new Promise(function(res){cv.toBlob(function(bl){bl.arrayBuffer().then(res)},'image/png')});
+    var im2=await doc.embedPng(png),pgB=pg[9];pgB.drawImage(im2,{x:bx[0]*K,y:pgB.getHeight()-bx[3]*K,width:(bx[2]-bx[0])*K,height:(bx[3]-bx[1])*K});
+    var tb=[top+45,top+89],cp=String(rB.cap||'').trim();
+    await put(9,[662,tb[0],778,tb[1]],'لودسل',{name:1,cap:10,color:'#555'});
+    await put(9,[120,tb[0],354,tb[1]],'لودسل کششی'+(cp?' '+P(cp)+' کیلوگرم':''),{name:1,cap:9.5});
+    await put(9,[490,tb[0],543,tb[1]],P(Math.round(wbI.qty*100)/100),{});
+    await put(9,[362,tb[0],480,tb[1]],money(wbI.price),{});
+  }await pq(9,L('wjb'),[362,531,480,571],[490,531,543,571]);
   await pq(11,L('box5070'),[331,606,432,624],[487,606,522,624]);await pq(11,L('wbox'),[331,1078,432,1096],[487,1078,522,1096]);
   /* صفحه ۱۱: متعلقات */
   var ins=c.lines.filter(function(x){return x.install}),insSum=ins.reduce(function(a,x){return a+x.price},0);
@@ -4550,7 +4582,7 @@ window.__proforma={fname:fname,newInv:function(clr){doNewInv(clr)},addProduct:np
       (fx ? '<bdi class="fx" dir="ltr">' + fx + '</bdi>' : '') + '</div>';
   }
   var FLEX = {}, userFx = false;
-  var ALTQ = {}, SUMC = [], LCSUM = ['لودسل', '—', 'lc'], LCSUM2 = ['متعلقات توزین', '—', 'wacc'], LCSUM3 = ['لودسل توزین پرنده', '—', 'lcb'], REGMSG = {};
+  var ALTQ = {}, SUMC = [], LCSUM = ['لودسل', '—', 'lc'], LCSUM2 = ['متعلقات توزین', '—', 'wacc'], LCSUM3 = ['لودسل کششی توزین پرنده', '—', 'lcb'], REGMSG = {};
   function drawSum(){
     var it = SUMC.slice(), host = $('sumC'); it.push(LCSUM); it.push(LCSUM2); it.push(LCSUM3);
     var sig = it.map(function(x){ return x[2] + (x[3] ? '2' : '1'); }).join(',');
@@ -4783,49 +4815,45 @@ window.__proforma={fname:fname,newInv:function(clr){doNewInv(clr)},addProduct:np
   var LC_CAPS = [0.5, 1, 2, 3, 5, 10];
   var LC = {}, LCB = {};
   function renderF(){
-    var n = (LC.total > 0 ? LC.total : 0) + (LCB.total > 0 ? LCB.total : 0), base = val('fb'), pc = val('fpc');
-    if (!fin(pc)) pc = 25;
-    var fin1 = (fin(base) && base > 0) ? base * (1 + pc / 100) : NaN;
-    FLEX = {n: n, base: base, pct: pc, unit: fin1};
+    var n = (LC.total > 0 ? LC.total : 0) + (LCB.total > 0 ? LCB.total : 0), base = NaN, pc = NaN;
+    FLEX = {n: n};
     var el = $('nF'), h = '';
-    h += n > 0 ? 'تعداد لودسل (دان + پرنده): <b><bdi>' + nf(n, 0) + '</bdi></b> عدد · لوله فلکسی <bdi>' + nf(n * 6, 0) + '</bdi> متر · بست <bdi>' + nf(n * 4, 0) + '</bdi> عدد' : 'اول لودسل را وارد کن.';
-    h += '<br>فی متعلقات هر لودسل: ' + (fin(fin1) ? '<b><bdi>' + nf(base, 0) + ' × (۱ + ' + nf(pc, 2) + '٪) = ' + nf(fin1, 0) + '</bdi></b> ریال' : '—');
-    if (n > 0 && fin(fin1)) h += '<br>جمع: <b><bdi>' + nf(n * fin1, 0) + '</bdi></b> ریال';
+    h += n > 0 ? 'تعداد متعلقات = تعداد لودسل (دان + پرنده): <b><bdi>' + nf(n, 0) + '</bdi></b> عدد. قیمت خرید و درصد افزایش را در پیش‌فاکتور بنویس.' : 'اول لودسل را وارد کن.';
     el.innerHTML = h;
     LCSUM2 = ['متعلقات توزین', n > 0 ? '<bdi>' + nf(n, 0) + ' عدد</bdi>' : '—', 'wacc'];
     drawSum();
   }
   function renderB(){
-    var q = Math.round(val('bq')), c = val('bc'), u = $('bu').value, el = $('nB');
+    var q = Math.round(val('bq')), c = val('bc'), u = 'kg', el = $('nB');
     LCB = {};
-    if (!(q > 0) || !(c > 0)) { el.textContent = 'تعداد و ظرفیت لودسل پرنده را وارد کن.'; LCSUM3 = ['لودسل توزین پرنده', '—', 'lcb']; renderF(); return; }
+    if (!(q > 0) || !(c > 0)) { el.textContent = 'تعداد و ظرفیت لودسل پرنده را وارد کن.'; LCSUM3 = ['لودسل کششی توزین پرنده', '—', 'lcb']; renderF(); return; }
     LCB = {total: q, cap: c, unit: u, model: $('bm').value};
     var cu = u === 'kg' ? 'کیلوگرم' : 'تن';
     el.innerHTML = 'لودسل پرنده: <b><bdi>' + nf(q, 0) + ' × ' + nf(c, 2) + ' ' + cu + '</bdi></b> · مدل ' + $('bm').value;
-    LCSUM3 = ['لودسل توزین پرنده', '<bdi>' + nf(q, 0) + ' × ' + nf(c, 2) + ' ' + cu + '</bdi>', 'lcb'];
+    LCSUM3 = ['لودسل کششی توزین پرنده', '<bdi>' + nf(q, 0) + ' × ' + nf(c, 2) + ' ' + cu + '</bdi>', 'lcb'];
     renderF();
   }
   var renderL = function(){ renderL0(); renderB(); };
   function renderL0(){
-    var w = val('lw'), legs = val('ll'), silos = val('ls'), f = val('lf'), ov = val('lo');
+    var w = val('lw'), legs = val('ll'), silos = val('ls'), f = val('lf'), ov = val('lo'), ovU = $('lou').value; if (ov > 0 && ovU === 'kg') ov = ov / 1000;
     if (!(silos > 0)) silos = 1; if (!(f > 0)) f = 1;
-    var el = $('nL'); LC = {}; LCSUM = ['لودسل توزین دان', '—', 'lc'];
+    var el = $('nL'); LC = {}; LCSUM = ['لودسل خمشی توزین دان', '—', 'lc'];
     if (!(w > 0) || !(legs > 0)) { el.textContent = 'وزن سیلو و تعداد پایه را وارد کن.'; drawSum(); return; }
     legs = Math.round(legs); silos = Math.round(silos);
     var need = w * f / legs, cap = NaN;
     if (ov > 0) cap = ov; else { for (var i = 0; i < LC_CAPS.length; i++) if (LC_CAPS[i] >= need - 1e-9) { cap = LC_CAPS[i]; break; } }
     var total = legs * silos, tot = fin(cap) ? cap * legs : NaN;
-    LC = { total: total, per: legs, cap: cap, model: $('lm').value };
+    LC = { total: total, per: legs, cap: cap, model: $('lm').value, capU: (val('lo') > 0 && ovU === 'kg') ? 'kg' : 't', capR: (val('lo') > 0 && ovU === 'kg') ? val('lo') : cap };
     var warn = !fin(cap) ? 'از بزرگ‌ترین ظرفیت استاندارد هم بیشتر است؛ ظرفیت دلخواه وارد کن.' : (tot < w * f - 1e-9 ? 'مجموع ظرفیت از وزن سیلو کمتر است!' : '');
     el.innerHTML =
       'حداقل ظرفیت هر لودسل: <bdi>' + nf(w) + ' × ' + nf(f) + ' ÷ ' + nf(legs) + ' = ' + nf(need, 2) + '</bdi> تن<br>' +
       'ظرفیت پیشنهادی هر لودسل: <b>' + (fin(cap) ? '<bdi>' + nf(cap, 2) + '</bdi> تن (' + nf(legs) + ' × ' + nf(cap, 2) + ' = ' + nf(tot, 2) + ' تن)' : '—') + '</b><br>' +
       'تعداد لودسل: <b><bdi>' + nf(silos) + ' سیلو × ' + nf(legs) + ' پایه = ' + nf(total, 0) + '</bdi> عدد</b> · مدل ' + $('lm').value + '<br>تعداد متعلقات سیستم توزین = تعداد لودسل = <b><bdi>' + nf(total, 0) + '</bdi> عدد</b>' +
       (warn ? '<br><span style="color:var(--bad)">' + warn + '</span>' : '');
-    LCSUM = ['لودسل توزین دان', '<bdi>' + nf(total, 0) + ' × ' + (fin(cap) ? nf(cap, 2) + ' تن' : '—') + '</bdi>', 'lc'];
+    LCSUM = ['لودسل خمشی توزین دان', '<bdi>' + nf(total, 0) + ' × ' + (fin(cap) ? (LC.capU === 'kg' ? nf(LC.capR, 2) + ' کیلوگرم' : nf(cap, 2) + ' تن') : '—') + '</bdi>', 'lc'];
     drawSum();
   }
-  ['lw', 'll', 'ls', 'lf', 'lo', 'lm', 'bq', 'bc', 'bu', 'bm', 'fb', 'fpc'].forEach(function(id){ $(id).addEventListener('input', renderL); $(id).addEventListener('change', renderL); });
+  ['lw', 'll', 'ls', 'lf', 'lo', 'lou', 'lm', 'bq', 'bc', 'bm'].forEach(function(id){ $(id).addEventListener('input', renderL); $(id).addEventListener('change', renderL); });
   renderL();
   function hallsN(S0){
     var h = parseFloat(String((S0.inv && S0.inv.halls) || '').replace(/[^0-9.]/g, ''));
@@ -4877,11 +4905,11 @@ window.__proforma={fname:fname,newInv:function(clr){doNewInv(clr)},addProduct:np
     if (kind === 'lcb') {
       if (!(LCB.total > 0)) return null;
       var cb = LCB.unit === 'kg' ? LCB.cap : LCB.cap;
-      return { id: 'wloadb', qty: LCB.total, unit: 'عدد', name: 'لودسل توزین پرنده', cap: LCB.cap, capU: LCB.unit, model: LCB.model, extra: ' (' + nf(LCB.cap, 2) + (LCB.unit === 'kg' ? ' کیلوگرم، ' : ' تن، ') + LCB.model + ')' };
+      return { id: 'wloadb', qty: LCB.total, unit: 'عدد', name: 'لودسل کششی توزین پرنده', cap: LCB.cap, capU: LCB.unit, model: LCB.model, extra: ' (' + nf(LCB.cap, 2) + (LCB.unit === 'kg' ? ' کیلوگرم، ' : ' تن، ') + LCB.model + ')' };
     }
     if (kind === 'lc') {
       if (!(LC.total > 0)) return null;
-      return { id: 'wload', qty: LC.total, unit: 'عدد', name: 'لودسل', cap: fin(LC.cap) ? LC.cap : null, model: LC.model, extra: fin(LC.cap) ? ' (' + nf(LC.cap, 2) + ' تن، ' + LC.model + ')' : '' };
+      return { id: 'wload', qty: LC.total, unit: 'عدد', name: 'لودسل', cap: fin(LC.capR) ? LC.capR : null, capU: LC.capU, model: LC.model, extra: fin(LC.capR) ? ' (' + nf(LC.capR, 2) + (LC.capU === 'kg' ? ' کیلوگرم، ' : ' تن، ') + LC.model + ')' : '' };
     }
     return null;
   }
@@ -4896,7 +4924,7 @@ window.__proforma={fname:fname,newInv:function(clr){doNewInv(clr)},addProduct:np
     var kind = btn.dataset.reg, it = regItem(kind, P.S());
     if (!it) { REGMSG[kind] = 'اول حساب کن'; drawSum(); return; }
     P.apply(function(S){
-      var r = S.rows[it.id] || {}; r.qty = it.qty; if (it.id !== 'wacc') r.qtyManual = true; if (it.id === 'wload') { if (it.cap != null) r.cap = String(it.cap); } if (it.id === 'wloadb') { r.cap = String(it.cap); r.capU = it.capU; } if (it.id === 'wacc' && fin(FLEX.base) && FLEX.base > 0) { S.fx = S.fx || {}; S.fx.in = {base: String(Math.round(FLEX.base)), pct: String(FLEX.pct)}; }
+      var r = S.rows[it.id] || {}; r.qty = it.qty; if (it.id !== 'wacc') r.qtyManual = true; if (it.id === 'wload') { if (it.cap != null) { r.cap = String(it.cap); r.capU = it.capU || 't'; } } if (it.id === 'wloadb') { r.cap = String(it.cap); r.capU = it.capU; }
       if (fin(it.price) && it.price > 0) r.priceOv = Math.round(it.price);
       S.rows[it.id] = r;
     });
