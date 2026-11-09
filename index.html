@@ -2091,7 +2091,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
           <div class="calc" id="n12" aria-live="polite"></div>
         </section>
         <section class="card" id="lcCard">
-          <h2>لودسل خمشی سیلو (توزین دان)</h2>
+          <h2>لودسل سیلو (توزین دان)</h2>
           <div class="fields">
             <div class="field"><label for="lw">وزن سیلو (تن)</label><input type="text" id="lw" inputmode="decimal" placeholder="مثلاً ۱۰"></div>
             <div class="field"><label for="ll">تعداد پایه سیلو</label><input type="text" id="ll" inputmode="numeric" placeholder="مثلاً ۶"></div>
@@ -2247,7 +2247,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.75</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.77</footer>
 </div>
 
 
@@ -3485,7 +3485,7 @@ I('pres','side','سنسور فشار',61,1,{motor:true});
 // توزین
 I('wfeed','weigh','سیستم توزین دان',275,1);
 I('wio','weigh','کارت IO جهت توزین دان',90,1,{from:['wfeed']});
-I('wload','weigh','لودسل خمشی توزین دان',null,0);
+I('wload','weigh','لودسل توزین دان',null,0);
 I('wloadb','weigh','لودسل کششی توزین پرنده',null,0);
 I('wjb','weigh','جعبه تقسیم',null,0,{from:['wfeed']});
 I('wbird','weigh','سیستم توزین پرنده',275,1);
@@ -3627,7 +3627,7 @@ var COEXCL=['wbox'];
 function inEquip(l){return l.g==='auto'||l.g==='side'||l.g==='weigh'||INSINC.indexOf(l.id)>=0}
 function insPct(){var m=insMode();if(m)return COPARTS[m][0][1]+COPARTS[m][1][1];return S.insSel==='x'?Math.max(0,num(S.insX)):num(S.insSel)}
 function discOn(id,it){var r=S.rows[id];if(r&&typeof r.disc==='boolean')return r.disc;return cust().all?true:it.disc}
-function lcName(it,r){if(it.id==='wjb'&&r)return it.name+(String(r.model||'').trim()?' '+String(r.model).trim():'');if((it.id!=='wload'&&it.id!=='wloadb')||!r)return it.name;var c=String(r.cap==null?'':r.cap).trim();return it.name+(c?' '+c+((r.capU==='kg'||it.id==='wloadb')?' کیلوگرم':' تن'):'')}
+function lcName(it,r){if(it.id==='wjb'&&r)return it.name+(String(r.model||'').trim()?' '+String(r.model).trim():'');if((it.id!=='wload'&&it.id!=='wloadb')||!r)return it.name;var c=String(r.cap==null?'':r.cap).trim();if(it.id==='wload')return 'لودسل'+(c?' '+c+(r.capU==='kg'?' کیلوگرم':' تن'):'')+' توزین دان';return it.name+(c?' '+c+((r.capU==='kg'||it.id==='wloadb')?' کیلوگرم':' تن'):'')}
 function drOf(l,id){var r=S.rows[id],v=r?r.dr:null;if(v===undefined||v===null||String(v).trim()==='')return l.defRate;return Math.max(0,Math.min(100,num(v)))}
 function calc(){
   var lines=[],base=0,rate=num(S.rate);
@@ -4837,7 +4837,7 @@ window.__proforma={fname:fname,newInv:function(clr){doNewInv(clr)},addProduct:np
   function renderL0(){
     var w = val('lw'), legs = val('ll'), silos = val('ls'), f = val('lf'), ov = val('lo'), ovU = $('lou').value; if (ov > 0 && ovU === 'kg') ov = ov / 1000;
     if (!(silos > 0)) silos = 1; if (!(f > 0)) f = 1;
-    var el = $('nL'); LC = {}; LCSUM = ['لودسل خمشی توزین دان', '—', 'lc'];
+    var el = $('nL'); LC = {}; LCSUM = ['لودسل توزین دان', '—', 'lc'];
     if (!(w > 0) || !(legs > 0)) { el.textContent = 'وزن سیلو و تعداد پایه را وارد کن.'; drawSum(); return; }
     legs = Math.round(legs); silos = Math.round(silos);
     var need = w * f / legs, cap = NaN;
@@ -4850,7 +4850,7 @@ window.__proforma={fname:fname,newInv:function(clr){doNewInv(clr)},addProduct:np
       'ظرفیت پیشنهادی هر لودسل: <b>' + (fin(cap) ? '<bdi>' + nf(cap, 2) + '</bdi> تن (' + nf(legs) + ' × ' + nf(cap, 2) + ' = ' + nf(tot, 2) + ' تن)' : '—') + '</b><br>' +
       'تعداد لودسل: <b><bdi>' + nf(silos) + ' سیلو × ' + nf(legs) + ' پایه = ' + nf(total, 0) + '</bdi> عدد</b> · مدل ' + $('lm').value + '<br>تعداد متعلقات سیستم توزین = تعداد لودسل = <b><bdi>' + nf(total, 0) + '</bdi> عدد</b>' +
       (warn ? '<br><span style="color:var(--bad)">' + warn + '</span>' : '');
-    LCSUM = ['لودسل خمشی توزین دان', '<bdi>' + nf(total, 0) + ' × ' + (fin(cap) ? (LC.capU === 'kg' ? nf(LC.capR, 2) + ' کیلوگرم' : nf(cap, 2) + ' تن') : '—') + '</bdi>', 'lc'];
+    LCSUM = ['لودسل توزین دان', '<bdi>' + nf(total, 0) + ' × ' + (fin(cap) ? (LC.capU === 'kg' ? nf(LC.capR, 2) + ' کیلوگرم' : nf(cap, 2) + ' تن') : '—') + '</bdi>', 'lc'];
     drawSum();
   }
   ['lw', 'll', 'ls', 'lf', 'lo', 'lou', 'lm', 'bq', 'bc', 'bm'].forEach(function(id){ $(id).addEventListener('input', renderL); $(id).addEventListener('change', renderL); });
@@ -9213,7 +9213,7 @@ html[data-ios] #iosSB .isb-cr{bottom:calc(114px + env(safe-area-inset-bottom,0px
 html[data-ios] #qkH{top:56%!important;bottom:auto!important}
 </style>
 <style id="cxmcss">
-#cxm{position:fixed;z-index:9999;width:272px;max-height:calc(100vh - 16px);overflow:auto;overscroll-behavior:contain;direction:rtl;padding:6px;border-radius:18px;font:inherit;font-size:14px;color:#1c1c1e;background:rgba(250,249,246,.88);-webkit-backdrop-filter:blur(26px) saturate(180%);backdrop-filter:blur(26px) saturate(180%);border:1px solid rgba(255,255,255,.9);box-shadow:0 18px 48px rgba(20,25,60,.28),0 2px 8px rgba(20,25,60,.12);transform-origin:var(--ox,0) var(--oy,0);animation:cxin .14s ease-out}
+#cxm{position:fixed;z-index:9999;width:272px;max-height:calc(100vh - 16px);overflow:auto;overscroll-behavior:contain;direction:rtl;padding:6px;border-radius:18px;font:inherit;font-size:14px;color:#1c1c1e;background:rgba(250,249,246,.97);-webkit-backdrop-filter:blur(26px) saturate(180%);backdrop-filter:blur(26px) saturate(180%);border:1px solid rgba(255,255,255,.9);box-shadow:0 18px 48px rgba(20,25,60,.28),0 2px 8px rgba(20,25,60,.12);transform-origin:var(--ox,0) var(--oy,0);animation:cxin .14s ease-out}
 @keyframes cxin{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
 #cxm[hidden]{display:none}
 #cxm .cx-i{display:flex;align-items:center;gap:10px;width:100%;box-sizing:border-box;min-height:38px;padding:6px 10px;margin:0;border:0;border-radius:11px;background:transparent;color:inherit;font:inherit;text-align:start;cursor:pointer}
@@ -9223,7 +9223,7 @@ html[data-ios] #qkH{top:56%!important;bottom:auto!important}
 #cxm .cx-rl{font-weight:800}
 #cxm .cx-h{margin:8px 10px 2px;font-size:11.5px;font-weight:700;color:#5B2A5F;letter-spacing:.2px}
 #cxm .cx-sep{height:1px;margin:5px 6px;background:rgba(60,60,67,.16)}
-html[data-theme=dark] #cxm{color:#f2f2f7;background:rgba(24,30,62,.9);border-color:rgba(255,255,255,.16);box-shadow:0 18px 48px rgba(0,0,0,.55)}
+html[data-theme=dark] #cxm{color:#f2f2f7;background:rgba(24,30,62,.97);border-color:rgba(255,255,255,.16);box-shadow:0 18px 48px rgba(0,0,0,.55)}
 html[data-theme=dark] #cxm .cx-i svg{color:#8CC2FF}
 html[data-theme=dark] #cxm .cx-i:hover,html[data-theme=dark] #cxm .cx-i:focus-visible{background:rgba(140,194,255,.2)}
 html[data-theme=dark] #cxm .cx-i.on{background:rgba(140,194,255,.16)}
@@ -9238,12 +9238,26 @@ html[data-theme=dark] #cxm .cx-sep{background:rgba(255,255,255,.14)}
   function ic(d){return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+d+'"/></svg>'}
   function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
   function close(){if(m){m.remove();m=null}}
+  /* ترتیب منو: بارگذاری مجدد ← پیش‌فاکتور جدید ← ادامه‌ی پیش‌فاکتور ← محاسبات ← بقیه */
+  var ORDER=[['میز کار',['d','f','k','r','m','st']],['مشتریان',['q','p','o']],['مالی و پیشنهاد',['t','pl','e','l']],['مدیریت',['y','z','s']]];
+  var CALC=['c','v','w','h','g'];
   function html(){
-    var D=window.__drG,h='<button type="button" class="cx-i cx-rl" data-cx="reload">'+ic('M20 12a8 8 0 11-2.3-5.6M20 4v5h-5')+'<span>بارگذاری مجدد</span></button><div class="cx-sep"></div>';
-    if(D){var c=D.cur();D.G.forEach(function(g){
-      var items=g[1].filter(function(it){try{return D.ok(it)||it[0]==='pl'||it[0]==='st'}catch(e){return false}});
+    var D=window.__drG,c=D?D.cur():'',ID='M6 3.5h9l3 3v14H6zM9 12h6M9 16h4';
+    var h='<button type="button" class="cx-i cx-rl" data-cx="reload">'+ic('M20 12a8 8 0 11-2.3-5.6M20 4v5h-5')+'<span>بارگذاری مجدد</span></button><div class="cx-sep"></div>';
+    if(!D)return h;
+    var by={};D.G.forEach(function(g){g[1].forEach(function(it){by[it[0]]=it})});
+    function okI(it){try{return D.ok(it)||it[0]==='pl'||it[0]==='st'}catch(e){return false}}
+    function btn(it,key,label,icon,on){return '<button type="button" class="cx-i'+(on?' on':'')+'" data-cx="'+key+'">'+ic(icon||it[2])+'<span>'+esc(label||it[1])+'</span></button>'}
+    var inv=by.i;
+    if(inv&&okI(inv)){
+      h+=btn(inv,'@newinv','پیش‌فاکتور جدید','M12 5v14M5 12h14',false);
+      h+=btn(inv,'i','ادامه‌ی پیش‌فاکتور',ID,c==='i')+'<div class="cx-sep"></div>'}
+    var ci=CALC.map(function(k){return by[k]}).filter(function(it){return it&&okI(it)});
+    if(ci.length)h+='<div class="cx-h">محاسبات</div>'+ci.map(function(it){return btn(it,it[0],null,null,c===it[0])}).join('');
+    ORDER.forEach(function(g){
+      var items=g[1].map(function(k){return by[k]}).filter(function(it){return it&&okI(it)});
       if(!items.length)return;
-      h+='<div class="cx-h">'+esc(g[0])+'</div>'+items.map(function(it){return '<button type="button" class="cx-i'+(c===it[0]?' on':'')+'" data-cx="'+it[0]+'">'+ic(it[2])+'<span>'+esc(it[1])+'</span></button>'}).join('')})}
+      h+='<div class="cx-h">'+esc(g[0])+'</div>'+items.map(function(it){return btn(it,it[0],null,null,c===it[0])}).join('')});
     var tt=document.getElementById('tbTheme');
     if(tt)h+='<div class="cx-sep"></div><button type="button" class="cx-i" data-cx="@theme">'+ic('M21 13.5A8.5 8.5 0 1110.5 3a6.5 6.5 0 0010.5 10.5z')+'<span>تغییر تم روشن/تیره</span></button>';
     return h}
@@ -9262,6 +9276,10 @@ html[data-theme=dark] #cxm .cx-sep{background:rgba(255,255,255,.14)}
     if(!b){close();return}
     var k=b.dataset.cx;close();
     if(k==='reload'){location.reload();return}
+    if(k==='@newinv'){var P=window.__proforma,tb0=document.getElementById('tabI');
+      var busy=false;try{busy=P&&Object.keys(P.S().rows||{}).length>0}catch(x){}
+      if(busy&&!window.confirm('پیش‌فاکتور فعلی پاک شود و پیش‌فاکتور جدید ساخته شود؟'))return;
+      if(P)P.newInv();if(tb0)tb0.click();try{window.scrollTo(0,0)}catch(x){}return}
     if(k==='@theme'){var tt=document.getElementById('tbTheme');if(tt)tt.click();return}
     if(k==='st'){if(window.__crmStats)window.__crmStats.open();return}
     if(k==='pl'){if(window.__colPrice)window.__colPrice.open();return}
