@@ -2248,7 +2248,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.90</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.91</footer>
 </div>
 
 
@@ -4094,7 +4094,7 @@ async function makeProposal(opt){opt=opt||{};
     var dN=cs.disc==null?18:(parseFloat(cs.disc)||0),dM=cs.mdisc==null?10:(parseFloat(cs.mdisc)||0);
     var rows=c.lines.filter(function(l){return !l.install&&l.qty>0}).map(function(l){
       if(blankP(l))return {n:outName(l.name),q:Math.round(l.qty*100)/100,u:l.unit,d:0,blank:1,pa:0,cu:0,pr:0,tp:0,tc:0};
-      var d=l.it.motor?dM:((l.it.g!=='acc'&&l.it.g!=='cab')?dN:0),cu=l.price,pa=Math.round(cu*(1-d/100));
+      var d=(l.it.motor||l.id==='flap')?dM:((l.it.g!=='acc'&&l.it.g!=='cab')?dN:0),cu=l.price,pa=Math.round(cu*(1-d/100));
       return {n:outName(l.name),q:Math.round(l.qty*100)/100,u:l.unit,d:d,pa:pa,cu:cu,pr:(cu-pa)*l.qty,tp:pa*l.qty,tc:cu*l.qty}});
     if(!rows.length)return;
     var tp=0,tc=0,tr=0;rows.forEach(function(r){tp+=r.tp;tc+=r.tc;tr+=r.pr});
@@ -4226,7 +4226,7 @@ window.__projLoad=projLoad;window.__projSnap=projSnapshot;
 
 /* ---------- init ---------- */
 renderSettings();sync();renderRows();renderPicker();
-window.__pfCat=function(){return {groups:GROUPS.map(function(g){return {id:g.id,name:g.name}}),items:CAT.filter(function(c){return !c.hide&&c.usd!=null}).map(function(c){return {id:c.id,g:c.g,name:c.name,usd:c.usd,disc:c.disc,cd:(c.g!=='acc'&&c.g!=='cab'),fixed:c.fixed||null,motor:c.motor,unit:c.unit}}),rate:S.rate}};
+window.__pfCat=function(){return {groups:GROUPS.map(function(g){return {id:g.id,name:g.name}}),items:CAT.filter(function(c){return !c.hide&&c.usd!=null}).map(function(c){return {id:c.id,g:c.g,name:c.name,usd:c.usd,disc:c.disc,cd:(c.g!=='acc'&&c.g!=='cab'),fixed:c.fixed||null,motor:c.motor||c.id==='flap',unit:c.unit}}),rate:S.rate}};
 window.__pp={saveFile:saveFile,fontsReady:fontsReady,faTree:faTree,esc:esc,LOGO:LOGO,toast:toast,nowBusy:nowBusy};
 function npAddProduct(p){if(!p||!p.id||BY[p.id])return false;var g=['auto','side','weigh','acc','cab'].indexOf(p.g)>=0?p.g:'acc';var it={id:p.id,g:g,name:String(p.name||'').trim(),usd:num(p.usd),disc:false,unit:'عدد',motor:false,from:null,mult:1,price0:null,fixed:null,note:'',hide:false,sel:false,custom:true};CAT.push(it);BY[it.id]=it;if(p.dev&&INSINC.indexOf(it.id)<0)INSINC.push(it.id);try{renderPicker()}catch(e){}return true}
 window.__proforma={fname:fname,newInv:function(clr){doNewInv(clr)},addProduct:npAddProduct,refresh:function(){try{renderPicker();renderRows();sync()}catch(e){}},commit:function(){pfCommit()},buyerRows:function(){return buyerRows(S.inv)},snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync();renderRows();renderPicker();save()},S:function(){return S},calc:calc,reset:function(){S=fresh();renderSettings();renderRows();renderPicker()}};
