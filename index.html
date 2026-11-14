@@ -1424,9 +1424,9 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 <div id="qsOv" hidden></div>
 <div id="qsSheet" dir="rtl" lang="fa" role="dialog" aria-modal="true" aria-label="افزودن" hidden>
   <div class="qs-grab"></div>
-  <button type="button" data-qs="inv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5h9l3 3v14H6zM9 12h6M9 16h4"/></svg></i><span><b>پیش‌فاکتور تازه</b><small>ساخت و ارسال</small></span></button>
-  <button type="button" data-qs="cable"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v5M17 3v5M5 8h14v3a7 7 0 01-14 0zM12 18v3"/></svg></i><span><b>محاسبه کابل</b><small>متراژ کابل سالن</small></span></button>
   <button type="button" data-qs="cont"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5h9l3 3v14H6zM9 13h6M9 17h3M9 9h3"/></svg></i><span><b>ادامه‌ی پیش‌فاکتور</b><small>بازگشت به پیش‌فاکتور فعلی</small></span></button>
+  <button type="button" data-qs="cable"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v5M17 3v5M5 8h14v3a7 7 0 01-14 0zM12 18v3"/></svg></i><span><b>محاسبه کابل</b><small>متراژ کابل سالن</small></span></button>
+  <button type="button" data-qs="inv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5h9l3 3v14H6zM9 12h6M9 16h4"/></svg></i><span><b>پیش‌فاکتور تازه</b><small>ساخت و ارسال</small></span></button>
   <button type="button" data-qs="cust"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></i><span><b>تماس با مشتری</b><small>مشتری را پیدا کن و تماس بگیر</small></span></button>
   <button type="button" data-qs="gh"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V6M8 10l4-4 4 4M5 19h14"/></svg></i><span><b>ثبت در فضای ابری</b><small>ذخیره روی مخزن گیت‌هاب</small></span></button>
   <button type="button" data-qs="cloud"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V10M8 14l4-4 4 4M5 5h14"/></svg></i><span><b>بازیابی از فضای ابری</b><small>برگرداندن اطلاعات از گیت‌هاب</small></span></button>
@@ -2248,7 +2248,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.102</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.103</footer>
 </div>
 
 
@@ -2655,9 +2655,10 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
       return {id:id,f:f,lead:lead,name:(function(){var n0=plain((f&&f.name)||lead.name)||'بی‌نام';return (f&&f.info&&f.info.noName&&/^\d+$/.test(n0))?fa(n0):n0})(),info:(f&&f.info)||{},ph:ph,phone:(f&&(f.phone||(f.persona&&f.persona.phone)))||(lead&&lead.phone)||'',calls:calls,objs:objs,invs:invs,last:last,urg:urg,stage:lead?lead.stage:''};
     }
     F.forEach(function(f){var ph=phs((f.persona&&f.persona.phone)||'').concat(phs(f.phone||'')),lead=null;
-      L.forEach(function(l){if(l.cid===f.id||(ph.length&&p10(l.phone)&&ph.indexOf(p10(l.phone))>=0)){if(!lead||(l.created||0)>(lead.created||0))lead=l}});
-      if(lead)used[lead.id]=1;rows.push(mk(f,lead))});
-    L.forEach(function(l){if(!used[l.id])rows.push(mk(null,l))});
+      L.forEach(function(l){if(l.cid===f.id||(ph.length&&p10(l.phone)&&ph.indexOf(p10(l.phone))>=0)){used[l.id]=1;if(!lead||(l.stTs||l.created||0)>(lead.stTs||lead.created||0))lead=l}});
+      rows.push(mk(f,lead))});
+    var lk={};L.forEach(function(l){if(used[l.id])return;var k=p10(l.phone)||('n:'+(window.__nk?window.__nk(l.name):l.name));if(!k||k==='n:'){rows.push(mk(null,l));return}var o=lk[k];if(!o||(l.stTs||l.created||0)>(o.stTs||o.created||0))lk[k]=l});
+    Object.keys(lk).forEach(function(k){rows.push(mk(null,lk[k]))});
     var TM=tmap();rows.sort(function(a,b){return TR[TM[b.id]||'norm']-TR[TM[a.id]||'norm']||b.urg-a.urg||b.last-a.last});
     return rows;
   }
@@ -2723,7 +2724,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
     if(flt==='talk'&&r.stage!=='talk')return false;
     if(flt==='sent'&&r.stage!=='sent')return false;
     if(flt==='won'&&r.stage!=='won')return false;
-    if(q){var s=en(q).toLowerCase(),dq=s.replace(/\D/g,'');if(r.name.toLowerCase().indexOf(s)<0&&String((r.info.co||'')+' '+(r.info.src||'')+' '+(r.info.city||'')).toLowerCase().indexOf(s)<0&&!(dq.length>=3&&r.ph.some(function(p){return p.indexOf(dq)>=0||p.slice(-dq.length)===dq})))return false}
+    if(q){var s=en(q).toLowerCase(),dq=s.replace(/\D/g,'');if(r.name.toLowerCase().indexOf(s)<0&&!(window.__nkHas&&window.__nkHas(r.name,s))&&String((r.info.co||'')+' '+(r.info.src||'')+' '+(r.info.city||'')).toLowerCase().indexOf(s)<0&&!(dq.length>=3&&r.ph.some(function(p){return p.indexOf(dq)>=0||p.slice(-dq.length)===dq})))return false}
     return true;
   }
   function nextLine(r){var l=r.lead;if(l&&l.next&&(l.stage==='talk'||l.stage==='sent')){var d=daysBetween(today(),l.next);return 'پیگیری: '+(d<0?fa(-d)+' روز عقب‌افتاده':d===0?'امروز':jd(l.next))+(l.note?' · '+l.note:'')}return lastLine(r)}
@@ -2876,13 +2877,13 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
     var el=$('cuBody');if(!el)return;var I=r.info||{},v={name:r.name,phone:r.phone,co:I.co,phone2:I.phone2,prov:I.prov,city:I.city,addr:I.addr,act:I.act,halls:I.halls,src:I.src,note:I.note};
     el.innerHTML='<div class="cu-top"><button type="button" class="cu-back" data-cu-cancel aria-label="انصراف">›</button><span class="cu-hdr">ویرایش مشتری</span></div><section class="cu-card">'
       +EF.map(function(f){return '<label class="hint" for="ce_'+f[0]+'">'+f[1]+'</label><input class="cu-in" id="ce_'+f[0]+'" value="'+esc(v[f[0]]||'')+'"'+(f[0]==='phone'||f[0]==='phone2'||f[0]==='halls'?' inputmode="tel"':'')+'>'}).join('')
-      +'<p class="hint">«جناب آقای» فقط روی پیش‌فاکتور اضافه می‌شود؛ اینجا نام و نام‌خانوادگی ساده بنویس.</p><div style="display:flex;gap:8px"><button type="button" class="cu-b pri" data-cu-save style="flex:1">ذخیره</button><button type="button" class="cu-b" data-cu-cancel style="flex:1">انصراف</button></div>'+(r.f?'<button type="button" class="cu-b" data-cu-del style="width:100%;margin-top:10px;color:#c0392b">حذف این '+(isLeadRow(r)?'سرنخ':'مشتری')+'</button>':'')+'</section>';
+      +xfBlock(I)+'<p class="hint">«جناب آقای» فقط روی پیش‌فاکتور اضافه می‌شود؛ اینجا نام و نام‌خانوادگی ساده بنویس.</p><div style="display:flex;gap:8px"><button type="button" class="cu-b pri" data-cu-save style="flex:1">ذخیره</button><button type="button" class="cu-b" data-cu-cancel style="flex:1">انصراف</button></div>'+(r.f?'<button type="button" class="cu-b" data-cu-del style="width:100%;margin-top:10px;color:#c0392b">حذف این '+(isLeadRow(r)?'سرنخ':'مشتری')+'</button>':'')+'</section>';
     el.dataset.rid=r.id}
   function saveEdit(){
     var el=$('cuBody'),r=ROWS.filter(function(x){return x.id===(el&&el.dataset.rid)})[0];if(!r)return;
     function g(k){var e=$('ce_'+k);return e?nrm(e.value):''}
     var name=plain(g('name')),ph=normPhone(g('phone'))||g('phone');if(!name){alert('نام را بنویس.');return}
-    var info={co:g('co'),phone2:g('phone2'),prov:g('prov'),city:g('city'),addr:g('addr'),act:g('act'),halls:g('halls'),src:g('src'),note:g('note')};
+    var info={co:g('co'),phone2:g('phone2'),prov:g('prov'),city:g('city'),addr:g('addr'),act:g('act'),halls:g('halls'),src:g('src'),note:g('note')};try{Object.assign(info,xfRead(document))}catch(x){}
     var wasL=isLeadRow(r);info.noName=(wasL&&/^[\d۰-۹]+$/.test(name))?1:0;
     if(r.f&&window.__cust)window.__cust.update(r.f.id,{name:name,phone:ph,info:info});
     var L=ls('payesh-leads'),ch=false;L.forEach(function(l){if((r.lead&&l.id===r.lead.id)||(r.f&&l.cid===r.f.id)){l.name=name;if(ph)l.phone=ph;if(!r.f&&info.note)l.note=info.note;ch=true}});if(ch)saveLeadsArr(L);
@@ -3093,7 +3094,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
     var bar=tabsBar(r),p2=normPhone(r.info&&r.info.phone2);
     var side='<div class="cu-top"><button type="button" class="cu-back" data-cu-back aria-label="بازگشت به فهرست مشتریان">›</button><span class="cu-hdr">پرونده‌ی مشتری</span><button type="button" class="cu-b'+(fedit?' pri':'')+'" data-cu-fedit style="margin-inline-start:auto;min-height:40px;padding:0 16px">'+(fedit?'✓ پایان ویرایش':'✏️ ویرایش')+'</button></div>'
       +'<section class="cu-card cu-hd t-'+tierOf(r)+'"><div class="cu-head" style="margin:0 0 12px"><span class="cu-av cu-big'+(r.urg?' cu-ring'+r.urg:'')+'" style="background:'+colr(r.name)+'">'+esc(ini(r.name))+'</span><div class="cu-hn"><b>'+esc(r.name)+'</b><small>'+esc([phone?fa(phone):'',(r.info&&r.info.city)||'',p&&p.farmType].filter(Boolean).join(' · ')||'اطلاعات پایه ثبت نشده')+'</small></div>'+stChip(r)+(!fedit&&hasCat(r)?'<span class="cu-ch cu-g">'+CATN+' ✓</span>':'')+'</div>'
-      +'<div class="cu-act cu-act3">'+(phone?'<a class="cu-b pri" href="tel:'+phone+'" data-call="'+phone+'" data-name="'+esc(r.name)+'" data-cid="'+esc(r.f?r.f.id:'')+'">📞 تماس</a><a class="cu-b" href="https://wa.me/'+wa+'" target="_blank" rel="noopener">واتس‌اپ</a>':'')
+      +xfLine(r.info)+'<div class="cu-act cu-act3">'+(phone?'<a class="cu-b pri" href="tel:'+phone+'" data-call="'+phone+'" data-name="'+esc(r.name)+'" data-cid="'+esc(r.f?r.f.id:'')+'">📞 تماس</a><a class="cu-b" href="https://wa.me/'+wa+'" target="_blank" rel="noopener">واتس‌اپ</a>':'')
       +(r.f?'<button type="button" class="cu-b" data-cu-newinv>+ پیش‌فاکتور</button>':'')
       +((fedit||phone||p2)?'<details class="cu-more"><summary class="cu-b">⋯ بیشتر</summary><div class="cu-menu">'+(fedit?'<button type="button" data-cu-edit>ویرایش اطلاعات</button>':'')+(phone?'<button type="button" data-cu-vcf>ذخیره در مخاطبین گوشی</button>':'')+(p2?'<a href="tel:'+p2+'" data-call="'+p2+'" data-name="'+esc(r.name)+'" data-cid="'+esc(r.f?r.f.id:'')+'">تماس با شماره‌ی دوم</a>':'')+(fedit&&r.f?'<button type="button" data-cu-per>پرسونا (شناخت شخص)</button><button type="button" data-cu-farm>مشخصات فارم و سالن‌ها</button>':'')+(fedit?'<label><input type="checkbox" data-cu-cat'+(hasCat(r)?' checked':'')+'> '+CATN+'</label>':'')+'</div></details>':'')+'</div></section>'
       +(fedit?noteCard(r)+'<section class="cu-card cu-tpc"><div class="cu-ct"><b>اهمیت مشتری</b><small>رنگ کارت در فهرست</small></div>'+tierPick(r)+'</section>'+stageBar(r)+nextCard(r):viewCards(r));
@@ -3178,6 +3179,20 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   /* ---- ۱۱.۴۳: فرم تکمیل اطلاعات سرنخ ---- */
   var QSTAT=['فعال','دیگر فعالیت نمی‌کند','جمع کرده','اجاره داده','شماره اشتباه است'],QDEAD={'دیگر فعالیت نمی‌کند':1,'جمع کرده':1,'اجاره داده':1,'شماره اشتباه است':1};
+  var RASTE=['گوشتی','تخم‌گذار','پولت','جوجه‌کشی','گلخانه','دامداری'],WSTAT=['مرغدار','گلخانه‌دار','دامپزشک','مشاور','مدیر فارم','نصاب','همکار','تجهیزاتی'],REFS=['معرفی مشتری قبلی','معرفی همکار / نماینده','اینستاگرام','واتساپ / تلگرام','نمایشگاه','گوگل / سایت','آگهی','خودش تماس گرفت','مراجعه حضوری','لیست اکسل'];
+  function xfChips(k,arr,cur,multi){var cs=String(cur||'').split('،').map(function(x){return x.trim()});return '<div class="cu-fl cu-xf" data-xf="'+k+'" data-multi="'+(multi?1:0)+'" role="group">'+arr.map(function(x){return '<button type="button" data-xv="'+esc(x)+'" aria-pressed="'+(cs.indexOf(x)>=0)+'">'+esc(x)+'</button>'}).join('')+'</div>'}
+  function xfBlock(I){I=I||{};var cu=I.ref&&REFS.indexOf(I.ref)<0;
+    return '<label class="hint">رسته‌ی مشتری (می‌توانی چند تا انتخاب کنی)</label>'+xfChips('cat',RASTE,I.cat,1)
+     +'<label class="hint">وضعیت کاری</label>'+xfChips('wst',WSTAT,I.wst,0)+'<input class="cu-in" id="xf_wstx" placeholder="سایر؟ خودت بنویس" value="'+(I.wst&&WSTAT.indexOf(I.wst)<0?esc(I.wst):'')+'">'
+     +'<label class="hint">نحوه‌ی آشنایی (از چه راهی با ما آشنا شد؟)</label>'+xfChips('ref',REFS,I.ref,0)+'<input class="cu-in" id="xf_refx" placeholder="راه دیگر؟ خودت بنویس" value="'+(cu?esc(I.ref):'')+'">'
+     +'<label class="hint" for="xf_refby">نام معرف / رفرنس (اگر معرفی شده)</label><input class="cu-in" id="xf_refby" value="'+esc(I.refBy||'')+'">'}
+  function xfRead(root){function g(k){return [].map.call(root.querySelectorAll('[data-xf="'+k+'"] [aria-pressed="true"]'),function(x){return x.getAttribute('data-xv')})}
+    var a=$('xf_wstx'),b=$('xf_refx'),c=$('xf_refby');if(!a||!b||!c)return {};
+    return {cat:g('cat').join('، '),wst:a.value.trim()||g('wst')[0]||'',ref:b.value.trim()||g('ref')[0]||'',refBy:c.value.trim()}}
+  function xfLine(I){I=I||{};var h='';String(I.cat||'').split('،').forEach(function(x){x=x.trim();if(x)h+='<span class="cu-xc">'+esc(x)+'</span>'});
+    if(I.wst)h+='<span class="cu-xc w">'+esc(I.wst)+'</span>';if(I.ref)h+='<span class="cu-xc r">آشنایی: '+esc(I.ref)+(I.refBy?' ← '+esc(I.refBy):'')+'</span>';else if(I.refBy)h+='<span class="cu-xc r">معرف: '+esc(I.refBy)+'</span>';
+    return h?'<div class="cu-xl">'+h+'</div>':''}
+  document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.cu-xf [data-xv]');if(!b)return;var on=b.getAttribute('aria-pressed')==='true',multi=b.parentNode.getAttribute('data-multi')==='1';if(!multi)[].forEach.call(b.parentNode.children,function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed',on?'false':'true')});
   function qChips(k,arr,cur0){return '<div class="cu-fl" data-qf="'+k+'" role="group">'+arr.map(function(x){return '<button type="button" data-qv="'+esc(x)+'" aria-pressed="'+(cur0===x)+'">'+esc(x)+'</button>'}).join('')+'</div>'}
   function qfBox(r){
     if(!r.f||!(r.info&&(r.info.src||r.info.noName||r.info.qd)))return '';var I=r.info||{};
@@ -3190,14 +3205,14 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
       +'<label class="hint">تجهیزات می‌خواهد؟</label>'+qChips('want',['می‌خواهد','نمی‌خواهد','بعداً'],I.want)
       +'<label class="hint">وضعیت واحد</label>'+qChips('qs',QSTAT,I.qs||'')
       +'<label class="hint" for="qf_next">پیگیری بعدی (تاریخ دلخواه)</label><input class="cu-in" id="qf_next" readonly inputmode="none" placeholder="برای انتخاب تاریخ بزن" value="'+esc(I.qnext||'')+'" style="cursor:pointer">'
-      +fl('qf_note','یادداشت دقیق',I.note)
+      +xfBlock(I)+fl('qf_note','یادداشت دقیق',I.note)
       +'<button type="button" class="cu-b pri" data-cu-qsave style="width:100%;margin-top:10px">'+(isLeadRow(r)?'ذخیره و تبدیل به مشتری':'ذخیره‌ی اطلاعات')+'</button>'+(isLeadRow(r)?'<label class="cu-cat"><input type="checkbox" data-qf-got checked> اطلاعات گرفتم</label><p class="hint">با نوشتن نام و ذخیره، به «مشتریان» منتقل می‌شود و آنجا پرسونا را کامل کن.</p>':'')+'</section>';
   }
   function qfSave(){
     var r=curRow();if(!r||!r.f||!window.__cust)return;var box=document.querySelector('.cu-qf');if(!box)return;
     function v(id){var e=$(id);return e?nrm(e.value):''}
     function ch(k){var b=box.querySelector('[data-qf="'+k+'"] [aria-pressed="true"]');return b?b.getAttribute('data-qv'):''}
-    var nm=plain(v('qf_name')),info={prov:v('qf_prov'),city:v('qf_city'),addr:v('qf_addr'),halls:v('qf_halls'),auto:ch('auto'),want:ch('want'),qs:ch('qs'),qnext:v('qf_next'),note:v('qf_note'),qd:1};
+    var nm=plain(v('qf_name')),info={prov:v('qf_prov'),city:v('qf_city'),addr:v('qf_addr'),halls:v('qf_halls'),auto:ch('auto'),want:ch('want'),qs:ch('qs'),qnext:v('qf_next'),note:v('qf_note'),qd:1};try{Object.assign(info,xfRead(box))}catch(x){}
     var patch={info:info},wasL=isLeadRow(r);if(nm){patch.name=nm;info.noName=0}
     window.__cust.update(r.f.id,patch);
     var dead=!!QDEAD[info.qs],iso=info.qnext&&J()?J().parseJ(info.qnext):'',L=ls('payesh-leads'),l=r.lead?L.filter(function(x){return x.id===r.lead.id})[0]:null,now=Date.now();
@@ -4096,7 +4111,7 @@ async function makeProposal(opt){opt=opt||{};
   await pq(11,L('box5070'),[331,606,432,624],[487,606,522,624]);await pq(11,L('wbox'),[331,1078,432,1096],[487,1078,522,1096]);
   /* صفحه ۱۱: متعلقات */
   var ins=c.lines.filter(function(x){return x.install}),insSum=ins.reduce(function(a,x){return a+x.price},0);
-  if(insSum>0){await put(10,[510,395,613,417],money(insSum),{});await put(10,[707,388,731,407],P(1),{dx:-5,dy:3})}
+  if(insSum>0){await put(10,[529,389,626,409],money(insSum),{});await put(10,[701,389,723,409],P(1),{})}
   var ho=L(['host','hostc']);if(ho){mask(10,[311,389,333,409]);mask(10,[139,389,236,409]);await pq(10,ho,[139,389,236,409],[311,389,333,409])}
   await pq(10,L('siren'),[86,754,164,779],[235,754,258,779]);await pq(10,L('presfit'),[326,759,413,782],[500,758,522,782],{dx:-3,dy:2});await pq(10,L('winacc'),[604,754,685,779],[757,754,778,779]);
   await pq(10,L('c2'),[93,1117,177,1141],[234,1117,257,1141]);await pq(10,L('c4'),[345,1117,423,1141],[507,1117,533,1141]);await pq(10,L('c12'),[608,1117,690,1141],[752,1117,776,1141]);
@@ -5798,10 +5813,12 @@ window.__proforma={fname:fname,newInv:function(clr){doNewInv(clr)},addProduct:np
       var find=function(x){while(par[x]!==x){par[x]=par[par[x]];x=par[x]}return x};
       var by={};
       F.forEach(function(f){fPhones(f).forEach(function(p){if(by[p]===undefined)by[p]=f.id;else{var a=find(by[p]),b=find(f.id);if(a!==b)par[b]=a}})});
+      var byN={};F.forEach(function(f){var k=window.__nk?window.__nk(f.name):'';if(!k||k.length<3||/^\d+$/.test(k))return;(byN[k]=byN[k]||[]).push({f:f,ph:fPhones(f)})});
+      Object.keys(byN).forEach(function(k){var Ls=byN[k];if(Ls.length<2)return;var base=Ls[0];Ls.slice(1).forEach(function(x){if(!base.ph.length||!x.ph.length){var a=find(base.f.id),b=find(x.f.id);if(a!==b)par[b]=a}})});
       var grp={};F.forEach(function(f){var r=find(f.id);(grp[r]=grp[r]||[]).push(f)});
       var gone={},undo=[];
       Object.keys(grp).forEach(function(r){var G=grp[r];if(G.length<2)return;
-        G.sort(function(a,b){return (b.invs||[]).length-(a.invs||[]).length||(b.persona?1:0)-(a.persona?1:0)||(a.ts||0)-(b.ts||0)});
+        G.sort(function(a,b){return (b.invs||[]).length-(a.invs||[]).length||(b.persona?1:0)-(a.persona?1:0)||(b.ts||0)-(a.ts||0)});
         var k=G[0];
         G.slice(1).forEach(function(m){undo.push(clone(m));mergeInto(k,m);map[m.id]=k.id;gone[m.id]=1})});
       var n=Object.keys(map).length;if(!n)return map;
@@ -5813,7 +5830,7 @@ window.__proforma={fname:fname,newInv:function(clr){doNewInv(clr)},addProduct:np
       var P=window.__proforma;try{if(P&&P.S&&map[P.S().fid])P.apply(function(S2){S2.fid=map[S2.fid]})}catch(e){}
       try{if(typeof DL!=='undefined'&&Array.isArray(DL)){var c2=false;DL.forEach(function(x){if(x&&map[x.fid]){x.fid=map[x.fid];c2=true}});if(c2)dlSave()}}catch(e){}
       if(map[openId])openId=map[openId];
-      toast2(n+' مشتری هم‌شماره ادغام شد؛ همه‌ی پیش‌فاکتورها نگه داشته شد.');
+      toast2(n+' مشتری تکراری ادغام شد؛ همه‌ی پیش‌فاکتورها نگه داشته شد.');
       try{if(view==='list'||view==='folder')render()}catch(e){}
       try{if(window.__crmRefresh)window.__crmRefresh()}catch(e){}
     }catch(e){}finally{mergeBusy=false}
@@ -7108,6 +7125,7 @@ if('serviceWorker' in navigator&&location.protocol==='https:'){window.addEventLi
       var score=0;
       if(num){if(dg.length>=3&&e.p){var full='0'+e.p;if(full.slice(-dg.length)===dg)score=2;else if(full.indexOf(dg)>=0)score=1}}
       else if(norm(e.name).indexOf(norm(q))>=0)score=norm(e.name).indexOf(norm(q))===0?2:1;
+      else if(window.__nkHas&&window.__nkHas(e.name,q))score=1;
       if(score)res.push({e:e,s:score})});
     res.sort(function(a,b){return b.s-a.s});
     return {list:res.slice(0,6).map(function(x){return x.e}),dg:dg,num:num}}
@@ -9765,5 +9783,21 @@ html[data-theme=dark] #topBar{background-color:rgba(16,22,44,.97)}
 #rpAsk .rpb p{margin:0;font-size:14px}#rpAsk .rpc{display:flex;flex-wrap:wrap;gap:6px}
 #rpAsk button{min-height:42px;border:0;border-radius:12px;padding:0 14px;font:inherit;background:rgba(120,120,128,.16);color:inherit}#rpAsk button.on,#rpAsk button.ok{background:#354c9b;color:#fff;font-weight:700}
 #rpAsk .rpa,#rpAsk .rpf{display:flex;gap:8px;align-items:center}#rpAsk .rpf button{flex:1}#rpAsk input[type=time]{min-height:42px;border:1px solid rgba(120,120,128,.35);border-radius:12px;padding:0 10px;font:inherit;background:var(--bg,#fff);color:inherit}
+</style>
+<script>
+/* جستجوی بدون عنوان‌ها (آقا، خانم، مهندس، دکتر …) */
+(function(){
+  var T=/(^|\s)(جناب|سرکار|آقای|آقا|خانم|مهندس|مهندسه|دکتر|دکترِ|حاج|حاجی|حاجیه|استاد|سید|شرکت|مجموعه|گروه)(?=\s|$)/g;
+  function nk(x){x=String(x==null?'':x).replace(/[يى]/g,'ی').replace(/ك/g,'ک').replace(/[‌‏‎]/g,' ').toLowerCase();
+    var y=x.replace(T,' ').replace(T,' ').replace(/[\s.\-_،,]+/g,'');return y||x.replace(/[\s.\-_،,]+/g,'')}
+  window.__nk=nk;
+  window.__nkHas=function(name,q){var b=nk(q);if(!b)return false;return nk(name).indexOf(b)>=0};
+})();
+</script>
+<style id="xfcss">
+.cu-xl{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}.cu-xc{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.28);color:inherit}
+.cu-xc.w{background:rgba(255,255,255,.45)}.cu-xc.r{background:rgba(0,0,0,.18)}
+.cu-qf .cu-xf,.cu-card .cu-xf{flex-wrap:wrap}
+.cu-xf button[aria-pressed=true]{background:#354c9b!important;color:#fff!important}
 </style>
 </body></html>
