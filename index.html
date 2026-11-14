@@ -1651,6 +1651,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
           <div class="field"><label for="k_rem">یادآوری</label><select id="k_rem"><option value="0" selected>سر ساعت</option><option value="10">۱۰ دقیقه قبل</option><option value="15">۱۵ دقیقه قبل</option><option value="60">۱ ساعت قبل</option><option value="1440">۱ روز قبل</option></select></div>
           <div class="field wide"><label for="k_cust">مشتری (اختیاری، از پوشه‌ی مشتری‌ها)</label><select id="k_cust"><option value="">— بدون مشتری —</option></select></div>
           <div class="field wide"><label for="k_note">یادداشت</label><input type="text" id="k_note"></div>
+          <div class="field wide"><label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="k_rp" style="width:auto;min-height:0"> تکرار روزانه (هر روز می‌پرسم چه ساعت‌هایی یادآوری کنم)</label></div>
         </div>
         <div class="regrow"><button type="submit" class="vbtn">افزودن</button><button type="button" class="vbtn" id="kNotif" style="background:transparent;color:var(--accent)">فعال‌سازی اعلان مرورگر</button></div>
       </form>
@@ -2247,7 +2248,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.101</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.102</footer>
 </div>
 
 
@@ -2518,7 +2519,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
     ['میز کار',[['d','خانه','M3 11.5 12 4l9 7.5M5.5 10v9.5h13V10'],['st','آمار فروش','M4 19V10M10 19V5M16 19v-7M22 19H2'],['f','سرنخ‌ها و پیگیری','M4 5h16l-6.2 7.2V19l-3.6-1.8v-5z'],['k','تقویم و کارها','M4 6.5h16v13H4zM4 10.5h16M8 4v4M16 4v4'],['r','گزارش روز','M6 3.5h9l3 3v14H6zM9 12h6M9 16h6'],['m','پیام‌ها','M3 6h18v12H3zM3.5 7l8.5 6 8.5-6']]],
     ['مشتریان',[['q','مشتریان',ICQ],['p','پرسونا و پوشه‌ی مشتری','M12 12a3.6 3.6 0 100-7.2 3.6 3.6 0 000 7.2zM4.5 20c.8-3.8 3.6-5.5 7.5-5.5s6.7 1.7 7.5 5.5'],['o','اعتراض‌ها','M12 3a9 9 0 100 18 9 9 0 000-18zM12 8v5M12 16.5v.5']]],
     ['ابزار فنی',[['v','تهویه','M12 12m-1.5 0a1.5 1.5 0 103 0 1.5 1.5 0 10-3 0M12 10.5C12 6 14 4 16 4s2 3-1.5 6M13.5 12c4.5 0 6.5 2 6.5 4s-3 2-6.5-1.5M12 13.5C12 18 10 20 8 20s-2-3 1.5-6M10.5 12C6 12 4 10 4 8s3-2 6.5 1.5'],['c','کابل','M4 8h6v8H4zM14 8h6v8h-6zM10 12h4'],['w','تابلو برق','M13 2 4 14h7l-1 8 9-12h-7z'],['h','تخم‌گذار','M12 3c3 0 5 4 5 8a5 5 0 01-10 0c0-4 2-8 5-8z'],['g','گلخانه','M12 21v-9M12 12c-4 0-6-2-6-6 4 0 6 2 6 6zM12 14c4 0 6-2 6-6-4 0-6 2-6 6z']]],
-    ['مالی و پیشنهاد',[['i','پیش‌فاکتور','M6 3.5h9l3 3v14H6zM9 12h6M9 16h4'],['t','قیمت‌ها','M4 12l8-8h8v8l-8 8zM15.5 8.5h.01'],['pl','لیست قیمت همکاران','M4 5h16v14H4zM4 10h16M9 10v9M14 14h3'],['e','برآورد','M5 4h14v16H5zM8 8h8M8 12h3M8 16h3M14 12h2M14 16h2'],['l','سود و زیان','M4 19V9M10 19V5M16 19v-7M22 19H2']]],
+    ['مالی و پیشنهاد',[['i','پیش‌فاکتور','M6 3.5h9l3 3v14H6zM9 12h6M9 16h4'],['t','قیمت‌ها','M4 12l8-8h8v8l-8 8zM15.5 8.5h.01'],['pl','لیست قیمت همکاران','M4 5h16v14H4zM4 10h16M9 10v9M14 14h3'],['e','برآورد','M5 4h14v16H5zM8 8h8M8 12h3M8 16h3M14 12h2M14 16h2'],['l','سود و زیان','M4 19V9M10 19V5M16 19v-7M22 19H2'],['np','افزودن محصول جدید','M4 8l8-4 8 4v8l-8 4-8-4zM12 10v6M9 13h6'],['pe','ویرایش محصول','M4 20h4l10-10-4-4L4 16zM13.5 6.5l4 4']]],
     ['مدیریت',[['y','عملکرد تیم','M3 19V9M9 19V5M15 19v-7M21 19V3',1],['z','انضباط شخصی','M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z',2],['s','حساب و تنظیمات','M12 12a3.6 3.6 0 100-7.2 3.6 3.6 0 000 7.2zM4.5 20c.8-3.8 3.6-5.5 7.5-5.5s6.7 1.7 7.5 5.5']]]
   ];
   function isMgr(){try{var r=window.__payRole&&window.__payRole();return r==='mgr'||r==='admin'}catch(e){return false}}
@@ -2527,7 +2528,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
   function build(){
     var c=cur(),h='';
     G.forEach(function(g){
-      var items=g[1].filter(function(it){if(it[3]===1)return isMgr();if(it[0]!=='pl'&&it[0]!=='st'&&!$('tab'+it[0].toUpperCase()))return false;if(it[3]===2&&!$('paneZ'))return false;
+      var items=g[1].filter(function(it){if(it[0]==='np'||it[0]==='pe')return true;if(it[3]===1)return isMgr();if(it[0]!=='pl'&&it[0]!=='st'&&!$('tab'+it[0].toUpperCase()))return false;if(it[3]===2&&!$('paneZ'))return false;
         if(document.documentElement.getAttribute('data-role')==='member'&&(it[0]==='i'||it[0]==='p'||it[0]==='q'))return false;return true});
       if(!items.length)return;
       h+='<div class="dr-g"><h3>'+g[0]+'</h3>'+items.map(function(it){return '<button type="button" class="dr-i'+(c===it[0]?' on':'')+'" data-dr="'+it[0]+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+it[2]+'"/></svg><span>'+it[1]+'</span></button>'}).join('')+'</div>';
@@ -2558,6 +2559,8 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
     if(t.closest('#drOv')||t.closest('#drClose')){close();return}
     var b=t.closest('[data-dr]');
     if(b&&b.dataset.dr==='st'){close(function(){if(window.__crmStats)window.__crmStats.open()});return}
+    if(b&&b.dataset.dr==='np'){close(function(){var h=$('npHome')||$('npOpen');if(h)h.click()});return}
+    if(b&&b.dataset.dr==='pe'){close(function(){if(window.__pfEditOpen)window.__pfEditOpen()});return}
     if(b&&b.dataset.dr==='pl'){close(function(){if(window.__colPrice)window.__colPrice.open()});return}
     if(b){var tb=$('tab'+b.dataset.dr.toUpperCase());close(function(){if(tb)tb.click()});return}
         var ui=t.closest('#drUi [data-u]');if(ui){setU(ui.dataset.u);return}
@@ -2729,7 +2732,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
     var t=tierOf(r),p=(r.f&&r.f.persona)||{},ln=r.lead,v=r.invs&&r.invs[0],amt=amtOf(r),tl=TI.filter(function(x){return x[0]===t})[0][1];
     var sub=[r.phone?fa(r.phone):'',r.info.city||'',p.farmType||''].filter(Boolean).join(' · ');
     var fu=(ln&&ln.next&&(ln.stage==='talk'||ln.stage==='sent'))?(function(){var d=daysBetween(today(),ln.next);return d<0?fa(-d)+' روز عقب':d===0?'امروز':fa(d)+' روز دیگر'})():'—';
-    return '<button type="button" class="cu-row cu-w t-'+t+'" data-cu="'+esc(r.id)+'"><span class="cu-wt"><em>'+tl+'</em>'+stChip(r)+'</span>'
+    return '<button type="button" class="cu-row cu-w t-'+(r.stage==='lost'?'lost':t)+'" data-cu="'+esc(r.id)+'"><span class="cu-wt"><em>'+tl+'</em>'+stChip(r)+'</span>'
       +'<b class="cu-wn">'+esc(r.name)+'</b><span class="cu-ws">'+esc(sub||'اطلاعات پایه ثبت نشده')+'</span>'
       +'<span class="cu-wm"><span><small>'+(r.stage==='won'?'خرید':'پیش‌فاکتور')+'</small><b>'+(amt?money(amt):'—')+'</b></span><span><small>پیگیری</small><b>'+fu+'</b></span><span><small>آخرین اقدام</small><b>'+(short(r.last)||'—')+'</b></span></span>'
       +(lnTxt(r)?'<span class="cu-wl">'+esc(lnTxt(r))+'</span>':'')
@@ -2801,7 +2804,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
     var rows=ctcRows(),h='',last='';
     rows.forEach(function(x){var I=x.info||{},ch=String(x.name||'?').trim().charAt(0)||'؟',place=I.city||I.prov||'';
       if(ch!==last){last=ch;h+='<div class="ct-h">'+esc(ch)+'</div>'}
-      h+='<button type="button" class="ct-r t-'+tierOf(x)+'" data-cu="'+esc(x.id)+'"><i class="ct-a">'+esc(ch)+'</i><span class="ct-m"><b>'+esc(x.name)+'</b>'+(place?'<small>'+esc(place)+'</small>':'')+'</span></button>'});
+      h+='<button type="button" class="ct-r t-'+(x.stage==='lost'?'lost':tierOf(x))+'" data-cu="'+esc(x.id)+'"><i class="ct-a">'+esc(ch)+'</i><span class="ct-m"><b>'+esc(x.name)+'</b>'+(place?'<small>'+esc(place)+'</small>':'')+'</span></button>'});
     return rows.length?h:'<p class="hint" style="padding:14px">مشتری‌ای پیدا نشد.</p>'}
   function renderCtc(){
     var el=$('cuBody');if(!el)return;var n=ctcRows().length;
@@ -2825,7 +2828,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
     rows.slice(hi+1).forEach(function(r,ix){
       if(!r||!r.some(function(x){return nrm(x)}))return;
       function g(k){return m[k]==null?'':nrm(r[m[k]])}
-      var ph=normPhone(g('phone')),name=plain(g('name'))||g('co'),nn0=false,o0=null,o={line:hi+ix+2,name:name,phone:ph,info:{co:g('co'),phone2:normPhone(g('phone2'))||g('phone2'),prov:g('prov'),city:g('city'),addr:g('addr'),act:g('act'),halls:g('halls'),src:g('src')||defSrc,note:g('note')},next:nextISO(m.next==null?'':r[m.next])};
+      var ph=normPhone(g('phone')),name=plain(g('name'))||g('co'),nn0=false,o0=null,o={line:hi+ix+2,name:name,phone:ph,srcCol:g('src'),info:{co:g('co'),phone2:normPhone(g('phone2'))||g('phone2'),prov:g('prov'),city:g('city'),addr:g('addr'),act:g('act'),halls:g('halls'),src:g('src')||defSrc,note:g('note')},next:nextISO(m.next==null?'':r[m.next])};
       if(!ph){o.why=g('phone')?'شماره معتبر نیست':'شماره ندارد';bad.push(o);return}
       if(!name){o.name=ph;o.info.noName=1}
       if(!name&&ph)o.info.ph1=ph;
@@ -2851,7 +2854,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
     (async function(){try{var rows=/\.csv$/i.test(f.name)?readCsv(await f.text()):await readXlsx(await f.arrayBuffer());IMP={src:src,res:analyse(rows,src)};if(IMP.res.err){IMP.err=IMP.res.err;IMP.res=null}}catch(x){IMP={src:src,err:'خواندن فایل ممکن نشد. فایل باید .xlsx یا .csv باشد.'}}renderImp();if($('impSrc'))$('impSrc').value=src})()});
   function saveLeadsArr(a){try{localStorage.setItem('payesh-leads',JSON.stringify(a))}catch(e){}}
   function doImport(){
-    if(!IMP||!IMP.res||!IMP.res.ok.length||!window.__cust)return;var ok=IMP.res.ok,ids=window.__cust.addMany(ok.map(function(o){return {name:o.name,phone:o.phone,info:o.info}}));
+    if(!IMP||!IMP.res||!IMP.res.ok.length||!window.__cust)return;var ok=IMP.res.ok;try{var sv=($('impSrc')&&$('impSrc').value.trim())||IMP.src;if(sv)ok.forEach(function(o){if(!o.srcCol)o.info.src=sv})}catch(x){}var ids=window.__cust.addMany(ok.map(function(o){return {name:o.name,phone:o.phone,info:o.info}}));
     var withNext=[];ok.forEach(function(o,i){if(o.next)withNext.push({o:o,id:ids[i]})});
     if(withNext.length){var L=ls('payesh-leads'),now=Date.now();withNext.forEach(function(x){L.push({id:'i'+now.toString(36)+Math.random().toString(36).slice(2,6),name:x.o.name,phone:x.o.phone,amount:0,stage:'talk',reason:'',next:x.o.next,time:'',note:(x.o.info.src?'['+x.o.info.src+'] ':'')+(x.o.info.note||'سرنخ'),cid:x.id,created:now,stTs:now,fdone:false})});saveLeadsArr(L)}
     var n=ok.length,nn=ok.filter(function(o){return !o.next}).length;var hasNL=ok.some(function(o){return o.info.noName});IMP=null;mode='';seg=hasNL?'lead':'cust';flt='all';cur=null;render();try{if(window.__crmRefresh)window.__crmRefresh()}catch(e){}
@@ -2976,7 +2979,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
     saveLeadsArr(L)}
 
   /* ===== تعویق خرید: مشتری تا تاریخ انتخابی در عقب‌افتاده و امروز نشان داده نمی‌شود ===== */
-  var HR=['کاغذبازی و تأیید مدیریت','بودجه ندارد','فصل یا زمان مناسب نیست','منتظر شریک یا تصمیم‌گیرنده','در سفر است','منتظر آماده شدن سالن','منتظر وام یا تسهیلات','خودش خبر می‌دهد'],
+  var HWR=['کاغذبازی و تأیید مدیریت','بودجه ندارد','فصل یا زمان مناسب نیست','منتظر شریک یا تصمیم‌گیرنده','در سفر است','منتظر آماده شدن سالن','منتظر وام یا تسهیلات','خودش خبر می‌دهد'],
       HD=[[7,'۱ هفته'],[14,'۲ هفته'],[30,'۱ ماه'],[60,'۲ ماه'],[90,'۳ ماه']],holdCtx=null,holdIso='';
   function holdClose(){var o=$('cuHold');if(o&&o.parentNode)o.parentNode.removeChild(o);holdCtx=null;holdIso=''}
   function holdOpen(rw){
@@ -2985,7 +2988,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
     o.innerHTML='<div class="cu-qn-ov" data-hold-x></div><div class="cu-qn-sh">'
       +'<div class="cu-ct"><b>⏸ تعویق خرید — '+esc(rw.name)+'</b></div>'
       +'<p class="hint" style="margin:0 0 8px">تا تاریخی که انتخاب می‌کنی، این مشتری در «عقب‌افتاده» و «امروز» نشان داده نمی‌شود و همان روز دوباره برمی‌گردد.</p>'
-      +'<div class="cu-nch" role="group" aria-label="دلیل تعویق">'+HR.map(function(x){return '<button type="button" data-hold-why="'+esc(x)+'">'+x+'</button>'}).join('')+'</div>'
+      +'<div class="cu-nch" role="group" aria-label="دلیل تعویق">'+HWR.map(function(x){return '<button type="button" data-hold-why="'+esc(x)+'">'+x+'</button>'}).join('')+'</div>'
       +'<input class="cu-in" id="hold_why" placeholder="دلیل تعویق (اختیاری)" style="margin-bottom:10px">'
       +'<div class="cu-nch" role="group" aria-label="مدت تعویق">'+HD.map(function(x){return '<button type="button" data-hold-d="'+x[0]+'">'+x[1]+'</button>'}).join('')+'</div>'
       +'<input class="cu-in" id="hold_date" readonly inputmode="none" placeholder="یا تاریخ را از تقویم انتخاب کن" style="cursor:pointer;margin-bottom:12px">'
@@ -3099,7 +3102,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
   }
   function render(){if(mode)return;var r=null;if(cur){ROWS=build();ROWS.forEach(function(x){if(x.id===cur)r=x})}
     var nr=$('cuNewRow');if(nr)nr.hidden=!!r;
-    try{var pq=$('paneQ');if(pq){if(r&&!mode)pq.setAttribute('data-ft',tierOf(r));else pq.removeAttribute('data-ft')}}catch(x){}
+    try{var pq=$('paneQ');if(pq){if(r&&!mode)pq.setAttribute('data-ft',r.stage==='lost'?'lost':tierOf(r));else pq.removeAttribute('data-ft')}}catch(x){}
     if(r)renderFile(r);else{cur=null;renderList()}}
   function openCust(id){mode='';ROWS=build();cur=id;(function(){var x=ROWS.filter(function(y){return y.id===id})[0];if(x)seg=isLeadRow(x)?'lead':'cust'})();ftab='sum';fedit=false;var tb=$('tabQ');if(tb&&$('paneQ').hidden)tb.click();render();try{window.scrollTo(0,0)}catch(e){}try{if(!(history.state&&history.state.cu))history.pushState({t:'q',s:'',cu:1},'')}catch(e){}}
   window.addEventListener('popstate',function(e){if(cur&&!(e.state&&e.state.cu)){mode='';cur=null;try{render()}catch(x){}}});
@@ -4313,7 +4316,12 @@ window.__projLoad=projLoad;window.__projSnap=projSnapshot;
 renderSettings();sync();renderRows();renderPicker();
 window.__pfCat=function(){return {groups:GROUPS.map(function(g){return {id:g.id,name:g.name}}),items:CAT.filter(function(c){return !c.hide&&c.usd!=null}).map(function(c){return {id:c.id,g:c.g,name:c.name,usd:c.usd,disc:c.disc,cd:(c.g!=='acc'&&c.g!=='cab'),fixed:c.fixed||null,motor:c.motor||c.id==='flap',unit:c.unit}}),rate:S.rate}};
 window.__pp={saveFile:saveFile,fontsReady:fontsReady,faTree:faTree,esc:esc,LOGO:LOGO,toast:toast,nowBusy:nowBusy};
-function npAddProduct(p){if(!p||!p.id||BY[p.id])return false;var g=['auto','side','weigh','acc','cab'].indexOf(p.g)>=0?p.g:'acc';var it={id:p.id,g:g,name:String(p.name||'').trim(),usd:num(p.usd),disc:false,unit:'عدد',motor:false,from:null,mult:1,price0:null,fixed:null,note:'',hide:false,sel:false,custom:true};CAT.push(it);BY[it.id]=it;if(p.dev&&INSINC.indexOf(it.id)<0)INSINC.push(it.id);try{renderPicker()}catch(e){}return true}
+var PEK='pay-prod-edits';
+function pedLoad(){try{return JSON.parse(localStorage.getItem(PEK))||{}}catch(e){return {}}}
+function pedApply(id,p){var it=BY[id];if(!it||!p)return false;if(p.name!=null&&String(p.name).trim())it.name=String(p.name).trim();if(p.usd!=null&&isFinite(+p.usd)&&+p.usd>=0)it.usd=+p.usd;if(p.g&&['auto','side','weigh','acc','cab'].indexOf(p.g)>=0)it.g=p.g;return true}
+function npAddProduct(p){if(!p||!p.id||BY[p.id])return false;var g=['auto','side','weigh','acc','cab'].indexOf(p.g)>=0?p.g:'acc';var it={id:p.id,g:g,name:String(p.name||'').trim(),usd:num(p.usd),disc:false,unit:'عدد',motor:false,from:null,mult:1,price0:null,fixed:null,note:'',hide:false,sel:false,custom:true};CAT.push(it);BY[it.id]=it;try{var _pe=pedLoad()[it.id];if(_pe)pedApply(it.id,_pe)}catch(e){}if(p.dev&&INSINC.indexOf(it.id)<0)INSINC.push(it.id);try{renderPicker()}catch(e){}return true}
+(function(){var o=pedLoad();Object.keys(o).forEach(function(k){try{pedApply(k,o[k])}catch(e){}})})();
+window.__pfEdit={save:function(id,p){var o=pedLoad();o[id]=Object.assign({},o[id]||{},p);try{localStorage.setItem(PEK,JSON.stringify(o))}catch(e){}pedApply(id,p);try{renderPicker();renderRows();sync()}catch(e){}return true},has:function(id){return !!pedLoad()[id]}};
 window.__proforma={fname:fname,newInv:function(clr){doNewInv(clr)},addProduct:npAddProduct,refresh:function(){try{renderPicker();renderRows();sync()}catch(e){}},commit:function(){pfCommit()},buyerRows:function(){return buyerRows(S.inv)},snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync();renderRows();renderPicker();save()},S:function(){return S},calc:calc,reset:function(){S=fresh();renderSettings();renderRows();renderPicker()}};
 })();
 </script>
@@ -5798,7 +5806,7 @@ window.__proforma={fname:fname,newInv:function(clr){doNewInv(clr)},addProduct:np
         G.slice(1).forEach(function(m){undo.push(clone(m));mergeInto(k,m);map[m.id]=k.id;gone[m.id]=1})});
       var n=Object.keys(map).length;if(!n)return map;
       try{ls('payesh-merge-undo',{ts:Date.now(),removed:undo})}catch(e){}
-      ['payesh-leads','payesh-calls','payesh-objs','payesh-cnotes','payesh-calcs','payesh-events'].forEach(function(key){var a=ls(key);if(!Array.isArray(a))return;var c=false;a.forEach(function(x){if(x&&x.cid&&map[x.cid]){x.cid=map[x.cid];c=true}});if(c)ls(key,a)});
+      ['payesh-leads','payesh-calls','payesh-objs','payesh-cnotes','payesh-calcs','payesh-events','payesh-krepeat'].forEach(function(key){var a=ls(key);if(!Array.isArray(a))return;var c=false;a.forEach(function(x){if(x&&x.cid&&map[x.cid]){x.cid=map[x.cid];c=true}});if(c)ls(key,a)});
       [['payesh-ctier',0],['pay-cudrafts',1]].forEach(function(kk){var o=ls(kk[0]);if(!o||typeof o!=='object'||Array.isArray(o))return;var c=false;
         Object.keys(map).forEach(function(id){if(o[id]===undefined)return;var to=map[id];if(o[to]===undefined)o[to]=o[id];else if(kk[1]&&String(o[to]).indexOf(String(o[id]))<0)o[to]=o[to]+'\n'+o[id];delete o[id];c=true});if(c)ls(kk[0],o)});
       F=F.filter(function(f){return !gone[f.id]});saveF();
@@ -6945,7 +6953,32 @@ if('serviceWorker' in navigator&&location.protocol==='https:'){window.addEventLi
   $('kNext').addEventListener('click',function(){cur=cur[1]===12?[cur[0]+1,1]:[cur[0],cur[1]+1];renderCal()});
   $('kToday').addEventListener('click',function(){cur=g2j(new Date());sel=todayISO();$('k_date').value=jStr(sel);renderCal()});
   $('kForm').addEventListener('submit',function(e){e.preventDefault();var d=parseJ($('k_date').value||jStr(sel));if(!d){alert('تاریخ را مثل ۱۴۰۵/۰۷/۲۸ وارد کن.');return}
-    var a=ld(EK),cu=custPick($('k_cust').value);a.push({id:uid(),title:$('k_title').value.trim(),date:d,time:$('k_time').value,rem:+$('k_rem').value,note:$('k_note').value.trim(),cust:cu});sv(EK,a);$('k_title').value='';$('k_note').value='';$('k_cust').value='';sel=d;cur=g2j(isoToDate(d));renderCal();toast('یادآور ثبت شد')});
+    var a=ld(EK),cu=custPick($('k_cust').value);a.push({id:uid(),title:$('k_title').value.trim(),date:d,time:$('k_time').value,rem:+$('k_rem').value,note:$('k_note').value.trim(),cust:cu});sv(EK,a);
+    if($('k_rp')&&$('k_rp').checked){var rr=ld(RPK);rr.push({id:uid(),title:$('k_title').value.trim(),rem:+$('k_rem').value,note:$('k_note').value.trim(),created:todayISO(),asked:(d===todayISO()?todayISO():'')});sv(RPK,rr);$('k_rp').checked=false;renderRep()}$('k_title').value='';$('k_note').value='';$('k_cust').value='';sel=d;cur=g2j(isoToDate(d));renderCal();toast('یادآور ثبت شد')});
+
+  /* ---- کار تکراری روزانه: هر روز می‌پرسد چه ساعت‌هایی یادآوری کنم ---- */
+  var RPK='payesh-krepeat';
+  function renderRep(){var box=$('kRep');if(!box){var sec=document.createElement('section');sec.className='card';sec.id='kRepC';sec.innerHTML='<h2>کارهای تکراری روزانه</h2><div id="kRep"></div>';var dc=$('kDay')&&$('kDay').closest('.card');if(dc&&dc.parentNode)dc.parentNode.insertBefore(sec,dc.nextSibling);box=$('kRep')}
+    if(!box)return;var L=ld(RPK);$('kRepC').hidden=!L.length;
+    box.innerHTML=L.map(function(r){return '<div class="lr"><div><b>'+esc(r.title)+'</b><div class="hint">هر روز ساعت‌ها را می‌پرسم</div></div><div class="lb2"><button type="button" class="mini" data-rpask="'+r.id+'">ساعت‌های امروز</button><button type="button" class="mini" data-rpdel="'+r.id+'">حذف</button></div></div>'}).join('')}
+  var rpOv=null;
+  function rpAsk(r,force){var t=todayISO();if(rpOv&&!rpOv.hidden)return;
+    if(!rpOv){rpOv=document.createElement('div');rpOv.id='rpAsk';rpOv.setAttribute('role','dialog');document.body.appendChild(rpOv)}
+    var PRE=['08:00','10:00','12:00','14:00','16:00','18:00','20:00','22:00'],pick=[];
+    function draw(){rpOv.innerHTML='<div class="rpb"><b>🔁 '+esc(r.title)+'</b><p>امروز چه ساعت‌هایی یادآوری کنم؟</p><div class="rpc">'+PRE.concat(pick.filter(function(x){return PRE.indexOf(x)<0})).sort().map(function(x){return '<button type="button" data-t="'+x+'" class="'+(pick.indexOf(x)>=0?'on':'')+'">'+fa(x)+'</button>'}).join('')+'</div><div class="rpa"><input type="time" id="rpTi"><button type="button" data-add>افزودن ساعت</button></div><div class="rpf"><button type="button" class="ok" data-ok>ثبت یادآورها</button><button type="button" data-skip>امروز نه</button></div></div>';rpOv.hidden=false}
+    function finish(){var L=ld(RPK).map(function(x){return x.id===r.id?Object.assign({},x,{asked:t}):x});sv(RPK,L);rpOv.hidden=true;renderRep()}
+    rpOv.onclick=function(e){var b=e.target.closest('button');if(!b)return;
+      if(b.dataset.t){var i=pick.indexOf(b.dataset.t);if(i>=0)pick.splice(i,1);else pick.push(b.dataset.t);draw()}
+      else if(b.hasAttribute('data-add')){var v=$('rpTi').value;if(v&&pick.indexOf(v)<0)pick.push(v);draw()}
+      else if(b.hasAttribute('data-ok')){if(!pick.length){toast('حداقل یک ساعت انتخاب کن یا «امروز نه» را بزن');return}
+        var a=ld(EK);pick.forEach(function(tm){if(a.some(function(x){return x.title===r.title&&x.date===t&&x.time===tm}))return;a.push({id:uid(),title:r.title,date:t,time:tm,rem:r.rem||0,note:r.note||'',cust:null,rp:r.id})});sv(EK,a);finish();renderCal();toast('یادآورهای امروز ثبت شد')}
+      else if(b.hasAttribute('data-skip')){finish()}};
+    draw()}
+  function rpCheck(){var t=todayISO(),h=new Date().getHours();if(h<6)return;var r=ld(RPK).filter(function(x){return x.asked!==t})[0];if(r)rpAsk(r)}
+  document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-rpask],[data-rpdel]');if(!b)return;
+    if(b.dataset.rpdel){if(confirm('این کار تکراری حذف شود؟')){sv(RPK,ld(RPK).filter(function(x){return x.id!==b.dataset.rpdel}));renderRep()}}
+    else{var r=ld(RPK).filter(function(x){return x.id===b.dataset.rpask})[0];if(r)rpAsk(r,true)}});
+  setTimeout(function(){renderRep();rpCheck()},2500);setInterval(function(){try{rpCheck()}catch(e){}},60000);
   $('paneK').addEventListener('click',function(e){var t=e.target;
     if(t.dataset.ek){sv(EK,ld(EK).map(function(x){return x.id===t.dataset.ek?Object.assign({},x,{done:!x.done},(x.done?{doneTs:null}:{doneTs:Date.now()})):x}));renderCal()}
     else if(t.dataset.er){if(confirm('حذف شود؟')){sv(EK,ld(EK).filter(function(x){return x.id!==t.dataset.er}));renderCal()}}
@@ -8115,10 +8148,20 @@ function badge(slot){return '<span class="zslot s'+slot.charAt(0)+'">'+slot+'</s
 function custBtn(t){return t.cust&&t.cust.id&&t.slot&&t.slot.charAt(0)==='A'?'<button type="button" class="zchip" data-a="cust" data-id="'+esc(t.cust.id)+'">'+(t.cust.act==='call'?'📞 تماس با ':t.cust.act==='inv'?'📄 ارسال پیش‌فاکتور به ':'👤 ')+esc(t.cust.name||'مشتری')+'</button>':''}
 function movesBadge(t){var n=(t.moves||[]).length;return n>=3?'<span class="zwarn">⚠ '+fa(n)+' بار منتقل شده — خرد یا حذفش کن</span>':(n?'<span class="zmv">↪ '+fa(n)+' انتقال</span>':'')}
 
+function rpList(){var S=DB.settings;if(!Array.isArray(S.repeats))S.repeats=[];return S.repeats}
+function rpCard(d){var L=rpList();if(!L.length)return '';var dd=day(d);if(!dd.rt)dd.rt={};if(!dd.rd)dd.rd={};
+  var need=L.filter(function(r){return !dd.rt[r.id]&&!dd.rd[r.id]}).length,PRE=['08:00','10:00','12:00','14:00','16:00','18:00','20:00','22:00'];
+  var h='<section class="zc zrp"><h3>🔁 کارهای تکراری امروز</h3>'+(need?'<p class="zwarn">برای '+fa(need)+' مورد هنوز ساعت یادآوری امروز را مشخص نکرده‌ای.</p>':'');
+  L.forEach(function(r){var tm=(dd.rt[r.id]||[]).slice(),dn=!!dd.rd[r.id],all=PRE.slice();tm.forEach(function(x){if(all.indexOf(x)<0)all.push(x)});all.sort();
+    h+='<div class="zrpi"><div class="zrpt"><label><input type="checkbox" data-a="rpdone" data-id="'+r.id+'"'+(dn?' checked':'')+'> <b>'+esc(r.title)+'</b></label><button type="button" class="zb zsm zdanger" data-a="rpdel" data-id="'+r.id+'">حذف</button></div>'
+     +'<div class="zrpq">چه ساعت‌هایی یادآوری کنم؟</div><div class="zrpc">'+all.map(function(x){return '<button type="button" class="zb zsm'+(tm.indexOf(x)>=0?' zpri':'')+'" data-a="rppick" data-id="'+r.id+'" data-t="'+x+'">'+fa(x)+'</button>'}).join('')+'</div>'
+     +'<div class="zrpa"><input type="time" id="rpT_'+r.id+'" class="zin"><button type="button" class="zb zsm" data-a="rpadd" data-id="'+r.id+'">افزودن ساعت</button><button type="button" class="zb zsm" data-a="rpnone" data-id="'+r.id+'">امروز بدون یادآوری</button></div>'
+     +(tm.length?'<div class="zrps">⏰ '+tm.sort().map(function(x){return fa(x)}).join('، ')+'</div>':(dd.rt[r.id]?'<div class="zrps">امروز یادآوری ندارد.</div>':''))+'</div>'});
+  return h+'</section>'}
 function rToday(){
   var d=today(),tm=addD(d,1),tt=dayTasks(d),tmT=dayTasks(tm),S=DB.settings,dd=day(d);
   var total=tt.length,done=tt.filter(function(t){return t.status==='done'}).length,rem=total-done,od=overdue();
-  var rep=dd.report,h='<h2 class="zaud">حسابرسی '+esc(wd(d))+' '+esc(jfmt(d))+'</h2>';
+  var rep=dd.report,h='<h2 class="zaud">حسابرسی '+esc(wd(d))+' '+esc(jfmt(d))+'</h2>'+rpCard(d);
   var a1=tt.filter(function(t){return t.slot==='A1'})[0];
   if(a1&&a1.status!=='done')h+='<div class="zfrog">🐸 قورباغه‌ی امروز: <b>'+esc(a1.title)+'</b><br><small>اول از همه همین را تمام کن.</small></div>';
   else if(!a1)h+='<div class="zfrog zdim">🐸 برای امروز «قورباغه» (A1) تعیین نشده است.</div>';
@@ -8298,7 +8341,7 @@ function taskForm(t,date,slot){
   var h='<form id="zTaskForm" autocomplete="off"><h3>'+(isNew?'کار جدید':'ویرایش کار')+'</h3><label class="zlbl" for="tf_t">عنوان</label><input type="text" id="tf_t" class="zin" value="'+esc(t?t.title:'')+'"><label class="zlbl" for="tf_d">توضیح</label><textarea id="tf_d" rows="2">'+esc(t?t.desc:'')+'</textarea>'+
    '<label class="zlbl" for="tf_c">دسته</label><select id="tf_c" class="zin">'+CATS.map(function(c){return '<option'+((t?t.cat:'شغل')===c?' selected':'')+'>'+c+'</option>'}).join('')+'</select>'+
    '<label class="zlbl" for="tf_s">جایگاه</label><select id="tf_s" class="zin">'+(t&&!t.slot?'<option value="">— انتخاب کن —</option>':'')+SLOTS.filter(function(s){return fs.indexOf(s)>=0}).map(function(s){return '<option'+((t?t.slot:slot)===s?' selected':'')+'>'+s+'</option>'}).join('')+'</select>'+
-   '<label class="zlbl">تاریخ</label>'+dsel('tf_dt',d)+'<label class="zlbl" for="tf_tm">ساعت یادآوری (اختیاری)</label><input type="time" id="tf_tm" class="zin" value="'+esc(t?t.time||'':'')+'">'+
+   '<label class="zlbl">تاریخ</label>'+dsel('tf_dt',d)+'<label class="zlbl" for="tf_tm">ساعت یادآوری (اختیاری)</label><input type="time" id="tf_tm" class="zin" value="'+esc(t?t.time||'':'')+'">'+(isNew?'<label class="zlbl" style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="tf_rp" style="width:auto"> تکرار روزانه (هر روز می‌پرسم چه ساعت‌هایی یادآوری کنم)</label>':'')+
    '<div id="tf_cw"'+(((t?t.slot:slot)||'').charAt(0)==='A'?'':' hidden')+'><label class="zlbl" for="tf_cu">مشتری (فقط کارهای اولویت‌دار)</label><select id="tf_cu" class="zin"><option value="">—</option>'+cl.map(function(c){return '<option value="'+esc(c.id)+'"'+(t&&t.cust&&t.cust.id===c.id?' selected':'')+'>'+esc(c.name)+'</option>'}).join('')+'</select><label class="zlbl" for="tf_ac">اقدام</label><select id="tf_ac" class="zin"><option value="call"'+(t&&t.cust&&t.cust.act==='call'?' selected':'')+'>📞 تماس بگیرم</option><option value="inv"'+(t&&t.cust&&t.cust.act==='inv'?' selected':'')+'>📄 پیش‌فاکتور ارسال کنم</option><option value=""'+(t&&t.cust&&!t.cust.act?' selected':'')+'>فقط مشتری</option></select></div>';
   if(t&&(t.moves||[]).length)h+='<div class="zhist"><b>سابقه‌ی انتقال</b>'+t.moves.map(function(m){return '<div>'+esc(jshort(m.from))+' ← '+esc(jshort(m.to))+': '+esc(m.reason||'—')+'</div>'}).join('')+'</div>';
   h+='<div class="zbtns"><button type="submit" class="zb zpri">ذخیره</button>'+(t?'<button type="button" class="zb zdanger" data-a="tdel" data-id="'+t.id+'">حذف</button>':'')+'<button type="button" class="zb" data-a="mclose">انصراف</button></div></form>';
@@ -8369,7 +8412,12 @@ function checkNotif(){
   S.routines.forEach(function(r){
     if(tickR(d,r.id))return;
     if(r.time&&due(r.time))once(d+'|r|'+r.id,function(){notify('🔁 روتین: '+r.name,'r')});
-    if(nm>=18*60&&chain(r.id)>0)once(d+'|risk|'+r.id,function(){notify('⚠ زنجیره‌ی «'+r.name+'» در خطر است ('+fa(chain(r.id))+' روز).','risk')})})}
+    if(nm>=18*60&&chain(r.id)>0)once(d+'|risk|'+r.id,function(){notify('⚠ زنجیره‌ی «'+r.name+'» در خطر است ('+fa(chain(r.id))+' روز).','risk')})});
+  var xd=DB.days[d]||{},miss=0;
+  rpList().forEach(function(r){var tm=xd.rt&&xd.rt[r.id];if(xd.rd&&xd.rd[r.id])return;
+    if(!tm){miss++;return}
+    tm.forEach(function(t){if(due(t))once(d+'|rp|'+r.id+'|'+t,function(){notify('🔁 '+r.title,'rp'+r.id)})})});
+  if(miss&&nm>=7*60)once(d+'|rpq',function(){notify('🔁 برای کارهای تکراری امروز چه ساعت‌هایی یادآوری کنم؟ در «انضباط شخصی» مشخص کن.','rpq')})}
 
 /* ---------- رویدادها ---------- */
 function openRep(d,mode,edit){rview={d:d,mode:mode||(day(d).report&&!edit?'view':'edit'),back:view==='report'?(rview&&rview.back):view};view='report';render();window.scrollTo(0,0)}
@@ -8380,6 +8428,7 @@ function doneToggle(t,on){t.status=on?'done':'todo';if(on)t.doneTs=Date.now();el
 pane.addEventListener('change',function(e){
   var el=e.target,a=el.getAttribute('data-a'),d=today();if(!a)return;
   if(a==='tog'){var t=taskById(el.getAttribute('data-id'));if(t){doneToggle(t,el.checked);render()}}
+  else if(a==='rpdone'){var dr=day(d);dr.rd=dr.rd||{};if(el.checked)dr.rd[el.getAttribute('data-id')]=true;else delete dr.rd[el.getAttribute('data-id')];save(['days']);render()}
   else if(a==='rtog'){day(d).routines[el.getAttribute('data-id')]=el.checked;if(!el.checked)delete day(d).routines[el.getAttribute('data-id')];save(['days']);render()}
   else if(a==='extog'){var ex=day(d).exercise;ex.done=el.checked;if(!el.checked)ex.min=0;save(['days']);render()}
   else if(a==='goalsRev'){day(d).goals=el.checked;save(['days'],el.checked?'ثبت شد ✓':null)}});
@@ -8395,8 +8444,10 @@ pane.addEventListener('submit',function(e){
     if(freeSlots(dt,t&&t.id).indexOf(sl)<0){toast('جایگاه '+sl+' در آن روز پر است.',1);return}
     var cid=$('tf_cu').value,cn='';if(cid){try{window.__cust.all().forEach(function(c){if(c.id===cid)cn=c.name})}catch(x){}}
     var f2={title:title,desc:$('tf_d').value.trim(),cat:$('tf_c').value,slot:sl,date:dt,time:$('tf_tm').value,cust:(cid&&sl.charAt(0)==='A')?{id:cid,name:cn,act:$('tf_ac').value}:null};
+    var rpOn=!t&&$('tf_rp')&&$('tf_rp').checked;
     if(t){Object.keys(f2).forEach(function(k){t[k]=f2[k]})}else DB.tasks.push(Object.assign({id:uid(),status:'todo',moves:[],ts:Date.now()},f2));
-    closeModal();save(['tasks'],'ذخیره شد ✓');render();return}
+    if(rpOn){var rid='rp_'+uid();rpList().push({id:rid,title:title,cat:f2.cat,ts:Date.now()});if(f2.time){var dx=day(today());dx.rt=dx.rt||{};dx.rt[rid]=[f2.time]}save(['settings','days'])}
+    closeModal();save(['tasks'],rpOn?'ذخیره شد ✓ (تکرار روزانه فعال شد)':'ذخیره شد ✓');render();return}
   if(f.id==='zMoveForm'){
     var t2=taskById(modalEl.dataset.tid),nd=rdate('mv_dt'),ns=$('mv_s').value,rs=$('mv_r').value.trim();
     if(!t2)return;if(!nd){toast('تاریخ نامعتبر است.',1);return}if(!ns){toast('در آن روز جایگاه خالی نیست.',1);return}if(!rs){toast('دلیل انتقال را بنویس.',1);$('mv_r').focus();return}
@@ -8409,7 +8460,7 @@ pane.addEventListener('click',function(e){
   var el=e.target.closest?e.target.closest('[data-a],#zNav button'):null;if(!el)return;
   if(el.parentNode&&el.parentNode.id==='zNav'){view=el.getAttribute('data-v');rview=null;render();window.scrollTo(0,0);return}
   var a=el.getAttribute('data-a'),id=el.getAttribute('data-id'),d=today(),t=id?taskById(id):null;
-  if(a==='plan'||a==='tog'||a==='rtog'||a==='extog'||a==='goalsRev')return;
+  if(a==='plan'||a==='tog'||a==='rtog'||a==='extog'||a==='goalsRev'||a==='rpdone')return;
   switch(a){
   case 'extog3':{var ex3=day(d).exercise;if(ex3.done){ex3.done=false;ex3.min=0;ex3.failed=true}else if(ex3.failed){ex3.failed=false}else{ex3.done=true}save(['days']);render();break}
   case 'goals3':{var dg=day(d);if(dg.goals){dg.goals=false;dg.goalsFail=true}else if(dg.goalsFail){dg.goalsFail=false}else{dg.goals=true}save(['days']);render();break}
@@ -8417,6 +8468,10 @@ pane.addEventListener('click',function(e){
   case 'rfail':{var rf=day(d).routines;if(rf[id]==='f')delete rf[id];else rf[id]='f';save(['days']);render()}break;
   case 'rtog3':{var rt3=day(d).routines,cur=rt3[id];if(!cur)rt3[id]=true;else if(cur===true)rt3[id]='f';else delete rt3[id];save(['days']);render()}break;
   case 'tog3':if(t){t.status=t.status==='todo'?'done':t.status==='done'?'failed':'todo';if(t.status==='done')t.doneTs=Date.now();else delete t.doneTs;save(['tasks']);render()}break;
+  case 'rppick':{var q1=day(d);q1.rt=q1.rt||{};var a2=(q1.rt[id]||[]).slice(),tv=el.getAttribute('data-t'),i2=a2.indexOf(tv);if(i2>=0)a2.splice(i2,1);else a2.push(tv);q1.rt[id]=a2.sort();save(['days']);render();break}
+  case 'rpadd':{var inp=$('rpT_'+id),v=inp&&inp.value;if(!v){toast('ساعت را انتخاب کن.',1);break}var q2=day(d);q2.rt=q2.rt||{};var a3=(q2.rt[id]||[]).slice();if(a3.indexOf(v)<0)a3.push(v);q2.rt[id]=a3.sort();save(['days'],'ثبت شد ✓');render();break}
+  case 'rpnone':{var q3=day(d);q3.rt=q3.rt||{};q3.rt[id]=[];save(['days']);render();break}
+  case 'rpdel':zConfirm('این کار تکراری حذف شود؟','حذف',true).then(function(ok){if(!ok)return;DB.settings.repeats=rpList().filter(function(r){return r.id!==id});save(['settings'],'حذف شد');render()});break;
   case 'mclose':closeModal();break;
   case 'edit':if(t)taskForm(t);break;
   case 'cust':try{window.__cust.open(id)}catch(x){}break;
@@ -9369,6 +9424,7 @@ html[data-ios] #paneI .backbar.pfnav{margin:0 0 6px!important}
   }).observe(ntb,{subtree:true,attributes:true,attributeFilter:['aria-selected']});
   window.__navBack=function(){goBack()};window.__navHome=function(){goHome()};
   function goBack(){
+    try{var pq=document.getElementById('paneQ');if(pq&&!pq.hidden){var bb=pq.querySelector('[data-cu-back],[data-cu-cancel]');if(bb){bb.click();return}}}catch(e){}
     var t='D';
     while(stack.length){var x=stack.pop();if(x&&x!==last){t=x;break}}
     var el=tab(t);if(!el)el=tab('D');
@@ -9633,5 +9689,81 @@ html[data-ios][data-theme=dark] #qsSheet,html[data-skin=glass][data-theme=dark] 
 html[data-ios] .cu-list .cu-row{content-visibility:auto;contain-intrinsic-size:auto 140px}
 html[data-ios] *{will-change:auto!important}
 html[data-ios] .cu-list .cu-row.cu-w{box-shadow:0 2px 6px rgba(20,30,70,.14)}
+</style>
+<script>
+/* ویرایش محصول: نام، قیمت دلاری و دسته‌ی هر کالا */
+(function(){
+  function $(i){return document.getElementById(i)}
+  function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function en(x){return String(x).replace(/[۰-۹]/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)}).replace(/[٠-٩]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.indexOf(d)}).replace(/[,٬،\s]/g,'')}
+  var q='',selId=null;
+  function data(){return window.__pfCat?window.__pfCat():{groups:[],items:[]}}
+  function ov(){var d=$('pedOv');if(!d){d=document.createElement('div');d.id='pedOv';d.setAttribute('role','dialog');d.setAttribute('aria-label','ویرایش محصول');document.body.appendChild(d);
+    d.addEventListener('click',function(e){var t=e.target;if(t===d||t.closest('[data-pe-x]')){if(selId){selId=null;draw()}else d.hidden=true;return}
+      var b=t.closest('[data-pe-i]');if(b){selId=b.getAttribute('data-pe-i');draw();return}
+      if(t.closest('[data-pe-save]')){var nm=$('peN').value.trim(),u=parseFloat(en($('peU').value)),g=$('peG').value;
+        if(!nm){$('peM').textContent='نام را بنویس.';return}if(!(u>=0)){$('peM').textContent='قیمت دلاری را درست بنویس.';return}
+        window.__pfEdit.save(selId,{name:nm,usd:u,g:g});selId=null;draw();var m=$('peT');if(m){m.textContent='✓ ذخیره شد'}return}});
+    d.addEventListener('input',function(e){if(e.target.id==='peQ'){q=e.target.value;var l=$('peL');if(l)l.innerHTML=list()}})}
+    return d}
+  function list(){var D=data(),qq=q.trim().toLowerCase(),gn={};D.groups.forEach(function(g){gn[g.id]=g.name});
+    var it=D.items.filter(function(x){return !qq||String(x.name).toLowerCase().indexOf(qq)>=0});
+    if(!it.length)return '<p class="pe-h">چیزی پیدا نشد.</p>';
+    return it.map(function(x){return '<button type="button" class="pe-r" data-pe-i="'+esc(x.id)+'"><b>'+esc(x.name)+'</b><small>'+esc(gn[x.g]||'')+' · '+esc(x.usd)+' $'+(window.__pfEdit&&window.__pfEdit.has(x.id)?' · ویرایش‌شده':'')+'</small></button>'}).join('')}
+  function draw(){var d=ov(),D=data();d.hidden=false;
+    if(selId){var x=D.items.filter(function(i){return i.id===selId})[0];if(!x){selId=null;return draw()}
+      d.innerHTML='<div class="pe-sh"><div class="pe-hd"><button type="button" data-pe-x aria-label="بازگشت">›</button><b>ویرایش محصول</b></div>'
+       +'<label>نام محصول<input id="peN" value="'+esc(x.name)+'" autocomplete="off"></label>'
+       +'<label>قیمت دلاری<input id="peU" inputmode="decimal" value="'+esc(x.usd)+'" autocomplete="off"></label>'
+       +'<label>دسته‌بندی<select id="peG">'+D.groups.map(function(g){return '<option value="'+esc(g.id)+'"'+(g.id===x.g?' selected':'')+'>'+esc(g.name)+'</option>'}).join('')+'</select></label>'
+       +'<div id="peM" class="pe-m"></div><div class="pe-bt"><button type="button" class="pri" data-pe-save>ذخیره</button><button type="button" data-pe-x>انصراف</button></div>'
+       +'<p class="pe-h">تغییر روی همین گوشی ذخیره می‌شود و در پیش‌فاکتورها و لیست انتخاب اثر می‌گذارد.</p></div>'}
+    else d.innerHTML='<div class="pe-sh"><div class="pe-hd"><button type="button" data-pe-x aria-label="بستن">✕</button><b>ویرایش محصول</b><span id="peT"></span></div><input id="peQ" type="search" placeholder="جستجوی نام محصول" value="'+esc(q)+'" autocomplete="off"><div id="peL" class="pe-l">'+list()+'</div></div>'}
+  window.__pfEditOpen=function(){selId=null;q='';if(!window.__pfEdit||!window.__pfCat){var t=$('toast');if(t){t.textContent='پیش‌فاکتور هنوز آماده نیست؛ چند ثانیه بعد دوباره بزن.';t.hidden=false;setTimeout(function(){t.hidden=true},2500)}return}draw()};
+})();
+</script>
+<style id="pedcss">
+#pedOv{position:fixed;inset:0;z-index:99990;background:rgba(10,14,30,.5);display:flex;align-items:flex-end;justify-content:center;direction:rtl}#pedOv[hidden]{display:none}
+.pe-sh{background:var(--surface,#fff);color:var(--fg,#1b2440);width:100%;max-width:520px;max-height:86vh;overflow:auto;border-radius:22px 22px 0 0;padding:14px 14px calc(18px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:10px}
+.pe-hd{display:flex;align-items:center;gap:10px}.pe-hd b{flex:1;font-size:16px}.pe-hd button{border:0;background:rgba(120,120,128,.16);color:inherit;border-radius:12px;width:40px;height:40px;font-size:18px}
+.pe-sh input,.pe-sh select{width:100%;box-sizing:border-box;min-height:44px;border:1px solid rgba(120,120,128,.35);border-radius:12px;padding:0 12px;font:inherit;background:var(--bg,#fff);color:inherit}
+.pe-sh label{display:flex;flex-direction:column;gap:4px;font-size:12.5px}.pe-l{display:flex;flex-direction:column;gap:6px;overflow:auto}
+.pe-r{display:flex;flex-direction:column;align-items:flex-start;gap:2px;border:0;background:rgba(120,120,128,.1);color:inherit;border-radius:14px;padding:10px 12px;text-align:start;font:inherit}.pe-r small{opacity:.7;font-size:12px}
+.pe-bt{display:flex;gap:8px}.pe-bt button{flex:1;min-height:44px;border:0;border-radius:12px;font:inherit;font-weight:700;background:rgba(120,120,128,.16);color:inherit}.pe-bt .pri{background:#354c9b;color:#fff}
+.pe-m{color:#b3261e;font-size:12.5px;min-height:16px}.pe-h{font-size:12px;opacity:.7;margin:0}
+/* منوی سه‌خط: عرض ثابت و کوچک‌تر */
+#drawer{width:min(72vw,270px)!important;max-width:270px!important;min-width:0!important;box-sizing:border-box;left:auto!important;right:0!important;overflow-x:hidden!important}
+#drawer .dr-i span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+</style>
+<style id="rpcss">
+.zrp .zrpi{border:1px solid rgba(120,120,128,.3);border-radius:14px;padding:10px;margin:8px 0}.zrpt{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.zrpq{font-size:12.5px;opacity:.8;margin:8px 0 4px}.zrpc{display:flex;flex-wrap:wrap;gap:6px}.zrpa{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px}.zrpa .zin{width:auto;min-width:110px}
+.zrps{font-size:12.5px;margin-top:6px}
+</style>
+<style id="lostcss">
+.cu-list .cu-w.t-lost{background:linear-gradient(135deg,#FF6B6B,#D92D2D)!important;color:#fff}
+.cu-w.t-lost{--tc:#D92D2D}
+#paneQ[data-ft=lost]{--ftbg:linear-gradient(180deg,#FF7B7B,#D92D2D);--fth:#fff}
+html body .ct-wrap .ct-r.t-lost{background:linear-gradient(135deg,#FF6B6B,#D92D2D)!important;color:#fff!important;border-radius:14px!important;margin:3px 6px;width:calc(100% - 12px)!important}
+html body .ct-wrap .ct-r.t-lost b,html body .ct-wrap .ct-r.t-lost small{color:inherit!important}.ct-r.t-lost .ct-a{background:rgba(255,255,255,.35);color:inherit}
+</style>
+<style id="perf2">
+/* سرعت همه‌ی تم‌ها: بدون تاری پس‌زمینه، بدون پس‌زمینه‌ی ثابت سنگین */
+*,*::before,*::after{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html[data-ios],html[data-ios][data-ipane]:not([data-ipane=D]){background-attachment:scroll!important;background-repeat:no-repeat!important;min-height:100%}
+html[data-ios] #bnav,html[data-ios] #topBar{background-color:rgba(246,248,253,.96)}
+html[data-ios][data-theme=dark] #bnav,html[data-ios][data-theme=dark] #topBar{background-color:rgba(18,24,48,.96)}
+#bnav{background-color:rgba(255,255,255,.97)}
+html[data-theme=dark] #bnav{background-color:rgba(20,26,50,.97)}
+#topBar{background-color:rgba(238,243,252,.97)}
+html[data-theme=dark] #topBar{background-color:rgba(16,22,44,.97)}
+.cu-list .cu-row,.cu-card{box-shadow:0 2px 6px rgba(20,30,70,.12)}
+</style>
+<style id="rpkcss">
+#rpAsk{position:fixed;inset:0;z-index:99995;background:rgba(10,14,30,.55);display:flex;align-items:center;justify-content:center;padding:16px;direction:rtl}#rpAsk[hidden]{display:none}
+#rpAsk .rpb{background:var(--surface,#fff);color:var(--fg,#1b2440);border-radius:20px;padding:16px;width:100%;max-width:420px;display:flex;flex-direction:column;gap:10px}
+#rpAsk .rpb p{margin:0;font-size:14px}#rpAsk .rpc{display:flex;flex-wrap:wrap;gap:6px}
+#rpAsk button{min-height:42px;border:0;border-radius:12px;padding:0 14px;font:inherit;background:rgba(120,120,128,.16);color:inherit}#rpAsk button.on,#rpAsk button.ok{background:#354c9b;color:#fff;font-weight:700}
+#rpAsk .rpa,#rpAsk .rpf{display:flex;gap:8px;align-items:center}#rpAsk .rpf button{flex:1}#rpAsk input[type=time]{min-height:42px;border:1px solid rgba(120,120,128,.35);border-radius:12px;padding:0 10px;font:inherit;background:var(--bg,#fff);color:inherit}
 </style>
 </body></html>
