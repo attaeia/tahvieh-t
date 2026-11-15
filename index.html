@@ -1412,6 +1412,111 @@ html[data-role=member] .hpair{grid-template-columns:1fr!important}
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
 </script>
+<script>
+(function(){
+if(window.__zc)return;
+/* ---- LZ (UTF16) فشرده‌ساز ---- */
+var F=String.fromCharCode;
+function lzc(s){
+ if(s==null||s==='')return '';
+ var dict={},toCreate={},c,wc,w='',enl=2,ds=3,nb=2,out=[],val=0,pos=0,i,v,ii,BP=15;
+ function put(bit){val=(val<<1)|bit;if(pos===BP-1){pos=0;out.push(F(val+32));val=0}else pos++}
+ function bitsOut(value,n){for(var k=0;k<n;k++){put(value&1);value>>=1}}
+ function emitW(){
+  if(Object.prototype.hasOwnProperty.call(toCreate,w)){
+   if(w.charCodeAt(0)<256){for(i=0;i<nb;i++)put(0);bitsOut(w.charCodeAt(0),8)}
+   else{for(i=0;i<nb;i++)put(i===0?1:0);bitsOut(w.charCodeAt(0),16)}
+   enl--;if(enl===0){enl=Math.pow(2,nb);nb++}
+   delete toCreate[w]
+  }else bitsOut(dict[w],nb);
+  enl--;if(enl===0){enl=Math.pow(2,nb);nb++}
+ }
+ for(ii=0;ii<s.length;ii++){
+  c=s.charAt(ii);
+  if(!Object.prototype.hasOwnProperty.call(dict,c)){dict[c]=ds++;toCreate[c]=true}
+  wc=w+c;
+  if(Object.prototype.hasOwnProperty.call(dict,wc))w=wc;
+  else{emitW();dict[wc]=ds++;w=String(c)}
+ }
+ if(w!=='')emitW();
+ bitsOut(2,nb);
+ for(;;){val=val<<1;if(pos===BP-1){out.push(F(val+32));break}else pos++}
+ return out.join('')+' ';
+}
+function lzd(comp){
+ if(comp==null||comp==='')return '';
+ var len=comp.length,RV=16384;
+ function gv(i){return comp.charCodeAt(i)-32}
+ var dict=[],enl=4,ds=4,nb=3,entry='',res=[],i,w,bits,resb,maxp,power,c,d={val:gv(0),position:RV,index:1};
+ function rd(n){var b=0,mp=Math.pow(2,n),p=1;while(p!==mp){resb=d.val&d.position;d.position>>=1;if(d.position===0){d.position=RV;d.val=gv(d.index++)}b|=(resb>0?1:0)*p;p<<=1}return b}
+ for(i=0;i<3;i++)dict[i]=i;
+ var nx=rd(2);
+ if(nx===0)c=F(rd(8));else if(nx===1)c=F(rd(16));else return '';
+ dict[3]=c;w=c;res.push(c);
+ for(;;){
+  if(d.index>len)return '';
+  c=rd(nb);
+  if(c===0){dict[ds++]=F(rd(8));c=ds-1;enl--}
+  else if(c===1){dict[ds++]=F(rd(16));c=ds-1;enl--}
+  else if(c===2)return res.join('');
+  if(enl===0){enl=Math.pow(2,nb);nb++}
+  if(dict[c])entry=dict[c];
+  else if(c===ds)entry=w+w.charAt(0);
+  else return null;
+  res.push(entry);dict[ds++]=w+entry.charAt(0);enl--;w=entry;
+  if(enl===0){enl=Math.pow(2,nb);nb++}
+ }
+}
+window.__lz={c:lzc,d:lzd};
+/* ---- لایهٔ ذخیره‌ی فشرده برای مقدارهای بزرگ ---- */
+var P=Storage.prototype,oG=P.getItem,oS=P.setItem,oR=P.removeItem,MK='ZC1|',BIG=120000,CH=200,SL=90000,cache={};
+function ck(k,i){return 'payesh-sync-zc.'+String(k).replace(/^payesh-/,'')+'.'+i}
+function isK(self,k){return self===localStorage&&/^payesh-/.test(String(k))&&!/^payesh-(auth-|u-|sync-)/.test(String(k))}
+function marker(k){try{var m=oG.call(localStorage,k);return m&&m.indexOf(MK)===0?m:null}catch(e){return null}}
+function parseM(m){var a=m.split('|');return{t:a[1],n:+a[2],tok:a[3]}}
+function dropChunks(k,from,to){for(var i=from;i<to;i++){try{oR.call(localStorage,ck(k,i))}catch(e){}}}
+function decode(k,m){
+ var mm=parseM(m),parts=[];
+ for(var i=0;i<mm.n;i++){var z=oG.call(localStorage,ck(k,i));if(z==null)throw new Error('zc-missing');var p=lzd(z);if(p==null)throw new Error('zc-bad');parts.push(p)}
+ var full=mm.t==='A'?'['+parts.filter(function(x){return x!==''}).join(',')+']':parts.join('');
+ cache[k]={m:m,full:full,plain:parts};return full}
+P.getItem=function(k){
+ if(isK(this,k)){var m=marker(k);if(m){var c=cache[k];if(c&&c.m===m)return c.full;try{return decode(k,m)}catch(e){window.__lastErr='ذخیره‌سازی: '+e.message;return null}}}
+ return oG.apply(this,arguments)};
+function split(v){
+ var t='S',parts=[];
+ if(v.charAt(0)==='['){try{var a=JSON.parse(v);if(Array.isArray(a)){t='A';for(var i=0;i<a.length;i+=CH)parts.push(JSON.stringify(a.slice(i,i+CH)).slice(1,-1))}}catch(e){t='S'}}
+ if(t==='S'){parts=[];for(var j=0;j<v.length;j+=SL)parts.push(v.slice(j,j+SL))}
+ return{t:t,parts:parts}}
+function writeBig(k,v){
+ var old=marker(k),oc=old?cache[k]:null,oldN=old?parseM(old).n:0;
+ var sp=split(v),tok=Math.random().toString(36).slice(2,8),m=MK+sp.t+'|'+sp.parts.length+'|'+tok;
+ var prev=oc&&oc.m===old&&parseM(old).t===sp.t?oc.plain:null;
+ var plainOld=null;
+ function run(){
+  for(var i=0;i<sp.parts.length;i++){if(prev&&prev[i]===sp.parts[i])continue;oS.call(localStorage,ck(k,i),lzc(sp.parts[i]))}
+  oS.call(localStorage,k,m)}
+ try{run()}catch(e1){
+  /* حافظه پر است: مقدار قدیمیِ خام را موقتاً برمی‌داریم و دوباره تلاش می‌کنیم */
+  var raw=old?null:oG.call(localStorage,k);
+  try{if(!old)oR.call(localStorage,k);prev=null;run()}catch(e2){if(raw!=null){try{oS.call(localStorage,k,raw)}catch(e3){}}throw e2}}
+ if(sp.parts.length<oldN)dropChunks(k,sp.parts.length,oldN);
+ cache[k]={m:m,full:v,plain:sp.parts}}
+P.setItem=function(k,v){
+ if(isK(this,k)&&typeof v==='string'){
+  if(v.length>BIG){writeBig(k,v);return}
+  var o=marker(k);if(o){oS.call(this,k,v);dropChunks(k,0,parseM(o).n);delete cache[k];return}}
+ return oS.apply(this,arguments)};
+P.removeItem=function(k){
+ if(isK(this,k)){var o=marker(k);if(o){oR.apply(this,arguments);dropChunks(k,0,parseM(o).n);delete cache[k];return}}
+ return oR.apply(this,arguments)};
+window.__zc={on:1,keys:function(){return Object.keys(cache)}};
+/* انتقال خودکار مقدارهای خام بزرگ به حالت فشرده */
+function migrate(){try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(!k)continue;var vk=null;var mm=/^payesh-u-[^:]*::(.*)$/.exec(k);if(mm)vk='payesh-'+mm[1];else if(/^payesh-/.test(k)&&!/^payesh-(auth-|u-|sync-)/.test(k))vk=k;if(!vk)continue;var raw=oG.call(localStorage,k);if(raw&&raw.length>BIG&&raw.indexOf(MK)!==0){var cur=localStorage.getItem(vk);if(cur===raw||cur&&cur.length===raw.length)localStorage.setItem(vk,cur)}}}catch(e){window.__lastErr='migrate: '+(e&&e.message)}}
+setTimeout(migrate,2500);
+})();
+
+</script>
 
 <script>
 (function(){document.addEventListener('click',function(e){if(document.documentElement.getAttribute('data-role')!=='member')return;var t=e.target.closest&&e.target.closest('#tabI,#tabP,[data-go="i"],[data-go="p"]');if(t){e.stopImmediatePropagation();e.preventDefault()}},true)})();
@@ -2257,7 +2362,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.111</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.114</footer>
 </div>
 
 
@@ -2755,13 +2860,14 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
     var h=topRow(nL,nC);
     if(view==='board'){h+='<div class="cu-sr"><input id="cuQ" type="search" autocomplete="off" placeholder="جستجو: نام یا ۴ رقم آخر شماره" aria-label="جستجو" value="'+esc(q)+'"></div>'+boardHtml(ROWS.filter(function(r){if(!q&&isLeadRow(r)!==(seg==='lead'))return false;var f0=flt;flt='all';var ok=matches(r);flt=f0;return ok}));el.innerHTML=h;return}
     h+=''
+      +'<div class="cu-fl" role="group" aria-label="فیلتر">'+FL.concat((function(){var m={},o=[];ROWS.forEach(function(r){if(isLeadRow(r)!==(seg==='lead'))return;var x=r.info&&r.info.src;if(x&&!m[x]){m[x]=1;o.push(['s:'+x,x])}});return o})()).map(function(f){return '<button type="button" data-cf="'+f[0]+'" aria-pressed="'+(flt===f[0])+'">'+f[1]+'</button>'}).join('')+'</div>'
       +'<div class="cu-sr"><input id="cuQ" type="search" autocomplete="off" placeholder="جستجو: نام یا ۴ رقم آخر شماره" aria-label="جستجو" value="'+esc(q)+'"></div>'
       +(function(){var P={},C={};ROWS.forEach(function(r){if(isLeadRow(r)!==(seg==='lead'))return;var I=r.info||{},pv=nrm(I.prov||''),ct=nrm(I.city||'');if(pv)P[pv]=(P[pv]||0)+1;if(ct&&(!fProv||pv===fProv))C[ct]=(C[ct]||0)+1});
         if(fProv&&!P[fProv])fProv='';if(fCity&&!C[fCity])fCity='';
         var op=function(m,sel,all){return '<option value="">'+all+'</option>'+Object.keys(m).sort(function(a,b){return a.localeCompare(b,'fa')}).map(function(k){return '<option value="'+esc(k)+'"'+(k===sel?' selected':'')+'>'+esc(k)+' ('+fa(m[k])+')</option>'}).join('')};
         if(!Object.keys(P).length&&!Object.keys(C).length)return '';
         return '<div class="cu-geo"><select id="cuProv" aria-label="استان">'+op(P,fProv,'همه‌ی استان‌ها')+'</select><select id="cuCity" aria-label="شهر">'+op(C,fCity,'همه‌ی شهرها')+'</select><select id="cuLim" aria-label="تعداد نمایش">'+[[0,'همه'],[10,'۱۰ تا'],[20,'۲۰ تا'],[50,'۵۰ تا']].map(function(x){return '<option value="'+x[0]+'"'+(fLim===x[0]?' selected':'')+'>'+x[1]+'</option>'}).join('')+'</select></div>'})()
-      +'<div class="cu-fl" role="group" aria-label="فیلتر">'+FL.concat((function(){var m={},o=[];ROWS.forEach(function(r){if(isLeadRow(r)!==(seg==='lead'))return;var x=r.info&&r.info.src;if(x&&!m[x]){m[x]=1;o.push(['s:'+x,x])}});return o})()).map(function(f){return '<button type="button" data-cf="'+f[0]+'" aria-pressed="'+(flt===f[0])+'">'+f[1]+'</button>'}).join('')+'</div>';
+      ;
     var list=ROWS.filter(matches);var nAll=list.length;if(fLim>0&&list.length>fLim)list=list.slice(0,fLim);
     var grp=(seg==='lead'&&(flt==='new'||/^s:/.test(flt)));if(grp){var gi={},gs=[];list.forEach(function(r){var k=r.info.src||'بدون منبع';if(!gi[k]){gi[k]=[];gs.push(k)}gi[k].push(r)});list=[];var gh='';gs.forEach(function(k){gh+='<div class="cu-gh">'+esc(k)+' <em>'+fa(gi[k].length)+' سرنخ</em></div>'+gi[k].map(row).join('')});h+=gh?'<div class="cu-list">'+gh+'</div>':''}
     h+=grp?(h.indexOf('cu-list')<0?'<p class="hint cu-empty">سرنخی با این فیلتر نیست.</p>':''):list.length?'<div class="cu-list">'+list.map(row).join('')+'</div>':'<p class="hint cu-empty">'+(seg==='lead'?'سرنخی نیست. با «ورود از اکسل» شماره‌ها را بیاور؛ تا وقتی فقط شماره داری همین‌جا می‌مانند.':ROWS.length?'مشتری با این فیلتر پیدا نشد.':'هنوز مشتری یا پوشه‌ای نداری. با دکمه‌ی «+» پایین یک مشتری یا سرنخ تازه بساز.')+'</p>';
@@ -2886,7 +2992,7 @@ do{last=bits(1);type=bits(2);
         +(R.ok.length?'<button type="button" class="cu-b pri" data-cu-do style="width:100%">وارد کردن '+fa(R.ok.length)+' مشتری</button>':'')+'</section>'}
     el.innerHTML=h}
   document.addEventListener('click',function(e){var b=e.target&&e.target.closest&&e.target.closest('[data-cu-paste]');if(!b)return;var t=($('impPaste')||{}).value||'';var src=($('impSrc')&&$('impSrc').value.trim())||'';try{var rows=pasteRows(t);if(!rows.length){var m=$('impMsg');if(m)m.textContent='چیزی پیست نشده است.';return}finishImp([rows],src||'پیست')}catch(x){IMP={src:src,err:'خواندن متن ممکن نشد.'}}renderImp();if($('impSrc'))$('impSrc').value=src});
-  function memInfo(){try{var t=0,a=[];for(var i=0;i<localStorage.length;i++){var key=localStorage.key(i),n=key.length+String(localStorage.getItem(key)||'').length;t+=n;a.push([key,n])}a.sort(function(x,y){return y[1]-x[1]});var mb=(t*2/1048576).toFixed(1);return 'حافظهٔ استفاده‌شده: حدود '+fa(mb)+' مگابایت از ~۵ ('+fa(Math.round(t*2/52428.8))+'٪).'+(t*2>4200000?' ⚠️ نزدیک پر شدن است؛ بزرگ‌ترین‌ها: '+a.slice(0,3).map(function(x){return x[0].replace(/^payesh-(u-[^:]*::)?/,'')+' '+fa(Math.round(x[1]*2/1024))+'KB'}).join('، '):'')+(window.__lastErr?'<br>آخرین خطای برنامه: '+esc(String(window.__lastErr).slice(0,140)):'')}catch(e){return ''}}
+  function memInfo(){try{var t=0,a=[],fr=document.createElement('iframe');fr.style.display='none';document.body.appendChild(fr);var og=fr.contentWindow.Storage.prototype.getItem;for(var i=0;i<localStorage.length;i++){var key=localStorage.key(i),n=key.length+String(og.call(localStorage,key)||'').length;t+=n;a.push([key,n])}fr.remove();a.sort(function(x,y){return y[1]-x[1]});var mb=(t*2/1048576).toFixed(1);return 'حافظهٔ استفاده‌شده: حدود '+fa(mb)+' مگابایت از ~۵ ('+fa(Math.round(t*2/52428.8))+'٪).'+(t*2>4200000?' ⚠️ نزدیک پر شدن است؛ بزرگ‌ترین‌ها: '+a.slice(0,3).map(function(x){return x[0].replace(/^payesh-(u-[^:]*::)?/,'')+' '+fa(Math.round(x[1]*2/1024))+'KB'}).join('، '):'')+(window.__lastErr?'<br>آخرین خطای برنامه: '+esc(String(window.__lastErr).slice(0,140)):'')}catch(e){return ''}}
   function finishImp(lists,src){
       var best=null,bs=-2,first=null;lists.forEach(function(rw){var r=analyse(rw,src);if(!first)first=r;var sc=r.err?-1:r.ok.length+r.dup.length+r.bad.length*.1;if(sc>bs){bs=sc;best=r}});
       var res=bs>=0?best:first;IMP={src:src,res:res};if(res.err){IMP.err=res.err+(lists.length>1?' (همه‌ی '+fa(lists.length)+' برگه‌ی فایل بررسی شد.)':'');IMP.res=null}
@@ -3572,7 +3678,7 @@ document.documentElement.dir='rtl';document.documentElement.lang='fa';
 var GROUPS=[{id:'auto',name:'اتوماسیون'},{id:'side',name:'جانبی و موتورها'},{id:'weigh',name:'سیستم توزین'},{id:'acc',name:'اتصالات و متعلقات'},{id:'cab',name:'کابل، هاستینگ و تابلو'}];
 var CAT=[];
 // محصولات فقط-آسا و فقط-نیپه فعلاً تولید نمی‌شوند و در لیست انتخاب نمایش داده نمی‌شوند (hide).
-function I(id,g,name,usd,disc,o){o=o||{};CAT.push({id:id,g:g,name:name,usd:usd,disc:!!disc,unit:o.unit||'عدد',motor:!!o.motor,from:o.from||null,mult:o.mult||1,price0:o.price0||null,fixed:o.fixed||null,note:o.note||'',hide:!!o.hide,sel:!!o.sel});}
+function I(id,g,name,usd,disc,o){o=o||{};CAT.push({id:id,g:g,name:name,usd:usd,disc:!!disc,unit:o.unit||'عدد',motor:!!o.motor,from:o.from||null,mult:o.mult||1,price0:o.price0||null,fixed:o.fixed||null,note:o.note||'',hide:!!o.hide,sel:!!o.sel,soft:!!o.soft});}
 var OPS=['opa','opn'],SRV=['asa','p1','p2','p3','p4'].concat([1,2,3,4,5,6,7,8,9,10].map(function(i){return 'nipe'+i}));
 // اتوماسیون
 I('asa','auto','دستگاه مرکزی آسا',200,1,{hide:1});
@@ -3605,7 +3711,7 @@ I('do10','auto','کارت DO10',59,0);I('di','auto','کارت DI',50,0);I('ao','
 // جانبی و موتورها
 I('inlet','side','موتور اینلت',260,1,{motor:true});
 I('flap','side','فلپ کنترولر',225,0);
-I('pres','side','سنسور فشار',61,1,{motor:true});
+I('pres','side','سنسور فشار',61,1,{motor:true,from:OPS,soft:1});
 // توزین
 I('wfeed','weigh','سیستم توزین دان',275,1);
 I('wio','weigh','کارت IO جهت توزین دان',90,1,{from:['wfeed']});
@@ -3703,7 +3809,7 @@ function fmtField(el){var d=toEn(el.value).replace(/[^\d.]/g,'');if(d===''){el.v
 /* ---------- model ---------- */
 function parentsQty(it){var s=0;it.from.forEach(function(p){var r=S.rows[p];if(r)s+=num(r.qty)});return s*(it.mult||1)}
 var LOCKED={};/* تعداد این دو همیشه برابر والدشان است */
-function qtyOf(id){var it=BY[id],r=S.rows[id];if(!r)return 0;if(it.from&&(!r.qtyManual||LOCKED[id]))return parentsQty(it);return num(r.qty)}
+function qtyOf(id){var it=BY[id],r=S.rows[id];if(!r)return 0;if(it.from&&(!r.qtyManual||LOCKED[id])){var pq=parentsQty(it);if(!(it.soft&&pq===0))return pq}return num(r.qty)}
 function up50(x){x=Math.round(x*1e6)/1e6;return Math.ceil(x/50)*50}
 function padM(x){return x>0?Math.ceil(Math.round((x+30)*1e6)/1e6/5)*5:0}
 function cmM(x){return Math.ceil(Math.round(x*1e6)/1e6)}
@@ -3742,7 +3848,7 @@ function cabInputs(){['c2','c4','c12'].forEach(function(id){var r=S.rows[id],inp
 function cabAutoRows(){var changed=false;['c2','c4','c12'].forEach(function(id){var r=S.rows[id];if(r&&r.cabAuto){if(r.qtyManual){delete r.cabAuto}else{delete S.rows[id]}changed=true}});return changed}
 function sync(){var changed=false;['flex','flexclamp'].forEach(function(k){if(S.rows[k]){delete S.rows[k];changed=true}});CAT.forEach(function(it){if(!it.from)return;var s=parentsQty(it),r=S.rows[it.id];
   if(s>0&&!r){if(it.sel)return;if(S.cabOff&&S.cabOff[it.id])return;S.rows[it.id]={auto:true,qty:s};changed=true}
-  else if(r){if(!r.qtyManual||LOCKED[it.id])r.qty=s;if(s===0&&r.auto&&!r.qtyManual){delete S.rows[it.id];changed=true}}});if(cabAutoRows())changed=true;if(ntcAuto())changed=true;return changed}
+  else if(r){if(it.soft&&r.sfv!==1){r.sfv=1;if(!r.auto&&!r.qtyManual&&num(r.qty)!==s)r.qtyManual=true}if((!r.qtyManual||LOCKED[it.id])&&!(it.soft&&s===0))r.qty=s;if(s===0&&r.auto&&!r.qtyManual){delete S.rows[it.id];changed=true}}});if(cabAutoRows())changed=true;if(ntcAuto())changed=true;return changed}
 function ntcAuto(){var r=S.rows.ntc;if(!r||r.qtyManual)return false;var G=hgList(),tot=0,ok=true,any=false;G.forEach(function(g){var n=Math.round(num(g.n)),L=num(g.l);if(!(L>0))return;if(!(n>0))n=1;var per=L<60?4:(L<90?6:0);if(!per){ok=false;return}any=true;tot+=per*n});if(!ok||!any||tot<=0)return false;if(num(r.qty)!==tot){r.qty=tot;return true}return false}
 function cust(){return CBY[S.cust]||CBY.none}
 function insMode(){return S.insSel==='co'||S.insSel==='co2'?S.insSel:null}
@@ -3954,7 +4060,7 @@ function sameName(a,b){a=stripHon(a);b=stripHon(b);return !!a&&!!b&&(a===b||b.in
 function buyerRows(inv){
   var bn=honAttn(inv),co=orgName(inv),ad=String(inv.addr||'').trim();
   var mt=function(x){return /: *$/.test(x)?'':x};
-  var b1=['خریدار : '+(co?co+(bn?' - ':''):'')+bn+(inv.phone?'  تلفن : '+inv.phone:''),'',''];
+  var b1=['خریدار : '+bn+(co?(bn?' - ':'')+co:'')+(inv.phone?'  تلفن : '+inv.phone:''),'',''];
   b1.segs=['خریدار : '+bn,'شرکت : '+String(inv.comp||'').trim(),'مجموعه : '+String(inv.grp||'').trim(),'تلفن : '+String(inv.phone||'').trim(),'تلفن ثابت : '+String(inv.tel||'').trim()].map(mt);
   b1.spans=[[1,2],[3,5],[6,7],[8,8],[9,9]];b1.cls='r1';
   var b2=['استان : '+(inv.prov||''),'شهر : '+(inv.city||'')+(String(inv.country||'').trim()?' - کشور : '+String(inv.country).trim():''),''];
