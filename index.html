@@ -2257,7 +2257,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.108</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.109</footer>
 </div>
 
 
@@ -2776,7 +2776,27 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
   function normPhone(v){var d=en(v).replace(/\D/g,'');if(d.indexOf('0098')===0)d='0'+d.slice(4);else if(d.indexOf('98')===0&&d.length===12)d='0'+d.slice(2);else if(d.length===10&&d.charAt(0)==='9')d='0'+d;return(d.length===11&&d.charAt(0)==='0')?d:''}
   var HR=[['phone2',/دوم|ثابت|[2۲]\s*$/],['addr',/آدرس|نشانی/],['phone',/موبایل|همراه|تلفن|شماره/],['prov',/استان/],['city',/شهر/],['act',/فعالیت|نوع/],['halls',/سالن/],['src',/منبع|نمایشگاه/],['next',/پیگیری|تاریخ/],['note',/یادداشت|توضیح/],['co',/شرکت|مزرعه|واحد/],['name',/نام|مشتری/]];
   function mapHead(row){var m={};row.forEach(function(h,i){h=nrm(h).replace(/\u200c/g,' ');if(!h)return;for(var k=0;k<HR.length;k++){if(HR[k][1].test(h)&&m[HR[k][0]]==null){m[HR[k][0]]=i;break}}});return m}
-  async function inflate(u8){var ds=new DecompressionStream('deflate-raw'),w=ds.writable.getWriter();w.write(u8);w.close();return new Uint8Array(await new Response(ds.readable).arrayBuffer())}
+function inflateJS(src){var pos=0,bb=0,bc=0,out=new Uint8Array(Math.max(src.length*4,1024)),op=0;
+function bits(n){while(bc<n){if(pos>=src.length)throw new Error('inflate');bb|=src[pos++]<<bc;bc+=8}var v=bb&((1<<n)-1);bb>>>=n;bc-=n;return v}
+function ens(n){if(op+n>out.length){var o=new Uint8Array(Math.max(out.length*2,op+n));o.set(out);out=o}}
+function build(L,n){var count=new Uint16Array(16),offs=new Uint16Array(16),sym=new Uint16Array(n),i;for(i=0;i<n;i++)count[L[i]]++;count[0]=0;for(i=1;i<16;i++)offs[i]=offs[i-1]+count[i-1];for(i=0;i<n;i++)if(L[i])sym[offs[L[i]]++]=i;return{c:count,s:sym}}
+function dec(h){var code=0,first=0,index=0;for(var len=1;len<16;len++){code|=bits(1);var c=h.c[len];if(code-c<first)return h.s[index+(code-first)];index+=c;first+=c;first<<=1;code<<=1}throw new Error('inflate')}
+var LB=[3,4,5,6,7,8,9,10,11,13,15,17,19,23,27,31,35,43,51,59,67,83,99,115,131,163,195,227,258],LE=[0,0,0,0,0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,0],DB=[1,2,3,4,5,7,9,13,17,25,33,49,65,97,129,193,257,385,513,769,1025,1537,2049,3073,4097,6145,8193,12289,16385,24577],DE=[0,0,0,0,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12,13,13],ORD=[16,17,18,0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15],FL,FD;
+var last,type;
+do{last=bits(1);type=bits(2);
+ if(type===0){bb=0;bc=0;var len=src[pos]|(src[pos+1]<<8);pos+=4;ens(len);out.set(src.subarray(pos,pos+len),op);op+=len;pos+=len}
+ else if(type===3)throw new Error('inflate')
+ else{var lc,dc;
+  if(type===1){if(!FL){var l=new Uint8Array(288),i;for(i=0;i<144;i++)l[i]=8;for(;i<256;i++)l[i]=9;for(;i<280;i++)l[i]=7;for(;i<288;i++)l[i]=8;FL=build(l,288);var d=new Uint8Array(30);for(i=0;i<30;i++)d[i]=5;FD=build(d,30)}lc=FL;dc=FD}
+  else{var nl=bits(5)+257,nd=bits(5)+1,nc=bits(4)+4,cl=new Uint8Array(19),i;for(i=0;i<nc;i++)cl[ORD[i]]=bits(3);var cc=build(cl,19),L=new Uint8Array(nl+nd),ix=0;
+   while(ix<nl+nd){var s=dec(cc);if(s<16)L[ix++]=s;else{var pv=0,rp;if(s===16){pv=L[ix-1];rp=3+bits(2)}else if(s===17)rp=3+bits(3);else rp=11+bits(7);while(rp--)L[ix++]=pv}}
+   lc=build(L.subarray(0,nl),nl);dc=build(L.subarray(nl),nd)}
+  for(;;){var sy=dec(lc);if(sy<256){ens(1);out[op++]=sy}else if(sy===256)break;else{sy-=257;var ln=LB[sy]+bits(LE[sy]),ds=dec(dc),dist=DB[ds]+bits(DE[ds]);ens(ln);for(;ln--;op++)out[op]=out[op-dist]}}
+ }
+}while(!last);return out.subarray(0,op)}
+
+  async function inflate(u8){try{if(typeof DecompressionStream==='function'){var ds=new DecompressionStream('deflate-raw'),w=ds.writable.getWriter();w.write(u8);w.close();return new Uint8Array(await new Response(ds.readable).arrayBuffer())}}catch(x){}return inflateJS(u8)}
+  function fileBuf(f){return f.arrayBuffer?f.arrayBuffer():new Promise(function(res,rej){var r=new FileReader();r.onload=function(){res(r.result)};r.onerror=function(){rej(new Error('read'))};r.readAsArrayBuffer(f)})}
   async function readXlsx(buf,all){
     var u=new Uint8Array(buf),dv=new DataView(buf),i=u.length-22;while(i>=0&&dv.getUint32(i,true)!==0x06054b50)i--;if(i<0)throw new Error('zip');
     var n=dv.getUint16(i+10,true),off=dv.getUint32(i+16,true),files={},TD=new TextDecoder();
@@ -2875,7 +2895,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
     if(!e.target||e.target.id!=='impFile')return;var f=e.target.files&&e.target.files[0];if(!f)return;var pm=$('impMsg');if(pm)pm.textContent='فایل «'+f.name+'» انتخاب شد؛ در حال خواندن…';
     var src=($('impSrc')&&$('impSrc').value.trim())||f.name.replace(/\.[^.]+$/,'');
     (async function(){try{
-      var buf=await f.arrayBuffer(),u8=new Uint8Array(buf),lists;
+      var buf=await fileBuf(f),u8=new Uint8Array(buf),lists;
       if(u8[0]===0x50&&u8[1]===0x4B)lists=await readXlsx(buf,true);
       else if(u8[0]===0xD0&&u8[1]===0xCF)throw new Error('xls');
       else{var tx=new TextDecoder('utf-8').decode(u8);if(/<table/i.test(tx)){var hd=new DOMParser().parseFromString(tx,'text/html');lists=[[].map.call(hd.querySelectorAll('tr'),function(tr){return [].map.call(tr.querySelectorAll('td,th'),function(c){return c.textContent})})]}else lists=[readCsv(tx)]}
