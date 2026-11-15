@@ -1,6 +1,6 @@
 /* سرویس‌ورکر ابزار پایش: برای آپدیت، عدد نسخه را بالا ببر */
-const V = 'payesh-v11-60-103';
-const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
+const V = 'payesh-v11-60-108';
+const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png', './pdf-lib.min.js'];
 const CDN = ['cdnjs.cloudflare.com', 'fonts.googleapis.com', 'fonts.gstatic.com'];
 
 self.addEventListener('install', e => {
