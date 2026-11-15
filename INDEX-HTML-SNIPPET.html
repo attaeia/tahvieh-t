@@ -1,0 +1,11 @@
+<!-- این دو خط را قبل از بسته شدن تگ </body> در فایل index.html خود قرار دهید -->
+<script src="./payesh-storage.js"></script>
+<script src="./proposal-generator.js"></script>
+<script>
+  // انتقال خودکار داده‌های قدیمی از localStorage به IndexedDB هنگام باز شدن صفحه
+  window.addEventListener('DOMContentLoaded', async () => {
+    if (window.PayeshStorage) {
+      await PayeshStorage.migrateFromLocalStorage();
+    }
+  });
+</script>
