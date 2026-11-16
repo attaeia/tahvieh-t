@@ -1,5 +1,5 @@
 /* سرویس‌ورکر ابزار پایش: برای آپدیت، عدد نسخه را بالا ببر */
-const V = 'payesh-v11-60-117';
+const V = 'payesh-v11-60-119';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png', './pdf-lib.min.js'];
 const CDN = ['cdnjs.cloudflare.com', 'fonts.googleapis.com', 'fonts.gstatic.com'];
 
@@ -15,6 +15,7 @@ self.addEventListener('fetch', e => {
   if (u.hostname === 'api.github.com') return;          // همگام‌سازی گیت‌هاب هرگز کش نشود
   const sameOrigin = u.origin === location.origin;
   if (!sameOrigin && !CDN.includes(u.hostname)) return;
+  if (r.headers.has('range')) return;                    // دانلود تکه‌تکهٔ قالب مستقیم از شبکه
   if (sameOrigin && /(proposal-template\.pdf|pdf-lib\.min\.js)$/.test(u.pathname)) {   // فایل‌های سنگین: اول کش (با بالا رفتن نسخه تازه می‌شوند)
     e.respondWith(caches.match(r).then(h => h || fetch(r).then(res => {
       if (res && res.ok) { const cp = res.clone(); caches.open(V).then(c => c.put(r, cp)); }
