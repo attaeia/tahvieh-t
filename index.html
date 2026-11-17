@@ -2206,7 +2206,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.131</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.132</footer>
 </div>
 
 
@@ -2759,6 +2759,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
   var fHall='';
   function openerCard(r){var ft=hallOf(r),nm=String(r.name||'').replace(/\d/g,'').trim(),hi='سلام'+(nm&&!r.info.noName?' '+nm+' عزیز':'')+'، وقت بخیر. تیام عطایی از پایش الکترونیک. ',t;
     if(/گوشتی/.test(ft))t=hi+'سالن‌های گوشتی‌ای رو کنترل می‌کنیم که دما و تهویه‌شون دستی تنظیم می‌شه و هر دوره تلفات می‌دن. سالن شما الان چند قطعه‌ست و دما رو چطور کنترل می‌کنید؟';
+    else if(/پولت/.test(ft))t=hi+'سالن‌های پولت رو کنترل می‌کنیم که دوره‌ی پرورش حساسه و کوچک‌ترین نوسان دما و رطوبت روی ورود به تولید اثر می‌ذاره. الان پولت‌ها در چه سنی‌ان و دما و تهویه رو چطور کنترل می‌کنید؟';
     else if(/تخم/.test(ft))t=hi+'فارم‌های تخم‌گذار رو کنترل می‌کنیم که با گرما افت تولید و کیفیت پوسته دارن. فارم شما چند قطعه‌ست و تابستون‌ها دما رو چطور مدیریت می‌کنید؟';
     else if(/گلخانه/.test(ft))t=hi+'گلخانه‌هایی رو اتوماتیک می‌کنیم که دما و رطوبتشون دستی کنترل می‌شه. گلخانه‌ی شما چند متره و الان چه چیزی بیشتر اذیتتون می‌کنه؟';
     else t=hi+'اتوماسیون مرغداری و گلخانه کار می‌کنیم. الان کنترل دما و تهویه‌تون چطوره و کدوم بخشش بیشتر اذیتتون می‌کنه؟';
@@ -4143,7 +4144,7 @@ function propLoad(src){function one(u){return new Promise(function(res,rej){var 
   return p.catch(function(){throw new Error('pdflib')})}
 
 /* دانلود قالب پروپوزال: تکه‌تکه (۳۰۰ کیلوبایتی) با تلاش دوباره و ادامه از محل قطع؛ بعد از موفقیت در حافظهٔ گوشی می‌ماند */
-var TPL_CACHE='payesh-v11-60-131',TPL_URL='proposal-template.pdf';
+var TPL_CACHE='payesh-v11-60-132',TPL_URL='proposal-template.pdf';
 async function tplGet(stp,P){
   stp=stp||function(){};P=P||function(n){return n};
   try{if(window.caches){var h=await caches.match(TPL_URL);if(h&&h.ok){var b0=await h.arrayBuffer();if(b0.byteLength>100000)return b0}}}catch(e){}
@@ -9101,7 +9102,7 @@ clk();setInterval(clk,5000);document.addEventListener('visibilitychange',functio
     try{api.open(id)}catch(x){}
     var t=$('toast');if(t){t.textContent='مشتری «'+nm+'» ساخته شد.';t.hidden=false;t.classList&&t.classList.add('show');setTimeout(function(){t.hidden=true;t.classList&&t.classList.remove('show')},3200)}});
   /* فرم حرفه‌ای مشتری (مشترک بین جدید و ویرایش) */
-  var HALLS=['گوشتی','تخم‌گذار','مادر','گلخانه','دامداری','سایر'],HON=['','دکتر','مهندس'];
+  var HALLS=['گوشتی','تخم‌گذار','تخم‌گذار مادر','پولت','پولت بستر','گلخانه','دامداری','سایر'],HON=['','دکتر','مهندس'];
   function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function chips(id,arr,cur){var cs=String(cur||'').split(/[،,]/).map(function(x){return x.trim()});return '<div class="pfchips" data-pfc="'+id+'">'+arr.map(function(o){return '<button type="button" data-v="'+esc(o)+'" aria-pressed="'+(cs.indexOf(o)>=0&&(o!==''||!cur))+'">'+(o||'بدون عنوان')+'</button>'}).join('')+'</div>'}
   function split(v){var n=String(v.name||'').trim(),hon='';var m=/^(دکتر|مهندس)\s+/.exec(n);if(m){hon=m[1];n=n.slice(m[0].length)}
@@ -9117,7 +9118,7 @@ clk();setInterval(clk,5000);document.addEventListener('visibilitychange',functio
         +I('co','شرکت / مزرعه',v.co)
         +'<label class="hint">الان چه نوع پرورشی دارید؟ (می‌توانی چند تا انتخاب کنی)</label>'+chips(x+'a',HALLS,hc)
         +'<div class="pfgh" data-for="گلخانه">'+I('crop','محصول (خیار، گوجه، …)',v.crop)+I('area','مساحت گلخانه (متر مربع)',v.area,' inputmode="decimal"')+'<label class="hint">نوع کشت</label>'+chips(x+'u',['خاکی','هیدروپونیک','کوکوپیت'],v.cult||'')+'</div>'
-        +'<div class="pfbird" data-for="گوشتی تخم‌گذار مادر"><label class="hint">سطح اتوماسیون فعلی</label>'+chips(x+'m',['دستی','نیمه‌اتوماتیک','اتوماتیک'],v.auto||'')+'<label class="hint">ظرفیت هر سالن چقدر است؟ (قطعه)</label>'+chips(x+'k',['تا ۵٬۰۰۰','۱۰٬۰۰۰','۲۰٬۰۰۰','۳۰٬۰۰۰','۵۰٬۰۰۰+'],v.capq||'')+I('cap','عدد دقیق (اختیاری)',v.cap,' inputmode="numeric"')+I('hsize','ابعاد سالن (طول × عرض متر)',v.hsize)+'</div>'
+        +'<div class="pfbird" data-for="گوشتی|تخم‌گذار|تخم‌گذار مادر|پولت|پولت بستر|مادر"><label class="hint">سطح اتوماسیون فعلی</label>'+chips(x+'m',['دستی','نیمه‌اتوماتیک','اتوماتیک'],v.auto||'')+'<label class="hint">ظرفیت هر سالن چقدر است؟ (قطعه)</label>'+chips(x+'k',['تا ۵٬۰۰۰','۱۰٬۰۰۰','۲۰٬۰۰۰','۳۰٬۰۰۰','۵۰٬۰۰۰+'],v.capq||'')+I('cap','عدد دقیق (اختیاری)',v.cap,' inputmode="numeric"')+I('hsize','ابعاد سالن (طول × عرض متر)',v.hsize)+'</div>'
         +'<div class="pfdam" data-for="دامداری">'+I('heads','تعداد راس دام',v.heads,' inputmode="numeric"')+I('cap2','نوع دام (گاو شیری، گوسفند، …)',v.cap2)+'</div>'
         +'<label class="hint">چند سالن/واحد دارید؟</label>'+chips(x+'n',['۱','۲','۳','۴','۵+'],v.hn||'')+I('prov','استان',v.prov)+I('city','شهر',v.city)+I('addr','آدرس',v.addr)+I('halls','تعداد سالن',v.halls,' inputmode="numeric"')+I('src','منبع',v.src)+I('note','یادداشت',v.note)+'</div>'},
     read:function(x){function g(k){var e=$(x+k);return e?en(e.value).trim().replace(/\s+/g,' '):''}
@@ -9125,7 +9126,7 @@ clk();setInterval(clk,5000);document.addEventListener('visibilitychange',functio
       var hon=c('h'),first=g('first'),last=g('last'),name=[hon,first,last].filter(Boolean).join(' ');
       var ph=en(g('phone')).replace(/[^\d+]/g,''),act=c('a');
       return {name:name,phone:ph,info:{gender:c('g'),hon:hon,first:first,last:last,co:g('co'),phone2:en(g('phone2')).replace(/[^\d+]/g,''),prov:g('prov'),city:g('city'),addr:g('addr'),act:act,farm:act,crop:g('crop'),area:g('area'),cult:c('u'),auto:c('m'),cap:g('cap'),capq:c('k'),hn:c('n'),hsize:g('hsize'),heads:g('heads'),cap2:g('cap2'),halls:g('halls'),src:g('src'),note:g('note')}}}};
-  function pfTog(root){var fs=[].map.call(root.querySelectorAll('[data-pfc$="a"] [aria-pressed="true"]'),function(x){return x.getAttribute('data-v')});root.querySelectorAll('[data-for]').forEach(function(d){var w=d.getAttribute('data-for').split(' ');d.hidden=!fs.some(function(a){return w.indexOf(a)>=0})});root.querySelectorAll('[data-pfc$="a"] button').forEach(function(b){b.classList.toggle('gh',b.getAttribute('data-v')==='گلخانه')})}
+  function pfTog(root){var fs=[].map.call(root.querySelectorAll('[data-pfc$="a"] [aria-pressed="true"]'),function(x){return x.getAttribute('data-v')});root.querySelectorAll('[data-for]').forEach(function(d){var w=d.getAttribute('data-for').split('|');d.hidden=!fs.some(function(a){return w.indexOf(a)>=0})});root.querySelectorAll('[data-pfc$="a"] button').forEach(function(b){b.classList.toggle('gh',b.getAttribute('data-v')==='گلخانه')})}
   new MutationObserver(function(){document.querySelectorAll('.pfform').forEach(pfTog)}).observe(document.body,{childList:true,subtree:true});
   document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.pfchips button');if(!b)return;setTimeout(function(){var r=b.closest('.pfform');if(r)pfTog(r)},0);var on=b.getAttribute('aria-pressed')==='true',cid=b.parentNode.getAttribute('data-pfc');
     if(!/a$/.test(cid))[].forEach.call(b.parentNode.children,function(y){y.setAttribute('aria-pressed','false')});
