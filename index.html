@@ -2207,7 +2207,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.137</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.138</footer>
 </div>
 
 
@@ -3378,7 +3378,7 @@ do{last=bits(1);type=bits(2);
   function perFill(r){var p=r.f&&r.f.persona,n=0;if(!p)return 0;PK.forEach(function(k){if(!empty(p[k]))n++});return n}
   function perDone(r,B){return !!(B&&B.cur&&B.cur.done&&B.cur.done[r.id])||perFill(r)>=3||!!(r.info&&r.info.qd)}
   function bUsed(B){var u={};B.hist.forEach(function(h){h.items.forEach(function(i){u[i.rid]=1})});if(B.cur)B.cur.ids.forEach(function(i){u[i]=1});return u}
-  function bAvail(r,B,u){return r.f&&!(r.info&&r.info.junk)&&!u[r.id]&&!perDone(r,B)&&!(r.lead&&(r.lead.stage==='won'||r.lead.stage==='lost'))}
+  function bAvail(r,B,u){return r.f&&!(r.info&&(r.info.junk||r.info.cvTs||r.info.qd))&&(!r.info||r.info.noName||/^[\d+\s٠-٩۰-۹-]+$/.test(String(r.name||'')))&&!u[r.id]&&!perDone(r,B)&&!(r.lead&&(r.lead.stage==='won'||r.lead.stage==='lost'))}
   function bProv(){try{return localStorage.getItem('payesh-bprov')||''}catch(e){return ''}}
   function pOk(v){var f=bProv();return !f||String(v||'').trim()===f}
   function bProvs(rows){var m={};rows.forEach(function(r){var v=r.f&&r.info&&r.info.prov;if(v)m[String(v).trim()]=1});try{(window.__cold?window.__cold.all():[]).forEach(function(c){if(c.v)m[String(c.v).trim()]=1})}catch(e){}return Object.keys(m).sort()}
@@ -4155,7 +4155,7 @@ function propLoad(src){function one(u){return new Promise(function(res,rej){var 
   return p.catch(function(){throw new Error('pdflib')})}
 
 /* دانلود قالب پروپوزال: تکه‌تکه (۳۰۰ کیلوبایتی) با تلاش دوباره و ادامه از محل قطع؛ بعد از موفقیت در حافظهٔ گوشی می‌ماند */
-var TPL_CACHE='payesh-v11-60-137',TPL_URL='proposal-template.pdf';
+var TPL_CACHE='payesh-v11-60-138',TPL_URL='proposal-template.pdf';
 async function tplGet(stp,P){
   stp=stp||function(){};P=P||function(n){return n};
   try{if(window.caches){var h=await caches.match(TPL_URL);if(h&&h.ok){var b0=await h.arrayBuffer();if(b0.byteLength>100000)return b0}}}catch(e){}
