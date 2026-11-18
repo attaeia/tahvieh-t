@@ -1644,6 +1644,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
   </div>
   <div id="paneF" hidden>
   <div class="backbar"><button type="button" class="goto" data-go="d">→ خانه</button><b>پیگیری و قیف فروش</b></div>
+    <section class="card" id="fnPersona" hidden></section>
     <section class="card">
       <h2>قیف فروش <small style="font-weight:400;color:var(--muted)">هر مشتری در کدام مرحله است</small></h2>
       <div class="funnel" id="fnSum"></div>
@@ -2206,7 +2207,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.134</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.135</footer>
 </div>
 
 
@@ -3254,7 +3255,7 @@ do{last=bits(1);type=bits(2);
         +'<button type="button" class="cu-b" data-cu="'+esc(f0.id)+'">پرونده</button></div>'}
     else h+='<div class="hs-s">کار فوری نداری. یک مشتری یا سرنخ تازه ثبت کن یا از اکسل وارد کن.</div><div class="hs-a"><button type="button" class="cu-b pri" data-cu-hs="imp">ورود از اکسل</button><button type="button" class="cu-b" data-cu-hs="lead">ثبت سرنخ</button></div>';
     h+='</div>';
-    h+=bkb;h+='<div class="hs-dd">'+dayCard(cand)+'</div>';var bc='';try{bc=batchCard(rows)}catch(e){}
+    h+=bkb;h+='<div class="hs-dd">'+dayCard(cand)+'</div>';var bc='';
     // کارت آمار (فقط وب)
     try{var sd=statsData(30),mx0=Math.max(1,sd.created,sd.contacted,sd.sent,sd.won);
       h+='<div class="hs-c hs-stat"><div class="hs-k">قیف ۳۰ روز اخیر</div>'+[['سرنخ',sd.created],['تماس',sd.contacted],['پیش‌فاکتور',sd.sent],['فروش',sd.won]].map(function(x){return '<div class="fn"><div><span>'+x[0]+'</span><b>'+fa(x[1])+'</b></div><i style="width:'+Math.max(2,Math.round(x[1]*100/mx0))+'%"></i></div>'}).join('')+'<button type="button" class="cu-b" data-cu-hs="st">آمار کامل</button></div>'}catch(e){}
@@ -3426,8 +3427,8 @@ do{last=bits(1);type=bits(2);
     else if(k==='ok'||k==='un'){if(B.cur){if(k==='ok')B.cur.done[id]=Date.now();else delete B.cur.done[id];bset(B)}}
     else if(k==='drop'){if(confirm('این دسته‌ی ۵تایی رها شود؟ (سرنخ‌ها دوباره پیشنهاد می‌شوند)')){B.cur=null;bset(B)}else return}
     else if(k==='copy'){var en0=B.hist.filter(function(x){return x.id===id})[0];if(en0)copyTxt(en0.report);return}
-    homeSimple()});
-  document.addEventListener('change',function(e){var t=e.target;if(t&&t.matches&&t.matches('[data-bprov]')){try{localStorage.setItem('payesh-bprov',t.value)}catch(x){}homeSimple()}});
+    homeSimple();try{window.__cust2.batch()}catch(x){}});
+  document.addEventListener('change',function(e){var t=e.target;if(t&&t.matches&&t.matches('[data-bprov]')){try{localStorage.setItem('payesh-bprov',t.value)}catch(x){}homeSimple();try{window.__cust2.batch()}catch(x){}}});
   function todayLocal(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
   function bkBanner(){var lb='',sn=0;try{lb=localStorage.getItem('pay-lastbk')||'';sn=+localStorage.getItem('pay-bksnooze')||0}catch(e){}
     if(lb===todayLocal()||Date.now()-sn<4*36e5)return '';
@@ -3592,7 +3593,7 @@ do{last=bits(1);type=bits(2);
   var tq=$('tabQ');if(tq)tq.addEventListener('click',function(){render()});
   var td=$('tabD');if(td)td.addEventListener('click',function(){setTimeout(stories,50)});
   var oR=window.__crmRefresh;window.__crmRefresh=function(){if(oR)oR();try{stories();if(!$('paneQ').hidden)render()}catch(e){}};
-  window.__cust2={open:openCust,render:render,stories:stories,build:build,fu:fuApply};
+  window.__cust2={batch:function(){var e=$('fnPersona');if(!e)return;var h='';try{h=batchCard(build())}catch(x){}e.innerHTML=h;e.hidden=!h},open:openCust,render:render,stories:stories,build:build,fu:fuApply};
   setTimeout(stories,500);setTimeout(stories,2000);setInterval(function(){if(!document.hidden){stories();if($('paneQ')&&!$('paneQ').hidden&&!document.activeElement.matches('input,textarea,select'))render()}},45000);
 })();
 </script>
@@ -4151,7 +4152,7 @@ function propLoad(src){function one(u){return new Promise(function(res,rej){var 
   return p.catch(function(){throw new Error('pdflib')})}
 
 /* دانلود قالب پروپوزال: تکه‌تکه (۳۰۰ کیلوبایتی) با تلاش دوباره و ادامه از محل قطع؛ بعد از موفقیت در حافظهٔ گوشی می‌ماند */
-var TPL_CACHE='payesh-v11-60-134',TPL_URL='proposal-template.pdf';
+var TPL_CACHE='payesh-v11-60-135',TPL_URL='proposal-template.pdf';
 async function tplGet(stp,P){
   stp=stp||function(){};P=P||function(n){return n};
   try{if(window.caches){var h=await caches.match(TPL_URL);if(h&&h.ok){var b0=await h.arrayBuffer();if(b0.byteLength>100000)return b0}}}catch(e){}
@@ -9198,6 +9199,7 @@ clk();setInterval(clk,5000);document.addEventListener('visibilitychange',functio
 </script>
 
 </body></html>
+<script>(function(){var pf=document.getElementById('paneF');if(!pf)return;function go(){if(!pf.hidden&&window.__cust2&&window.__cust2.batch)try{window.__cust2.batch()}catch(e){}}new MutationObserver(go).observe(pf,{attributes:true,attributeFilter:['hidden']});setTimeout(go,1500)})()</script>
 </body></html>
 <style id="paneGlassClear">
 /* شیشه‌ی بلوری بی‌رنگ برای همه‌ی صفحه‌های داخلی (نه خانه): بدون سرمه‌ای/سفید چرک */
@@ -9836,4 +9838,12 @@ html[data-econ] #pvOv button,html[data-econ] #colPv button{background:transparen
 .imp-v{border-right:5px solid #d4a017!important}.imp-m{border-right:5px solid #e8871e!important}.rel-a{box-shadow:inset 0 0 0 1px #1b7a3a66}
 .rel-x,.hs-bt .bt-r.bt-big.rel-x{background:rgba(192,57,43,.16)!important;border-color:#c0392b!important}
 .pfhb{display:flex;flex-direction:column;gap:6px;margin:6px 0}.pfhbr{display:grid;grid-template-columns:90px 1fr 1.3fr;gap:6px;align-items:center}.pfhbr b{font-size:13px}.pfhbr input{min-width:0;width:100%}
+</style>
+
+<style id="v135css">
+#fnPersona.card{padding:10px}#fnPersona .hs-bt{border:0;background:none;box-shadow:none;padding:0;margin:0}
+.hs-bt .bt-r.bt-big{padding:8px 10px;margin:6px 0;border-radius:14px}
+.hs-bt .bt-h{margin-bottom:3px}.hs-bt .bt-big .bt-n{font-size:15px}
+.hs-bt .bt-g{grid-template-columns:1fr 1fr;gap:2px 10px}.hs-bt .bt-kv small{font-size:10.5px}.hs-bt .bt-kv span{font-size:12.5px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.hs-bt .bt-a{margin-top:6px}.hs-bt .bt-a button{padding:5px 10px;font-size:12.5px}
 </style>
