@@ -2211,7 +2211,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.144</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.146</footer>
 </div>
 
 
@@ -3700,7 +3700,7 @@ I('eds','auto','سیستم EDS',78,0);
 I('do10','auto','کارت DO10',59,0);I('di','auto','کارت DI',50,0);I('ao','auto','کارت AO',63,0);I('ai','auto','کارت AI',75,0);
 // جانبی و موتورها
 I('inlet','side','موتور اینلت',260,1,{motor:true});
-I('flap','side','فلپ کنترولر',225,0);I('hjet','side','هیتر جت گازوئیلی',null,0);I('fan140','side','هواکش ۱۴۰',null,0);I('inletv','side','اینلت (دریچه ورودی هوا)',null,0);I('feedk','side','دانخوری کناوی',null,0);I('drnk','side','آبخوری نیپه',null,0);I('tbq','side','تابلو برق',null,0);
+I('flap','side','فلپ کنترولر',225,0);
 I('pres','side','سنسور فشار',61,1,{motor:true,from:OPS,soft:1});
 // توزین
 I('wfeed','weigh','سیستم توزین دان',275,1);
@@ -4173,7 +4173,7 @@ function propLoad(src){function one(u){return new Promise(function(res,rej){var 
   return p.catch(function(){throw new Error('pdflib')})}
 
 /* دانلود قالب پروپوزال: تکه‌تکه (۳۰۰ کیلوبایتی) با تلاش دوباره و ادامه از محل قطع؛ بعد از موفقیت در حافظهٔ گوشی می‌ماند */
-var TPL_CACHE='payesh-v11-60-144',TPL_URL='proposal-template.pdf';
+var TPL_CACHE='payesh-v11-60-146',TPL_URL='proposal-template.pdf';
 async function tplGet(stp,P){
   stp=stp||function(){};P=P||function(n){return n};
   try{if(window.caches){var h=await caches.match(TPL_URL);if(h&&h.ok){var b0=await h.arrayBuffer();if(b0.byteLength>100000)return b0}}}catch(e){}
@@ -4206,7 +4206,7 @@ async function makeProposal(opt){opt=opt||{};var stp=function(t){window.__propSt
   var tbytes=await tplGet(stp,P);stp('خواندن قالب…');var doc=await PDFLib.PDFDocument.load(tbytes,{updateMetadata:false}),pg=doc.getPages(),c=calc(),inv=S.inv,K=1/1.5,SC=6,cache={};
   var FN="'Noto Sans Arabic','Vazirmatn','Tahoma','Segoe UI','Arial',sans-serif",FD="'DejaVu Sans','Segoe UI','Tahoma','Arial',sans-serif";
   function P(n){return String(n).replace(/\d/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'.charAt(d)})}
-  function money(n){return P(Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,','))}
+  function money(n){if(usdOn()){var u=Math.round(n/num(S.rate)*100)/100,t=u.toFixed(2).replace(/\.00$/,'');return '$ '+P(t.replace(/\B(?=(\d{3})+(?!\d))/g,','))}return P(Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,','))}
   async function put(pi,b,text,o){
     text=String(text==null?'':text).trim();if(!text)return;o=o||{};
     var page=pg[pi],H=page.getHeight(),x1=b[0]*K,w=(b[2]-b[0])*K,h=(b[3]-b[1])*K,cv=document.createElement('canvas');cv.width=Math.ceil(w*SC);cv.height=Math.ceil(h*SC);
@@ -4286,7 +4286,7 @@ async function makeProposal(opt){opt=opt||{};var stp=function(t){window.__propSt
   /* صفحه ۱۳: جمع‌ها (قبل از تخفیف) */
   function sumG(gs){return c.lines.filter(function(x){return !x.install&&gs.indexOf(x.g)>=0}).reduce(function(a,x){return a+x.gross},0)}
   var A=sumG(['auto']),B=sumG(['side']),W=sumG(['weigh']),C3=sumG(['acc','cab'])+insSum,T=A+B+W+C3;
-  await put(12,[190,287,430,327],money(A),{});await put(12,[190,349,430,389],money(B),{});await put(12,[190,412,430,452],money(W),{});await put(12,[190,474,430,514],money(C3),{});await put(12,[190,540,430,580],money(T),{color:'#c0171d',cap:15});
+  await put(12,[190,287,430,327],money(A),{});await put(12,[190,349,430,389],money(B),{});await put(12,[190,412,430,452],money(W),{});await put(12,[190,474,430,514],money(C3),{});await put(12,[190,540,430,580],money(T),{color:'#c0171d',cap:15});if(usdOn()){mask(12,[352,174,548,208]);await put(12,[352,174,548,208],'قیمت محصولات / دلار',{name:1,color:'#354c9b',cap:17})}
   var has=function(ids){return ids.some(function(i){return c.lines.some(function(x){return x.id===i})})};
   /* حذف کارت قلم‌های نبوده و بالا آوردن کارت‌های بعدی */
   var CARDS={3:[[['p1','p2','p3','p4'],[105,420,790,740]],[['opa'],[105,752,790,1068]]],
@@ -4334,8 +4334,8 @@ async function makeProposal(opt){opt=opt||{};var stp=function(t){window.__propSt
   }
   /* صفحه‌ی کنتور آب: نسخه‌ی صفحه‌ی ۶ قالب با کارت‌های کنتور (عکس مشترک برای همه‌ی کنتورها) */
   async function equipPage(dropBefore,wIns){
-    var DESC={hjet:'هیتر جت گازوئیلی برای گرمایش سریع سالن در دوره‌ی جوجه‌ریزی و فصل سرد؛ هوای گرم را با فن قوی در سالن پخش می‌کند.',fan140:'هواکش ۱۴۰ سانتی‌متری برای تهویه‌ی تونلی؛ دبی بالا و مناسب سالن‌های مرغداری.',inletv:'اینلت (دریچه‌ی ورودی هوا) برای کنترل جهت و سرعت هوای تازه‌ی ورودی به سالن؛ با موتور اینلت باز و بسته می‌شود.',feedk:'دانخوری کناوی با بشقاب بزرگ و پره‌های جداکننده؛ دان به‌طور یکنواخت بین پرنده‌ها پخش می‌شود و هدررفت دان کم است.',tbq:'تابلو برق با نمایشگر لمسی و کلیدهای فرمان؛ استارت و کنترل دستی و خودکار موتورها و تجهیزات سالن را یکجا در اختیار شما می‌گذارد.',drnk:'آبخوری نیپل (نیپه) با لوله‌ی آلومینیومی و رگولاتور؛ آب تمیز و بدون ریختن در بستر به پرنده می‌رسد و بستر خشک می‌ماند.'};
-    var wl=['hjet','fan140','inletv','feedk','drnk','tbq'].map(function(i){return L(i)}).filter(function(l){return l&&l.qty>0});if(!wl.length)return;
+    var DESC={hjet:'هیتر گازوئیلی برای گرمایش سریع سالن در دوره‌ی جوجه‌ریزی و فصل سرد؛ هوای گرم را با فن قوی در سالن پخش می‌کند.',fan140:'هواکش ۱۴۰ سانتی‌متری برای تهویه‌ی تونلی؛ دبی بالا و مناسب سالن‌های مرغداری.',inletv:'پنجره‌ی اینلت برای کنترل جهت و سرعت هوای تازه‌ی ورودی به سالن؛ با موتور اینلت باز و بسته می‌شود.',feedk:'دانخوری کناوی با بشقاب بزرگ و پره‌های جداکننده؛ دان به‌طور یکنواخت بین پرنده‌ها پخش می‌شود و هدررفت دان کم است.',tbq:'تابلو برق با نمایشگر لمسی و کلیدهای فرمان؛ استارت و کنترل دستی و خودکار موتورها و تجهیزات سالن را یکجا در اختیار شما می‌گذارد.',drnk:'آبخوری نیپل (نیپه) با لوله‌ی آلومینیومی و رگولاتور؛ آب تمیز و بدون ریختن در بستر به پرنده می‌رسد و بستر خشک می‌ماند.'};
+    var wl=c.lines.filter(function(l){var it=BY[l.id];return !l.install&&l.qty>0&&it&&EQ_IMG[eqKey(it)]}).map(function(l){l=Object.assign({},l);l.eq=eqKey(BY[l.id]);return l});if(!wl.length)return;
     try{await fontsReady()}catch(e){}
     var all=wl,tdoc=await PDFLib.PDFDocument.load(tbytes);
     for(var pgI=0;pgI*3<all.length;pgI++){var wl=all.slice(pgI*3,pgI*3+3);
@@ -4346,14 +4346,14 @@ async function makeProposal(opt){opt=opt||{};var stp=function(t){window.__propSt
     var NAVY='#354c9b',ft=function(sz,b){g.font=(b?'bold ':'')+sz+'px '+FN};
     g.fillStyle=NAVY;g.textAlign='right';ft(26,1);g.fillText('تجهیزات تهویه، گرمایش و پرورش',790,238);
     var wrap=function(t,mw){var ws=t.split(' '),ln=[],cur='';ws.forEach(function(w){var tt=cur?cur+' '+w:w;if(g.measureText(tt).width>mw&&cur){ln.push(cur);cur=w}else cur=tt});if(cur)ln.push(cur);return ln};
-    var ims=await Promise.all(wl.map(function(l){return new Promise(function(res){var im=new Image();im.onload=function(){res(im)};im.onerror=function(){res(null)};im.src=EQ_IMG[l.id]})}));
+    var ims=await Promise.all(wl.map(function(l){return new Promise(function(res){var im=new Image();im.onload=function(){res(im)};im.onerror=function(){res(null)};im.src=EQ_IMG[l.eq]})}));
     wl.forEach(function(l,i){var img=ims[i],y0=290+i*(220+14);
       g.lineWidth=2;g.strokeStyle='#a9a9a9';g.beginPath();if(g.roundRect)g.roundRect(105,y0,685,220,14);else g.rect(105,y0,685,220);g.stroke();
       if(img){var sc=Math.min(190/img.width,200/img.height),iw=img.width*sc,ih=img.height*sc;g.drawImage(img,120+(190-iw)/2,y0+(220-ih)/2,iw,ih)}
       g.fillStyle=NAVY;g.textAlign='right';ft(21,1);g.fillText(outName(l.name),778,y0+36);
       g.fillStyle='#111';ft(17,1);g.fillText('تعداد : '+P(Math.round(l.qty*100)/100),778,y0+78);
       if(!blankP(l))g.fillText('قیمت : '+money(l.price),640,y0+78);
-      g.fillStyle='#444';ft(14,0);wrap(DESC[l.id]||'',470).forEach(function(t,k){g.fillText(t,778,y0+124+k*26)})});
+      g.fillStyle='#444';ft(14,0);wrap(DESC[l.eq]||'',470).forEach(function(t,k){g.fillText(t,778,y0+124+k*26)})});
     var png=await new Promise(function(res){cv.toBlob(function(bl){bl.arrayBuffer().then(res)},'image/png')});
     var H=np.getHeight();np.drawRectangle({x:R[0]*K,y:H-R[3]*K,width:(R[2]-R[0])*K,height:(R[3]-R[1])*K,color:PDFLib.rgb(1,1,1)});
     np.drawImage(await doc.embedPng(png),{x:R[0]*K,y:H-R[3]*K,width:(R[2]-R[0])*K,height:(R[3]-R[1])*K})}}
@@ -4528,9 +4528,15 @@ window.__pp={saveFile:saveFile,fontsReady:fontsReady,faTree:faTree,esc:esc,LOGO:
 var PEK='pay-prod-edits';
 function pedLoad(){try{return JSON.parse(localStorage.getItem(PEK))||{}}catch(e){return {}}}
 function pedApply(id,p){var it=BY[id];if(!it||!p)return false;if(p.inst!=null)INSOV[id]=!!p.inst;if(p.del!=null){if(it.hide0==null)it.hide0=!!it.hide;it.del=!!p.del;it.hide=p.del?true:it.hide0;if(p.del&&S.rows&&S.rows[id])delete S.rows[id]}if(p.name!=null&&String(p.name).trim())it.name=String(p.name).trim();if(p.usd!=null&&p.usd!==''&&isFinite(+p.usd)&&+p.usd>=0)it.usd=+p.usd;if(p.g&&['auto','side','weigh','acc','cab'].indexOf(p.g)>=0)it.g=p.g;return true}
-function npAddProduct(p){if(!p||!p.id||BY[p.id])return false;var g=['auto','side','weigh','acc','cab'].indexOf(p.g)>=0?p.g:'acc';var it={id:p.id,g:g,name:String(p.name||'').trim(),usd:num(p.usd),disc:false,unit:'عدد',motor:false,from:null,mult:1,price0:null,fixed:null,note:'',hide:false,sel:false,custom:true};CAT.push(it);BY[it.id]=it;try{var _pe=pedLoad()[it.id];if(_pe)pedApply(it.id,_pe)}catch(e){}if(p.dev&&INSINC.indexOf(it.id)<0)INSINC.push(it.id);try{renderPicker()}catch(e){}return true}
-(function(){var o=pedLoad();Object.keys(o).forEach(function(k){try{pedApply(k,o[k])}catch(e){}})})();
-window.__pfEdit={save:function(id,p){var o=pedLoad();o[id]=Object.assign({},o[id]||{},p);try{localStorage.setItem(PEK,JSON.stringify(o))}catch(e){}pedApply(id,p);try{renderPicker();renderRows();sync()}catch(e){}return true},has:function(id){return !!pedLoad()[id]}};
+var EQK='pay-eq-map',EQMAP={};try{EQMAP=JSON.parse(localStorage.getItem(EQK))||{}}catch(e){EQMAP={}}
+function eqNorm(n){return String(n||'').replace(/[\s\u200c\u200f\u200e]/g,'').replace(/ي/g,'ی').replace(/ك/g,'ک')}
+function eqGuess(it){var n=eqNorm(it.name);if(/دانخوری/.test(n))return 'feedk';if(/آبخوری|نیپل/.test(n))return 'drnk';if(/اینلت/.test(n)&&!/موتور/.test(n))return 'inletv';if(/هیتر/.test(n))return 'hjet';if(/تابلوبرق/.test(n))return 'tbq';if(/(فن|هواکش)(۱۴۰|140)/.test(n))return 'fan140';return ''}
+function eqSave(){try{localStorage.setItem(EQK,JSON.stringify(EQMAP))}catch(e){}}
+function eqScan(){var ch=false;CAT.forEach(function(it){if(EQMAP[it.id]!=null)return;var k=eqGuess(it);if(k){EQMAP[it.id]=k;ch=true}});if(ch)eqSave()}
+function eqKey(it){if(!it)return '';var k=EQMAP[it.id];if(k!=null)return k;return eqGuess(it)}
+function npAddProduct(p){if(!p||!p.id||BY[p.id])return false;var g=['auto','side','weigh','acc','cab'].indexOf(p.g)>=0?p.g:'acc';var it={id:p.id,g:g,name:String(p.name||'').trim(),usd:num(p.usd),disc:false,unit:'عدد',motor:false,from:null,mult:1,price0:null,fixed:null,note:'',hide:false,sel:false,custom:true};CAT.push(it);BY[it.id]=it;try{var _pe=pedLoad()[it.id];if(_pe)pedApply(it.id,_pe)}catch(e){}try{eqScan()}catch(e){}if(p.dev&&INSINC.indexOf(it.id)<0)INSINC.push(it.id);try{renderPicker()}catch(e){}return true}
+(function(){var o=pedLoad();Object.keys(o).forEach(function(k){try{pedApply(k,o[k])}catch(e){}})})();try{eqScan()}catch(e){}
+window.__pfEdit={eq:function(id){return EQMAP[id]==null?eqKey(BY[id]):EQMAP[id]},setEq:function(id,k){EQMAP[id]=k||'';eqSave()},save:function(id,p){var o=pedLoad();o[id]=Object.assign({},o[id]||{},p);try{localStorage.setItem(PEK,JSON.stringify(o))}catch(e){}pedApply(id,p);try{renderPicker();renderRows();sync()}catch(e){}return true},has:function(id){return !!pedLoad()[id]}};
 window.__proforma={fname:fname,newInv:function(clr){doNewInv(clr)},addProduct:npAddProduct,refresh:function(){try{renderPicker();renderRows();sync()}catch(e){}},commit:function(){pfCommit()},buyerRows:function(){return buyerRows(S.inv)},snap:projSnapshot,load:projLoad,apply:function(fn){fn(S);sync();renderRows();renderPicker();save()},S:function(){return S},calc:calc,reset:function(){S=fresh();renderSettings();renderRows();renderPicker()}};
 })();
 </script>
@@ -9694,7 +9700,7 @@ html[data-ios] .cu-list .cu-row.cu-w{box-shadow:0 2px 6px rgba(20,30,70,.14)}
       var b=t.closest('[data-pe-i]');if(b){selId=b.getAttribute('data-pe-i');draw();return}
       if(t.closest('[data-pe-save]')){var nm=$('peN').value.trim(),uv=en($('peU').value),u=parseFloat(uv),g=$('peG').value;
         if(!nm){$('peM').textContent='نام را بنویس.';return}if(uv!==''&&!(u>=0)){$('peM').textContent='قیمت دلاری را درست بنویس.';return}
-        window.__pfEdit.save(selId,{name:nm,usd:uv===''?'':u,g:g,inst:$('peI').checked});selId=null;draw();var m=$('peT');if(m){m.textContent='✓ ذخیره شد'}return}});
+        window.__pfEdit.save(selId,{name:nm,usd:uv===''?'':u,g:g,inst:$('peI').checked});window.__pfEdit.setEq(selId,$('peE').value);selId=null;draw();var m=$('peT');if(m){m.textContent='✓ ذخیره شد'}return}});
     d.addEventListener('input',function(e){if(e.target.id==='peQ'){q=e.target.value;var l=$('peL');if(l)l.innerHTML=list()}})}
     return d}
   function list(){var D=data(),qq=q.trim().toLowerCase(),gn={};D.groups.forEach(function(g){gn[g.id]=g.name});
@@ -9706,6 +9712,7 @@ html[data-ios] .cu-list .cu-row.cu-w{box-shadow:0 2px 6px rgba(20,30,70,.14)}
       d.innerHTML='<div class="pe-sh"><div class="pe-hd"><button type="button" data-pe-x aria-label="بازگشت">›</button><b>ویرایش محصول</b></div>'
        +'<label>نام محصول<input id="peN" value="'+esc(x.name)+'" autocomplete="off"></label>'
        +'<label>قیمت دلاری (خالی = بدون قیمت)<input id="peU" inputmode="decimal" value="'+esc(x.usd==null?'':x.usd)+'" autocomplete="off"></label>'
+       +'<label>عکس در پروپوزال<select id="peE">'+[['','بدون عکس / خودکار'],['hjet','هیتر جت گازوئیلی'],['fan140','فن ۱۴۰'],['inletv','اینلت (پنجره)'],['feedk','دانخوری'],['drnk','آبخوری نیپل'],['tbq','تابلو برق']].map(function(o){return '<option value="'+o[0]+'"'+(o[0]===(window.__pfEdit.eq(x.id)||'')?' selected':'')+'>'+o[1]+'</option>'}).join('')+'</select></label>'
        +'<label class="pe-ck"><input type="checkbox" id="peI"'+(x.inst?' checked':'')+'> در مبنای هزینه نصب و راه‌اندازی حساب شود</label>'
        +'<label>دسته‌بندی<select id="peG">'+D.groups.map(function(g){return '<option value="'+esc(g.id)+'"'+(g.id===x.g?' selected':'')+'>'+esc(g.name)+'</option>'}).join('')+'</select></label>'
        +'<div id="peM" class="pe-m"></div><div class="pe-bt"><button type="button" class="pri" data-pe-save>ذخیره</button><button type="button" data-pe-x>انصراف</button></div><button type="button" class="pe-dl" data-pe-del>حذف محصول</button>'
