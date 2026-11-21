@@ -1644,7 +1644,6 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
   </div>
   <div id="paneF" hidden>
   <div class="backbar"><button type="button" class="goto" data-go="d">→ خانه</button><b>پیگیری و قیف فروش</b></div>
-    <section class="card" id="fnPersona" hidden></section>
     <section class="card">
       <h2>قیف فروش <small style="font-weight:400;color:var(--muted)">هر مشتری در کدام مرحله است</small></h2>
       <div class="funnel" id="fnSum"></div>
@@ -2081,6 +2080,11 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   <div id="paneI" hidden>
   <div class="backbar pfnav"><button type="button" class="goto" data-go="d">→ خانه</button><button type="button" id="pfReset" class="pfsm">ریست</button></div>
+  <div class="card" id="pfTpl" style="margin-bottom:12px"><b style="font-size:14px">الگوی سریع سالن</b>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px"><select id="tpT" aria-label="نوع سالن"><option value="b">گوشتی</option><option value="l">تخم‌گذار</option></select>
+   <input id="tpN" type="number" min="1" max="20" value="1" inputmode="numeric" aria-label="تعداد سالن" style="width:80px"><span style="font-size:13px">سالن</span>
+   <label style="font-size:13px"><input type="checkbox" id="tpI"> موتور اینلت</label><button type="button" class="pri" id="tpGo">اعمال الگو</button></div>
+   <div id="tpHint" style="font-size:12.5px;opacity:.75;margin-top:6px;line-height:1.8">گوشتی: N سالن ← یک سرور اسپکتروم N و N عملگر. تخم‌گذار: برای هر سالن یک سرور اسپکتروم و یک عملگر. سنسور فشار فقط با موتور اینلت و به تعداد عملگر می‌آید. همه‌ی ردیف‌ها بعداً قابل ویرایش‌اند.</div></div>
   <div class="card" id="lkBar" hidden style="margin-bottom:12px;border-inline-start:4px solid var(--accent)"><div id="lkTxt" style="font-size:13.5px;line-height:1.9"></div><div class="bar" id="lkBtns" style="margin-top:8px"></div></div>
   <div class="card" id="lockBar" hidden style="margin-bottom:12px;border-inline-start:4px solid #c0392b"><div id="lockTxt" style="font-size:13.5px;line-height:1.9"></div><div style="margin-top:8px"><button type="button" class="pri" id="lockNew">تغییرات (ساخت پیش‌فاکتور جدید از روی این)</button></div></div>
    <div class="card" id="fsPanel" hidden style="margin-bottom:12px"><div class="grid"><div class="f"><label for="fsSel">پوشه مشتری</label><select id="fsSel"></select></div><div class="f" id="fsNewW"><label for="fsName">نام پوشه جدید</label><input id="fsName" type="text" placeholder="نام مشتری"></div></div><div class="bar" style="margin-top:10px"><button type="button" class="pri" id="fsGo">ذخیره</button><button type="button" id="fsX">بستن</button><span class="hint" id="fsMsg" aria-live="polite"></span></div></div>
@@ -2207,7 +2211,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.138</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.140</footer>
 </div>
 
 
@@ -3256,7 +3260,7 @@ do{last=bits(1);type=bits(2);
         +'<button type="button" class="cu-b" data-cu="'+esc(f0.id)+'">پرونده</button></div>'}
     else h+='<div class="hs-s">کار فوری نداری. یک مشتری یا سرنخ تازه ثبت کن یا از اکسل وارد کن.</div><div class="hs-a"><button type="button" class="cu-b pri" data-cu-hs="imp">ورود از اکسل</button><button type="button" class="cu-b" data-cu-hs="lead">ثبت سرنخ</button></div>';
     h+='</div>';
-    h+=bkb;h+='<button type="button" class="cu-b pri" data-cu-hs="pz" style="width:100%;margin:6px 0">★ ۵ سرنخ پیشنهادی امروز</button>';h+='<div class="hs-dd">'+dayCard(cand)+'</div>';var bc='';
+    h+=bkb;h+='<div class="hs-dd">'+dayCard(cand)+'</div>';var bc='';try{bc=batchCard(rows)}catch(e){}
     // کارت آمار (فقط وب)
     try{var sd=statsData(30),mx0=Math.max(1,sd.created,sd.contacted,sd.sent,sd.won);
       h+='<div class="hs-c hs-stat"><div class="hs-k">قیف ۳۰ روز اخیر</div>'+[['سرنخ',sd.created],['تماس',sd.contacted],['پیش‌فاکتور',sd.sent],['فروش',sd.won]].map(function(x){return '<div class="fn"><div><span>'+x[0]+'</span><b>'+fa(x[1])+'</b></div><i style="width:'+Math.max(2,Math.round(x[1]*100/mx0))+'%"></i></div>'}).join('')+'<button type="button" class="cu-b" data-cu-hs="st">آمار کامل</button></div>'}catch(e){}
@@ -3319,7 +3323,8 @@ do{last=bits(1);type=bits(2);
       +xfBlock(I)
       +'<button type="button" class="cu-b pri" data-cu-qsave style="width:100%;margin-top:10px">'+(isLeadRow(r)?'ذخیره و تبدیل به مشتری':'ذخیره‌ی اطلاعات')+'</button>'+(isLeadRow(r)?'<label class="cu-cat"><input type="checkbox" data-qf-got checked> اطلاعات گرفتم</label><p class="hint">با نوشتن نام و ذخیره، به «مشتریان» منتقل می‌شود.</p>':'')+'</section>';
   }
-  function fuApply(fid,nm,ph,qn,note){var iso=qn&&J()?J().parseJ(qn):'';if(!iso||!fid)return;var L=ls('payesh-leads'),l=L.filter(function(x){return x.cid===fid})[0],now=Date.now();
+  function fuApply(fid,nm,ph,qn,note){var iso=qn&&J()?J().parseJ(qn):'';fuIso(fid,nm,ph,iso,note)}
+  function fuIso(fid,nm,ph,iso,note){if(!iso||!fid)return;var L=ls('payesh-leads'),l=L.filter(function(x){return x.cid===fid})[0],now=Date.now();
     if(l){if(l.stage!=='talk'&&l.stage!=='sent'){l.stFrom=l.stage;l.stTs=now}if(l.stage==='lost'||l.stage==='won')l.stage='talk';l.next=iso;l.time=l.time||'10:00';l.fdone=false;if(note)l.note=note}
     else L.push({id:'q'+now.toString(36),name:nm,phone:ph||'',amount:0,stage:'talk',reason:'',next:iso,time:'10:00',note:note||'پیگیری مجدد',cid:fid,created:now,stTs:now,fdone:false});saveLeadsArr(L)}
   function qfSave(){
@@ -3399,17 +3404,23 @@ do{last=bits(1);type=bits(2);
     if(!items.length){B.cur=null;bset(B);return B}
     if(items.every(function(r){return perDone(r,B)})){var e={id:B.cur.id,src:B.cur.src,ts:Date.now(),items:items.map(function(r){return {rid:r.id,name:r.name,phone:r.phone}})};e.report=bReport(e,rows);B.hist.unshift(e);B.hist=B.hist.slice(0,30);B.last=e.id;B.cur=null;bset(B)}
     return B}
+  var SCD={'گوشتی':'سلام، وقت بخیر. من تیام از پایش الکترونیک هستم؛ اتوماسیون سالن مرغداری می‌سازیم. چند لحظه وقت دارید؟\n۱) الان چند سالن گوشتی دارید و ظرفیت هر سالن چقدر است؟\n۲) کنترل دما و تهویه‌ی سالن‌ها دستی است یا اتوماتیک؟\n۳) بزرگ‌ترین دردسرتان در دوره چیست؟\n۴) برای دوره‌ی بعد تصمیم به تغییر دارید؟\n۵) اسم و فامیل شما را برای ثبت بپرسم؟','تخم‌گذار':'سلام، وقت بخیر. من تیام از پایش الکترونیک هستم؛ اتوماسیون سالن مرغداری می‌سازیم. چند لحظه وقت دارید؟\n۱) چند سالن تخم‌گذار دارید و ظرفیت هر سالن چقدر است؟\n۲) سیستم فعلی کنترل دما و تهویه چیست؟\n۳) مشکل اصلی‌تان در تولید چیست؟\n۴) برای سالن بعدی برنامه‌ای دارید؟\n۵) اسم و فامیل شما را برای ثبت بپرسم؟','گلخانه':'سلام، وقت بخیر. من تیام از پایش الکترونیک هستم؛ اتوماسیون گلخانه می‌سازیم. چند لحظه وقت دارید؟\n۱) چه محصولی و روی چند متر کشت می‌کنید؟\n۲) آبیاری و دما دستی است یا اتوماتیک؟\n۳) بزرگ‌ترین دردسرتان در فصل چیست؟\n۴) اسم و فامیل شما را برای ثبت بپرسم؟','عمومی':'سلام، وقت بخیر. من تیام از پایش الکترونیک هستم؛ اتوماسیون مرغداری و گلخانه می‌سازیم. چند لحظه وقت دارید؟\n۱) چه نوع پرورشی دارید و ظرفیت هر سالن چقدر است؟\n۲) کنترل دما و تهویه الان چگونه است؟\n۳) اسم و فامیل شما را برای ثبت بپرسم؟'};
+  function scKey(src){src=String(src||'');return /گوشتی/.test(src)?'گوشتی':/تخم/.test(src)?'تخم‌گذار':/گلخانه/.test(src)?'گلخانه':'عمومی'}
+  function scGet(k){var o={};try{o=JSON.parse(localStorage.getItem('payesh-scripts')||'{}')||{}}catch(e){}return o[k]!=null?o[k]:SCD[k]}
+  function isoPlus(d){var t=new Date();t.setDate(t.getDate()+d);return t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2)}
   function batchCard(rows){
     var B=bAuto(rows),src=bSources(rows,B);
     var h='<div class="hs-c hs-bt">';
     if(B.cur){var items=B.cur.ids.map(function(id){return rows.filter(function(r){return r.id===id})[0]}).filter(Boolean),dn=items.filter(function(r){return perDone(r,B)}).length;
-      h+='<div class="hs-k">پرسونای امروز <em>'+fa(dn)+' از '+fa(items.length)+'</em></div><div class="hs-s">منبع: '+esc(B.cur.src)+' · روی نام بزن و تماس بگیر، پرسونا را تکمیل کن، بعد «تکمیل شد».</div>';
+      var sk=scKey(B.cur.src);
+      h+='<div class="hs-k">پرسونای امروز <em>'+fa(dn)+' از '+fa(items.length)+'</em></div><div class="hs-s">منبع: '+esc(B.cur.src)+' · روی نام بزن و تماس بگیر، پرسونا را تکمیل کن، بعد «تکمیل شد».</div>'
+        +'<details class="bt-sc"><summary class="hs-s">اسکریپت تماس ('+sk+') — قابل ویرایش</summary><textarea data-sc="'+sk+'" rows="8" style="width:100%;font:inherit;line-height:1.8;padding:8px;border-radius:10px;border:1px solid #8886;background:transparent;color:inherit">'+esc(scGet(sk))+'</textarea><div class="bt-b"><button type="button" data-bt="screset" data-id="'+sk+'">بازگشت به متن اولیه</button></div></details>';
       items.forEach(function(r){var d=perDone(r,B),ph=en(r.phone).replace(/\D/g,''),I=r.info||{},P=(r.f&&r.f.persona)||{};
         var kv=function(l,v){return v?'<div class="bt-kv"><small>'+l+'</small><span>'+esc(v)+'</span></div>':''};
         var geo=[I.prov,(I.city&&I.city!==I.prov)?I.city:''].filter(Boolean).join(' · '),hb=I.hb?Object.keys(I.hb).map(function(k){return (I.hb[k].n?fa(I.hb[k].n)+' سالن ':'')+k+(I.hb[k].c?' ('+fa(I.hb[k].c)+')':'')}).join('، '):'';
         h+='<div class="bt-r bt-big'+(d?' on':'')+impCls(r)+'"><div class="bt-h"><span class="bt-n">'+(ph?'<a href="tel:'+ph+'" data-call="'+ph+'" data-name="'+esc(r.name)+'" data-cid="'+esc(r.f?r.f.id:'')+'">'+esc(r.name)+'</a>':esc(r.name))+'</span>'+impChip(r)+'</div>'
           +'<div class="bt-g">'+kv('شماره',[r.phone?fa(r.phone):'',(I.phone2&&en(I.phone2).replace(/\D/g,'')!==en(r.phone||'').replace(/\D/g,''))?fa(I.phone2):''].filter(Boolean).join(' · '))+kv('استان / شهر',geo)+kv('آدرس',I.addr)+kv('منبع',I.src)+kv('شرکت / مزرعه',I.co)+kv('نوع پرورش',hallOf(r)||P.farmType)+kv('سالن‌ها',hb||(I.halls?fa(I.halls)+' سالن':''))+kv('پیگیری بعدی',I.qnext)+kv('رسته',I.cat)+kv('یادداشت',I.note)+'</div>'
-          +'<div class="bt-a"><button type="button" data-cu="'+esc(r.id)+'" data-bt-edit="1">تکمیل اطلاعات</button><button type="button" data-bt="'+(d?'un':'ok')+'" data-id="'+esc(r.id)+'">'+(d?'✓ تکمیل':'تکمیل شد')+'</button><button type="button" class="bt-junk" data-bt="junk" data-id="'+esc(r.id)+'">به درد نخور</button></div></div>'});
+          +'<div class="bt-a"><button type="button" data-cu="'+esc(r.id)+'" data-bt-edit="1">تکمیل اطلاعات</button><button type="button" data-bt="'+(d?'un':'ok')+'" data-id="'+esc(r.id)+'">'+(d?'✓ تکمیل':'تکمیل شد')+'</button><button type="button" class="bt-junk" data-bt="junk" data-id="'+esc(r.id)+'">به درد نخور</button></div><div class="bt-a bt-q"><small>نتیجه‌ی تماس:</small><button type="button" data-bt="res" data-r="no" data-id="'+esc(r.id)+'">جواب نداد</button><button type="button" data-bt="res" data-r="later" data-id="'+esc(r.id)+'">بعداً</button><button type="button" data-bt="res" data-r="hot" data-id="'+esc(r.id)+'">جدی است</button></div></div>'});
       h+='<div class="bt-b"><button type="button" data-bt="drop">انصراف از این دسته</button></div>'}
     else{h+='<div class="hs-k">پرسونای امروز</div>';
       var le=B.last&&B.hist.filter(function(x){return x.id===B.last})[0];
@@ -3428,10 +3439,12 @@ do{last=bits(1);type=bits(2);
     if(k==='start'){var pk=bPick(build(),B,b.getAttribute('data-src'));if(!pk.length){tst('سرنخ آماده‌ای از این منبع نمانده');return}B.cur={id:'b'+Date.now().toString(36),src:b.getAttribute('data-src'),ts:Date.now(),ids:pk.map(function(r){return r.id}),done:{}};B.last='';bset(B)}
     else if(k==='ok'||k==='un'){if(B.cur){if(k==='ok')B.cur.done[id]=Date.now();else delete B.cur.done[id];bset(B)}}
     else if(k==='junk'||k==='unjunk'){var rr=build().filter(function(x){return x.id===id})[0];if(rr&&rr.f&&window.__cust){var I2=Object.assign({},rr.info||{});if(k==='junk'){I2.junk=1;I2.rel='غیرفعال';if(B.cur)B.cur.done[id]=Date.now()}else{delete I2.junk;if(I2.rel==='غیرفعال')I2.rel=''}window.__cust.update(rr.f.id,{info:I2});if(k==='junk'){tst('به پوشه‌ی «به درد نخور» رفت');if(B.cur)bset(B)}}}
+    else if(k==='screset'){try{var so=JSON.parse(localStorage.getItem('payesh-scripts')||'{}')||{};delete so[id];localStorage.setItem('payesh-scripts',JSON.stringify(so))}catch(x){}}
+    else if(k==='res'){var q=build().filter(function(x){return x.id===id})[0],rk=b.getAttribute('data-r');if(q&&q.f&&window.__cust){var I3=Object.assign({},q.info||{}),lab={no:'جواب نداد',later:'بعداً تماس بگیر',hot:'جدی است'}[rk],days={no:1,later:3,hot:1}[rk];I3.note=((I3.note?I3.note+'\n':'')+'تماس: '+lab).slice(-600);if(rk==='hot'&&I3.imp!=='VIP')I3.imp='مهم';window.__cust.update(q.f.id,{info:I3});fuIso(q.f.id,q.name,q.phone,isoPlus(days),'تماس: '+lab);if(B.cur){B.cur.done[id]=Date.now();bset(B)}tst('ثبت شد: '+lab+' · پیگیری '+(days===1?'فردا':'۳ روز دیگر'))}}
     else if(k==='drop'){if(confirm('این دسته‌ی ۵تایی رها شود؟ (سرنخ‌ها دوباره پیشنهاد می‌شوند)')){B.cur=null;bset(B)}else return}
     else if(k==='copy'){var en0=B.hist.filter(function(x){return x.id===id})[0];if(en0)copyTxt(en0.report);return}
     homeSimple();try{window.__cust2.batch()}catch(x){}});
-  document.addEventListener('change',function(e){var t=e.target;if(t&&t.matches&&t.matches('[data-bprov]')){try{localStorage.setItem('payesh-bprov',t.value)}catch(x){}homeSimple();try{window.__cust2.batch()}catch(x){}}});
+  document.addEventListener('change',function(e){var t=e.target;if(t&&t.matches&&t.matches('[data-sc]')){try{var so=JSON.parse(localStorage.getItem('payesh-scripts')||'{}')||{};so[t.getAttribute('data-sc')]=t.value;localStorage.setItem('payesh-scripts',JSON.stringify(so))}catch(x){}tst('اسکریپت ذخیره شد');return}if(t&&t.matches&&t.matches('[data-bprov]')){try{localStorage.setItem('payesh-bprov',t.value)}catch(x){}homeSimple();try{window.__cust2.batch()}catch(x){}}});
   function todayLocal(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
   function bkBanner(){var lb='',sn=0;try{lb=localStorage.getItem('pay-lastbk')||'';sn=+localStorage.getItem('pay-bksnooze')||0}catch(e){}
     if(lb===todayLocal()||Date.now()-sn<4*36e5)return '';
@@ -3596,7 +3609,7 @@ do{last=bits(1);type=bits(2);
   var tq=$('tabQ');if(tq)tq.addEventListener('click',function(){render()});
   var td=$('tabD');if(td)td.addEventListener('click',function(){setTimeout(stories,50)});
   var oR=window.__crmRefresh;window.__crmRefresh=function(){if(oR)oR();try{stories();if(!$('paneQ').hidden)render()}catch(e){}};
-  window.__cust2={batch:function(){var h='';try{h=batchCard(build())}catch(x){}var e=$('fnPersona');if(e){e.innerHTML=h;e.hidden=!h}var z=$('pzBody');if(z)z.innerHTML=h},open:openCust,render:render,stories:stories,build:build,fu:fuApply};
+  window.__cust2={batch:function(){var h='';try{h=batchCard(build())}catch(x){}var e=$('fnPersona');if(e){e.innerHTML=h;e.hidden=!h}var z=$('pzBody'),o=$('pzOv');if(z&&o&&!o.hidden)z.innerHTML=h},open:openCust,render:render,stories:stories,build:build,fu:fuApply};
   setTimeout(stories,500);setTimeout(stories,2000);setInterval(function(){if(!document.hidden){stories();if($('paneQ')&&!$('paneQ').hidden&&!document.activeElement.matches('input,textarea,select'))render()}},45000);
 })();
 </script>
@@ -3823,7 +3836,7 @@ function cabCalc(){
   return {c2:c2,c4:c4,c12:has12?halls0*12:0}}
 function cabInputs(){['c2','c4','c12'].forEach(function(id){var r=S.rows[id],inp=document.querySelector('#tbl [data-q="'+id+'"]');if(r&&r.cabAuto&&!r.qtyManual&&inp&&document.activeElement!==inp)inp.value=r.qty})}
 function cabAutoRows(){var changed=false;['c2','c4','c12'].forEach(function(id){var r=S.rows[id];if(r&&r.cabAuto){if(r.qtyManual){delete r.cabAuto}else{delete S.rows[id]}changed=true}});return changed}
-function sync(){var changed=false;['flex','flexclamp'].forEach(function(k){if(S.rows[k]){delete S.rows[k];changed=true}});CAT.forEach(function(it){if(!it.from)return;var s=parentsQty(it),r=S.rows[it.id];
+function sync(){var changed=false;['flex','flexclamp'].forEach(function(k){if(S.rows[k]){delete S.rows[k];changed=true}});CAT.forEach(function(it){if(!it.from)return;if(it.id==='pres'&&!S.rows.inlet){if(S.rows.pres){delete S.rows.pres;changed=true}return}var s=parentsQty(it),r=S.rows[it.id];
   if(s>0&&!r){if(it.sel)return;if(S.cabOff&&S.cabOff[it.id])return;S.rows[it.id]={auto:true,qty:s};changed=true}
   else if(r){if(it.soft&&r.sfv!==1){r.sfv=1;if(!r.auto&&!r.qtyManual&&num(r.qty)!==s)r.qtyManual=true}if((!r.qtyManual||LOCKED[it.id])&&!(it.soft&&s===0))r.qty=s;if(s===0&&r.auto&&!r.qtyManual){delete S.rows[it.id];changed=true}}});if(cabAutoRows())changed=true;if(ntcAuto())changed=true;return changed}
 function ntcAuto(){var r=S.rows.ntc;if(!r||r.qtyManual)return false;var G=hgList(),tot=0,ok=true,any=false;G.forEach(function(g){var n=Math.round(num(g.n)),L=num(g.l);if(!(L>0))return;if(!(n>0))n=1;var per=L<60?4:(L<90?6:0);if(!per){ok=false;return}any=true;tot+=per*n});if(!ok||!any||tot<=0)return false;if(num(r.qty)!==tot){r.qty=tot;return true}return false}
@@ -3991,6 +4004,10 @@ function doNewInv(clr){var old=S.inv,keep={rate:S.rate,vat:S.vat,fx:S.fx};S=fres
 NOIDS.forEach(function(k){var e=$('np_'+k);if(e)e.addEventListener('input',noCompose)});$('i_no').addEventListener('input',function(){try{noFill()}catch(e){}});
 $('nextInv').addEventListener('click',function(){if(!(S.regNo&&S.regNo===S.inv.no&&S.regSig===pfSig())){toast('این پیش‌فاکتور هنوز ثبت نشده؛ اول «ذخیره در پوشه مشتری» را بزن و بعد شماره‌ی بعدی بگیر');return}S.regNo=null;S.regSig=null;S.noAuto=true;updateNo();save();toast('شماره‌ی فاکتور بعدی: '+S.inv.no)});
 $('autoInv').addEventListener('click',function(){S.noAuto=true;updateNo();save()});
+function applyTpl(){var t=$('tpT').value,n=Math.max(1,Math.min(20,parseInt(toLat($('tpN').value),10)||1)),r={};['host','ntc','ahs','outs','patrol','disp','junc','siren','box5070'].forEach(function(k){r[k]={qty:1}});
+  if(t==='b'){var m=Math.min(n,4);r['p'+m]={qty:1};if(n>4)toast('اسپکتروم برای بیش از ۴ سالن در لیست نیست؛ p1791-4 گذاشته شد، دستی تنظیم کن')}else r.p1={qty:n};
+  r.opa={qty:n};if($('tpI').checked)r.inlet={qty:1};S.rows=r;S.cabOff={};S.inv.halls=String(n);var hh=$('i_halls');if(hh)hh.value=S.inv.halls;sync();renderRows();renderPicker();save();toast((t==='b'?'گوشتی ':'تخم‌گذار ')+n+' سالن اعمال شد')}
+$('tpGo').addEventListener('click',applyTpl);
 $('q').addEventListener('input',renderPicker);
 $('picker').addEventListener('click',function(e){var b=e.target.closest('[data-add]');if(!b)return;var id=b.dataset.add;
   if(S.rows[id]){delete S.rows[id];S.cabOff=S.cabOff||{};S.cabOff[id]=1}else{if(S.cabOff){delete S.cabOff[id];CAT.forEach(function(c){if(c.from&&c.from.indexOf(id)>=0)delete S.cabOff[c.id]})}var it=BY[id];S.rows[id]={qty:it.from?parentsQty(it)||1:1};if(it.usd==null){try{var dm0=JSON.parse(localStorage.getItem('payesh-mkdef')||'{}');if(dm0[id]!=null&&dm0[id]!=='')S.rows[id].mk=dm0[id]}catch(e){}}if(it.price0)S.rows[id].priceOv=it.price0;if(it.from&&!LOCKED[id])S.rows[id].qtyManual=!parentsQty(it)}
@@ -4155,7 +4172,7 @@ function propLoad(src){function one(u){return new Promise(function(res,rej){var 
   return p.catch(function(){throw new Error('pdflib')})}
 
 /* دانلود قالب پروپوزال: تکه‌تکه (۳۰۰ کیلوبایتی) با تلاش دوباره و ادامه از محل قطع؛ بعد از موفقیت در حافظهٔ گوشی می‌ماند */
-var TPL_CACHE='payesh-v11-60-138',TPL_URL='proposal-template.pdf';
+var TPL_CACHE='payesh-v11-60-140',TPL_URL='proposal-template.pdf';
 async function tplGet(stp,P){
   stp=stp||function(){};P=P||function(n){return n};
   try{if(window.caches){var h=await caches.match(TPL_URL);if(h&&h.ok){var b0=await h.arrayBuffer();if(b0.byteLength>100000)return b0}}}catch(e){}
@@ -9863,3 +9880,7 @@ html[data-econ] #pvOv button,html[data-econ] #colPv button{background:transparen
 #pzBody .bt-b{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}#pzBody .bt-b button{padding:8px 12px;border-radius:12px;border:1px solid #8886;background:transparent;color:inherit;font:inherit}#pzBody .bt-b .pri{background:#2f6fed;color:#fff;border-color:#2f6fed}
 </style>
 <script>(function(){var o=document.getElementById('pzOv');function open(){o.hidden=false;try{window.__cust2.batch()}catch(e){}try{history.pushState({pz:1},'')}catch(e){}}window.__pzOpen=open;function cl(){o.hidden=true}document.getElementById('pzX').onclick=function(){cl()};window.addEventListener('popstate',function(){if(!o.hidden)cl()});document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('[data-cu]')&&!o.hidden&&e.target.closest('#pzBody'))setTimeout(cl,60)})})()</script>
+
+<style id="v138css">.hs-c.hs-bt{padding:10px 12px}.hs-c.hs-bt .bt-r.bt-big{background:rgba(127,127,135,.05)}</style>
+<style id="v140css">#pfTpl select,#pfTpl input[type=number]{font:inherit;padding:7px 8px;border-radius:10px;border:1px solid #8886;background:transparent;color:inherit}</style>
+<style id="v140b">.hs-bt .bt-q{align-items:center;flex-wrap:wrap}.hs-bt .bt-q small{opacity:.65;font-size:11.5px}.hs-bt .bt-q button{padding:4px 9px;font-size:12px;flex:0 0 auto}</style>
