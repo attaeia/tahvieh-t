@@ -2212,7 +2212,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.155</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.156</footer>
 </div>
 
 
@@ -4181,7 +4181,7 @@ function propLoad(src){function one(u){return new Promise(function(res,rej){var 
   return p.catch(function(){throw new Error('pdflib')})}
 
 /* دانلود قالب پروپوزال: تکه‌تکه (۳۰۰ کیلوبایتی) با تلاش دوباره و ادامه از محل قطع؛ بعد از موفقیت در حافظهٔ گوشی می‌ماند */
-var TPL_CACHE='payesh-v11-60-155',TPL_URL='proposal-template.pdf';
+var TPL_CACHE='payesh-v11-60-156',TPL_URL='proposal-template.pdf';
 async function tplGet(stp,P){
   stp=stp||function(){};P=P||function(n){return n};
   try{if(window.caches){var h=await caches.match(TPL_URL);if(h&&h.ok){var b0=await h.arrayBuffer();if(b0.byteLength>100000)return b0}}}catch(e){}
@@ -4355,9 +4355,9 @@ async function makeProposal(opt){opt=opt||{};var stp=function(t){window.__propSt
     var DESC={hjet:'هیتر گازوئیلی برای گرمایش سریع سالن در دوره‌ی جوجه‌ریزی و فصل سرد؛ هوای گرم را با فن قوی در سالن پخش می‌کند.',fan140:'هواکش ۱۴۰ سانتی‌متری برای تهویه‌ی تونلی؛ دبی بالا و مناسب سالن‌های مرغداری.',inletv:'پنجره‌ی اینلت برای کنترل جهت و سرعت هوای تازه‌ی ورودی به سالن؛ با موتور اینلت باز و بسته می‌شود.',feedk:'دانخوری کناوی با بشقاب بزرگ و پره‌های جداکننده؛ دان به‌طور یکنواخت بین پرنده‌ها پخش می‌شود و هدررفت دان کم است.',pad:'پد سرمایشی سلولزی با ساختار لانه‌زنبوری؛ آب روی آن جاری می‌شود و هوای ورودی گرم با تبخیر آب چند درجه خنک می‌شود.',tbq:'تابلو برق با نمایشگر لمسی و کلیدهای فرمان؛ استارت و کنترل دستی و خودکار موتورها و تجهیزات سالن را یکجا در اختیار شما می‌گذارد.',pes:'ترازوی هوشمند پایش الکترونیک با نمایشگر رنگی و ثبت وزن نر و ماده؛ وزن زنده‌ی پرنده را دقیق اندازه می‌گیرد و به سیستم پایش متصل می‌شود.',drnk:'آبخوری نیپل (نیپه) با لوله‌ی آلومینیومی و رگولاتور؛ آب تمیز و بدون ریختن در بستر به پرنده می‌رسد و بستر خشک می‌ماند.'};
     var wl=c.lines.filter(function(l){var it=BY[l.id];return !l.install&&l.qty>0&&it&&(EQ_IMG[eqKey(it)]||eqxOf(l.id).length)}).map(function(l){l=Object.assign({},l);l.eq=eqKey(BY[l.id]);l.xs=eqxOf(l.id);return l});if(!wl.length)return;
     try{await fontsReady()}catch(e){}
-    var all=wl,tdoc=await PDFLib.PDFDocument.load(tbytes);
+    var all=wl.map(function(l,i){return {l:l,i:i}}).sort(function(a,b){return ((a.l.eq==='drnk')-(b.l.eq==='drnk'))||a.i-b.i}).map(function(o){return o.l}),tdoc=await PDFLib.PDFDocument.load(tbytes);
     var CH=function(c){return c.t==='x'?170:220},PGS=[],curP=[],used=0;
-    all.forEach(function(l){var cs=[{t:'m',l:l}];for(var q=0;q<l.xs.length;q+=4)cs.push({t:'x',l:l,k:l.xs.slice(q,q+4)});cs.forEach(function(c){var h=CH(c)+14;if(curP.length&&used+h>805){PGS.push(curP);curP=[];used=0}curP.push(c);used+=h})});if(curP.length)PGS.push(curP);
+    all.forEach(function(l){var cs=[{t:'m',l:l}];for(var q=0;q<l.xs.length;q+=4)cs.push({t:'x',l:l,k:l.xs.slice(q,q+4)});var uh=0;cs.forEach(function(c){uh+=CH(c)+14});if(curP.length&&used+uh>805&&uh<=805){PGS.push(curP);curP=[];used=0}cs.forEach(function(c){var h=CH(c)+14;if(curP.length&&used+h>805){PGS.push(curP);curP=[];used=0}curP.push(c);used+=h})});if(curP.length)PGS.push(curP);
     for(var pgI=0;pgI<PGS.length;pgI++){var wl=PGS[pgI];
     var np=(await doc.copyPages(tdoc,[5]))[0];
     doc.insertPage(6-dropBefore+(wIns?1:0)+pgI,np);
