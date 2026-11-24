@@ -2213,7 +2213,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.181</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.182</footer>
 </div>
 
 
@@ -3670,7 +3670,7 @@ document.documentElement.dir='rtl';document.documentElement.lang='fa';
 var GROUPS=[{id:'auto',name:'اتوماسیون'},{id:'side',name:'جانبی و موتورها'},{id:'weigh',name:'سیستم توزین'},{id:'acc',name:'اتصالات و متعلقات'},{id:'cab',name:'کابل، هاستینگ و تابلو'}];
 var GKEY='pay-groups';
 var GALIAS={};function gNorm(n){return String(n||'').replace(/[\s\u200c\u200f\u200e]+/g,'').replace(/ي/g,'ی').replace(/ك/g,'ک')}function gByName(n){var k=gNorm(n);return k?GROUPS.filter(function(g){return gNorm(g.name)===k})[0]:null}
-function gEnsure(id,name){name=String(name||'').trim();if(!id||!name)return false;if(GROUPS.some(function(g){return g.id===id}))return false;var same=gByName(name);if(same){GALIAS[id]=same.id;return false;}var i=GROUPS.map(function(g){return g.id}).indexOf('acc');if(gNorm(name)==='تابلوبرق')i=-1;GROUPS.splice(i<0?GROUPS.length:i,0,{id:id,name:name,custom:true});return true}
+function gEnsure(id,name){name=String(name||'').trim();if(!id||!name)return false;if(GROUPS.some(function(g){return g.id===id}))return false;var same=gByName(name);if(same){GALIAS[id]=same.id;return false;}var i=GROUPS.map(function(g){return g.id}).indexOf('cab');if(gNorm(name)==='تابلوبرق')i=-1;GROUPS.splice(i<0?GROUPS.length:i,0,{id:id,name:name,custom:true});return true}
 function gSave(){try{localStorage.setItem(GKEY,JSON.stringify(GROUPS.filter(function(g){return g.custom}).map(function(g){return {id:g.id,name:g.name}})))}catch(e){}}
 (function(){var a=[];try{a=JSON.parse(localStorage.getItem(GKEY))||[]}catch(e){}a.forEach(function(g){gEnsure(g.id,g.name)})})();
 function gAdd(name,id){name=String(name||'').trim();if(!name)return '';var ex=gByName(name);if(ex)return ex.id;id=id||('gx'+Date.now().toString(36));gEnsure(id,name);gSave();return id}
@@ -3931,7 +3931,7 @@ function renderRows(){
        '<td class="n" data-c="disc"></td><td class="n" data-c="net"></td><td></td></tr>';return}
     var r=S.rows[l.id];
     h+='<tr data-id="'+l.id+'" class="'+(l.it.usd==null&&!l.hasOv?'need':'')+'"><td>'+n+'</td>'+
-     '<td>'+esc(l.it.name)+(l.id==='c4'?gapNote():'')+(l.id==='wjb'?'<div style="margin-top:4px"><input type="text" style="max-width:200px'+(String(r.model||'').trim()?'':';border-color:var(--warn)')+'" data-model="wjb" placeholder="مثلاً ۴ کاناله یا ۶ کاناله" aria-label="برند جعبه تقسیم" value="'+esc(r.model||'')+'"></div>':'')+((l.id==='wload'||l.id==='wloadb')?'<div style="margin-top:4px;display:flex;gap:6px;flex-wrap:wrap"><input class="num" style="max-width:170px'+(String(r.cap||'').trim()?'':';border-color:var(--warn)')+'" data-cap="'+l.id+'" inputmode="decimal" placeholder="ظرفیت هر لودسل" aria-label="ظرفیت هر لودسل" value="'+esc(r.cap||'')+'">'+(l.id==='wloadb'?'<span class="badge">کیلوگرم</span>':'<select data-capu="'+l.id+'" aria-label="واحد ظرفیت لودسل" style="max-width:110px"><option value="t"'+(r.capU==='kg'?'':' selected')+'>تن</option><option value="kg"'+(r.capU==='kg'?' selected':'')+'>کیلوگرم</option></select>')+'</div>':'')+((l.it.from||r.cabAuto)&&!r.qtyManual?'<span class="badge">خودکار</span>':'')+(l.it.note&&l.hasOv&&l.it.usd==null?'<span class="badge" style="background:var(--warn-soft);color:var(--warn)">'+esc(l.it.note)+'</span>':'')+'</td>'+
+     '<td>'+((l.inBase&&!l.install&&insPct()>0)?'<input type="checkbox" class="insck" checked disabled tabindex="-1" aria-label="درصد نصب دارد" style="width:auto;margin:0 0 0 6px;vertical-align:middle;opacity:1;accent-color:#354c9b;pointer-events:none">':'')+esc(l.it.name)+(l.id==='c4'?gapNote():'')+(l.id==='wjb'?'<div style="margin-top:4px"><input type="text" style="max-width:200px'+(String(r.model||'').trim()?'':';border-color:var(--warn)')+'" data-model="wjb" placeholder="مثلاً ۴ کاناله یا ۶ کاناله" aria-label="برند جعبه تقسیم" value="'+esc(r.model||'')+'"></div>':'')+((l.id==='wload'||l.id==='wloadb')?'<div style="margin-top:4px;display:flex;gap:6px;flex-wrap:wrap"><input class="num" style="max-width:170px'+(String(r.cap||'').trim()?'':';border-color:var(--warn)')+'" data-cap="'+l.id+'" inputmode="decimal" placeholder="ظرفیت هر لودسل" aria-label="ظرفیت هر لودسل" value="'+esc(r.cap||'')+'">'+(l.id==='wloadb'?'<span class="badge">کیلوگرم</span>':'<select data-capu="'+l.id+'" aria-label="واحد ظرفیت لودسل" style="max-width:110px"><option value="t"'+(r.capU==='kg'?'':' selected')+'>تن</option><option value="kg"'+(r.capU==='kg'?' selected':'')+'>کیلوگرم</option></select>')+'</div>':'')+((l.it.from||r.cabAuto)&&!r.qtyManual?'<span class="badge">خودکار</span>':'')+(l.it.note&&l.hasOv&&l.it.usd==null?'<span class="badge" style="background:var(--warn-soft);color:var(--warn)">'+esc(l.it.note)+'</span>':'')+'</td>'+
      '<td><input class="num q" inputmode="decimal" data-k="q'+l.id+'" data-q="'+l.id+'" value="'+(l.qty||(String(r.qty==null?'':r.qty).trim()===''?'':'0'))+'"'+(LOCKED[l.id]?' readonly title="برابر تعداد کالای مرجع است"':'')+'></td>'+
      '<td>'+esc(l.unit)+'</td>'+
      '<td>'+(l.it.usd==null?'<div class="pc"><input class="num pr" inputmode="numeric" data-k="p'+l.id+'" data-p="'+l.id+'" placeholder="قیمت خرید" aria-label="قیمت خرید" value="'+(r.priceOv!=null&&r.priceOv!==''?fmt(num(r.priceOv)):'')+'"><input class="num mk" inputmode="decimal" data-k="m'+l.id+'" data-mk="'+l.id+'" placeholder="٪ سود" aria-label="درصد سود" value="'+esc(r.mk==null?'':r.mk)+'"></div><div class="unitFin" data-c="unit"></div>':(l.it.g!=='auto'?'<div class="pc"><input class="num pr" inputmode="numeric" data-k="p'+l.id+'" data-p="'+l.id+'" placeholder="" value="'+(l.p0?fmt(l.p0):'')+'"><input class="num mk" inputmode="decimal" data-k="m'+l.id+'" data-mk="'+l.id+'" placeholder="٪ افزایش" aria-label="درصد افزایشی" value="'+esc(r.mk==null?'':r.mk)+'"></div><div class="unitFin" data-c="unit"></div>':'<input class="num pr" inputmode="numeric" data-k="p'+l.id+'" data-p="'+l.id+'" placeholder="" value="'+(l.p0?fmt(l.p0):'')+'"><div class="unitFin" data-c="unit"></div>'))+'</td>'+
@@ -4195,7 +4195,7 @@ function propLoad(src){function one(u){return new Promise(function(res,rej){var 
   return p.catch(function(){throw new Error('pdflib')})}
 
 /* دانلود قالب پروپوزال: تکه‌تکه (۳۰۰ کیلوبایتی) با تلاش دوباره و ادامه از محل قطع؛ بعد از موفقیت در حافظهٔ گوشی می‌ماند */
-var TPL_CACHE='payesh-v11-60-181',TPL_URL='proposal-template.pdf';
+var TPL_CACHE='payesh-v11-60-182',TPL_URL='proposal-template.pdf';
 async function tplGet(stp,P){
   stp=stp||function(){};P=P||function(n){return n};
   try{if(window.caches){var h=await caches.match(TPL_URL);if(h&&h.ok){var b0=await h.arrayBuffer();if(b0.byteLength>100000)return b0}}}catch(e){}
