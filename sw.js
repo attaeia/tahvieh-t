@@ -1,5 +1,5 @@
 /* سرویس‌ورکر ابزار پایش: برای آپدیت، عدد نسخه را بالا ببر */
-const V = 'payesh-v11-60-169';
+const V = 'payesh-v11-60-170';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png', './pdf-lib.min.js'];
 const CDN = ['cdnjs.cloudflare.com', 'fonts.googleapis.com', 'fonts.gstatic.com'];
 
