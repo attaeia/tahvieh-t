@@ -2213,7 +2213,7 @@ html[data-skin=glass] #qsSheet button:active,html[data-skin=glass] #qsSheet butt
 
   </div>
 
-  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.174</footer>
+  <footer id="credit" dir="ltr" style="text-align:center;margin-top:24px;padding:10px 0 90px;font-size:12px;color:var(--muted);opacity:.85">Designed &amp; developed by <b>Tiam Ataie</b> · v11.60.177</footer>
 </div>
 
 
@@ -3669,10 +3669,11 @@ document.documentElement.dir='rtl';document.documentElement.lang='fa';
 /* ---------- catalog (USD from لیست قیمت شهریور ۱۴۰۵) ---------- */
 var GROUPS=[{id:'auto',name:'اتوماسیون'},{id:'side',name:'جانبی و موتورها'},{id:'weigh',name:'سیستم توزین'},{id:'acc',name:'اتصالات و متعلقات'},{id:'cab',name:'کابل، هاستینگ و تابلو'}];
 var GKEY='pay-groups';
-function gEnsure(id,name){name=String(name||'').trim();if(!id||!name)return false;if(GROUPS.some(function(g){return g.id===id}))return false;var i=GROUPS.map(function(g){return g.id}).indexOf('acc');GROUPS.splice(i<0?GROUPS.length:i,0,{id:id,name:name,custom:true});return true}
+var GALIAS={};function gNorm(n){return String(n||'').replace(/[\s\u200c\u200f\u200e]+/g,'').replace(/ي/g,'ی').replace(/ك/g,'ک')}function gByName(n){var k=gNorm(n);return k?GROUPS.filter(function(g){return gNorm(g.name)===k})[0]:null}
+function gEnsure(id,name){name=String(name||'').trim();if(!id||!name)return false;if(GROUPS.some(function(g){return g.id===id}))return false;var same=gByName(name);if(same){GALIAS[id]=same.id;return false;}var i=GROUPS.map(function(g){return g.id}).indexOf('acc');GROUPS.splice(i<0?GROUPS.length:i,0,{id:id,name:name,custom:true});return true}
 function gSave(){try{localStorage.setItem(GKEY,JSON.stringify(GROUPS.filter(function(g){return g.custom}).map(function(g){return {id:g.id,name:g.name}})))}catch(e){}}
 (function(){var a=[];try{a=JSON.parse(localStorage.getItem(GKEY))||[]}catch(e){}a.forEach(function(g){gEnsure(g.id,g.name)})})();
-function gAdd(name,id){name=String(name||'').trim();if(!name)return '';var ex=GROUPS.filter(function(g){return g.name===name})[0];if(ex)return ex.id;id=id||('gx'+Date.now().toString(36));gEnsure(id,name);gSave();return id}
+function gAdd(name,id){name=String(name||'').trim();if(!name)return '';var ex=gByName(name);if(ex)return ex.id;id=id||('gx'+Date.now().toString(36));gEnsure(id,name);gSave();return id}
 function gCustom(id){return GROUPS.some(function(g){return g.id===id&&g.custom})}
 var CAT=[];
 // محصولات فقط-آسا و فقط-نیپه فعلاً تولید نمی‌شوند و در لیست انتخاب نمایش داده نمی‌شوند (hide).
@@ -4166,7 +4167,12 @@ async function makeXlsx(){
   ws.getRow(rn).height=Math.max(24,est*18+8);
   var lastRow=rn;if(inv.sales){lastRow=rn+1;ws.getRow(lastRow).height=22;put(lastRow,1,lastRow,9,T('واحد فروش: '+inv.sales),{})}
   edge(3,1,3,9,null,thick);edge(1,1,lastRow,9,thick,thick,thick,thick);
-  try{var at=attList(),ar=lastRow+1;for(var ai=0;ai<at.length;ai++){var aim=await attLoad(at[ai]);if(!aim)continue;var aw=Math.min(520,aim.width),ah=Math.round(aim.height*aw/aim.width);if(ah>330){ah=330;aw=Math.round(aim.width*ah/aim.height)}var aid=wb.addImage({base64:at[ai],extension:'jpeg'});ws.addImage(aid,{tl:{col:1,row:ar},ext:{width:aw,height:ah}});ar+=Math.ceil(ah/20)+1}var an=attNoteT();if(an){var nr=ar+1;put(nr,1,nr,9,T(an),{w:true});ws.getRow(nr).height=Math.max(24,Math.ceil(an.length/100)*18+8)}}catch(e){}
+  try{var at=attList(),ar=lastRow,ldd=[];for(var ai=0;ai<at.length;ai++){var aim=await attLoad(at[ai]);if(aim)ldd.push({u:at[ai],w:aim.width,h:aim.height})}
+  if(ldd.length){var cw=[5.44,30,7.78,7.1,16,17.1,11.1,17.55,19.78].map(function(x){return Math.round(x*7+5)}),TW=cw.reduce(function(a,b){return a+b},0),n=ldd.length,slot=(TW-20)/n,band=0;ldd.forEach(function(o){var sc=Math.min((slot-14)/o.w,200/o.h);o.dw=Math.round(o.w*sc);o.dh=Math.round(o.h*sc);band=Math.max(band,o.dh)});
+  var px2c=function(px){var c=0;while(c<cw.length-1&&px>=cw[c]){px-=cw[c];c++}return c+px/cw[c]};
+  ldd.forEach(function(o,i){var x=10+i*slot+(slot-o.dw)/2,aid=wb.addImage({base64:o.u,extension:'jpeg'});ws.addImage(aid,{tl:{col:px2c(x),row:ar+.15},ext:{width:o.dw,height:o.dh}})});
+  ar+=Math.ceil((band+10)/20);ws.pageSetup.fitToHeight=1}
+  var an=attNoteT();if(an){var nr=ar+1;put(nr,1,nr,9,T(an),{w:true});ws.getRow(nr).height=Math.max(24,Math.ceil(an.length/110)*18+8)}}catch(e){}
   var buf=await wb.xlsx.writeBuffer();
   return new Blob([buf],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
 }
@@ -4185,7 +4191,7 @@ function propLoad(src){function one(u){return new Promise(function(res,rej){var 
   return p.catch(function(){throw new Error('pdflib')})}
 
 /* دانلود قالب پروپوزال: تکه‌تکه (۳۰۰ کیلوبایتی) با تلاش دوباره و ادامه از محل قطع؛ بعد از موفقیت در حافظهٔ گوشی می‌ماند */
-var TPL_CACHE='payesh-v11-60-174',TPL_URL='proposal-template.pdf';
+var TPL_CACHE='payesh-v11-60-177',TPL_URL='proposal-template.pdf';
 async function tplGet(stp,P){
   stp=stp||function(){};P=P||function(n){return n};
   try{if(window.caches){var h=await caches.match(TPL_URL);if(h&&h.ok){var b0=await h.arrayBuffer();if(b0.byteLength>100000)return b0}}}catch(e){}
@@ -4364,8 +4370,10 @@ async function makeProposal(opt){opt=opt||{};var stp=function(t){window.__propSt
     var all=wl.map(function(l,i){return {l:l,i:i}}).sort(function(a,b){return ((a.l.xs.length>0)-(b.l.xs.length>0))||((a.l.eq==='drnk')-(b.l.eq==='drnk'))||a.i-b.i}).map(function(o){return o.l}),tdoc=await PDFLib.PDFDocument.load(tbytes);
     var CH=function(c){return c.t==='x'?195:220},PGS=[];
     var SECS=[{t:'تجهیزات تهویه، گرمایش و پرورش',it:all.filter(function(l){return !gCustom(l.g)})}];GROUPS.filter(function(x){return x.custom}).forEach(function(x){SECS.push({t:x.name,it:all.filter(function(l){return l.g===x.id})})});
-    SECS.forEach(function(sc){if(!sc.it.length)return;var curP=[],used=0;
-    sc.it.forEach(function(l){var cs=[{t:'m',l:l}];for(var q=0;q<l.xs.length;q+=4)cs.push({t:'x',l:l,k:l.xs.slice(q,q+4)});var uh=0;cs.forEach(function(c){uh+=CH(c)+14});if(curP.length&&(l.xs.length||used+uh>805)){curP.ttl=sc.t;PGS.push(curP);curP=[];used=0}cs.forEach(function(c){var h=CH(c)+14;if(curP.length&&used+h>805){curP.ttl=sc.t;PGS.push(curP);curP=[];used=0}curP.push(c);used+=h});if(l.xs.length){curP.ttl=sc.t;PGS.push(curP);curP=[];used=0}});if(curP.length){curP.ttl=sc.t;PGS.push(curP)}});
+    function packEq(LIM){var out=[];SECS.forEach(function(sc){if(!sc.it.length)return;var curP=[],used=0;
+    sc.it.forEach(function(l){var cs=[{t:'m',l:l}];for(var q=0;q<l.xs.length;q+=4)cs.push({t:'x',l:l,k:l.xs.slice(q,q+4)});var uh=0;cs.forEach(function(c){uh+=CH(c)+14});if(curP.length&&used+uh>LIM){curP.ttl=sc.t;out.push(curP);curP=[];used=0}cs.forEach(function(c){var h=CH(c)+14;if(curP.length&&used+h>LIM){curP.ttl=sc.t;out.push(curP);curP=[];used=0}curP.push(c);used+=h})});if(curP.length){curP.ttl=sc.t;out.push(curP)}});return out}
+    var EQS=1;PGS=packEq(805);var cmin=packEq(805/.8).length;if(PGS.length>cmin){for(var sv=.98;sv>=.8;sv-=.02){if(packEq(805/sv).length<=cmin){EQS=sv;break}}PGS=packEq(805/EQS)}
+
     for(var pgI=0;pgI<PGS.length;pgI++){var wl=PGS[pgI];
     var np=(await doc.copyPages(tdoc,[5]))[0];
     doc.insertPage(8-dropBefore+(wIns?1:0)+pgI,np);
@@ -4376,7 +4384,7 @@ async function makeProposal(opt){opt=opt||{};var stp=function(t){window.__propSt
     var wrap=function(t,mw){var ws=t.split(' '),ln=[],cur='';ws.forEach(function(w){var tt=cur?cur+' '+w:w;if(g.measureText(tt).width>mw&&cur){ln.push(cur);cur=w}else cur=tt});if(cur)ln.push(cur);return ln};
     var LD=function(src){return new Promise(function(res){if(!src)return res(null);var im=new Image();im.onload=function(){res(im)};im.onerror=function(){res(null)};im.src=src})};
     var ims=await Promise.all(wl.map(function(c){return c.t==='x'?Promise.all(c.k.map(function(k){return LD(EQX_IMG[k])})):LD(EQ_IMG[c.l.eq])}));
-    var yy=290;
+    var yy=290;g.save();g.translate(447,290);g.scale(EQS,EQS);g.translate(-447,-290);
     wl.forEach(function(c,i){var l=c.l,img=ims[i],y0=yy;yy+=CH(c)+14;
       if(c.t==='x'){g.lineWidth=1.5;g.strokeStyle='#c4c4c4';g.beginPath();if(g.roundRect)g.roundRect(105,y0,685,195,14);else g.rect(105,y0,685,195);g.stroke();
         c.k.forEach(function(k,j){var im=img[j],cx=790-17-82-j*166;if(im){var sc=Math.min(150/im.width,105/im.height),iw=im.width*sc,ih=im.height*sc;g.drawImage(im,cx-iw/2,y0+10+(105-ih)/2,iw,ih)}g.fillStyle='#333';g.textAlign='center';ft(13,1);var nl=wrap(EQX_NM[k],150).slice(0,2);nl.forEach(function(t,m){g.fillText(t,cx,y0+128+m*16)});if(EQX_DS[k]){g.fillStyle='#666';ft(11,0);wrap(EQX_DS[k],156).slice(0,3).forEach(function(t,m){g.fillText(t,cx,y0+128+nl.length*16+m*14)})}});g.textAlign='right';return}
@@ -4385,7 +4393,7 @@ async function makeProposal(opt){opt=opt||{};var stp=function(t){window.__propSt
       g.fillStyle=NAVY;g.textAlign='right';ft(21,1);g.fillText(outName(l.name),778,y0+36);
       g.fillStyle='#111';ft(17,1);g.fillText((l.unit==='متر'?'متر : ':'تعداد : ')+P(Math.round(l.qty*100)/100),778,y0+78);
       if(!blankP(l))g.fillText('قیمت : '+money(l.price),640,y0+78);
-      g.fillStyle='#444';ft(14,0);wrap(DESC[l.eq]||EQX_DS[l.eq]||(l.id==='c16'?'قیمت به ازای هر متر می‌باشد.':''),470).forEach(function(t,k){g.fillText(t,778,y0+124+k*26)})});
+      g.fillStyle='#444';ft(14,0);wrap(DESC[l.eq]||EQX_DS[l.eq]||(l.id==='c16'?'قیمت به ازای هر متر می‌باشد.':''),470).forEach(function(t,k){g.fillText(t,778,y0+124+k*26)})});g.restore();
     var png=await new Promise(function(res){cv.toBlob(function(bl){bl.arrayBuffer().then(res)},'image/png')});
     var H=np.getHeight();np.drawRectangle({x:R[0]*K,y:H-R[3]*K,width:(R[2]-R[0])*K,height:(R[3]-R[1])*K,color:PDFLib.rgb(1,1,1)});
     np.drawImage(await doc.embedPng(png),{x:R[0]*K,y:H-R[3]*K,width:(R[2]-R[0])*K,height:(R[3]-R[1])*K})}}
@@ -4567,7 +4575,7 @@ function eqGuess(it){var n=eqNorm(it.name);if(/سیمبکسل/.test(n)&&!/بست
 function eqSave(){try{localStorage.setItem(EQK,JSON.stringify(EQMAP))}catch(e){}}
 function eqScan(){var ch=false;CAT.forEach(function(it){if(EQMAP[it.id]!=null)return;var k=eqGuess(it);if(k){EQMAP[it.id]=k;ch=true}});if(ch)eqSave()}
 function eqKey(it){if(!it)return '';var k=EQMAP[it.id];if(k!=null)return k;return eqGuess(it)}
-function npAddProduct(p){if(!p||!p.id||BY[p.id])return false;if(p.gn&&p.g)gEnsure(p.g,p.gn);var g=GROUPS.some(function(x){return x.id===p.g})?p.g:'acc';var it={id:p.id,g:g,name:String(p.name||'').trim(),usd:num(p.usd),disc:false,unit:'عدد',motor:false,from:null,mult:1,price0:null,fixed:null,note:'',hide:false,sel:false,custom:true};CAT.push(it);BY[it.id]=it;if(p.eq){EQMAP[it.id]=p.eq;eqSave()}try{var _pe=pedLoad()[it.id];if(_pe)pedApply(it.id,_pe)}catch(e){}try{eqScan()}catch(e){}if(p.dev&&INSINC.indexOf(it.id)<0)INSINC.push(it.id);try{renderPicker()}catch(e){}return true}
+function npAddProduct(p){if(!p||!p.id||BY[p.id])return false;if(p.gn&&p.g)gEnsure(p.g,p.gn);var pg0=GALIAS[p.g]||p.g;var g=GROUPS.some(function(x){return x.id===pg0})?pg0:'acc';var it={id:p.id,g:g,name:String(p.name||'').trim(),usd:num(p.usd),disc:false,unit:'عدد',motor:false,from:null,mult:1,price0:null,fixed:null,note:'',hide:false,sel:false,custom:true};CAT.push(it);BY[it.id]=it;if(p.eq){EQMAP[it.id]=p.eq;eqSave()}try{var _pe=pedLoad()[it.id];if(_pe)pedApply(it.id,_pe)}catch(e){}try{eqScan()}catch(e){}if(p.dev&&INSINC.indexOf(it.id)<0)INSINC.push(it.id);try{renderPicker()}catch(e){}return true}
 (function(){var o=pedLoad();Object.keys(o).forEach(function(k){try{pedApply(k,o[k])}catch(e){}})})();try{eqScan()}catch(e){}
 
 /* ---------- پیوست عکس (۱ تا ۳) + توضیحات ---------- */
